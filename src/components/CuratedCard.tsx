@@ -34,7 +34,7 @@ export function CuratedCard({ item }: { item: CuratedItem }) {
         {/* 站长点评 */}
         {item.note && (
           <p className="mt-2 text-xs text-slate-500 italic leading-relaxed">
-            "{item.note}"
+            &ldquo;{item.note}&rdquo;
           </p>
         )}
       </div>
