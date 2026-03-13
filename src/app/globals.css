@@ -3,25 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 背景层级 */
+  --bg-base: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-muted: #f1f5f9;
+
+  /* 边框 */
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  /* 文字层级 */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  /* 强调色：极客紫 / Indigo */
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-light: #eef2ff;
+  --accent-border: #c7d2fe;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* 弥散阴影 — 卡片悬浮感 */
+  .shadow-card {
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.04),
+      0 4px 12px 0 rgb(0 0 0 / 0.06);
+  }
+
+  .shadow-card-hover {
+    box-shadow:
+      0 4px 8px 0 rgb(0 0 0 / 0.06),
+      0 12px 24px 0 rgb(0 0 0 / 0.08);
   }
 }
