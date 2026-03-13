@@ -3,7 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'itcsdn.com — 开发者技术趋势聚合',
@@ -12,14 +16,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh">
-      <body className={`${inter.className} bg-gray-50 min-h-screen`}>
+    <html lang="zh" className={inter.variable}>
+      <body className="bg-white min-h-screen flex flex-col">
         <Header />
-        <main className="max-w-4xl mx-auto px-4 py-8">
+        <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-12 lg:px-8">
           {children}
         </main>
-        <footer className="border-t border-gray-200 mt-16 py-8 text-center text-sm text-gray-400">
-          itcsdn.com · 内容来自官方 RSS · 点击链接访问原文
+        <footer className="border-t border-slate-100 mt-20">
+          <div className="max-w-7xl mx-auto px-6 py-10 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-sm font-semibold text-slate-900">itcsdn.com</p>
+              <p className="text-xs text-slate-400">
+                内容来自官方 RSS · 每小时自动更新 · 点击链接访问原文
+              </p>
+            </div>
+          </div>
         </footer>
       </body>
     </html>
