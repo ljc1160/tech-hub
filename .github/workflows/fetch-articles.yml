@@ -1,0 +1,35 @@
+name: Fetch Articles
+
+on:
+  schedule:
+    # 每 6 小时执行一次（UTC 时间 0/6/12/18 点）
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch: # 支持手动触发
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 抓取文章
+        run: npm run fetch
+
+      - name: 提交更新
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/articles.json
+          git diff --cached --quiet || git commit -m "chore: 自动更新文章数据 $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
