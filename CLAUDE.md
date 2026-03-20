@@ -51,6 +51,10 @@ data/              # JSON 数据文件（由 GitHub Actions 写入，勿手动�
 scripts/           # 自动化脚本
 ```
 
+## 📋 文档规范
+
+见 `docs/00-base/docs-convention.md`
+
 ## ⚠️ 注意事项
 
 - `data/` 目录由 CI 自动维护，不要手动提交数据文件
