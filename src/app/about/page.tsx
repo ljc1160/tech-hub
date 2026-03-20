@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = { title: '关于 — itcsdn.com' }
 
@@ -23,8 +24,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* 内容说明 */}
       <div className="space-y-8">
+        {/* 数据来源 */}
         <div>
           <h2 className="text-base font-semibold text-slate-900 mb-3">数据来源</h2>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -43,25 +44,37 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-accent/5 border border-accent/20">
-          <h2 className="text-base font-semibold text-slate-900 mb-2">内容说明</h2>
-          <ul className="space-y-2 text-sm text-slate-600">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-0.5">·</span>
-              所有内容均来自各平台官方 RSS 订阅源
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-0.5">·</span>
-              仅展示标题与摘要，点击链接访问原文
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-0.5">·</span>
-              站长会不定期手动添加「精选推荐」
-            </li>
-          </ul>
+        {/* 站长推荐 */}
+        <div>
+          <h2 className="text-base font-semibold text-slate-900 mb-3">站长推荐</h2>
+          <div className="relative bg-white rounded-2xl p-5 border border-slate-100 shadow-card overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-400 rounded-l-2xl" />
+            <div className="pl-3 flex items-start justify-between gap-4">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-amber-50 text-amber-700">
+                    工具推荐
+                  </span>
+                  <span className="text-xs text-slate-400">微信小程序</span>
+                </div>
+                <p className="text-sm font-semibold text-slate-900 mb-1">免费证件照制作</p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  一键制作高清证件照，支持一寸、二寸等多种尺寸，自由更换底色，免费使用。
+                </p>
+              </div>
+              <div className="flex-shrink-0 flex flex-col items-center gap-1">
+                <Image
+                  src="/sponsors/gh_2bf4a7d2a911_344.jpg"
+                  alt="免费证件照制作小程序二维码"
+                  width={80}
+                  height={80}
+                  className="rounded-lg"
+                />
+                <span className="text-xs text-slate-400">扫码体验</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <p className="text-xs text-slate-400">内容每小时通过 GitHub Actions 自动更新。</p>
       </div>
     </div>
   )
