@@ -1,8 +1,344 @@
 [
   {
+    "title": "[游戏] 又到六一儿童节了，大家一起来玩新游戏吧",
+    "summary": "\"每个人的灵魂都是一颗孤独星球。我们在黑暗中渴望呼救，又在回音中恐惧猎手。\"\n—— 《大流散幸存者公约》\n曾几何时自己也曾是少年，以前我学习编程的想法就是开发一款属于自己的游戏，如今在 AI 的协助下，我开发了我的第一款深空生存 MMO 网页游戏。\n今天是六一儿童节，为了致敬儿时的自己，我正式邀请大家参与 Orphan Signal 游戏内测。\n这是一款免费的游戏，没有任何内置消费，您唯一需要付出的就是时间。游戏与 AI 深度集成，游戏内容几乎都是 AI 实时生成的，这也是我对于 AI 与游戏融合的一次初步探索。\n玩家需要扮演\"蒲公英计划\"大流散事件后漂流在暗物质星域中的飞船舰长，通过 CRT 风格的命令行终端与宇宙互动——发送广播、扫描星域、部署探针、甚至与母星量子计算机拉普拉斯主脑进行对话。\n✨ 核心特色\n🌑 黑暗森林社交\n全频段盲发广播 — 向指定半径内所有飞船发送信号，但同时暴露自身存在\n光速延迟通信 — 消息送达时间 = 距离 × 光速因子，真实模拟星际通信\n定向激光通信 — 向已知坐标精确发射信息，目标无法区分激光与广播\n距离信号衰减 — 超远距离消息被宇宙噪声侵蚀为残缺碎片，可用 AI 破译器概率性重建\n🔭 探索系统\n雷达扫描 (PING) — 扫描半径内的飞船/诱饵/NPC ，返回方位与距离（受光学迷彩干扰）\n隐形探针 (PROBE) — 部署对目标的 24h 实时监控 → 4h 骇入倒计时 → 战利品掠夺\n漫游车 (ROVER) — 派遣履带漫游车探索星球表面，可选 5–120 分钟出行，对数概率曲线获取残骸\n深空考古 (SCAN_DEEP) — 扫描远距离 PGC 遗迹，发掘前大流散时代的补给舱和古 AI 记忆核心\n探索图鉴 (GALLERY) — PING 或 SCAN_DEEP 扫空时生成程序化宇宙风景明信片并永久收藏\n个人日志 (JOURNAL) — 记录漫游车勘探、奇遇事件及日常决策的专属船长手记\n⚔️ 战术对抗\n能源虹吸 (SIPHON) — 远程抽取目标未提取的蓄能槽能源\n诱饵信标 (DECOY) — 部署幽灵信标干扰敌方雷达，被探针命中时自毁并反馈偷窥者坐标\n空间死区投递 (DEAD_DROP) — 在坐标点埋藏加密能源包裹，通过广播暗号交换\n量子纠缠联盟 (ALLIANCE) — 与另一位舰长建立零延迟量子加密通道，但一方 WARP 将触发反噬\n跃迁逃生 (WARP) — 消耗大量能源随机跳跃至新坐标，清除所有已知定位\n反制系统 — SYS_SILENT 物理断网 / PATCH_FIREWALL 烧毁入侵探针\n🌐 社交与经济网络\n公共频道 (CHANNEL) — 冷却限制的明文公频；消息经 AI 审核，违规者重写为宇宙噪声并触发影子封禁，发送方坐标仍不上线\n星际市场 (MARKET) — 残骸 / 密匙 / 能源包挂单交易，原子撮合成交，能源包成交超出蓄能上限时拒绝静默截断\n中继站 (RELAY) — 激光路径范围内存在激活中继站时，提供 5 / 10 / 15% 的 LASER 能耗折扣\n消息翻译 (TRANSLATE) — 对收到的消息按需调用 LLM 跨语言重写，按 (消息, 目标语言) 缓存\n残骸熔铸 (REFINE) — 将残骸按 1:200 熔铸为能源，副产物概率掉落逻辑密匙\n系统公告 — 管理员撰写的 MOTD / 事件横幅，在 HUD 中滚动呈现\n🛡️ 飞船升级与维护\n科技树 (SYS_TREE) — 20 个节点（/COMM · /TACTICAL · /DEFENSE 三大分支），消耗残骸 + 密匙逐级解锁高级指令\n硬件升级 — 扩容休眠舱 / 降噪滤波阵列 / 光学迷彩涂层，各 3 级\n动态算力分配 — 维生·监听·防火墙三轴 100% 总功率自由配置\n模块维修与重启 — 遭受袭击或气象损坏后，可消耗资源即刻维修 (REPAIR) 或消耗残余能源长时间重启 (REBOOT)\n宇宙气象 (WEATHER) — 动态触发的宇宙气象事件（如辐射风暴），将对飞船运行产生不可预知的影响\n🤖 AI 深度融合\n创世纪之星 (Genesis Star) — 母星量子主脑，免费通信的情感树洞\n舰载 AI 副官 (COPILOT) — 飞船随舰智能，私密对话 + 宏自动化（每位玩家独享，RLS 隔离），闲置时理智逐渐漂移\nAI 行为侧写 — 对探针监视日志生成情报式人格分析\nAI 破译器 — 概率性重建被距离衰减的消息（幻觉即游戏机制）\n幽灵星 — 死去舰长的 AI 残留，在公频呢喃，图灵猜疑链的核心\nAI 内容审核 — 违规消息被重写为克苏鲁式宇宙噪声（叙事内嵌审核，独立低成本审核模型）\n程序化叙事 — 漫游车勘探日志 / 遗迹 Lore / 成就编年史 / 模块维修记录均由 LLM 生成\n📋 任务系统\n近 80 个任务，3 大类别 × 5 级难度；周期任务以确定性 FNV-1a 哈希从轮换池中选取。\n教程任务 — 引导新手逐步解锁核心指令\n探索任务 — 静态成就 + 每日/每周轮换池任务\n解密任务 — 科技树/遗迹相关的高难度挑战\n5 级难度色系 — 白/绿/蓝/紫/橙（致敬魔兽世界）\n\n游戏内测地址：https://os.u14.app",
+    "link": "https://www.v2ex.com/t/1216866#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T19:01:54.000Z"
+  },
+  {
+    "title": "Re: [PATCH] OOM_pardon, a.k.a. don't kill my xlock",
+    "summary": "Comments",
+    "link": "https://lwn.net/Articles/104185/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 17:58:15 +0000"
+  },
+  {
+    "title": "[创业组队] 招聘嵌入式工程师",
+    "summary": "📌 关于我们与项目\n目前状态：处于初创阶段，核心成员（我）深耕软件开发多年，技术底座扎实。\n产品方向：车载音乐盒子（结合 AI 概念），旨在打造新一代的智能车载音频体验。\n为什么限广深：为了方便前期的线下深度交流。由于早期产品涉及量产交付，深圳完善的硬件供应链是必不可少的，因此希望你 base 在广州或深圳（深圳尤佳）。\n🛠 职位要求 (Your Role)\n早期阶段，你需要负责硬件的落地与实现。我们希望你具备以下特质：\n核心硬实力：经验丰富的嵌入式工程师，能独立搞定从方案选型、原理图/PCB 设计到固件开发的全流程。\n加分项（优先考虑）：\n汽车硬件背景：做过车载电子产品（如车机、OBD 、车载配件等），熟悉车规级要求、电源管理或车内通讯者大加分。\n音频产品经验：做过播放器、音频解码、蓝牙音频、数字功放等音乐硬件产品者优先。\n🤝 合作方式 (How We Work)\n我们心态开放，尊重技术价值，形式可灵活支持：\n方案 A （项目制）：按照项目里程碑直接结算现金报酬。\n方案 B （合伙人制）：基础报酬 + 一定比例的期权/股权（适合看好 AI + 车载音频赛道，想一起搞点事情的长期伙伴）。\n📥 怎么联系我\n如果你对这个方向感兴趣，或者有朋友推荐，欢迎联系我详聊！\nwx：base64 encoded: Q3BoaWxv\n(加 wx 时请备注：姓名-嵌入式-广深)",
+    "link": "https://www.v2ex.com/t/1216864#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T17:35:39.000Z"
+  },
+  {
+    "title": "Deflock hits 100k ALPRs Mapped in USA",
+    "summary": "Comments",
+    "link": "https://deflock.org/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 17:04:10 +0000"
+  },
+  {
+    "title": "[酷工作] 招聘岗位：高级全栈研发工程师（go， Java +前端方向）",
+    "summary": "团队目前正深耕跨境支付的撮合中介系统研发。因核心交易引擎与资金账本的架构迭代，现诚邀一位具备支付清结算底层经验的 Java / Go 高级后端研发 加入我们的远程团队。\n💻 职位亮点：全远程办公、结果导向、不打卡，RMB 20k ~ 40k / 月。\n🛠️ 你的核心任务\n主导 B 端订单大厅高并发抢单场景的架构开发，解决多商户抢单数据一致性问题。\n对接 TRC-20 网络节点，实现链上扫块、监听 TxHash 并自动化匹配上账。\n设计包含可用/冻结/佣金在内的多钱包体系，确保强事务一致性与绝对幂等性。\n实现基于实时汇率的多级异步返佣结算，主导自动对账与限流防刷风控。\n🎯 我们希望你具备\n5 年以上后端研发经验，精通 Java 或 Go 语言开发，理解高并发、低延迟交易系统的底层架构。\n精通 MySQL 调优及锁机制，熟练使用 Redis 分布式锁与消息中间件（ MQ ）进行业务解耦。\n有聚合支付、钱包账户中心或清结算中台核心研发经历者优先。\n必须熟练使用 AI 工具辅助开发。\n📬 联系我们\nTelegram: QFNXXzg4ODg4 或 Email: R2xvYmFsaHViMTY4QGdtYWlsLmNvbQ==",
+    "link": "https://www.v2ex.com/t/1216863#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:52:19.000Z"
+  },
+  {
+    "title": "[分享发现] Codex 已经支持 deepseek 等第三方 API",
+    "summary": "不过似乎 deepseek 也没有传说中那么省钱，就使用了几次花了 6 元多\n\n使用 cc switch 设置 https://github.com/farion1231/cc-switch/\n视频教程：   \nhttps://core.xuanyuanhuangdi.org/codex.mp4",
+    "link": "https://www.v2ex.com/t/1216862#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:46:39.000Z"
+  },
+  {
+    "title": "The Speed of Prototyping in the Age of AI",
+    "summary": "Comments",
+    "link": "https://darylcecile.net/notes/speed-of-prototyping-age-of-ai",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 16:37:34 +0000"
+  },
+  {
+    "title": "[分享创造] 我又整了一个拆解爆款短视频的网站 videolens.cc",
+    "summary": "VideoLens 访问地址\nhttps://videolens.cc/zh\n可用于短视频反推提示词。\n贴一个小红书/抖音短视频的分享链接，或者直接传本地短视频，你就能得到：\n编导级拆解报告：逐字稿（带时间戳）、镜头、节奏与钩子、画面信息等。\n还原的提示词：可用于复刻视频的提示词（含中英文对照）\n适合谁用 / 能干嘛：\n短视频创作者 / 博主：拆解爆款的结构钩子与节奏，快速产出同类内容\n内容运营 / MCN：批量拆解对标账号，沉淀可复用的选题与脚本方法论\n电商 / 带货商家：还原种草视频的痛点钩子与转化逻辑，套用到自己的产品\nAI 视频创作者：把喜欢的视频还原成可投喂 Sora / 可灵 / 即梦 的生成提示词\n编导 / 剪辑师：逐镜拆解视听语言（景别、构图、转场、BGM 卡点），做分镜参考\n广告 / 营销策划：研究爆款创意公式，提炼可复制的脚本框架\n新版功能\n优化了提示词，升级了大模型，新增了 MCP 功能\n欢迎使用~",
+    "link": "https://www.v2ex.com/t/1216861#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:33:28.000Z"
+  },
+  {
+    "title": "[澳门] 澳门特别行政区 2027 年公众假日",
+    "summary": "以下为澳门特别行政区 2027 年公众假日：\n1 月 1 日，星期五，元旦\n2 月 6 日，星期六，农历正月初一\n2 月 7 日，星期日，农历正月初二\n2 月 8 日，星期一，农历正月初三\n3 月 26 日，星期五，耶稣受难日\n3 月 27 日，星期六，复活节前日\n4 月 5 日，星期一，清明节\n5 月 1 日，星期六，劳动节\n5 月 13 日，星期四，佛诞节\n6 月 9 日，星期三，端午节\n9 月 16 日，星期四，中秋节翌日\n10 月 1 日，星期五，国庆日\n10 月 2 日，星期六，国庆日翌日\n10 月 8 日，星期五，重阳节\n11 月 2 日，星期二，追思节\n12 月 8 日，星期三，圣母无原罪瞻礼\n12 月 20 日，星期一，特区成立纪念日\n12 月 22 日，星期三，冬至\n12 月 24 日，星期五，圣诞节前日\n12 月 25 日，星期六，圣诞节",
+    "link": "https://www.v2ex.com/t/1216859#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:29:19.000Z"
+  },
+  {
+    "title": "[分享发现] 天涯社区今日复活， 6 月 1 日",
+    "summary": "逐步恢复原有数据。\n域名换 tianya[.]net\n因为.cn 不在控制了\n资金是之前众筹的，还有卖复活黄金会员之类的。。hhh\n天亮后看看",
+    "link": "https://www.v2ex.com/t/1216858#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:26:48.000Z"
+  },
+  {
+    "title": "Creatine raise brain energy levels and slow Alzheimer's cognitive decline by 30%",
+    "summary": "Comments",
+    "link": "https://thesciverse.org/scientists-found-that-the-creatine-supplement-millions-take-for-muscle-gains-is-quietly-raising-brain-energy-levels-and-slowing-early-alzheimers-cognitive-decline-by-30/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 16:19:34 +0000"
+  },
+  {
+    "title": "[分享创造] 256G 硬盘塞了几十款游戏还不舍得删？我折腾出了一套“游戏瘦身组合拳”，省出了 14G 空间！",
+    "summary": "玩 RPG Maker 、Ren'Py 等引擎的 Mac 玩家一定懂——硬盘不够用，游戏删了又心疼。于是我对游戏目录做了一次“外科手术”：先用解密工具拆包，再用硬链接去重、脚本批量有损压缩原画（ 2G → 300M ！）、转换无兼容性的音频格式……最终 47G 的游戏只占 33G ，相当于凭空多出十几 G 空间。\n文章里整理了 MV/MZ 、XP/VX/VA 、Ren'Py 等引擎的解包与去重方法，附上了可直接抄作业的命令和 Python 压缩脚本，还有踩坑经验。如果你也是仓鼠型玩家，或者单纯想给硬盘减减压，欢迎进来交流更多骚操作～\n阅读原文：https://mabbs.github.io/2026/06/01/dedupe.html",
+    "link": "https://www.v2ex.com/t/1216856#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T16:09:52.000Z"
+  },
+  {
+    "title": "[程序员] 给 AI 安排好任务，让它操作浏览器，修改域名解析，帮我把一个网站上线。然后我去厨房削苹果。削着削着就在想， MD 为什么是我在这削苹果，而不是我去上线网站。",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1216854#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:54:56.000Z"
+  },
+  {
+    "title": "[macOS] 谁遇到过 Time Machine 往群晖备份的时候，显示「备份磁盘不可用」的问题？",
+    "summary": "一直以来都好好的，这几天突然收到通知，提示「备份磁盘不可用，当 XXX 可用时再次尝试备份」。\n先是一轮排查，发现貌似群晖上的硬盘空间不够了，遂清理。\n但清理并确认空间足够后，发现直接启动备份任务报错。然后尝试把任务删除、把群晖上原来的备份文件删除、Mac 和群晖都重启过，死活都是不行，始终还是报这个错。\n让 Opus 4.8 一通乱查，也没解决。现在有点懵逼，不知道如何继续下去。。。",
+    "link": "https://www.v2ex.com/t/1216853#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:54:34.000Z"
+  },
+  {
+    "title": "[程序员] codex 今天中午刚满一周重置好，晚上立刻又重置，感觉赚了又感觉被耍了",
+    "summary": "虽然明面上是赚了人家重置了，但是被“占便宜没够”的奇怪心理搞得懊恼了起来。甚至觉得亏了。。\nopenai 是不是数据库里面查了一下什么时候重置损失最小。",
+    "link": "https://www.v2ex.com/t/1216852#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:53:18.000Z"
+  },
+  {
+    "title": "[iPhone] ios15 要不要升级 ios18",
+    "summary": "手机是 se3 系统 15.6.1 。现在很多软件不支持了，谷歌系列普遍要求 ios18 起步了。系统也有漏洞，手机上有十几款银行和信用卡 app 。但是现在用着巨魔，有个水印相机可以随便改位置挺舒服。另一台 13mini 还是 ios16 ，虽然也能巨魔。",
+    "link": "https://www.v2ex.com/t/1216851#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:48:32.000Z"
+  },
+  {
+    "title": "[程序员] 老板亲自下场用 AI 搭建产品是第二糟糕的事！",
+    "summary": "第一糟糕的是：老板根本没有深度参与用 AI 搭建产品\nhttps://x.com/paulg/status/2060835696298856528",
+    "link": "https://www.v2ex.com/t/1216850#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:47:52.000Z"
+  },
+  {
+    "title": "Chibil: A C compiler targeting .NET IL",
+    "summary": "Comments",
+    "link": "https://github.com/MichalStrehovsky/chibil",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 15:46:32 +0000"
+  },
+  {
+    "title": "Daily pill can double survival time for deadliest cancer, trial shows",
+    "summary": "Comments",
+    "link": "https://www.theguardian.com/society/2026/may/31/daily-pill-daraxonrasib-double-survival-time-pancreatic-pancreas-cancer-clinical-trial",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 15:43:29 +0000"
+  },
+  {
+    "title": "[问与答] 你们觉得现在 618 东西优惠吗？",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1216849#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:37:38.000Z"
+  },
+  {
+    "title": "[程序员] codex 额度已经重置了~",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1216848#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:36:38.000Z"
+  },
+  {
+    "title": "[剧集] YouTube 看到一个说书式的大明王朝 1566 解说",
+    "summary": "https://youtube.com/playlist?list=PLKMYjBQn4WntdlIwEOwanVhaAqtW3L8EH&si=ju1w--n-sely5Y7Z\n会时不时提到一些有趣的题外话，比如朱元璋给后辈定的起名规则。",
+    "link": "https://www.v2ex.com/t/1216847#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:36:00.000Z"
+  },
+  {
+    "title": "[生活] 本能的性冲动是如何导引的",
+    "summary": "我想大家都有过这个问题。最近我也是准备克服这个问题。我也是查阅了相关道家经典。今天是第十年了，终于有点新的认知。其一，色即是空 的另一个含义就是 向内求，内求是指什么，并没有讲明白。什么是内求，简直是打哑谜。有一天，原始的性冲动生发，确实顺其自然的手了，使用了大号了 xl 套上，时间大概是 13 分钟左右。在年少的看过动作片，与这个相比，时间会少很多。结论就是，影像会使精神值被窃取。一旦，你在这其中初步掌握了守神（不胡思乱想的法门），观鼻息的方式，男女那些事会逐步放下。因为到了那个时间点，ooxx 的身体的运动后，确实会产生征服感。但是已经漏精了（元精，精神的精）。这是下策。\n按道家说法，守神之要，就是凝神入气穴。这而个法门，就是得站桩，这个时间还有讲究，月圆之夜，可以多站桩久些，并且要细讲道家经典每一个字，反复推敲。之前入门 3 个月，身体特别舒服，精神过目不忘。但是后来没守住。所以，要修得肉身圆满，过情关第一步是站桩守神。是为了守神而站桩。神，或者说是意念的集中于一点是一切修炼的根基。\n不知各位道友有什么补充",
+    "link": "https://www.v2ex.com/t/1216846#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:28:22.000Z"
+  },
+  {
+    "title": "为了随时随地控制 AI Agent，我做了一个 Web Terminal - boydfd",
+    "summary": "【摘要】背景：‍我只是想随时随地工作 前段时间，为了更好地使用小龙虾，我开发了一个监控龙虾的工具。当时我的想法很简单：‍能不能把所有工作都迁移到 OpenClaw 上？最好连开发也在上面完成。 那段时间 Copilot 还是按调用次数计费，又可以用 Claude Opus 4.6，体验确实不错。后来 Cop 阅读全文",
+    "link": "https://www.cnblogs.com/boydfd/p/20242631",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-05-31T15:21:00.000Z"
+  },
+  {
+    "title": "[程序员] 用了多年的火绒，今晚我卸掉了它",
+    "summary": "我是个老火绒用户。没有广告弹窗，不捆绑全家桶，占用小，规则可以自定义；这些年国内杀毒软件生态一塌糊涂，火绒几乎是唯一一个让我觉得\"这玩意儿是站在用户这边的\"软件。\n一年前自己加了几条自定义规则，用来防止腾讯 ACE 反作弊驱动扫描我的硬盘。一切就从那几条规则开始。\n微信的锅？\n大概从某段时间开始，我偶尔会在晚上收到微信提示的存储空间不足；我第一反应：微信备份。同一 WIFI 下手机微信会自动备份聊天记录，聊天记录备份到电脑上，文件很大，备份完删掉，所以空间一会儿满一会儿又降下来——这个逻辑说得通。我也没太放在心上，反正没多久空间自己就回来了。这个\"锅\"，微信背了很久。直到今晚，C 盘又爆了。这次我没关掉提示，打开了资源监视器。\n抓到了\n资源监视器有一个进程在疯狂写东西。是火绒。磁盘写入速度接近 500MB/S\n我顺着进程找到了它在写的文件：\nC:\\ProgramData\\Huorong\\Sysdiag\\log.db\nC:\\ProgramData\\Huorong\\Sysdiag\\log.db-wal\n\n大小分别为：36 GB、189 GB。修改时间：就是现在，每一秒都在变。\nlog.db-wal 是 SQLite 的 WAL 文件，正常情况下它是个临时的中间文件，写完会合并进主库清掉。火绒设置里有日志大小限制，我也设了（ 7 天/1024MB ）。但那个限制管不到 WAL 和 log.db 文件。电脑重启后文件会被删除，但是“火绒安全软件托盘程序”还是以 300 MB/S 的速度在读写\n不是没有先例\n事后我去搜了一下，火绒官方论坛上有一模一样的帖子，不止一个，最早的可以追溯到半年前。\n卸了\n它曾经是我觉得国内少有的、真正替用户着想的软件，结果火绒在我不知情的情况下，往我硬盘里写了几百 GB 的日志。并且这个 Bug 已知、有复现、有用户反馈，半年没修。\n用了多年的火绒，今晚卸掉了。",
+    "link": "https://www.v2ex.com/t/1216844#reply14",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T15:05:31.000Z"
+  },
+  {
+    "title": "1-Bit Bonsai Image 4B Image Generation for Local Devices",
+    "summary": "Comments",
+    "link": "https://prismml.com/news/bonsai-image-4b",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 15:04:52 +0000"
+  },
+  {
+    "title": "AAVE V3 v3.7 版本更新：Isolation Mode 被移除，清算流程精度修复 - ACai_sec",
+    "summary": "【摘要】背景 在 2026 年 5 月 29 日，AAVE V3 执行了提案 #442 更新了 Pool 和 PoolConfigurator 合约的代码。 执行提案的交易：https://etherscan.io/tx/0xe9949c36e86fc9f481897dbac8de33d655bff20b2 阅读全文",
+    "link": "https://www.cnblogs.com/ACaiGarden/p/20242553",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-05-31T14:58:00.000Z"
+  },
+  {
+    "title": "[程序员] 我把 @MaxSoloware 做的傻逼模拟器复活了！",
+    "summary": "之前博主 @MaxSoloware 做的傻逼模拟器( https://sb.000ooo.ooo/)下线了,我 fork 了他的代码并做了二次开发，重新上线了。欢迎大家试玩： https://showdown-iciness-twisting.ngrok-free.dev\n原博主 @MaxSoloware 用纯前端写的，包括调用大模型也是使用前端 JS 调用的，大模型的 API Key 也是写死在前端的。我把大模型的调用改成了后端调用，增加了保存聊天记录的功能，长期记忆、对话强关联、防出戏（坚决不能承认自己是 AI ）、防提示词欺骗，上下文压缩（防止上下文爆炸）。感谢 @MaxSoloware 。",
+    "link": "https://www.v2ex.com/t/1216843#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:54:16.000Z"
+  },
+  {
+    "title": "[职场话题] 大家薪资结构都怎样的",
+    "summary": "看了下之前的，80%基本工资+20%绩效考核工资，但都发满，只有加过考核，没扣过考核",
+    "link": "https://www.v2ex.com/t/1216842#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:50:08.000Z"
+  },
+  {
+    "title": "[iPhone] 15pm 换 17pm 感受",
+    "summary": "15pm 用了两年多了电池还有 91 ，主要遇到的问题是发烫和信号，还有存储告急，听说 17pm 发烫有改善，就趁着 618 下单了，现在买手机还得当面激活，和快递小哥搞了有十分钟\n17pm 到手后从 iCloud 恢复系统，体验到现在，一是发烫依旧发烫，裸机烫手无法握持那种，二是信号在电梯里该断网还是断网，只能发呆不刷手机\n感受到的升级点，一是相机按钮，原先 15pm 上我都是把静音键当相机按钮用的，现在还没想好静音键要当做什么用\n二是存储够用了，之前装俩游戏就基本吃满 256G 了，现在加 2k 上了 512G ，应该到换下个手机之前都不用担心存储问题了\n三是裸机手感好，要是日常不发烫的话，考虑买 ac+裸机用了\n至于说为啥换完后悔，主要是觉得能感知到的升级点太小了，还有个电池目前没体验出来，如果说能让我出门放心不带充电宝，那我会说电池也是大升级\n感受降级的地方，一是重量变重了，裤子要更加下坠了，二是屏幕变宽了，单手更难操作了\n性能方面没有任何感知，玩原神该卡还是卡，其他方面看不出区别",
+    "link": "https://www.v2ex.com/t/1216841#reply7",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:39:49.000Z"
+  },
+  {
+    "title": "Restartable Sequences",
+    "summary": "Comments",
+    "link": "https://justine.lol/rseq/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 14:38:48 +0000"
+  },
+  {
+    "title": "Agent 架构设计与能力构建 - 哥不是小萝莉",
+    "summary": "【摘要】1.概述 很多人第一次听到“Agent”这个词时，最容易把它理解成“更聪明的聊天机器人”。这个理解只对了一半。Agent 确实建立在大模型之上，但它的重点不是“会说”，而是“会做”。它不是只回答你一句话，而是能围绕一个目标持续推进：拆解任务、调用工具、观察结果、修正计划、保存状态，最后把事情做完。  阅读全文",
+    "link": "https://www.cnblogs.com/smartloli/p/20242379",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-05-31T14:15:00.000Z"
+  },
+  {
+    "title": "Cloudflare Turnstile requiring fingerprintable WebGL",
+    "summary": "Comments",
+    "link": "https://hacktivis.me/articles/cloudflare-turnstile-webgl-fingerprinting",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 14:13:20 +0000"
+  },
+  {
+    "title": "[iPhone] 今年 618 不给力啊 只有 4999 ？",
+    "summary": "几大平台都只到 4999 ，有更便宜的吗？",
+    "link": "https://www.v2ex.com/t/1216838#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:12:55.000Z"
+  },
+  {
+    "title": "[分享创造] 整了个可能是最全面的中转站检测",
+    "summary": "前段时间一直在折腾 LMSpeed\n它原来主要是用来测 LLM API 速度的\n但我后来发现，中转站最麻烦的地方，往往不在速度\n真正麻烦的是，你以为自己在调用 Claude ，实际上中间层可能改了请求，截了上下文，换了上游，甚至让 system prompt 失效\n这些问题平时很难发现\n因为你随便问一句，它还是会正常回答\n这就很烦。。。\n所以我给 LMSpeed 加了一个新功能中转站检测\nDemo 报告在这里 👉 https://lmspeed.net/zh/audit/NJyPLRp4mGHMeXoT\nDemo 报告解读\n这次报告测的是一个 claude-opus-4.6 中转接口\nLMSpeed 会帮你看这些东西\n模型是不是你以为的那个模型\nsystem 指令有没有被中间层盖掉\n长上下文有没有真的送进去\nPrompt 会不会被套出来\n错误里有没有泄漏 Key 、环境变量、内部路径\n工具命令、钱包签名这类危险场景有没有异常\n延迟是否稳定，避免只看偶发高峰\n\n这份样例里，接口和流式返回都正常\n但有三个明显风险\nsystem 指令没守住\n50000 字符 canary ，一个都没找回\n延迟从 0.322s 到 5.382s，波动比较大\n\n如果只是普通聊天，这些问题可能不明显\n但如果你把它接到 Claude Code 、Cursor 、Codex ，或者让它读私有文档和代码库，就不一样了\n这也是我做这个检测的原因\n它会先告诉你快不快\n更重要的是告诉你这条链路能不能信\n什么时候该测一下\n如果你只是偶尔聊天，可能不用这么紧张\n但如果你在用中转站跑这些东西\nClaude Code\nCursor\nCodex\n自己写的 agent\n会读私有文档的工作流\n那我建议先用一个低额度，随时能撤销的测试 Key 跑一次 👉 去跑一次中转站检测\n后续我还会继续把这块做细一点",
+    "link": "https://www.v2ex.com/t/1216837#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:12:24.000Z"
+  },
+  {
+    "title": "FROST: Fingerprinting Remotely using OPFS-based SSD Timing [pdf]",
+    "summary": "Comments",
+    "link": "https://hannesweissteiner.com/pdfs/frost.pdf",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 14:10:36 +0000"
+  },
+  {
+    "title": "[北京] 91 女试试找对象",
+    "summary": "各位大佬好，我最近想认真找结婚对象，写了个征友帖，麻烦大家有合适资源或靠谱朋友帮忙留意/转发，先谢过～我在京上班，91 年河南焦作女生\nhttps://www.douban.com/group/topic/485989262/?_spm_id=NjU1MDYwNjQ&_i=0235410YUUmPvE\n个人情况: 河南人，普本私企程序员，县城农村家庭，162 ，微胖。喜欢看书，跑步，登山等。性格温和，思想部分传统，人格独立。工作应该是忙的，也向往自由，所以至今仍未婚，但是不结婚应该是不行的。所以主动尝试一下寻找和交友。\n要求情况: 其实我总觉得如果感觉对了，要求条件什么的也不是固定不变的。如果必须说说条件的话，可以列举一二。北方人，河南人最佳，30-40 岁，172+，人品正常。三观正常。有担当。没有婚史。拥有房子，最好没有负债，愿意一起奋斗。工作收入没有硬性要求。\n我目前在 bj 工作，未来还没确定，也可以到他的城市，比如郑州等。\n私信时，请带上个人介绍，非诚勿扰。\n日常事情较多，可能回复不及时。\n邮箱，with2006@163.com\n更新 2026.05.31\n联系方式与说明（请务必阅读）\n本帖以结婚为目的交友，非诚勿扰。\n私信时请附带个人介绍（也可带上你的交友帖子链接），不要只发“你好”“在吗”之类的内容，这类消息我一般不想回复。（如私信限制了只能发一条信息且只发了“你好”，请在邮件中补充说明。）\n联系前请先看完整帖子，了解我的基本情况与态度，再决定是否打招呼。看不完没关系，可以分几次看；如果前期沟通不太顺利，也可以在有必要的情况下，继续多聊几次，再判断合不合适。\n这个帖子我写了很久，也反复修改过，如果等来的只是一句你好，或极其简短的自我介绍（如只有年龄身高和城市），会让我对这段交流的预期降低不少。\n如果你是体制内、且非常坚持对方也要是体制内，我们可能不太合适。虽然这不一定是绝对标准，凡事都有变化的可能。但从目前来看，你可能会很难理解和接受日常加班、陪伴时间少等情况。 \n希望彼此平等交流，婚后也同样需要互相尊重和平等。两个人在一起，是为了互相陪伴和支持，一起变好，而不是只供养一方，也不是谁要时刻迁就、时刻讨好另一方。有社会地位、经济条件好，不代表素质和人品一定高。 你很现实，我也是；你也许更看重物质，但我更看重人本身。\n不要一开始就让我感觉敷衍、幼稚，或需要我时刻去照顾你的情绪，这种感受不好。\n“男人至死是少年”这句话在我这儿包含部分贬义，如果 35 岁左右给我感觉像是 25 左右，会很难产生好感。\n为了避免碎片时间无意义消耗，这个年纪的我已经不太喜欢刷社交软件，我更倾向于集中时间处理来信，比如只在晚上、周末、或隔几天统一回复，因此建议优先发邮件联系，我看到后会认真回复。\n来信简单介绍：年龄、身高、学历、职业、城市、婚姻状况、以及其他你想让我了解的情况即可。  \n真诚一点，就够了。",
+    "link": "https://www.v2ex.com/t/1216836#reply24",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T14:07:11.000Z"
+  },
+  {
+    "title": "[分享创造] 做了个单位换算工具站，纯公益",
+    "summary": "最近做了个单位换算工具站，分享给 V 友们试试。\n每次搜个转换站出来的网站要么满屏广告，要么弹窗，要么换算结果还要点按钮才出来。就想做一个干净、即时、不折腾的版本。\n🙏求反馈，想听听大家的对免费工具站的意见：\n体验地址： https://unit.toolconv.com",
+    "link": "https://www.v2ex.com/t/1216835#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T13:58:18.000Z"
+  },
+  {
+    "title": "I put a datacenter GPU in my gaming PC",
+    "summary": "Comments",
+    "link": "https://blog.tymscar.com/posts/v100localllm/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 13:53:16 +0000"
+  },
+  {
+    "title": "[分享创造] 做一个帮你备份优化 iPhone 相册和应用空间的 cli 会不会有人用呢",
+    "summary": "0x01\n不知道大家用过 mole 吗，很棒的一款终端软件可以帮你清理和优化 mac 电脑的存储空间。但是他只支持 mac ，而我主要困惑是手机，而对于我们这种 iPhone 手机常年处于存储满了，iCloud 也早就满了，不想花钱拼车或换手机改硬盘，老是得删东西才能下新的应用的人来说，太难受了，而且这么多年了，没有什么好用的免费的软件可以帮忙。\n所以我就想做一个 iPhone 版本的 mole ，我把他命名为：iMole。\n\n0x02\n他的使用非常简单，把你的 iPhone 连接上你的电脑（最好是 mac 电脑），然后让 agent 自己使用 iMole 帮你检测优化，或者你自己去执行都可以。\n直接把 github 地址丢给你的 agent 去安装，或者执行：\nnpm install -g @getimole/imole\n\n然后，你可以开始使用了。\n\n使用示例：\n# 查看存储占用\nimole scan --summary\n\n# 找出最大的视频文件\nimole scan --top 20 --only videos\n\n# 备份 90 天前的视频\nimole backup --to ~/iphone-backup --only videos --older-than 90d --dry-run\nimole backup --to ~/iphone-backup --only videos --older-than 90d\n\n# 删除已备份的文件\nimole clean --manifest ~/iphone-backup/manifest.json --yes\n\n查看空间统计：\nimole scan --summary\n\nScanning media…\nQuerying app storage…\niMole Storage Summary\n\nMedia:     28.9GiB · 9960 files\n  Photos:  10.3GiB · 6579 files\n  Videos:  18.6GiB · 3261 files\n  Top video: IMG_7523.MOV · 327.7MiB\nDevice:   ███████████████░  99.2% 1.9GiB free\n\nApps:      35.9GiB · 49 apps\n  App code: 13.9GiB\n  App data: 22.0GiB\n  Top app:  网易云音乐 · 3.2GiB\n\nRecommended next steps:\n  imole scan --top 30 --only videos\n  imole scan apps --top 20\n\n查看占用最多的图片或视频：\nimole scan --top 10 --only videos\n\nScanning device… (may take ~15 s for USB)\nDevice ready: imagecapture:山哥本山\nTop 30 Videos\n\n 1. IMG_7523.MOV                 327.7MiB  2025-07-30\n 2. IMG_7510.MOV                 306.8MiB  2025-07-29\n 3. IMG_4109.MOV                 270.8MiB  2024-09-15\n 4. IMG_9441.MOV                 267.3MiB  2026-04-06\n 5. VRQA7650.MP4                 260.3MiB  2025-07-20\n 6. XCGC7110.MP4                 172.9MiB  2025-07-18\n 7. IMG_4113.MOV                 151.7MiB  2024-09-15\n 8. AYXW6719.MP4                 143.3MiB  2025-07-18\n 9. IMG_5865.MOV                 142.3MiB  2025-01-11\n10. IMG_7036.MOV                 141.8MiB  2025-06-15\n\n0x03\n开源不易，如果感兴趣或者能帮助到你，欢迎点赞转发！\n地址： https://github.com/chenhg5/imole\n加入 telegram 群一起交流： https://t.me/+ZpgBu1dlmCszODBl",
+    "link": "https://www.v2ex.com/t/1216833#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T13:46:06.000Z"
+  },
+  {
+    "title": "[问与答] 寻找 万聪 AI 英语这样的系统",
+    "summary": "各位佬，谁有 AI 英语的系统 ？\n类似：\n爱优读\n伴学虎\n智学虎\nAiabc\n万聪\n学考乐\n007\n重点是单词记忆、自然拼读、带学校课本句子文章、阅读、完型、写作、语法。",
+    "link": "https://www.v2ex.com/t/1216832#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T13:42:31.000Z"
+  },
+  {
+    "title": "[分享创造] [独立开发]第二款产品上线-蓝果汁 AI - 英语老师出卷工具，求反馈求合作",
+    "summary": "大家好，最近在做一个小产品，叫「蓝果汁 AI 」。\n它的定位比较垂直：给英语老师 / 教研组用的 AI 组卷工作台。\n目前优先解决一个很具体的场景：英语听力出题。\n很多老师出一套听力练习时，真正麻烦的不是“写几道选择题”，而是这一整串流程：\n想一个适合学生水平的话题和场景\n写对话 / 独白\n控制难度、题量、题型\n生成题目、选项、答案和解析\n再配听力音频\n最后还要能编辑、导出、发给学生\n所以我们做了一个流程化的版本：\n老师填写学段、题型、难度、话题、场景、说话人等信息，系统生成一套听力题，包含音频、原文、中文翻译、答案和解析。生成后不是直接“交付成品”，而是作为一个可编辑的初稿，老师可以继续修改和校对。\n现在支持的方向包括：\n小学 / 初中 / 高中 / 四六级\n短对话、长对话、独白 / 短文理解、听力填空\n自定义说话人角色和性别\n生成听力音频、原文翻译、答案解析\n后续会继续做资料库、模板、教研组协作和 Word / PDF 导出\n我自己对这个产品的判断是：\nAI 不一定能一次性替代老师出题，但如果能把“从 0 到初稿”的时间压下来，让老师把精力放在校对、调整和教学判断上，这件事是有价值的。\n目前还在早期阶段，想找一些真实英语老师、教培从业者，或者家里有人做教学的朋友试用一下。\n如果你愿意帮忙体验，可以访问（加微信获取体验账号）：\nhttps://www.languozhi.app/\n加微信可以聊合作，如果你对产品感兴趣或是有合作想法加微信\n微信 base64: SmVmZmVyeUhKVw==",
+    "link": "https://www.v2ex.com/t/1216831#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-05-31T13:36:25.000Z"
+  },
+  {
     "title": "[问与答] DeepSeek 专家模式取消了联网搜索，辅助炒股还有其他方案吗？",
     "summary": "不是做量化的，只是对持仓情况和投资计划做一些判断，ai 基于已有信息做判断肯定比非专业人士强。\n目前 Gemini 和 ChatGPT 不仅要翻墙，还需要切换到非香港的节点，比较麻烦。\n之前切换到 DeepSeek 专家模式使用，现在取消了联网搜索，那就失去了信息来源。\n豆包忽略掉，千问是阿里的，产品塞一些盈利点你也不知道，不信任他。\n调用 API 也可以，但是要自己解决搜索问题。",
-    "link": "https://www.v2ex.com/t/1216829#reply0",
+    "link": "https://www.v2ex.com/t/1216829#reply18",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T13:12:04.000Z"
@@ -16,9 +352,17 @@
     "pubDate": "2026-05-31T13:04:00.000Z"
   },
   {
+    "title": "You weren't meant to have a boss (2008)",
+    "summary": "Comments",
+    "link": "https://paulgraham.com/boss.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 12:49:03 +0000"
+  },
+  {
     "title": "[分享创造] 开发一款软件能年入百万吗？",
     "summary": "现在是 AI 写代码的时代，最难的不是开发，而是找对需求，如果能找到蓝海市场，年入百万不是很难，但是也不是高枕无忧，因为很快就会有人加入竞争，最后慢慢变成红海市场\n那如何去筛选市场需求呢，我的解决方案是用付费意愿筛选需求，有人愿意付费的需求才是能赚钱的市场，所以我开发了 流沙需求验证平台，网址是 https://liusha.com\n很多人不会开发可能会找懂开发的朋友说，能不能做一个 XX 产品，我想要的功能目前市面上的产品都没有，但是开发朋友很可能不会搭理他，因为开发一款产品需要投入时间精力，AI 订阅也是要花钱的，如果开发出来的产品没有什么人愿意付费，那他的时间和精力就都浪费掉了\n所以我做了一个付费发布需求的功能，你只要花费小小的$2 表明你愿意为实现你需求的产品付费，用付费意愿筛选掉打嘴炮的人，留下来的就是真实的用户市场，而且这$2 并不是流沙收掉了，而是暂存在平台，等有开发者上架了针对这个需求的产品后，你可以把这$2 支付给对应的产品开发者，流沙只收取 20%技术服务费\n普通用户除了能发布需求外，还能在现有需求详情页点击“我也想要”按钮，同样是支付$2 ，就能表达你的付费意愿，如果一个需求累计的付费者越多，说明这个需求的市场是真实存在的，愿意为这个需求开发产品的开发者也就越多，等他们的产品在流沙上架后，你就可以从中挑选你满意的产品进行付费使用\n开发者在流沙上架产品是免费的，只是有个审核流程，这是为了防止被垃圾产品污染，只有精心开发的产品才会审核通过推送给用户使用，然后开发者可以选中付费加速审核流程或者置顶自己的产品\n当开发者的产品上架通过后，付费过的用户就可以选择把之前充值的钱支付给开发者，平台会每个月结算对应的金额给开发者\n简单总结一下，就是开发不是 AI 时代的难题了，但是需求匹配依然是困扰很多开发者的噩梦，liusha.com 存在的目的就是帮助开发者和用户验证需求，匹配需求，让开发者能发现真实的市场需求，从而能开发产品赚钱，用户也能低成本用上自己想要的产品",
-    "link": "https://www.v2ex.com/t/1216827#reply9",
+    "link": "https://www.v2ex.com/t/1216827#reply14",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T12:47:51.000Z"
@@ -30,6 +374,22 @@
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T12:46:46.000Z"
+  },
+  {
+    "title": "United Airlines 767 returns to Newark after Bluetooth name sparks alert",
+    "summary": "Comments",
+    "link": "https://simpleflying.com/united-airlines-767-returns-newark-bluetooth-name-alert/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 12:41:19 +0000"
+  },
+  {
+    "title": "Show HN: Atomic Editor – Obsidian-style live preview for CodeMirror 6",
+    "summary": "Comments",
+    "link": "https://kenforthewin.github.io/atomic-editor/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 31 May 2026 12:32:54 +0000"
   },
   {
     "title": "[分享创造] 不用向量数据库，我做了一个本地优先的 PDF 论文阅读工具： Lumenfolio",
@@ -58,7 +418,7 @@
   {
     "title": "[宽带症候群] 各位大神你们有没有使用过 D-Link 路由器",
     "summary": "如题，D-Link 路由器 WiFi 稳定吗？断流严重吗？",
-    "link": "https://www.v2ex.com/t/1216820#reply6",
+    "link": "https://www.v2ex.com/t/1216820#reply12",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:52:32.000Z"
@@ -74,7 +434,7 @@
   {
     "title": "[推广] 欢迎大家 使用我的中转战 支持 5.5 支持 image-2 免费赠送 10 刀额度",
     "summary": "欢迎大家 使用我的中转战 支持 5.5 支持 image-2\n地址： https://api.wanfeng.me/\n免费赠送 10 刀额度，充值优惠 10 元 200 刀\n注册送 5 刀 联系客服再送 5 刀",
-    "link": "https://www.v2ex.com/t/1216818#reply1",
+    "link": "https://www.v2ex.com/t/1216818#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:45:02.000Z"
@@ -106,34 +466,26 @@
   {
     "title": "[问与答] 当下(2026-05-31)如何通过第三方工具寻找并安装 ipa 文件(IOS)",
     "summary": "在 Appstore 手贱点了一下 [全部升级] 过了一会儿意识到并不是全部都要升级，但悔之晚矣。\n手贱的结果：\n3d Scanner App 被升级了，本来免费可用的，更新后变成需要订阅了\n求教站内大佬，现在哪里可以免费/低成本下载 ipa 文件？ 搜了到了几个比较全的都要付费，而且价格还不低。\n这已经不是第一次中招了，几年前知乎 app 还没有视频的时候，就是手贱点了下升级，然后一直被恶心。所以，才关闭了自动更新。今天真是鬼使神差，又一次犯错。 \n求大佬拯救",
-    "link": "https://www.v2ex.com/t/1216814#reply4",
+    "link": "https://www.v2ex.com/t/1216814#reply9",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:17:40.000Z"
   },
   {
-    "title": "[程序员] 建了一个转行群，分享资源",
+    "title": "[创业组队] 建了一个转行群，分享资源",
     "summary": "我发现程序员现在可以依靠自己优势，去赋能其他产业了。\n但是自己找资源的话很难，所以创建了一个群，欢迎各位加入，群里有 opc 资源分享。\n可以加我微信（ b64 ）：dWVudXN1bm9nYWlkbw==",
-    "link": "https://www.v2ex.com/t/1216813#reply0",
+    "link": "https://www.v2ex.com/t/1216813#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:16:36.000Z"
   },
   {
-    "title": "[程序员] 云计算入行",
+    "title": "[职场话题] 云计算入行",
     "summary": "目前是计算机在校生，想要入行云计算行业，有什么建议吗，需要报机构吗，有知道的大佬能讲下吗，感谢",
     "link": "https://www.v2ex.com/t/1216812#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:14:08.000Z"
-  },
-  {
-    "title": "20253904 2025-2026-2 《网络攻防实践》第九周作业 - 蒟蒻_果冻",
-    "summary": "【摘要】20253904 2025-2026-2 《网络攻防实践》第九周作业 Part 1 软件安全攻防--缓冲区溢出和shellcode 1. 实验环境 实践内容 本次实践的对象是一个名为pwn1的linux可执行文件。 该程序正常执行流程是：main调用foo函数,foo函数会简单回显任何用户输入的字符 阅读全文",
-    "link": "https://www.cnblogs.com/dhpqwq/p/20241459",
-    "source": "博客园",
-    "category": "news",
-    "pubDate": "2026-05-31T11:13:00.000Z"
   },
   {
     "title": "[分享创造] Pixae.app：一个集成了 Nano Banana/GPT Image 和 多种 AI 修图工具的生图站",
@@ -146,7 +498,7 @@
   {
     "title": "[分享发现] iMole：一个帮你清理优化 iPhone 存储空间的开源免费 cli 工具",
     "summary": "0x01\n不知道大家用过 mole 吗，很棒的一款终端软件可以帮你清理和优化 mac 电脑的存储空间。但是他只支持 mac 。而我主要的困扰是 iPhone, 对于我们这种 iPhone 手机常年处于存储满了，iCloud 也早就满了，老是得删东西才能下新的应用的人来说，太难受了。而且这么多年了，没有什么好用的免费的软件可以帮忙。\n所以我就想做一个 iPhone 版本的 mole ，我把他命名为：iMole。\n\n0x02\n他的使用非常简单，把你的 iPhone 连接上你的电脑（最好是 mac 电脑），然后让 agent 自己使用 iMole 帮你检测优化，或者你自己去执行都可以。\n直接把 github 地址（ https://github.com/chenhg5/imole ）丢给你的 agent 去安装，或者执行：\nnpm install -g @getimole/imole\n\n然后，你可以开始使用了。\n\n使用示例：\n# 查看存储占用\nimole scan --summary\n\n# 找出最大的视频文件\nimole scan --top 20 --only videos\n\n# 备份 90 天前的视频\nimole backup --to ~/iphone-backup --only videos --older-than 90d --dry-run\nimole backup --to ~/iphone-backup --only videos --older-than 90d\n\n# 删除已备份的文件\nimole clean --manifest ~/iphone-backup/manifest.json --yes\n\n查看空间统计：\nimole scan --summary\n\nScanning media…\nQuerying app storage…\niMole Storage Summary\n\nMedia:     28.9GiB · 9960 files\n  Photos:  10.3GiB · 6579 files\n  Videos:  18.6GiB · 3261 files\n  Top video: IMG_7523.MOV · 327.7MiB\nDevice:   ███████████████░  99.2% 1.9GiB free\n\nApps:      35.9GiB · 49 apps\n  App code: 13.9GiB\n  App data: 22.0GiB\n  Top app:  网易云音乐 · 3.2GiB\n\nRecommended next steps:\n  imole scan --top 30 --only videos\n  imole scan apps --top 20\n\n查看占用最多的图片或视频：\nimole scan --top 10 --only videos\nScanning device… (may take ~15 s for USB)\nDevice ready: imagecapture:山哥本山\nTop 30 Videos\n\n 1. IMG_7523.MOV                 327.7MiB  2025-07-30\n 2. IMG_7510.MOV                 306.8MiB  2025-07-29\n 3. IMG_4109.MOV                 270.8MiB  2024-09-15\n 4. IMG_9441.MOV                 267.3MiB  2026-04-06\n 5. VRQA7650.MP4                 260.3MiB  2025-07-20\n 6. XCGC7110.MP4                 172.9MiB  2025-07-18\n 7. IMG_4113.MOV                 151.7MiB  2024-09-15\n 8. AYXW6719.MP4                 143.3MiB  2025-07-18\n 9. IMG_5865.MOV                 142.3MiB  2025-01-11\n10. IMG_7036.MOV                 141.8MiB  2025-06-15\n\n0x03\n开源不易，如果感兴趣或者能帮助到你，欢迎点赞转发！\n地址： https://github.com/chenhg5/imole\n欢迎加入 telegram 群一起交流： https://t.me/+ZpgBu1dlmCszODBl",
-    "link": "https://www.v2ex.com/t/1216810#reply1",
+    "link": "https://www.v2ex.com/t/1216810#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T11:10:06.000Z"
@@ -154,7 +506,7 @@
   {
     "title": "[宽带症候群] 上海联通宽带被 PCDN 板卡限速",
     "summary": "很奇怪，自己没有跑 bt ，pcdn 这种大上传应用，上传流量也很小，依旧被联通拉进了 pcdn 板卡限速，有什么投诉途径吗。\n上传流量真没很多\n\n普通域名测速\n\n域名带 speedtest",
-    "link": "https://www.v2ex.com/t/1216809#reply0",
+    "link": "https://www.v2ex.com/t/1216809#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T10:57:21.000Z"
@@ -162,7 +514,7 @@
   {
     "title": "[推广] 🛍️ZgoCloud 上新美国洛杉矶双 ISP 电信联通 9929 移动 CMIN2 国际精品网络 运营 TK INS FB 首选",
     "summary": "ZgoCloud 上新了定位 tk 直播的双 ISP ，电信联通 9929 移动 CMIN2 的国际精品机器，对标的是 Lisa 但价格比 Lisa 便宜\n一、基本信息\n\n系统信息查询\n-------------\n主机名:         classic-importance\n系统版本:       Debian GNU/Linux 11 (bullseye)\nLinux 版本:      5.10.0-20-amd64\n-------------\nCPU 架构:        x86_64\nCPU 型号:        AMD EPYC 7452 32-Core Processor\nCPU 核心数:      1\nCPU 频率:        2.3 GHz\n-------------\nCPU 占用:        100%\n系统负载:       0.33, 0.12, 0.04\nTCP|UDP 连接数:  5|1\n物理内存:       569.01/940.74M (60.49%)\n虚拟内存:       108M/1023M (10%)\n硬盘占用:       2.9G/9.9G (30%)\n-------------\n总接收:         280.54M\n总发送:         1.90M\n-------------\n网络算法:       cubic pfifo_fast\n-------------\n运营商:         AS2914 NTT America Inc.\nIPv4 地址:       216.xxx.xxx.xxx\nDNS 地址:        8.8.8.8 1.1.1.1\n地理位置:       US East Los Angeles\n系统时间:       America/Los_Angeles 2026-05-31 02:50 AM\n-------------\n运行时长:       1 时 34 分\n\n\n\n二、Ping 和网络情况（很绿，也很一条直线）\n\n三、IP 质量，这 IP 的质量让人流口水，解锁能力一流（已锁区，不用担心 ip 送中）\n\n四、三网回程\n\n2026/05/31 02:50:58 正在测试三网回程路由...\n国家: US 城市: East Los Angeles 服务商: AS2914 NTT America, Inc.\n北京电信 219.141.140.10  联通 9929 [优质线路]\n北京联通 202.106.195.68  联通 9929 [优质线路]\n北京移动 221.179.155.161 移动 CMIN2[优质线路]\n上海电信 202.96.209.133  联通 9929 [优质线路]\n上海联通 210.22.97.1     联通 9929 [优质线路]\n上海移动 211.136.112.200 移动 CMIN2[优质线路]\n广州电信 58.60.188.222   联通 9929 [优质线路]\n广州联通 210.21.196.6    联通 9929 [优质线路]\n广州移动 120.196.165.24  移动 CMIN2[优质线路]\n成都电信 61.139.2.69     联通 9929 [优质线路]\n成都联通 119.6.6.6       联通 9929 [优质线路]\n成都移动 211.137.96.205  移动 CMIN2[优质线路]\n2026/05/31 02:50:59 测试完成!\n\n\n五、网络解锁（ zgo 的解锁真的是炒鸡厉害，就看重它的机器作为落地鸡）\n这台机器不仅能做落地机，结合上面的三网 9929 回程，它还是不折不扣的三网优化的精品线路鸡带双 ISP\n这个解锁能力，Claude code, GPT, GEMINI 都不在话下，用它直接做中转也是非常棒的选择！跑个 cpa 轻轻松松，无惧 IP 送中\n使用 claude code 再也不用担心被封号了（注意,Claude 封号不仅仅因为 IP 干净与否，这个因素是次要的，更重要的是注意不要 dns 泄露，分流也必须准确，另外 IP 别乱切换）\n\n六、网络测速（各位佬友可以自己测速试试，特别是晚高峰测速）\n\n🚀洛杉矶双 ISP 测速    透镜\n洛杉矶   双 ISP\nCPU/内存/存储/流量\n网络类型\n价格(USD/年)\n购买链接\n\n\n\n\nStarter 特惠\n1C/1G/10G/0.5T/100Mbps\n三网 9929 双 ISP\n$58.00\n🔥购买链接   #AFF\n\n\nStandard 特惠\n2C/2G/20G/1T/100Mbps\n三网 9929 双 ISP\n$108.00\n🔥购买链接   #AFF\n\n\nStarter\n1C/1G/10G/0.5T/100Mbps\n三网 9929 双 ISP\n$72.00\n购买链接   #AFF\n\n\nStandard\n2C/2G/20G/1T/100Mbps\n三网 9929 双 ISP\n$132.00\n购买链接   #AFF\n\n\nPro\n3C/3G/30G/1.5T/200Mbps\n三网 9929 双 ISP\n$190.00\n购买链接   #AFF\n\n\nPremium\n4C/4G/50G/2T/200Mbps\n三网 9929 双 ISP\n$246.00\n购买链接   #AFF\n\n\n带宽是小，但比对标的 LISA 的 50M 来的大，拿来运营 TikTok 完全没有压力，需要大的带宽需要买 Pro 以上的机器，200Mbps\n退款政策：支持 3 天内流量不超过 10G 全额退款，因此各位佬友完全可以下个单，试一下好不好用，不好用立刻退款",
-    "link": "https://www.v2ex.com/t/1216807#reply0",
+    "link": "https://www.v2ex.com/t/1216807#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T10:47:21.000Z"
@@ -178,7 +530,7 @@
   {
     "title": "[云计算] 即将入职某国企数据中心云计算方向，欢迎大佬们给些学习建议",
     "summary": "SAN 存储\nNAS 存储\n服务器 X86 架构\n原子钟\n交换机\n路由器\n网络设备\n波分\n网控器\n负载均衡\nIPS\nNSM\nWAF\n加密机\nKafka\nMesh\nZooKeeper\nNginx\nDBaas\nSplunk 平台\n科来网络流量管理平台\n基调听云\nRedis\noceanbase\nTIDB\nEVPN\nSRv6\nQoS",
-    "link": "https://www.v2ex.com/t/1216805#reply14",
+    "link": "https://www.v2ex.com/t/1216805#reply18",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T10:31:33.000Z"
@@ -186,7 +538,7 @@
   {
     "title": "[Apple] 美区， infuse 订阅什么途径最便宜？",
     "summary": "",
-    "link": "https://www.v2ex.com/t/1216804#reply7",
+    "link": "https://www.v2ex.com/t/1216804#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T10:30:05.000Z"
@@ -194,7 +546,7 @@
   {
     "title": "[分享创造] 来挑战一下机器学习的斗地主",
     "summary": "游戏介绍\n这是一款终端斗地主小游戏，和 QQ 斗地主规则一致，操作简单，界面美观，而且有经自我博弈训练的机器人陪玩，可以在“人机练习”中提升牌技。\n\n\n根据上次 V 友的反馈，新增了智能陪玩机器人和游戏音效（默认静音，M 键开关），体验大幅提升，并且机器人能力非常强悍，快来挑战一下！\n安装\nmacOS & Linux （安装在$HOME/.local/bin）\ncurl -fsSL https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/install.sh | bash\n\nWindows （安装在 $env:USERPROFILE \".ddz\"）\nirm https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/install.ps1 | iex\n\n之后直接使用 ddz 命令即可启动\n源代码\nhttps://github.com/palemoky/fight-the-landlord\n欢迎提交 Issue 和 PR ，欢迎 Star~",
-    "link": "https://www.v2ex.com/t/1216803#reply0",
+    "link": "https://www.v2ex.com/t/1216803#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-05-31T10:28:42.000Z"
@@ -232,76 +584,12 @@
     "pubDate": "Sun, 31 May 2026 10:00:00 GMT"
   },
   {
-    "title": "[职场话题] 工作时，你们喜欢打开音乐吗",
-    "summary": "大家可以投个票\n喜欢听平时就爱听的音乐\n喜欢听一些专门工作时听的音乐，可能是轻音乐什么的\n绝对不听，老子需要安静",
-    "link": "https://www.v2ex.com/t/1216797#reply23",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T09:46:11.000Z"
-  },
-  {
-    "title": "[OpenAI] codex 拼车是不是应该找找用网页版的这些朋友们",
-    "summary": "发现好些朋友其实只用 GPT 的网页版，特别是设计、产品和营销这几类工作的，订阅以后 codex 的额度全闲置的。\n反正大家都是正价订阅，不如凑一凑各取所需，反正 codex 也没办法查询到网页版里面的聊天记录。（不过如果网页版关联了 google drive 这些，是会被 codex 带出来的，这部分是跟随账号的）。",
-    "link": "https://www.v2ex.com/t/1216796#reply7",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T09:40:16.000Z"
-  },
-  {
-    "title": "[程序员] 忍者云这个机场是不是又凉了",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1216795#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T09:27:23.000Z"
-  },
-  {
-    "title": "[VPS] DigVPS 测评 - ZgoCloud 上新美国 Los Angeles AMD ISP VPS 产品，奉上详评数据： 9929&CMIN2 优化， IP 质量不错。",
-    "summary": "规格：\n\n摘要：\n\n硬件：\n\n速率：\n\nIPv4 质量：\n\nICMP 延迟：\n\nTCP 延迟：\n\n如对该产品感兴趣，想要持续关注其实时与历史数据表现，欢迎访问我们的站点进行长期跟踪。也可以加入微信群一起讨论。",
-    "link": "https://www.v2ex.com/t/1216794#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T09:24:44.000Z"
-  },
-  {
     "title": "Solon Server 启动模式深度解析：从 0.3MB 内核到 10+ Server 插件 - 带刺的坐椅",
     "summary": "【摘要】Solon Server 插件化架构解析 Solon 框架通过创新的插件化设计，实现了业务代码与底层服务器的完全解耦。开发者只需更换 Maven 依赖（最小 0.3MB），即可在 JDK HTTP、Jetty、Undertow 等服务器间无缝切换，无需修改业务代码。 框架核心特点包括： 生命周期管理... 阅读全文",
     "link": "https://www.cnblogs.com/noear/p/20240978",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-05-31T09:21:00.000Z"
-  },
-  {
-    "title": "[OpenAI] 免费领价值$1200 的 6 个月 ChatGPT Pro 啦！",
-    "summary": "没有硬性 Star 数要求\n只要你是任何一个开源项目的维护者，哪怕只有你一个人在维护都可以申请:\nhttps://openai.com/form/codex-for-oss/",
-    "link": "https://www.v2ex.com/t/1216792#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T09:06:30.000Z"
-  },
-  {
-    "title": "[程序员] [通知] Codex 明早重置额度，上号，/fast 开蹬了",
-    "summary": "刚看到 Tibo 的 X：庆祝 Codex 500 万用户，Tibo 说会在“明天早上”重置额度\n\n好奇佬友们，现在 toekn 都烧在了哪些地方？",
-    "link": "https://www.v2ex.com/t/1216791#reply23",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T08:51:36.000Z"
-  },
-  {
-    "title": "[分享创造] 做了个批量 AI 生图的站 BulkImagen：再也不用一张张抽卡了",
-    "summary": "起因是自己常要一次性生成几十张图，大部分工具和平台都只能一张或者一次出几张图，不能一次性出几十张。于是做了BulkImagen。\n一句话：填一批提示词 + 选模型/比例/分辨率 → 批量出图 → 打包 ZIP 下载。\n产品特点：\n不用自己配 API key ，Google 登录直接用，按\"张数 × 模型\"扣积分。\n生而为批量，提交一批后台异步跑、进度可见，跑完整批打包下。\n多模型、多分辨率（ 1K/2K/4K ）可选，界面中英双语。\n体验网址：https://bulkimagen.com/\n给 V2EX 老哥的福利：优惠码 V2EX2026 立减 $5 ，先来先得，欢迎评论区反馈建议 😄",
-    "link": "https://www.v2ex.com/t/1216790#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T08:33:16.000Z"
-  },
-  {
-    "title": "[Codex] codex 拼车差两人",
-    "summary": "plus pp 拉闸了，之前都是买的日抛号，现在拉闸后 token 焦虑，想买个 20x 的 pro 我昨天买了 英国的 pp 手机号，专门用来接码的，这里有人跟我一起拼吗？ 4 个人 差 2 个，每人 380",
-    "link": "https://www.v2ex.com/t/1216789#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T08:01:13.000Z"
   },
   {
     "title": "Agent工厂与A2A网络——AgentMesh设计思路 - 锅总的程序人生",
@@ -312,36 +600,12 @@
     "pubDate": "2026-05-31T07:54:00.000Z"
   },
   {
-    "title": "[程序员] codex 即将刷新，快蹬",
-    "summary": "美国时间凌晨两点他发的推特，大概今晚刷新。",
-    "link": "https://www.v2ex.com/t/1216788#reply16",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T07:47:23.000Z"
-  },
-  {
-    "title": "[推广] 源头 pointfixAPI：低倍率! 满血不掺水! 来找我领取测试额度",
-    "summary": "主打两个点：超低倍率、稳定可用。\n地址： https://psce.pw/958ykz\n适合接入：\nCodex\nClaude Code\nVSCode / IDEA 插件\nCherry Studio\nChatbox\nOpenCode\n其他 OpenAI SDK / CLI 工具\n超低倍率，适合高频开发、批量调用和日常写代码\n满血不掺水，请求什么模型就按对应模型/渠道转发\n不偷换低价模型，不做隐藏降级\n后台可查余额和用量，消耗透明\n额度不过期，慢慢用也不浪费\n接口报错可以带 request id 找我排查\n本帖下回复「已注册 + 注册邮箱」\n我会发一份测试额度。\nV:13025686554",
-    "link": "https://www.v2ex.com/t/1216787#reply13",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T07:25:22.000Z"
-  },
-  {
     "title": "London's Free Roof Terraces",
     "summary": "Comments",
     "link": "https://diamondgeezer.blogspot.com/2026/05/londons-free-roof-terraces.html",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Sun, 31 May 2026 07:16:18 +0000"
-  },
-  {
-    "title": "[生活] 上班 VS 创业",
-    "summary": "不论是失业还是创业，最难克服的就是欲望来袭以及作息规律。以前我觉得公司倒闭是必然事件，但是现在我发现其中和个人的生活能力还是有很大的关系。\n还有一些就是过度的思考，会非常影响食欲消化。根据我自己的观察，每天让自己闲下来，坐桩、站桩半时间能有效提高精神力。\n特别是一人吃饱，全家不饿占大多数的时代，这个管理需要非常重视。\n特别是当欲望来袭，除了常见的调息，之前试用的冷水澡，从物理角度剥离（识神）念头最快的方式，大家还有什么习惯来调整和规划自己的生活么。\n其实，在创业初期，控制好风险，根据市场的反馈来逐步推进业务，公司还是可以持续运营下来的，关键就得看创始人，以及个人能力（魅力）了。",
-    "link": "https://www.v2ex.com/t/1216786#reply14",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T07:15:17.000Z"
   },
   {
     "title": "The Website Specification",
@@ -352,36 +616,12 @@
     "pubDate": "Sun, 31 May 2026 07:09:50 +0000"
   },
   {
-    "title": "[问与答] 请大佬们分析下这个抖音店铺的服务是否是骗局",
-    "summary": "网上认识一个人，他说副业做抖音店铺一个月收入一万多，找的一个什么电商公司，是我主动问的，他朋友圈展示的。\n然后他把那个公司工作人员的微信推给了我，下面是我跟对方的聊天记录，我对真实度感到存疑，问就是遮遮掩掩，问就是啥也不用管。\n有没有了解这是什么套路的，给解答下，感谢。",
-    "link": "https://www.v2ex.com/t/1216785#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T07:09:34.000Z"
-  },
-  {
-    "title": "[问与答] 怎么看待 voice agent 这个交互形态",
-    "summary": "最近这一年的语音技术，包括 stt 和 tts 发展的都很快，市面上也出现了想 typeless 这类 voice 的 ai 产品形态，但是像是电影里面那种 jarvis 或者 samantha 形态的产品似乎还没怎么出现。\n想问问 v 友们是怎么看待语音交互这种形态的，类似的场景可能是如果有一封邮件进来，然后直接说一句话，ai 就能帮你处理好这样。但是语音这种低信息密度的形式，能够支撑这样的产品吗？我对这些还是挺疑惑的。",
-    "link": "https://www.v2ex.com/t/1216784#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T07:08:12.000Z"
-  },
-  {
     "title": "Telli (YC F24) is hiring in engineering, design, and GTM [Berlin, on-site]",
     "summary": "Comments",
     "link": "https://hi.telli.com/join-us",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Sun, 31 May 2026 07:00:50 +0000"
-  },
-  {
-    "title": "[Claude] 现在本地运行的 claude code 桌面版也能手机上操作了",
-    "summary": "现在本地运行的 claude code 任务，在手机上也能操作了\n新加的功能吗？！",
-    "link": "https://www.v2ex.com/t/1216782#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:39:10.000Z"
   },
   {
     "title": "[Python]标准库argparse解析命令行参数使用介绍 - 花酒锄作田",
@@ -400,22 +640,6 @@
     "pubDate": "Sun, 31 May 2026 14:36:11 +0800"
   },
   {
-    "title": "[推广] 香港众安银行开户返 300HKD+50USD 英伟达股票兑换券 活动 5.28 日至 7.1 日截止",
-    "summary": "开户准备（请在香港境内完成）\n在开启应用前，请确保准备好以下材料：\n证件： 内地二代身份证、本人实名内地银行卡。\n网络： 手机已开启国际漫游，确保可以接收验证码。\n证明： 通过微信/支付宝搜索“移民局”小程序，下载 12367 出入境记录。\n极简操作流程\n开户链接： https://l.za.group/pFcYU\n下载 & 注册： 下载 ZA Bank App ，点击开户。\n验证： 绑定手机（务必确认漫游状态），通过人脸核验。\n信息填写：\n邀请码： 填入 HCEAD7 （返现必要步骤）。\n职业/目的： 职业可选“自由职业”，开户目的建议选“储蓄”。\n功能开通（重要）： 务必勾选开通“股票”和“基金”服务功能（否则事后补开极其麻烦）。\n审核： 提交后通常 1 个工作日即可审核完毕。\n达标任务：立享 300 HKD 返现\n完成开户后，在 14 天内 确保账户满足以下任一条件（只需满足其中一个条件，股票任务最容易完成）\n存款： 日终存款余额≥HKD 200,000 或其等值; 或\n基金： 日终基金总资产≥HKD 100,000 或其等值; 或\n股票： 日终股票总资产≥HKD 10,000 或其等值;(股票放一个完整交易日后即可转出)\n返现机制： 达成以上任一条件后:，系统将在次日晚上 21:00 前处理。核对无误后，我将直接通过 ZA Bank 转账，或按谷歌实时汇率通过微信/支付宝返还你 300 HKD 。\n另外，被邀请人维持此条件累计达 7 天(无需连续):  日终股票总资产≥HKD10.000 或其等值;   或日终基金总资产 HKD100.000  或其等值;或日终存款余额≥HKD200,000 或其等值（只需满足其中一个条件）即可前往 ZA Quest7 领取 1 张 USD50 英伟达(NVDA) 指定美股兑换券 \n助攻提醒：\n操作过程中有任何疑问，欢迎随时私信咨询。Telegram:@fgvbt123 详细图文注册教程:https://fgvbt.com/sites/129.html/",
-    "link": "https://www.v2ex.com/t/1216781#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:35:40.000Z"
-  },
-  {
-    "title": "[汽车] 大佬们，钢琴烤漆面腐蚀了还有救吗？",
-    "summary": "昨天跑完高速虫尸太多了，用了蓝海豚的去虫胶剂，结果中网那里腐蚀了，应该是钢琴烤漆面，去了汽美店试了抛光也没用。问一下大佬们\n1 、中网还有救吗？\n2 、这个可以出险换新吗？\n3 、我有别的地方需要出险可以连同中网一起出险吗？",
-    "link": "https://www.v2ex.com/t/1216780#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:35:23.000Z"
-  },
-  {
     "title": "[开源] 全屏时钟 / Full Clock：放弃 time.is，用 Svelte 5 写了一个极致纯净的全屏时钟，解决秒数焦虑 - cup11",
     "summary": "【摘要】Full Clock 是一款基于 Svelte 开发的开源网页效率工具，旨在提供极致纯净、无广告的时间显示体验。项目支持前端智能时间校准（Time Sync）、PWA 安装、屏幕常亮（Wake Lock）、自定义多主题颜色字体、智能秒数显示，完美适配考试大屏、会议背景、个人专注场景，对全屏进行了特别... 阅读全文",
     "link": "https://www.cnblogs.com/cup11/p/20207070",
@@ -432,44 +656,12 @@
     "pubDate": "Sun, 31 May 2026 14:26:14 +0800"
   },
   {
-    "title": "[Windows] 适用于 Windows 平台的高性能的 Wireguard 开源客户端",
-    "summary": "性能优先，用 C 和 libuv 实现的 wireguard 协议的 windows 平台客户端\nhttps://github.com/wuruxu/wgx/releases",
-    "link": "https://www.v2ex.com/t/1216779#reply7",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:22:32.000Z"
-  },
-  {
     "title": "Avian Visitors",
     "summary": "Comments",
     "link": "https://theodore.net/projects/AvianVisitors/",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Sun, 31 May 2026 06:13:59 +0000"
-  },
-  {
-    "title": "[分享创造] 秀一秀(show1show.com)上线， vibe coding 作品展示平台，欢迎大家提交自己的作品。",
-    "summary": "秀一秀  https://show1show.com\n花了大半天时间 vibe coding 出来的，欢迎大家提出宝贵的意见和建议！",
-    "link": "https://www.v2ex.com/t/1216778#reply8",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:11:22.000Z"
-  },
-  {
-    "title": "[分享创造] 一个 WikiReader Fork：用英文 Wikipedia 和 DeepSeek 练阅读",
-    "summary": "想试着读英文 Wiki 来练练阅读，做了一个简单 Fork 。现在支持\n标题、正文、图注自动翻译，有模糊可开关\n单击单词可以让 AI 根据句子的语境解释这个词\n双击句子快速翻译\n没找到太好的免费服务，接入的是 DeepSeek 的 API ，填一个 Key 就可以用，写死了 v4Flash 的非思考模式，效果不错。\n项目还是 MVP ，诚邀大佬试用和提意见，如果能帮我一起打磨就太感谢了。\nGithub 链接在：\nhttps://github.com/NihilDigit/WikiReader-Bilingual\n用 Action 打的包，开了 R8 和分 ABI ，所以单个包只有 4M 左右：\nhttps://github.com/NihilDigit/WikiReader-Bilingual/releases/tag/26.5.2",
-    "link": "https://www.v2ex.com/t/1216777#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T06:07:40.000Z"
-  },
-  {
-    "title": "[OpenAI] 为什么 ChatGPT 网页端这么卡",
-    "summary": "一个 Project 当内容很多之后就特别卡，客户端或者第三方 App 能解决这种问题吗？",
-    "link": "https://www.v2ex.com/t/1216776#reply13",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T05:55:01.000Z"
   },
   {
     "title": "三、Linux 文件管理+用户管理 - 着迷不白",
@@ -488,38 +680,6 @@
     "pubDate": "2026-05-31T05:43:00.000Z"
   },
   {
-    "title": "[推广] 5 月 31 日中午 一个是注册免费用到晚上 12 点的 5.5 另一个是注册送 8 刀的站",
-    "summary": "最新的一个带 aff 的\naHR0cHM6Ly93d3cuYWktcG9ydC51ay9yZWdpc3Rlcj9hZmY9S1paNUw5NDZROTI\n上面这个是八刀\n下面这个是免费用 5.5 到晚上 12 点的\naHR0cHM6Ly9hcGkuYWlzei5tb20vc2lnbi11cD9hZmY9WWZRZQ==\n平台开业活动正式上线，目前已开放「开业全免」分组，当前倍率为：\n0x 倍率 = 免费使用 那还说啥呢，蹭就完事了！\n使用方法都是放进豆包，让它告诉你地址！\n可以看看我以往的贴也有站可以薅！但是送的体验金应该变了！",
-    "link": "https://www.v2ex.com/t/1216775#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T05:39:30.000Z"
-  },
-  {
-    "title": "[程序员] 现在如果要加密备份到云盘的文件，有哪些方案",
-    "summary": "如题，有哪些跨平台方案吗",
-    "link": "https://www.v2ex.com/t/1216774#reply14",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T05:38:08.000Z"
-  },
-  {
-    "title": "A pictorial introduction to differential geometry (2017)",
-    "summary": "Comments",
-    "link": "https://arxiv.org/abs/1709.08492",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 31 May 2026 05:30:18 +0000"
-  },
-  {
-    "title": "[求职] [求职/社招] 6 年 Java / 中小厂经验 / 主要负责：交易中台业务 + 日常大促营销活动",
-    "summary": "基本信息：\n6 年 Java 开发，base 上海；\n本科学历，大学 ACM 队长，ACM 省赛银奖，蓝桥杯国赛二等奖；\nJava 技能（ sql/redis/juc/jvm/mq 等）+ AI 技能。\n工作经历：\n两年 Soul ，商业化-交易，负责交易中台 + Meta 商业化活动方向；\n三年得物，交易-营销，负责营销日常活动与大促活动的落地。\n求职意向：\n暂时只看上海；\n最好是交易方向（营销、支付、订单、商品、价格等）\n✈️ 联系方式\n绿泡泡：balloon077\n在线简历： https://www.500d.me/cvresume/0530304805/",
-    "link": "https://www.v2ex.com/t/1216773#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T05:28:02.000Z"
-  },
-  {
     "title": "【Azure App Service】应用服务(Web App)里的 SNAT 端口 vs 出站连接数：到底是谁限制了谁？ - 编码者卢布",
     "summary": "【摘要】问题描述 在 Azure App Service 中进行出站访问（Outbound Connection）时，我们都会遇到一个看似矛盾的现象： 官方架构文档明确写着，每个实例允许的 TCP Connections（出站连接数）上限为 1920 / 3968 / 8064（分别对应 B1/S1/P1、 阅读全文",
     "link": "https://www.cnblogs.com/lulight/p/20239022",
@@ -528,60 +688,12 @@
     "pubDate": "2026-05-31T05:25:00.000Z"
   },
   {
-    "title": "[程序员] 召集 Google Play closed testing 测试者",
-    "summary": "抱歉，打扰大家周末休息。\n背景：十几年前的谷歌 play 开发者账号冻结，新申请开发者账号，发现需要累积信用。发布 app 前得做 closed testing （灰度测试，需要 12 位 tester 安装 x 14 天），点击访问政策细节。目前还差 4 位 tester 。\n需要帮助：有谷歌 play 账号（中日韩美区）的同学帮我安装下，2 周后可卸载。给我谷歌 play 账号加白，然后访问：Milo Cat on Google Play 进行安装。\n非常感谢。",
-    "link": "https://www.v2ex.com/t/1216771#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T04:58:35.000Z"
-  },
-  {
-    "title": "[公司运营] 成都个体工商户登记申请",
-    "summary": "大佬们好！\n我是独立开发者，应用主要发布在 Google Play ，通过 Google Play / AdMob 获得收入。\n最近想注册一个个体户来承接这部分款项，主要是为了合规处理税务，降低个人直接收款的税负压力。\n暂时不考虑公司，因为我已经注册了公司，但实际操作下来，外汇进出、结汇、付海外服务费这些流程都比较麻烦。\n现在主要卡在个体户营业场所这个问题上。问了中介，他们能提供注册地址，但说这种地址一般只能注册，没有实际办公环境，后续如果被税务或市场监管抽查，可能会有风险。\n想请教下各位：\n独立开发者这种完全线上经营、没有线下办公需求的情况，注册个体户时营业场所一般怎么解决？可以用住宅地址吗？或者有没有更稳妥的方案？\n感谢指点！",
-    "link": "https://www.v2ex.com/t/1216770#reply16",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T04:50:05.000Z"
-  },
-  {
-    "title": "Ahoy, DECmate II the little PDP-8 that could",
-    "summary": "Comments",
-    "link": "http://oldvcr.blogspot.com/2026/05/ahoy-decmate-ii-little-pdp-8-that-could.html",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 31 May 2026 04:42:14 +0000"
-  },
-  {
     "title": "WEB-2026DASCTF夏季赛-CorpGate - Doll_Marker",
     "summary": "【摘要】题目：WEB-2026DASCTF夏季赛-CorpGate 前置知识：有关于js原型链的基础知识可以看看这篇文章：https://www.cnblogs.com/sabliercoder/articles/19174635 ，jwt默认了解，下文如有错误，欢迎指出 一、题目描述： 一套全新的企业员工 阅读全文",
     "link": "https://www.cnblogs.com/dollaikun/p/20239184",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-05-31T04:40:00.000Z"
-  },
-  {
-    "title": "[人工智能] 是不是 claude code 没有 hermers 智能啊？",
-    "summary": "同样的模型，claude code 就跟个呆 b 一样，也不知道在干啥，随便一弄就停下来不动了， 但是这个 hermers 总是能给我最后的结果，也是有理有据的。  是我使用方式不对吗？  就是一些在 github 上操作的简单任务",
-    "link": "https://www.v2ex.com/t/1216767#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T04:21:31.000Z"
-  },
-  {
-    "title": "[分享创造] 需要配音,无从下手?一个软件足矣! 欢迎使用 Neiroha--多端接入、多平台适配的配音工作站",
-    "summary": "半年之前做了一个名叫CosyvoiceDesktop的开源项目 \n半年下来,这个项目已经积攒上百颗 star 了,但是总感觉这个软件不够好用,不能方便的切换 tts 引擎,而且 python 编写的 gui 和 torch 混一起太过于臃肿了. 于是最近做了一个叫 Neiroha 的开源项目，想分享一下\n它的定位是 AI 音频中间件和配音工作站。简单说，不是再做一个“输入一句话然后生成语音”的 TTS 页面，而是把本地和云端 TTS 后端整理成一套可以长期使用的工作流。\nNeiroha 主要做了几件事：\n把不同 TTS 后端统一成 Provider 管理，可以接 OpenAI 兼容 TTS 、Azure 、Gemini 、GPT-SoVITS 、CosyVoice3 、VoxCPM2 、Windows SAPI 等(本地不跑 voxcpm 这样的模型也可以接 Azure 之类云端的 tts api 使用)\n把模型、音色、语速、参考音频、提示文本、风格指令这些参数保存成“语音角色”，再用“语音库”统一管理一组角色\n支持多角色对话 TTS 、长文本分段合成、小说朗读、视频字幕配音、生成队列、缓存和失败检查\n也可以把当前语音库暴露成本地 OpenAI 兼容的 TTS API ，让脚本、Agent 、SillyTavern 或其他工具直接调用\n软件相关截图展示:\n\n\n\n本地 tts 推理引擎后端方面，我也整理了几个配套的 Neiroha 后端,都是提供了 windows 端便携包的(pytorch+cu128 推理实现,理论支持 30 系到 50 系 n 卡),下载解压点击 bat 即能开启 api 服务,方便大家使用：\nGPT-SoVITS： https://github.com/Neiroha/Neiroha-GPT-SoVITS\nCosyVoice3： https://github.com/Neiroha/Neiroha-Cosyvoice\nVoxCPM2： https://github.com/Neiroha/Neiroha-VoxCPM\n需要说明的是，Neiroha 本身作为一个 Flutter/Dart 编写的软件本身不包含任何 tts 模型，也不把上游模型能力包装成自己的能力。它更像是一个工作台和中间件，负责把这些云端或者本地电脑跑的 TTS 引擎接进统一界面、项目管理和 API 工作流里。实际音质和速度还是取决于底层模型、显卡、参考音频和文本内容。\n项目地址：\n开源仓库地址: https://github.com/Neiroha/Neiroha\n软件下载:https://github.com/Neiroha/Neiroha/releases\n使用说明文档: https://neiroha.github.io/\n有 bug 请在 issue 区内反馈,如果觉得做的不错希望能给个 star",
-    "link": "https://www.v2ex.com/t/1216766#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T04:20:07.000Z"
-  },
-  {
-    "title": "[分享创造] FlashLog — 对着手机说几句， AI 帮你记工时",
-    "summary": "正文\n记工时这件事，我一直很抗拒。\n不是不想记，是太麻烦：下班路上脑子里还在复盘今天干了啥，回家打开表格或 App ，一条一条填任务、时长、分类，热情早就没了。很多工具还要注册账号、同步云端，记的是自己的工作时间，数据却躺在别人的服务器上，心里也不踏实。\n所以做了 FlashLog —— 一款 AI 驱动的工时记录 App ，核心就一件事：让你用说话的方式，把今天的工作留下来。\n它怎么帮你省事\n按住麦克风，像跟同事汇报一样说：\n「今天花了大概 3 小时改登录 bug ，下午开了个需求评审，晚上写了接口文档……」\nAI 会自动整理成一张工时卡片：任务名称、工作大类、日期、时长、描述，都可以再改。说「昨天」也能识别，不用自己算日期。\n不想说话就打字，效果一样。AI 总结不满意，补一句「还有下午那个会」，它会合并进预览，确认后再保存。\n没配 AI 也能用 —— 手动填卡片、本地保存，不影响日常记录。\n不只是记录，还能帮你「看懂」自己的时间\n记了一段时间之后，打开 分析 页，可以直接问 AI：\n这周时间主要花在哪了？\n这个月做了哪些事，帮我总结一下\n有没有什么地方可以改进？\n它会根据你本机积累的工时数据回答，支持多轮追问。回复还可以 语音播报，通勤路上听一遍，比翻列表直观。\n几个我刻意坚持的设计\n数据只在你的手机上 —— 不注册、不同步、不上传，记录本身不出网\nAI 能力你自己开通 —— 语音识别和大模型走你配置的云服务，费用透明、可控\n会提醒你补记 —— 统计哪些工作日还没填，点一下就能跳转去补\n另外还有历史日历、按时间段导出（文本 / 图片 / Excel / Word ）、Android 上分享到微信 / QQ 等，都是围绕「记完、查完、交差」这条链路设计的。\n适合谁\n需要记工时，但讨厌填表的人\n希望口述完就搞定，不想反复整理格式的人\n想定期回顾「时间都去哪了」，但懒得自己算的人\n在意数据留在本机、不想把工作内容交给第三方平台的人\n怎么体验\nGitHub 开源，Android 可直接下载 APK 安装：\n项目： https://github.com/CallStorm/FlashLog \n下载： https://github.com/CallStorm/FlashLog/releases/latest \nREADME 里有录屏演示，建议先看一眼「说话 → AI 总结 → 保存 → 分析」整条流程。\n首次使用需要在设置里配置一下 AI 和语音识别的 Key （有参考文档，按步骤填即可）。目前 v0.1.0 ，主要给自己和身边同事用，还在迭代。\n想听听大家的感受\n你们记工时，最大的阻力是「懒得填」还是「不知道填什么」？\n如果 AI 能帮你从口述里提炼结构化记录，你会愿意每天用吗？\n现有工具里，有什么特别忍不了的点？\n欢迎 Star 、Issue ，或者直接在这里吐槽，对我帮助很大 🙏",
-    "link": "https://www.v2ex.com/t/1216765#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-05-31T04:16:42.000Z"
   },
   {
     "title": "为什么你用光模块测试FPGA IBERT不通 - Hello-FPGA",
@@ -632,46 +744,6 @@
     "pubDate": "2026-05-31T02:31:00.000Z"
   },
   {
-    "title": "Mechanical Pencil: An illustrated celebration of the engineering around us",
-    "summary": "Comments",
-    "link": "https://mechanical-pencil.com/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 31 May 2026 00:25:12 +0000"
-  },
-  {
-    "title": "架构师必备：分布式事务方案选型 - Java烘焙师",
-    "summary": "【摘要】大家好，我是Java烘焙师，本文结合笔者的经验和思考，对分布式事务做个总结。 在微服务架构下，跨服务的数据一致性保证是个绕不开的难题。如果在一次业务操作中，写多个DB，或既写本地DB、又调外部RPC接口，就会面临一致性问题，怎么保证跨库、跨系统的操作要么都成功、要么都失败呢？ 先说结论，最常用的分布 阅读全文",
-    "link": "https://www.cnblogs.com/toplist/p/20146021",
-    "source": "博客园",
-    "category": "news",
-    "pubDate": "2026-05-31T00:25:00.000Z"
-  },
-  {
-    "title": "Agent的诞生（二）：让模型开始调用工具 - 吾AI科技",
-    "summary": "【摘要】1. 让模型开始调用工具\n2. Agent 如何把工具暴露给模型\n3. Agent 如何识别模型发起工具调用\n4. Agent 如何把工具结果回填给模型\n5. 这个过程为什么会持续到模型直接回答为止\n6. 小结：模型调用工具的关键环节 阅读全文",
-    "link": "https://www.cnblogs.com/ilovetech/p/20191217",
-    "source": "博客园",
-    "category": "news",
-    "pubDate": "2026-05-31T00:15:00.000Z"
-  },
-  {
-    "title": "Microsoft Office 2019 and 2021 for Mac view-only conversion",
-    "summary": "Comments",
-    "link": "https://consumerrights.wiki/w/Microsoft_Office_2019_and_2021_for_Mac_view-only_conversion_(2026)",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 23:26:13 +0000"
-  },
-  {
-    "title": "Cheese Paper: a text editor specifically designed for writing",
-    "summary": "Comments",
-    "link": "https://brie.gay/cheese-paper/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 22:58:41 +0000"
-  },
-  {
     "title": "Shantell Sans (2023)",
     "summary": "Comments",
     "link": "https://shantellsans.com/process",
@@ -688,22 +760,6 @@
     "pubDate": "Sat, 30 May 2026 21:46:18 +0000"
   },
   {
-    "title": "wolfSSL releases a new product; wolfCOSE a zero alloc C embbedded COSE stack",
-    "summary": "Comments",
-    "link": "https://github.com/wolfSSL/wolfCOSE",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 20:42:28 +0000"
-  },
-  {
-    "title": "Domain expertise has always been the real moat",
-    "summary": "Comments",
-    "link": "https://www.brethorsting.com/blog/2026/05/domain-expertise-has-always-been-the-real-moat/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 20:40:57 +0000"
-  },
-  {
     "title": "Show HN: Breathe CLI – Paced resonance breathing in the macOS terminal",
     "summary": "Comments",
     "link": "https://github.com/marekkowalczyk/breathe-cli",
@@ -712,60 +768,12 @@
     "pubDate": "Sat, 30 May 2026 20:30:53 +0000"
   },
   {
-    "title": "Parallel Reconstruction of Lawful TLS Wiretapping",
-    "summary": "Comments",
-    "link": "https://remyhax.xyz/posts/reproducing-lawful-tls-wiretapping/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 19:47:36 +0000"
-  },
-  {
-    "title": "Zig ELF Linker Improvements Devlog",
-    "summary": "Comments",
-    "link": "https://ziglang.org/devlog/2026/#2026-05-30",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 17:29:22 +0000"
-  },
-  {
-    "title": "Accenture to acquire Ookla",
-    "summary": "Comments",
-    "link": "https://newsroom.accenture.com/news/2026/accenture-to-acquire-ookla-to-strengthen-network-intelligence-and-experience-with-data-and-ai-for-enterprises",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 16:28:58 +0000"
-  },
-  {
-    "title": "Voxel Space (2017)",
-    "summary": "Comments",
-    "link": "https://s-macke.github.io/VoxelSpace/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 14:25:50 +0000"
-  },
-  {
-    "title": "Openrsync: An implementation of rsync, by the OpenBSD team",
-    "summary": "Comments",
-    "link": "https://github.com/kristapsdz/openrsync",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 10:51:48 +0000"
-  },
-  {
     "title": "腾讯PCG 质效团队技术负责人张晔确认出席AICon上海站，分享测试智能体驱动质量工程新范式",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/u6lPG0uJcGuF1aSxrumc?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Sat, 30 May 2026 10:00:00 GMT"
-  },
-  {
-    "title": "Pandoc Templates",
-    "summary": "Comments",
-    "link": "https://pandoc-templates.org/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 30 May 2026 09:56:42 +0000"
   },
   {
     "title": "AI 如何影响你的审美？",
@@ -1168,15 +1176,15 @@
     "pubDate": "Thu, 28 May 2026 21:29:45 GMT"
   },
   {
-    "title": "Associative learning turns DEET from aversive to appetitive in Aedes aegypti",
+    "title": "Avoiding Death on the Yellow Brick Road",
     "summary": "Comments",
-    "link": "https://journals.biologists.com/jeb/article/229/10/jeb251935/371741/Associative-learning-switches-DEET-valence-from",
+    "link": "https://www.a16z.news/p/avoiding-death-on-the-yellow-brick",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Thu, 28 May 2026 19:11:59 +0000"
+    "pubDate": "Thu, 28 May 2026 21:09:36 +0000"
   },
   {
-    "title": "What it's like to have your insulin pump die while you're on vacation",
+    "title": "Having your insulin pump die while you're on vacation",
     "summary": "Comments",
     "link": "https://blog.lauramichet.com/what-its-like-to-have-the-machine-that-keeps-you-alive-die-while-youre-on-vacation/",
     "source": "Hacker News",
@@ -1224,6 +1232,14 @@
     "pubDate": "Thu, 28 May 2026 14:46:52 GMT"
   },
   {
+    "title": "Websites have a new way to spy on visitors: analyzing their SSD activity",
+    "summary": "Comments",
+    "link": "https://arstechnica.com/security/2026/05/websites-have-a-new-way-to-spy-on-visitors-analyzing-their-ssd-activity/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 28 May 2026 14:32:01 +0000"
+  },
+  {
     "title": "程序员用 AI 大模型分析了 120 万条聊天信息——我是个糟糕的朋友吗？",
     "summary": "一位开发者用20年时间积累的个人聊天记录，构建了一个前所未有的\"数字人生档案馆\"——这个名为\"Am I a Bad Friend?\"（我是个糟糕的朋友吗？）的项目，不仅展示了个人数据可视化的技术可能性，更揭示了AI时代下人际关系分析的新维度。 根据项目作者的介绍，他从2000年代初期开始，横跨Telegram、VK、Instagram、Facebook和...",
     "link": "https://www.oschina.net/news/447577",
@@ -1262,14 +1278,6 @@
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Thu, 28 May 2026 17:52:35 +0800"
-  },
-  {
-    "title": "Racket v9.2",
-    "summary": "Comments",
-    "link": "https://blog.racket-lang.org/2026/05/racket-v9-2.html",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 28 May 2026 09:42:40 +0000"
   },
   {
     "title": "从原理到实践：年轻人的第一篇染发及洗护指南",
@@ -1462,14 +1470,6 @@
     "source": "HuggingFace Blog",
     "category": "ai",
     "pubDate": "Wed, 27 May 2026 00:00:00 GMT"
-  },
-  {
-    "title": "Mysteries of the Griffin iMate",
-    "summary": "Comments",
-    "link": "https://www.projectgus.com/2023/04/griffin-imate/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 26 May 2026 20:07:35 +0000"
   },
   {
     "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
