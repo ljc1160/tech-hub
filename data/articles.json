@@ -1,5 +1,181 @@
 [
   {
+    "title": "得物推荐 AI Harness：从“狂野代码”到“按目标生产”｜AICon上海",
+    "summary": "点击查看原文>",
+    "link": "https://www.infoq.cn/article/pOwoNlmEL9zV0aodLVB9?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "category": "news",
+    "pubDate": "Sun, 07 Jun 2026 10:00:00 GMT"
+  },
+  {
+    "title": "[程序员] 人机 Agent 团队协同：从 Managed Agents 原理到 Multica 实践",
+    "summary": "本文完整内容见（包括 Agent 指令设计）：原文地址\n1 、Managed Agents 核心理念：解耦\"大脑\"与\"双手\"\nManaged Agents 定义：一套用于大规模构建、部署和运行 AI Agent 的全托管基础设施，核心设计原理围绕‌组件解耦与分层抽象‌，解决长周期 AI Agent 开发和生产部署的痛点。\nManaged Agents 设计思路：将智能体的‌「决策能力」（模型作为\"大脑\"）‌、「‌执行能力」（工具/沙箱作为\"双手\"）‌和‌「记忆能力」（持久化会话作为记忆）‌完全分离；\n借鉴操作系统分层思想重构 Agent 架构，各模块独立演进提升整体系统的稳定性。解决了传统 Agent 开发中 Agent 代码粘连、环境崩溃导致任务中断等问题。\nManaged Agents 核心模块：\nHarness （可替换控制循环）‌：作为隔离模型实现与系统功能的抽象控制层，负责调度模型和路由工具，允许模型随时升级不影响系统稳定性，让针对特定模型的补丁可独立演进。\nSandbox （隔离执行环境）‌：提供独立的代码/文件执行单元，执行环境与核心系统物理隔离，避免工具调用异常或容器崩溃导致整体任务失败，将错误转化为可处理的单纯异常。\nSession （持久化日志）‌：突破传统上下文窗口限制，将完整历史事件日志作为外部化记忆仓库，支持按需读取、回放历史和提取关键切片，解决长任务中信息存储与回溯的问题。\n\n2 、Multica 介绍\nMultica 是一个开源的 Managed Agents 平台，定位为遵循 Managed Agents 架构规范、厂商中立的开源 AI 智能体团队协作平台。\nMultica 目标并非自建 Agent ，而是搭建跨 AI Agent 的托管调度层，将分散在本地、多终端、多厂商（ Claude Code 、Codex 、OpenCode ）的智能体收拢，把 AI Agent 转化为人机团队内和开发人员平权的正式成员，落地 Managed Agents 工程化、团队化实践。\nMultica 核心为解决行业几类典型痛点：\n多 AI 编程工具碎片化，切换繁琐、无法统一管控；\nAgent 孤立运行，无任务看板、无进度可视化，人工持续盯盘；\nAgent 单次优质执行经验无法沉淀，重复造轮子、团队能力无法复利增长。\n3 、人机 Agent 团队组织设计\n针对人机 Agent 团队协同，首先需要结合业务场景，进行团队组织设计，确定团队角色及职责。此处以 “全栈项目迭代开发” 为业务场景，落地实践人机多角色 Agent 团队协作。\n针对研发需求交付流程，一般覆盖 「需求分析、方案设计、代码开发、代码审核、需求测试、项目部署」等环节。\n其中“需求分析、方案设计、代码开发”类工作长耗时且低风险低，适合 Agent 角色执行；其他工作风险性相对高，短期（本文案例）持续让 人 来负责，未来考虑过度给 Agent 。\n基于上述分工思路，团队具体组织设计如下：\n团队名称：汉兴三杰（墨萧张联盟）\n团队角色：由 3 个 Agent 角色（队长、架构师、全栈工程师） + 1 个 人 角色组成；\n前者负责 「需求分析、方案设计、代码开发」类工作，后者负责「代码审核、需求测试、项目部署」类工作。\nAgent 角色明细：\n角色\n职责定位责\n权限边界\n\n\n\n\n萧何（队长）\n团队唯一对外交互入口，全流程总调度，承担「任务拆解、进度追踪、结果汇总」核心职能，是整个小队的定盘星\n仅负责调度整合，不参与具体方案设计、不编写执行落地代码，所有具体工作全部委派给对应角色，绝不越界。\n\n\n张良（架构师）\n方案输出核心，承担「信息调研、复杂任务方案设计」核心职能，是连接需求与落地的核心枢纽\n仅输出设计方案，不参与具体落地执行；遇到需求调整仅修改方案，不越界修改执行成果。\n\n\n墨子（全栈工程师）\n长周期任务执行核心，承担「长时间、独立复杂任务执行」核心职能，是将纸面方案转化为实际成果的攻坚者\n仅在方案设计范围内完成执行，不自行修改整体框架、不扩展超出需求范围的额外功能；所有超出边界的需求统一返回协调者重新处理，不私自调整方案。\n\n\n4 、场景案例\nMultica 系统截图：\nMultica Squad：团队设置 + 成员组织（ 3xAgent + 1x 人）。\n\nMultica Agent：Agent 角色的设置类信息。\n墨子为例，设置信息包括：运行时（本地 MacMini + OpenCode ） + Agent 模型（ DeepSeek ） + 技能（ design-taste-frontend ） + 指令等。 \n\nMultica 运行时：我的电脑上安装了 Claude 、Codex 和 OpenCode ，如下图全部识别可用。\n\n案例场景说明：\n案例场景：“新建一个博客网站，只包含前端 HTML 页面，无需后端逻辑”。\n需求承接：通过 Multica 的 Squad/团队 承接，过程中体现多智能体调度、会话隔离、事件追溯、技能等能力。\n\nMultica 处理流程分析：\nMultica 流程参考下图，核心步骤如下：\n发起任务：用户提交 ISSUE ，分配给 Multica 团队，此处分配给「汉兴三杰（墨萧张联盟）」。\n需求分析/分配任务：团队接到需求，「萧何（队长）」会自动进行需求功能点提炼；然后，将方案设计设计任务分配给「张良（架构师）」。\n技术方案：「张良（架构师）」接到任务，结合同步的需求信息、主动调研信息等，进行技术方案设计。技术方案完成后，会周知「萧何（队长）」。\n方案评审：「萧何（队长）」接到技术方案完成通知，会进行技术方案 Review 。然后，将开发任务分配给「墨子（全栈工程师）」。\n代码开发：「墨子（全栈工程师）」接到任务，开始进行代码开发。代码开发完成后，会周知「萧何（队长）」。\n代码验收：「萧何（队长）」接到代码开发完成通知，会进行代码验收。验收完成后，会主动更新任务状态。\n需求测试/项目部署：按照前文组织设计，这部分由人来处理。因此，由“Jason （我）”人工触发。\n\nMultica 产出效果：\n博客网站运行截图：",
+    "link": "https://www.v2ex.com/t/1218512#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T02:35:50.000Z"
+  },
+  {
+    "title": "[分享创造] Wolf RBAC 五年来最重要的更新： 40 刀 vibe coding，给开源权限系统接了个 AI Agent",
+    "summary": "我是 Wolf 的作者。Wolf 是一个开源 RBAC 权限系统，维护了五年多，一直在做「稳」的事——加字段、修 Bug 、补文档。\n0.7.1 之后终于做了一件真正大的：在 Console 里内嵌了一个 AI Agent ，可以用自然语言直接管理 RBAC。这是 Wolf 五年来最重要的功能更新，没有之一。\n整个 Agent 框架基于 pi-mono（@mariozechner/pi-agent-core + @mariozechner/pi-ai），不是另起炉灶写一套管理后台，而是让 AI 通过 Tool Calling 去调 Wolf 现有的 Controller——鉴权、参数校验、缓存刷新、审计日志，全部走原链路。\n能干什么\n说人话就是：你在 Console 左侧点「 AI 助手」，然后直接聊：\n「oa-app 下有哪些角色？每个角色绑了哪些权限？」\n「在 pi-mono 下新建一个 viewer 角色，把所有 read_ 开头的权限给它。」\n「最近 7 天有没有 403 的访问记录？」\n「重置用户 lily 的密码。」\nAI 能做什么 = 当前登录用户在 Console 上能做什么，不会越权。所有写操作进 access_log，appID = 'ai-agent'，和人工操作区分开，事后能查。\n覆盖了 8 个领域、31 个工具：Application / User / Role / Permission / Resource / Category / UserRole / AccessLog 。\n几个设计上我比较在意的点\n1. 不是 SQL 直连，是复用 Controller\n后端用 InternalCaller 构造 mock Koa ctx ，进程内调现有 Controller 。AI 不是数据库后门，工具权限还会按 super / admin 自动裁剪。\n2. 完整的聊天体验\n多会话：新建 / 切换 / 重命名 / 删除，AI 自动总结标题\nSSE 流式输出，工具调用有独立卡片（ running / done / error ）\nMarkdown + Mermaid 渲染，查权限关系可以直接出图\n\n\n\n3. 用户记忆\n新建会话时，AI 会异步从上一段对话提取「记忆」（偏好 / 已知信息 / 历史决策 / 操作模式），下次自动注入 System Prompt 。也可以手动增删改。\n\n4. 多 Provider\nOpenAI 兼容网关、Anthropic 、Gemini 、Mistral 、Groq 、OpenRouter 等都支持，环境变量或 config.js 配置。没配 Key 也不影响 Wolf 其它功能，只是 AI 页会友好提示。\n\n这次改了什么（相对 0.7.1 ）\n0.7.1 → 当前 master，5 个 commit ，117 个文件，+24063 行：\n模块\n内容\n\n\n\n\n后端 server/src/ai/\nAgent 工厂、系统提示词、记忆提取、会话标题生成、8 组 Tool\n\n\n控制器 ai-chat.js\nSSE 流式对话、会话 CRUD 、消息持久化\n\n\n数据库\n新增 ai_chat_session / ai_chat_message / ai_user_memory 三张表\n\n\n前端 console/src/views/ai-chat/\n完整聊天页：会话列表、消息气泡、工具卡片、记忆面板\n\n\n安全加固\nCookie 安全属性、开放重定向防护、应用级访问控制、Captcha 一次性销毁等\n\n\n测试\n新增 ~5000 行 AI 相关单测 / 集成测（工具、中间件、控制器、SSE 等）\n\n\n文档\nREADME-AI-AGENT-CN.md、docs/ai-agent-cn.md、截图 12 张\n\n\n开发过程 & 花了多少钱\n这次是 AI 辅助开发（ vibe coding ） 全程：\n主力：Cursor（ Claude 模型），2 次订阅，20 刀 + 20 刀 = 40 刀\n验证阶段：Claude + MiMo v2.5-pro（小米赠送额度）跑测试用例和回归，用了约 25M Tokens\n40 刀换来的是：117 个文件、+24063 行代码、完整的前后端 + 测试 + 文档。说实话，用 AI 写 AI 功能这件事本身挺魔幻的——某种程度上是 AI 在帮自己造运行环境。\n为什么不写 Skill ，而是直接集成 Agent ？\n也有人问过：为啥不写一个 Skill / MCP ，让 Cursor 、Claude Code 、Hermes 、OpenClaw 这类外部 Agent 去调 Wolf API ？\nSkill 当然也能把接口定义清楚，但它是开发者工具——Wolf 的用户是运维和管理员，不是人人桌上都有这些 Agent 客户端。内嵌 Agent 是产品能力：浏览器登录就能用，AI Key 管理员统一配。\n另外，内嵌方案工具进程内直调 Controller ，和点表单走同一条链路；鉴权、审计（appID = 'ai-agent'）、按角色动态裁剪工具列表，都天然对齐。成功率、流式输出、工具卡片、Mermaid 图、会话记忆这些，也更适合做成 Console 里的一体化体验。\n一句话：Skill 适合个人提效，内嵌 Agent 适合把 AI 做成产品功能。\n如果你也想给存量系统接 Agent ，我的体会是：\n先钉死边界：AI 只能走现有 API/Controller ，别让它直连 DB\n工具粒度对齐业务接口：一个 Controller 方法 ≈ 一个 Tool ，权限自然继承\n测试要舍得写：Agent 行为不确定，单测 + 集成测是兜底\n选个成熟的 Agent 运行时：pi-mono 的 streaming / tool loop 省了不少轮子\n链接\n项目： https://github.com/iGeeky/wolf\nAI 助手文档： https://github.com/iGeeky/wolf/blob/master/docs/ai-agent-cn.md\n功能速览： https://github.com/iGeeky/wolf/blob/master/README-AI-AGENT-CN.md\nDocker 快速体验：quick-start-with-docker/docker-compose.yaml 里 server 服务已预留 AI 环境变量，至少配这几项：\nAI_API_KEY=sk-...          # 必填\nAI_PROVIDER=openai         # 或 deepseek / anthropic 等\nAI_MODEL=deepseek-v4-flash # 具体模型 ID\nAI_BASE_URL=https://api.deepseek.com/v1  # OpenAI 兼容网关地址\n\ndocker compose up 后登录 Console ，左侧点「 AI 助手」即可。\n欢迎 Star / Issue / PR 。\n做完这个功能，我意识到：权限管理这件事之所以烦，不是因为逻辑复杂，而是因为要点的表单太多。现在 AI 能替你点了，感觉权限系统该有的样子本来就应该是这样的。\n如果你也在做「给老系统接 Agent 」或者对 Wolf 感兴趣，评论区聊聊。",
+    "link": "https://www.v2ex.com/t/1218511#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T02:30:48.000Z"
+  },
+  {
+    "title": "[分享发现] 大家觉得什么博客值得保存下来。不限题材。中英文皆可。其他语言也行",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1218510#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T02:20:23.000Z"
+  },
+  {
+    "title": "[生活] 1w 的预算：咖啡机+磨豆机的组合 [复制链接]",
+    "summary": "现在家里已经有德龙的全自动了，但是还是感觉差点意思，想趁这次 618 ，升级换成半自动+磨豆机的组合。。。看了一圈国产的 e61 ，有点懵。。。\n看网上说现在已经可以用小米的智能插座解决开机的问题了。。。\n主要需求：\n1 天：2-3 杯 美式 。。。偶尔拿铁。。。\n求各位大神推荐下。。。",
+    "link": "https://www.v2ex.com/t/1218509#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T02:18:33.000Z"
+  },
+  {
+    "title": "[分享创造] HuiPass，一个新的一站式身份认证平台",
+    "summary": "大家好，我们做了一个身份认证平台，希望大家能试用评价一下。\n这个项目是新做的，八个月前稳定之后没怎么更新，测试了一段时间，感觉没什么问题，所以发到这边，让大家看一下。\n主打的核心是缝合新旧代码，所以支持比较多的协议。支持 OAuth 2.0 、OpenID Connect 、SAML 2.0 、CAS ，可作为统一认证中心接入不同类型应用。\n对于基础的身份管理方面，也支持应用管理，用户管理，用户与分组管理，角色与访问控制，还有日志审计。\n然后呢，也做了比较多的工具支持，像是常用的人机验证啊，短信验证啊，passkey 都支持。\n差不多就是上面的内容了，希望大家能看看，提提 issue ，也顺便 star 一下。\nhttps://github.com/dacongda/auth-center-beta",
+    "link": "https://www.v2ex.com/t/1218508#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T02:05:05.000Z"
+  },
+  {
+    "title": "Tokenomics: Quantifying Where Tokens Are Used in Agentic Software Engineering",
+    "summary": "Comments",
+    "link": "https://arxiv.org/abs/2601.14470",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 07 Jun 2026 01:37:11 +0000"
+  },
+  {
+    "title": "An Ohio Valley 100k-Watt FM Signal Is Severed in Broad Daylight – Radio World",
+    "summary": "Comments",
+    "link": "https://www.radioworld.com/news-and-business/headlines/an-ohio-valley-100000-watt-fm-signal-is-severed-in-broad-daylight",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 07 Jun 2026 01:24:15 +0000"
+  },
+  {
+    "title": "[Google Gemini] Google AI Pro 在反重力中使用 Gemini 3.5 Flash 耐用吗",
+    "summary": "鉴于 codex 中使用 gpt5.5 的审美太差了，即便使用 skills 设计出来的页面无论是 ui 还是交互都不行，但是使用反重力 Gemini 3.5 Flash 设计出来的就很符合预期，也尝试了 claude 只能说比 gpt 强一点，还是不如 gemini ，想开个 Google AI Pro 有人知道在反重力中 Gemini 3.5 Flash 耐用不\n目前在网上查了反重力的额度问题，但是鉴于 Google 在 AI 产品上的不确定性，额度极不稳定，而且大部分讨论的都是反重力中的 claude 额度，没有人讨论 Gemini 模型的额度，貌似有个介绍说 google 的会员额度是和免费号比的，pro 是免费用户的 4 倍？",
+    "link": "https://www.v2ex.com/t/1218504#reply9",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T01:12:58.000Z"
+  },
+  {
+    "title": "Show HN: DomainTasker – avoid losing domains and surprise renewals",
+    "summary": "Comments",
+    "link": "https://domaintasker.com/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 07 Jun 2026 00:50:13 +0000"
+  },
+  {
+    "title": "[分享发现] 刚刚浏览 L 站，发现小作文已成历史。",
+    "summary": "刚才偶然想起翻翻 L 站，发现置顶帖社区拟优化账号注册机制\n重要的内容是：\n取消了小作文；\n三级用户邀请链接取消；\n目前三个注册渠道：\nGithub 5 年账号的直接可以注册了；\nPremium 分组、管理员分组可以生成邀请链接。\n嗯，小作文成为历史。好事吧。",
+    "link": "https://www.v2ex.com/t/1218503#reply9",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-07T00:47:25.000Z"
+  },
+  {
+    "title": "Public Domain Image Archive",
+    "summary": "Comments",
+    "link": "https://pdimagearchive.org/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 07 Jun 2026 00:22:51 +0000"
+  },
+  {
+    "title": "一、为什么要学习 USB 协议 - PlayerPencil",
+    "summary": "【摘要】这是一篇学习笔记，分享给大家，如果大家喜欢，也会开启USB的专辑 一、为什么要学习 USB 协议 USB 是 Universal Serial Bus 的缩写，中文通常叫通用串行总线。它是电脑、手机、工控机、单片机开发板和各种外设之间最常见的连接方式之一。 在嵌入式开发中，USB 常用于： 虚拟串口 阅读全文",
+    "link": "https://www.cnblogs.com/PlayerPencil/p/20353484",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-06-07T00:13:00.000Z"
+  },
+  {
+    "title": "一篇标题只有5个单词的论文，改变了整个AI世界，并打开了AI大语言模型时代 - 岳小哥AI",
+    "summary": "【摘要】从GPT-1的诞生到ChatGPT的横空出世，AI从专家的实验室走进了每个人的日常，这背后是数据、算力与算法长达七十年的厚积薄发。 阅读全文",
+    "link": "https://www.cnblogs.com/hawk2026/p/20212274",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-06-07T00:00:00.000Z"
+  },
+  {
+    "title": "[问与答] V2ex 手机客户端，好像都无法加载更多，只能看 1 页",
+    "summary": "我尝试了几乎所有上架到苹果中国区的免费 iOS 客户端，我发现所有的客户端都没办法在帖子列表页加载下一页。\n手机是 iPhone15 pro ，系统版本是 ios26.5\n想问一下，大家是否遇到这个问题？\n\n或者大家用什么客户端？",
+    "link": "https://www.v2ex.com/t/1218500#reply10",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-06T23:22:44.000Z"
+  },
+  {
+    "title": "Show HN: Keybench – Scriptable, extensible performance tool for key value stores",
+    "summary": "Comments",
+    "link": "https://github.com/guycipher/keybench",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 23:06:06 +0000"
+  },
+  {
+    "title": "New U.S. college grads now have higher unemployment than the average worker",
+    "summary": "Comments",
+    "link": "https://www.randalolson.com/2026/06/04/recent-grad-unemployment-flip/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 20:35:40 +0000"
+  },
+  {
+    "title": "Computex 2026: Are We Heading for the Agentic PC Era Yet?",
+    "summary": "Comments",
+    "link": "https://www.eetimes.com/computex-2026-are-we-heading-for-the-agentic-pc-era-yet/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 20:24:29 +0000"
+  },
+  {
+    "title": "Sem: New primitive for code understanding – not LSPs, but entities on top of Git",
+    "summary": "Comments",
+    "link": "https://ataraxy-labs.github.io/sem/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 20:03:55 +0000"
+  },
+  {
+    "title": "Home alone: Remote work, isolation, and mental health",
+    "summary": "Comments",
+    "link": "https://www.science.org/doi/10.1126/science.aec7671",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 19:51:10 +0000"
+  },
+  {
+    "title": "[推广] 一个对话式的 AI 视频生成工具 Gemini Omni Video，像聊天一样做视频",
+    "summary": "Gemini Omni Video。作为一个经常需要做短视频和宣发物料的开发者，我苦于现在市面上的 AI 视频工具大多都是“一锤子买卖”——也就是所谓的抽卡式生成，如果不满意往往只能换提示词全部推翻重来。\n为了解决这个痛点，我基于 Google 的 Gemini Omni 模型开发了这个对话式视频生成器。你可以把它当成你的私人 AI 导演，通过不断对话就能精雕细琢出想要的 4K 视频。今天想在 V 站和大家真诚分享一下这个项目，希望能听到各位的反馈。\nGemini Omni Video 简介\n简单来说，这是一款将视频制作转化为“创意对话”的 AI 视频生成器。在这个 Gemini Omni AI Video 工具中，你不需要面对复杂的剪辑时间线。你只需要用自然语言描述一个场景，AI 就会为你生成视频。\n最重要的是，如果对生成的细节不满意，你可以直接给它下指令，比如“让光线更暖一些”、“镜头慢一点”、“背景加上雨天效果”。它能理解你的真实意图，在保留原有画面的基础上实时重新渲染，而不是瞎猜重做。\nGemini Omni Video 的特点\n为了让它真正好用并且能用于生产环境，我在开发时侧重了以下几个核心体验：\n拒绝“抽卡”，支持对话式持续迭代： 这是它最大的不同点。系统会保留你的会话上下文，你可以一帧一帧地迭代，调整取景、切换风格、延长时长，甚至替换某个角色，而不会丢失之前做好的部分。就像是视频版的“版本控制”。\n多模态输入，统一工作流： 无论你扔给它一段剧本、一张产品图，还是一段语音备忘录，甚至三者同时输入，它都能理解并融合生成一段连贯的视频，省去了手动合成的麻烦。\n自带音效与角色一致性： 每次生成的视频都自带同步的音效（环境音、特效声等视觉对齐音频）。此外，它支持跨片段保持人物面部、服装和风格的一致性，非常适合做系列短片。\n一键 4K 多格式输出： 描述一次你的视频，就能自动适配并导出 16:9 （ YouTube ）、9:16 （ TikTok/Reels ）或 1:1 格式的 4K 视频，系统会自动重新构图，无需手动裁剪。所有成片均自带完全的商业使用权。\n如何使用？\n整个流程非常符合直觉，从白纸到最终成品只需要简单的三步：\n布置舞台： 丢入你的原始素材，比如文本脚本、参考照片或音频剪辑，AI 会自动读取并构建一个统一的创意大纲。\n导演场景： 告诉 AI 你的诉求：摄像机角度、节奏、色调或情绪。无论指令是模糊还是精确，AI 都能智能适应并补全剩余细节。\n持续打磨： 预览视频后，用大白话提出修改意见（如“前奏剪短点”、“放大产品”）。每一轮修改都会保留好的部分并修复瑕疵，满意后直接导出 4K 成片。\n使用网址： https://geminiomnivideo.ai\n以上就是关于这款 Gemini Omni Video AI 的简单介绍。从脑海里的粗略概念到发布，只需要不到五分钟时间。个人独立开发不易，欢迎大家来试玩体验！如果使用中遇到任何 bug 或者有新的功能建议，请直接在帖子里留言，我会第一时间跟进解答和修复。感谢大家支持！",
+    "link": "https://www.v2ex.com/t/1218499#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-06-06T19:46:15.000Z"
+  },
+  {
+    "title": "Ntsc-rs – open-source video emulation of analog TV and VHS artifacts",
+    "summary": "Comments",
+    "link": "https://ntsc.rs/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 19:17:46 +0000"
+  },
+  {
     "title": "Five labs, five minds: building a multi-model finance drama on small models",
     "summary": "",
     "link": "https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2",
@@ -34,7 +210,7 @@
   {
     "title": "[OpenAI] 一个简单的判断 OpenAI 认为你在哪里的方法",
     "summary": "访问 https://chatgpt.com/cdn-cgi/trace，看输出结果里面的 loc 字段。",
-    "link": "https://www.v2ex.com/t/1218497#reply0",
+    "link": "https://www.v2ex.com/t/1218497#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T17:51:10.000Z"
@@ -50,7 +226,7 @@
   {
     "title": "[程序员] 一个疯狂的想法：用本体论抽象一个现实",
     "summary": "背景。\n我认为，大语言模型从 gpt3 开始（ 2020 年 6 月）到今天，虽然已经有了 5-6 年时间，但仍然处于这项技术的发展初期，大语言模型本身还有很多可以改进的地方（这块我不是很懂，我觉得如何用更少的资源实现更强的能力应该是一个很重要的方面，特别是如何在 cpu 上也能运行能力强大的模型。），但是，最关键的是我认为，大语言模型的工程化还在非常早的初期，很多问题还有待解决，特别是大模型的幻觉问题，直接限制了大模型在实际业务中的应用。\n我认为，从开始我们直接用语言和大模型进行沟通，也就是所谓的“提示词工程”可能就是一个错误。\n大模型的本质，就是以语言为计算因子的一种数学计算过程。大模型的所谓幻觉、对齐问题，不是大模型本身的问题，而是我们使用大模型的方式不对。\n我们现在发几个字符，就希望大模型实现一个准确、高质量的回复；或者发一堆字符，希望大模型都能理解、记忆。这种用文字直接让大模型生成结果的做法我认为是错误的方式。\n本体论\n我认为，正确的方式是，应该在大模型和人之间建立一个层，这个层是一个由人类建立的符合现实的语义空间，对话语义经过这个转换层，就能确保大模型参与计算的所有因子都是真实可信的。\n那么，如何建立这个层呢？我认为，就是将本体论（ ontology ）引入 agent 。现在也有很多人在做这方面的工作，但问题是他们都只是将一个很小知识领域本体化，每个人都需要建立自己的领域本体论，这也是为什么 Palantir 公司的成本这么高。\n** 疯狂的想法： **\n我们可以花费几万亿去计算一个模型，为什么不能花一点小钱，将整个现实世界通过语言抽象到一个本体论的知识图谱空间中？\n总结\n人工智能领域一直有三大流派：符号主义、连接主义和行为主义。\nopen ai 的 chatgpt 告诉我们，连接主义正确的打开方式，就是用扩大规模。\n那么，符号主义、行为主义的问题是不是也是因为规模不够大？\n如果我们用力大飞砖的方式，把符号主义、行为主义的技术规模扩大是否也会产生质的变化？\n最后，我们为什么不将符号主义（本体论）、连接主义（大模型）和行为主义（强化学习）的技术为什么不同用 agent 链接起来？这可能才是人工智能真正的打开方式。",
-    "link": "https://www.v2ex.com/t/1218495#reply1",
+    "link": "https://www.v2ex.com/t/1218495#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T17:24:28.000Z"
@@ -58,7 +234,7 @@
   {
     "title": "[美酒与美食] 除了柠檬水，还有哪些简单的自制冷饮？",
     "summary": "最近尝试买了个一个蜜雪同款雪克杯，捣两下加点百香果还挺好喝。",
-    "link": "https://www.v2ex.com/t/1218494#reply1",
+    "link": "https://www.v2ex.com/t/1218494#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T17:22:06.000Z"
@@ -66,7 +242,7 @@
   {
     "title": "[VPS] [提醒] fuckip.me 上购买的 NAT VPS 可能随时强制重装系统, 数据丢失, 无提醒和备份",
     "summary": "6 月 1 号 找便宜服务器节点 在站内看到有推荐 fuckip.me 的\n打开看了下, 都是 NAT 的 VPS, 确实便宜\n我又不需要独立 IP, 就开了一个 SG 的节点, 部署了服务试了下\n6 月 5 号发现服务不可访问了, 进控制台显示实例状态异常, 只有重装系统按钮可点击, 重启按钮都灰化了\n过了大半天看还没有恢复, 就提了一个工单询问\n然后就发生了如下对话\n\n我也不知道这是谁的问题\n随时可能要求你只能重装系统, 之前的环境配置和服务配置啥的全丢\n幸好我啥也没存 😒",
-    "link": "https://www.v2ex.com/t/1218492#reply0",
+    "link": "https://www.v2ex.com/t/1218492#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T16:35:37.000Z"
@@ -82,7 +258,7 @@
   {
     "title": "[Claude] 开 Claude Max 一定会触发 KYC 吗？",
     "summary": "Codex 20x 被我用完了 11 号才刷新\n想开个 Max 20x 但是担心被 kyc 和封号\n想知道这两块现在什么情况\n另外有没有已开通的大哥让我蹭个车\n最好是有海外身份 kyc 能不被封号的",
-    "link": "https://www.v2ex.com/t/1218489#reply8",
+    "link": "https://www.v2ex.com/t/1218489#reply11",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T16:14:00.000Z"
@@ -96,20 +272,20 @@
     "pubDate": "Sat, 06 Jun 2026 15:55:46 +0000"
   },
   {
-    "title": "[程序员] 什么时候 windows 的笔记本也出个灵动岛 ,听歌的时候显示歌词 真的好爽.",
+    "title": "[问与答] 什么时候 windows 的笔记本也出个灵动岛 ,听歌的时候显示歌词 真的好爽.",
     "summary": "",
-    "link": "https://www.v2ex.com/t/1218487#reply8",
+    "link": "https://www.v2ex.com/t/1218487#reply16",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T15:53:21.000Z"
   },
   {
-    "title": "写 README/技术方案时被 Ai 生成的 PlantUml/Mermaid 折腾烦了，做了个 预览小工具 - lipengxs",
-    "summary": "【摘要】程图、架构图、时序图和数据结构说明。 比如让它生成： Mermaid flowchart PlantUML sequence diagram OpenAPI 接口调用流程 SQL ER 图 Docker Compose 服务关系 Kubernetes manifest 摘要 package.json 阅读全文",
-    "link": "https://www.cnblogs.com/lipengxs/p/20350914",
+    "title": "Winter is Coming：当AI疯王们举起屠刀，弑君者已在路上 - boonya",
+    "summary": "【摘要】铁王座从不是永恒的。当OpenAI与Anthropic疯狂封锁+86、猎杀中文开发者时，它们不知道——真正的“凛冬”，正由那些被它们亲手推开的弑君者带来。 凛冬已至，疯王犹在炉边添野火 《权力的游戏》里，史塔克家族世代传诵一句警言：“Winter is Coming.” 凛冬降临时，长城之外的白鬼会 阅读全文",
+    "link": "https://www.cnblogs.com/boonya/p/20350938",
     "source": "博客园",
     "category": "news",
-    "pubDate": "2026-06-06T15:40:00.000Z"
+    "pubDate": "2026-06-06T15:48:00.000Z"
   },
   {
     "title": "ECC安装与配置：把 Claude Code 装进一个能稳定发挥的 Harness - 叫授_pront",
@@ -120,25 +296,9 @@
     "pubDate": "2026-06-06T15:36:00.000Z"
   },
   {
-    "title": "Police in England and Wales told to halt AI use in court statements",
-    "summary": "Comments",
-    "link": "https://www.ft.com/content/229e5949-3ebc-4151-8a86-a01b5e259241",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 15:35:49 +0000"
-  },
-  {
-    "title": "Python JIT project was asked to pause development",
-    "summary": "Comments",
-    "link": "https://discuss.python.org/t/an-announcement-from-the-steering-council-regarding-the-jit-project/107638",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 15:30:09 +0000"
-  },
-  {
     "title": "[程序员] 写 README/技术方案时被 Ai 生成的 PlantUml/Mermaid 折腾烦了，做了个 预览小工具",
     "summary": "大家好，最近我做了一个小工具 DiagramPreview：\nhttps://diagrampreview.com\n起因是我最近写 README 、技术方案和接口文档时，经常让大模型生成 Mermaid 、PlantUML 、架构图、OpenAPI 流程、SQL ER 图之类的文本。\nAI 生成初稿确实很快，但有个步骤一直很烦：它通常只给代码，不帮你确认能不能渲染。很多时候复制到文档里才发现 Mermaid 报错，或者 PlantUML 图看起来不对，还要再找工具预览、修语法、导出图片。\n所以我把这个中间步骤做成了一个在线工具站：\n- Mermaid / PlantUML / Graphviz / D2 / Markdown 预览\n- AI Diagram Generator 、Text to Mermaid 、Mermaid AI Fixer\n- OpenAPI to Sequence Diagram 、SQL to ER Diagram\n- JSON / YAML / JSON Schema / XML / CSV 结构可视化\n- Docker Compose 、Kubernetes Manifest 、package.json 依赖图\n- SVG / PNG / PDF 导出\n- 不需要登录，浏览器里直接用\n普通预览类工具主要在浏览器里处理。AI 生成类工具会调用后端接口，所以不要把私有代码、密钥、内部架构细节直接丢进去。\n我的主要使用场景是：\n1. 让 AI 先生成图表代码。\n2. 粘贴到 DiagramPreview 里看是否能渲染。\n3. 如果语法坏了，修一下或让 AI 修复。\n4. 导出 SVG/PNG 放到 README 、PRD 、技术方案或周报里。\n目前还比较早期，想听听 V2EX 上大家的建议：\n- 你们写技术文档时最常用 Mermaid 、PlantUML 还是 draw.io ？\n- 还有哪些格式值得补，比如 DBML 、Terraform 、Protobuf 、Grafana Dashboard 、Prometheus Alert 、Swagger 更深度可视化？\n- 工具站这种形态，你会希望更偏“编辑器”，还是更偏“格式转换集合”？\n欢迎拍砖，我会继续迭代。",
-    "link": "https://www.v2ex.com/t/1218486#reply3",
+    "link": "https://www.v2ex.com/t/1218486#reply4",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T15:08:39.000Z"
@@ -146,7 +306,7 @@
   {
     "title": "[生活] 我的碎碎念",
     "summary": "引子\n今天去公园里骑行, 遇到一个中年老哥\n我们并行了好一段路程, 东扯扯西扯扯\n老哥问我的折叠车多少钱, 他觉得 4 + 2 的骑行模式很方便, 可以去一些很远的地方\n我说自组的, 快四千了\n他没再说话, 我看出来他觉得贵了, 补充道, “你可以买个便宜些的, 一千多”\n老哥现在骑行的山地车, 平时是他孩子骑去上下学, 后座还有一个篮筐来装物品, 买来的时候是一千多\n老哥没有嫌弃这辆山地车\n但我也看出来了, 他想买辆折叠车\n“我也想, 但老婆不让”, 老哥的言语之间却没有表露出半点苦涩\n普通人能在一线生存必然也是要付出代价的\n“老哥能在 xx 定居, 很有实力”, 我猜老哥孩子在这里上学, 肯定是定居了\n“没有, 人才房”\n“很难排到吧”\n“我那个时候政策和现在不一样, 不过里面也住了一些有钱人”\n老哥说这公园挺不错的, 可以每周都来\n他骑车过来也得十多公里, 回去还要十多公里\n看得出来老哥很喜欢骑行, 他老婆为什么没支持他买辆折叠车呢?\n引用\n生小孩的意义，转自 53 岁深圳不婚不育女性自述\n人过 30 岁真的不是为自己而活了\n碎碎念\n引用 1 对我个人的影响还挺大的, 尤其是那句“我现在没有家人了，没有家人了，没有家人了，没有家人了，没有家人了”, 电流击穿了身体般身临其境\n不再是自己的旁观者\n我从小都只想要把自己装进套子里做一个小透明\n按部就班地读书, 虽然身边的人一直在变, 但前进的目标是明确的\n直到毕业要工作了, 再没有人和我说“接下来的路, 你应该这么走”\n你可以选择找本专业的工作, 选择去大城市\n现在, 我不能再做以前的那个旁观者了\n不行动的话\n如果我不行动, 我想, 我就在去往 引用 1 中女主人的路途上\n不过, 我应该比她好一点, 她的亲哥哥不在了, 我还有一个妹妹\n亲人不能陪伴我走完后半程, 我知道的, 即便是我的妹妹也坚定地不婚\n亲人能给的精神寄托是不一样的\n那么, 就行动?\n引子中, 我相信老哥家余出 2000 块花在他的爱好上是有的, 他那么喜欢骑行\n正如 引用 2 的评论中, 好些庆幸未婚的人一样, 如果我走进了婚姻, 是否也会像是老哥一样, 成全家庭\n现在, 我是一个先知\n如果天空开始下雨\n站在原地, 只会留下我一个人!\n迈出下一步, 会踩进水坑?\n我害怕\n我没有强于 引用 1 中的女主人, 面对孤独的勇气. 它像是一股寒气一点一点逼近, 我却没有办法驱散它\n我害怕自己会成为 引子 里老哥的恶化版, “燃烧”自己, 走进坟场\n好想, 好想挥剑\n斩断 引子 里为家庭“牺牲”的老哥\n斩断 引用 1 里为孤单所困的女主人\n斩断 引用 2 里所有“燃烧”自己的人\n斩断害怕孤单的自己\n斩断走进坟场的自己\n斩断这个世界\n斩断我自己\n焦虑的种子\n李白说“抽刀断水水更流”\n焦虑的种子已经被种下, 无论怎么走, 都会后悔\n期语\n走, 步入婚姻, 无怨无悔\n不走, 单身一辈子, 强大内心",
-    "link": "https://www.v2ex.com/t/1218485#reply3",
+    "link": "https://www.v2ex.com/t/1218485#reply4",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T15:04:33.000Z"
@@ -170,7 +330,7 @@
   {
     "title": "[Apple] 谈下 ios 端的 surge 相比 loon 不足的一些地方",
     "summary": "op 之前在手机上一直是用的 loon ，最近这几天才开始使用 ios 端的 surge （以前只用 mac 版的 surge ）。\n作为老牌代理软件，surge 有很多强项，比如 smart 、ponte 等等，不过这次不说这些，只简单的分享一下我从 loon 切换到 surge 这几天发现的一些 surge 的不足，汇总如下：\n（纯主观感受分享，请不要随意人身攻击，不要随意开战）\n1 、不支持 vless 协议。\n2 、去广告模块比不上 loon 插件省心，很难及时同步可莉的 loon 插件，而且转换之后还可能会没效果，需要自己花很多时间抓包和分析解决。\n3 、没办法原生的直接在 ui 上查看机场流量信息，得借助第三方模块在面板上展示，很不直观很不方便。\n4 、首页的 ui 操作起来不太方便，比如出站模式切换这种很久都不会改一次的设置项居然直接占据了首页一小半位置，导致首页这种黄金位置没办法快速直达我们需要的功能，比如想要抓包、管理模块、管理重写、管理脚本，就需要在几个 tab 中来回切来却去，操作起来就很别扭，远不如 loon 那样把核心功能都用小卡片的形式放在首页，都能快速进入。\n5 、http-response 类型的脚本，处理 post 请求时，没办法获取 request 里面的 body 入参，折衷的办法是改用 http-request ，在脚本里面再去使用 httpclient 发送请求，然后再处理 response 。但是在 loon 脚本里面是可以在 http-response 类型的脚本直接拿到 request.body 的，这也是部分 loon 插件转换之后无法去广告的原因之一。\n6 、loon 的节点测速支持分别显示 tcp 握手延迟和正常的测速延迟，而 surge 不支持。这一点可能大部分人觉得没用，但有的时候还是有点用的，可以判断节点对应的服务器是直接挂了还是只是被墙了。\n一点个人浅见，欢迎交流讨论，另外请轻喷",
-    "link": "https://www.v2ex.com/t/1218483#reply11",
+    "link": "https://www.v2ex.com/t/1218483#reply17",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T14:52:54.000Z"
@@ -178,10 +338,18 @@
   {
     "title": "[酷工作] [30-70 万·上海徐汇] AI 全栈/后端大牛招募，年轻团队等你加入！",
     "summary": "地点：上海徐汇区\n薪资：30-70 万/年（面议）\n学历：本科及以上。\n经验：2-5 年开发经验，至少 1 年以上 AI 应用或 Agent 开发实战经验。\n技术：精通全栈/后端开发，并能深度融合 AI 应用。\n年龄：30 岁以下（团队氛围年轻，特别优秀者可适度放宽）。\n投递邮箱： lily.chen@purogent.com",
-    "link": "https://www.v2ex.com/t/1218482#reply1",
+    "link": "https://www.v2ex.com/t/1218482#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T14:48:32.000Z"
+  },
+  {
+    "title": "Motorola effectively bricked its entire line of WiFi routers without explanation",
+    "summary": "Comments",
+    "link": "https://mashable.com/tech/motorola-wifi-routers-stop-working-motosync-plus-app-down",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 06 Jun 2026 14:43:53 +0000"
   },
   {
     "title": "Moving beyond fork() + exec()",
@@ -194,7 +362,7 @@
   {
     "title": "[DeepSeek] DeepSeek v4 pro 好像挺不错的, 我 1200 行的代码, 让他找 bug, 可以找出来并改成功.消耗 0.33 元",
     "summary": "使用了 vscode 自带的 ai 聊天工具+自定义模型,改成了 deepseek v4 pro",
-    "link": "https://www.v2ex.com/t/1218480#reply1",
+    "link": "https://www.v2ex.com/t/1218480#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T14:32:34.000Z"
@@ -210,7 +378,7 @@
   {
     "title": "[Claude Code] 4.8 之后的 claude code 好像自己思考的时候用的英文，但是和我对话和提问就是中文",
     "summary": "不知道是 bug 还是一种，新特性。",
-    "link": "https://www.v2ex.com/t/1218474#reply4",
+    "link": "https://www.v2ex.com/t/1218474#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T14:16:58.000Z"
@@ -242,39 +410,23 @@
   {
     "title": "[职场话题] 大公司的全新“内包”模式，同工不同酬",
     "summary": "大厂既要面子、又要里子，开发新思路，简单说，就是：通过子公司“内包”的方式，解决外包的问题。\n以前通过外包等方式，解决人力成本问题，随着劳动争议等问题，又当又立有点不容易了。\n近年发现不少大公司，开始通过设立新的子公司模式，招人干总公司的业务。当然，子公司人员的薪酬肯定是没的和总公司相提并论了，要裁员也不影响总公司的“面子”，这次不怕崩品牌了\n在传统产业毕竟有实体厂房的限制，这个子公司“内包”模式对于 IT 行业太适用了，感觉心思都用在怎么省人力成本上了。",
-    "link": "https://www.v2ex.com/t/1218472#reply4",
+    "link": "https://www.v2ex.com/t/1218472#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T13:54:26.000Z"
   },
   {
-    "title": "[分享发现] pdd 商家真是把我当脑残耍，能装 1l 水的杯子装不了 1l 牛奶",
+    "title": "[生活] pdd 商家真是把我当脑残耍，能装 1l 水的杯子装不了 1l 牛奶",
     "summary": "最近想要自己做酸奶，于是在 pdd 上买了杯子和酸奶机，没有一个容量对得上的，最牛的是商家，跟我说能放",
-    "link": "https://www.v2ex.com/t/1218471#reply15",
+    "link": "https://www.v2ex.com/t/1218471#reply31",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T13:52:52.000Z"
   },
   {
-    "title": "[酷工作] 不懂就问，这个价格合理？",
-    "summary": "来源是电鸭：\nhttps://eleduck.com/posts/5Bfrzn\n📌 项目概述\n为一个 OC （原创角色）社交平台开发后台管理系统，包含管理端前端+后端 API 。移动端前端已有团队在收尾，你负责的是管理后台全套。\n🛠 技术栈\n后端：Node.js + Express/Koa\n数据库：MySQL + Redis\n后台前端：Vue3 + Element Plus\n部署：Docker + Nginx\n接口文档：Swagger\n📋 开发内容（ 8 个模块）\n综合看板 — 用户统计、对话量、收入等数据概览+趋势图\n用户管理 — 用户列表/搜索/封禁/VIP 管理\nOC 角色管理 — 角色 CRUD/审核流/标签分类/批量操作\n内容审核 — 举报工单/审核队列/AI+人工双层审核/审核日志\n通知系统 — 站内信/系统通知/互动提醒/模板管理\n商城管理 — 虚拟商品 CRUD/订单管理/上下架\n支付对接 — 微信+支付宝支付接口/订单流水/对账\n系统设置 — 管理员权限/操作日志/AI Key 管理/参数配置\n⏰ 工期：45 天，分 4 个里程碑交付\n💰 报酬：¥15,000-18,000 （按里程碑分期支付）\n✅ 要求\n2 年以上 Node.js 后端开发经验\n有后台管理系统开发经验（需提供作品案例）\n熟悉 MySQL 设计、Redis 缓存、Docker 部署\n能写规范的 Swagger 接口文档\n45 天内能保证投入（每天至少 4 小时）\n有支付对接经验优先\n📋 交付物\n后台管理系统完整源码（前端+后端）\nMySQL 数据库设计及初始化脚本\nSwagger 接口文档\nDocker 部署配置\n部署及本地运行文档",
-    "link": "https://www.v2ex.com/t/1218470#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T13:30:09.000Z"
-  },
-  {
-    "title": "Trees to Flows and Back: Unifying Decision Trees and Diffusion Models",
-    "summary": "Comments",
-    "link": "https://arxiv.org/abs/2605.00414",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 12:59:59 +0000"
-  },
-  {
     "title": "[程序员] HarmonyOS App 开发, 现在用哪个 LLM 比较靠谱",
     "summary": "得写一个 HarmonyOS App , 但自己并不熟悉这个平台, 打算用 AI 搞定, app 并不复杂, 请教做这个的大佬, 哪个模型比较靠谱",
-    "link": "https://www.v2ex.com/t/1218465#reply1",
+    "link": "https://www.v2ex.com/t/1218465#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T12:59:56.000Z"
@@ -282,7 +434,7 @@
   {
     "title": "[宽带症候群] Clash IPv6 fake ip 和淘宝 88VIP 领券中心网络问题的奇怪现象",
     "summary": "背景\n家里路由器上挂了 shell Clash ，我自己（ ip16 ）用着一直没啥问题，但家人手机（ ip15 pro ）打开淘宝领券中心总是提示网络问题（其它页面正常使用），按页面中的网络检测也没有说有什么问题，另外京东付款不能切支付方式，但切换流量这两个问题都不存在。\n天天被说，我自己怎么打开都正常，百思不得其解！\n期间重装 app ，重启手机，重启路由器都不能解决。\n排查\n先测试，关掉 clash 。 正常了，说明了是 clash 问题。\n关闭可能原因 之 fake ip （其实我配了国内绕过去，这也是 shell clash 默认的配置），变成了偶尔能打开偶尔不行。\n继续思考，关闭 clash 的 ipv6 ，这下正常了。\n（当然我的手机一直正常）\n原因乱猜\n我只能怀疑 88vip 有啥骚操作了。\n给 AI 讲了后，它认为\n淘宝等 App 对 IPv6 支持很激进，默认优先走 v6 。但路由器开了 v6 代理后，流量很容易绕路或者跟运营商直连路由冲突。阿里那套安全系统只要发现你的 IPv6 轨迹不对劲，为了防刷子，连验证码都不弹，直接把你的请求丢包。\n它猜测 88VIP 属于高危风控对象，88VIP 里权益大、神券多，所以领券接口（比如 mdskip.taobao.com 这种）套的风控策略比普通账号严苛得多。再加上不同手机处理 v4/v6 切换的机制有微秒级差异，结果家人的手机就死死卡在被风控的 v6 路由黑洞里了，同时 Fake-IP 起到了放大器作用，稍有延迟，触发阿里的安全警报直接拒连。\n——\n我应该漏掉了可能纯 ipv6 问题的排查方案，可能开了 fake ip 关闭 v6 也可以。后面测了再看看",
-    "link": "https://www.v2ex.com/t/1218464#reply6",
+    "link": "https://www.v2ex.com/t/1218464#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T12:54:32.000Z"
@@ -312,17 +464,9 @@
     "pubDate": "Sat, 06 Jun 2026 12:03:21 +0000"
   },
   {
-    "title": "Mbodi AI (YC P25) Is Hiring Founding Machine Learning Engineer (Robotics)",
-    "summary": "Comments",
-    "link": "https://www.ycombinator.com/companies/mbodi-ai/jobs/WYAcNkX-founding-machine-learning-engineer",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 12:00:56 +0000"
-  },
-  {
     "title": "[程序员] 尼区 Aepple 礼品卡, 且用且珍惜",
     "summary": "🚀我靠！尼区礼品卡，且用且珍惜。\n今天上闲鱼，准备给尼区🇳🇬Claude  Pro 再充一点值，然后搜礼品卡，发现商家少了好多\n尤其额度，很多额度全都售罄了！\n小道消息 Apple 有风控，现在售卖的基本都是库存。\n尼区低价会成为历史吗？🤔",
-    "link": "https://www.v2ex.com/t/1218461#reply4",
+    "link": "https://www.v2ex.com/t/1218461#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T12:00:40.000Z"
@@ -352,14 +496,6 @@
     "pubDate": "Sat, 06 Jun 2026 19:49:12 +0800"
   },
   {
-    "title": "Google will pay SpaceX $920M per month for compute",
-    "summary": "Comments",
-    "link": "https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 11:46:15 +0000"
-  },
-  {
     "title": "[macOS] MacOS 的软件全屏后怎么设置可以移动到顶部不弹出顶部菜单栏？",
     "summary": "软件全屏时，鼠标不小心移动到顶部，就会自动弹出顶部菜单栏，很烦人，怎么设置呢？",
     "link": "https://www.v2ex.com/t/1218457#reply2",
@@ -370,7 +506,7 @@
   {
     "title": "[问与答] claude 反代，被封号，大佬们有什么反封号的措施嘛？",
     "summary": "自己搭个 sub2api ，想要用 claude 的模型，但是刚买一个账号 100 多块钱，配置上去就没过 1 个小时，就发邮件提示违规了。大佬们有什么好的措施来对抗官方的检测吗？",
-    "link": "https://www.v2ex.com/t/1218456#reply3",
+    "link": "https://www.v2ex.com/t/1218456#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T11:32:07.000Z"
@@ -410,7 +546,7 @@
   {
     "title": "[分享创造] NetProxy — Android 系统级透明代理",
     "summary": "NetProxy — Android 系统级透明代理\n基于 sing-box 内核，简单高效的 Root 透明代理方案。\n特性\nTPROXY / REDIRECT 自动检测\n图形化配置 sing-box 全部能力\n订阅管理 / 分应用代理\n热点共享支持\n内置 Zashboard 面板 + CLI 命令行\n兼容 Magisk / KernelSU / APatch\n集成 IPSET LKM 驱动\n获取方式\nGitHub： https://github.com/Fanju6/NetProxy-Magisk\nGoogle Play： https://play.google.com/store/apps/details?id=com.fanjv.netproxy\nTelegram： https://t.me/NetProxy_Magisk\n简介\nNetProxy 是一个 Android 系统级透明代理方案，基于 sing-box 内核实现。\n目标是提供开箱即用的代理能力，减少手动配置复杂度，同时保留完整可扩展性与高性能转发能力。",
-    "link": "https://www.v2ex.com/t/1218452#reply1",
+    "link": "https://www.v2ex.com/t/1218452#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T11:20:32.000Z"
@@ -434,7 +570,7 @@
   {
     "title": "[问与答] 你们的家用打印机用来打印什么？",
     "summary": "刚把大学买的打印机 L313 卖掉了,二手 392 买的,299 卖掉,倒是没亏多少钱，总共没用多少次，使用强度特别低。只是当时对于各种物品都有强烈的想要的欲望所以购买的，玩过瘾就放着吃灰了。好奇各位你们的家用打印机用来打印什么呢。",
-    "link": "https://www.v2ex.com/t/1218450#reply13",
+    "link": "https://www.v2ex.com/t/1218450#reply15",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T11:09:07.000Z"
@@ -442,7 +578,7 @@
   {
     "title": "[新手求助] 兄弟们，教我搭个中转站吧",
     "summary": "我知道使用 new-api 搭建，本地跑起来了，自用为主；但是和站内发的差距还很大，求助有经验的大佬\n1 我看他们的界面都比较好看，和我开源的不一样，这个是 fork 一份二开的，还是有模板可以直接用？\n2 现在接入 openrouter ，国内有有没有头部的中转可以直接入？\n3 还有个疑问，价格好像是通过分组控制的，比如分组 code 5 折，分组 cc 8 折，所以现在需要创建 2 个 apikey 才能分别使用 codex 和 cc ，不能使用一个 apikey 来调用 2 个模型吗？\n4 倍率怎么计算的？比如我看大家都是充值 1 元=1 刀，然后 codex 分组 2 折，是不是 1 元 对于 5 刀的额度？\n5 中转站的文档 都 长差不多，是怎么搭建的？是不是也有模板？\n6 new-api 能支持生图、生视频？我看别人家中转站也有，怎么接入的？\n目前就遇到这么多了，帮助的会铜币感谢🙏",
-    "link": "https://www.v2ex.com/t/1218448#reply10",
+    "link": "https://www.v2ex.com/t/1218448#reply14",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T11:05:24.000Z"
@@ -450,7 +586,7 @@
   {
     "title": "[玄学] 不相信灵魂转世",
     "summary": "地球上累计已经死亡 1000 多亿人了，活人才是少数。如果真有灵魂，早就有数不清的案例了，事实上就是没有\n所以大概率不存在灵魂，死了就是没了\n如果你用佛学的观点解释，那么当代佛学大部分内容都是后人加的，原始佛教没那么多东西，可以去了解一下",
-    "link": "https://www.v2ex.com/t/1218447#reply24",
+    "link": "https://www.v2ex.com/t/1218447#reply46",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T10:55:03.000Z"
@@ -458,18 +594,10 @@
   {
     "title": "[问与答] Google 登录需要注册时的手机号收验证码",
     "summary": "买的号，已经在养号了，今天再验证一看需要当时注册时候用的手机号去接验证码，这号是不是已经废了？虽然可能比谷歌直接封禁导致需要申诉的号好一些，但问题是这注册用的手机号我没有啊，是注册这号的人的。",
-    "link": "https://www.v2ex.com/t/1218446#reply3",
+    "link": "https://www.v2ex.com/t/1218446#reply4",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T10:49:15.000Z"
-  },
-  {
-    "title": "[程序员] [掺水] 无限免费 Codex 速蹬 今天再不零元购就晚了😭",
-    "summary": "这能撑过今天吗😭 oai 肯定是故意不修的\noai 歪布扣腚估计超过百分之九十了 这种 bug 我用脚都写不出来 怀疑是故意吸数据的\nteam 号多 都来免费吃✌🏻🤓  已上架 gpt55 零元购 url 找不到的不配用😡",
-    "link": "https://www.v2ex.com/t/1218444#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T10:36:42.000Z"
   },
   {
     "title": "[分享创造] 随手实现一个小需求， html code to doc",
@@ -498,7 +626,7 @@
   {
     "title": "[Apple] iPhone air 和 iPhone17 同价，都是 5000 元，你会选哪一个",
     "summary": "",
-    "link": "https://www.v2ex.com/t/1218442#reply26",
+    "link": "https://www.v2ex.com/t/1218442#reply36",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T10:16:31.000Z"
@@ -530,58 +658,10 @@
   {
     "title": "[程序员] vibe coding 提升网站审美小小心得",
     "summary": "目前 Vibe Coding 了几个小网站，毕竟不是专业的设计但 AI 的审美总感觉不太行，前不久看见一个 skill npx impeccable skills install ， 可以帮忙排版、添加交互动画、多设备适配、性能检查，功能挺多，对于网站优化还是有不少帮助，所以一直在用，但是依然提不高审美。这两天在用 gpt-image-2 的时候，突发奇想也许可以告诉 gpt-image-2 我的网站,例如 Hello Kitty 在线填色 网站的功能和主题，然后一个一个模块的让他帮我生成设计图，如果有一个满意的风格，可以使用这张图作为参考图生成其它模块，不管怎么说总体感觉还是不错的，目前没有 codex 官方账号，也许使用 codex 的调用 ai 图片的功能直接就可以完成，有实践过的网友可以说一下效果。",
-    "link": "https://www.v2ex.com/t/1218438#reply12",
+    "link": "https://www.v2ex.com/t/1218438#reply13",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-06-06T09:51:19.000Z"
-  },
-  {
-    "title": "[问与答] 给父母寻个免费无广告的小视频制作工具",
-    "summary": "各位技术佬们，给家里老人个安卓的视频制作小工具，能把拍的视频、照片整理成新的视频，能再配文字 字动画、音乐啥的，如有求推荐。\ngg 上下了些视频制作 app ，又是广告又是会员的，我看着都烦，感谢老铁们",
-    "link": "https://www.v2ex.com/t/1218437#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:48:54.000Z"
-  },
-  {
-    "title": "[Nintendo Switch] 有没有出 switch 的有氧拳击 3",
-    "summary": "有没有出 switch 的有氧拳击 3 的，收一个",
-    "link": "https://www.v2ex.com/t/1218435#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:45:42.000Z"
-  },
-  {
-    "title": "[分享创造] 做了一个可以用 Apple Watch 翻页的 iPhone / iPad 电子书阅读器，刚过审",
-    "summary": "分享一个自己做的小 App：PagePilot 。\n它是 iOS 上的本地电子书阅读器，支持 EPUB/PDF/CBZ 、WiFi 传书、iPhone/iPad 设备间传书。比较特殊的是支持 Apple Watch 翻页：iPhone/iPad 上打开书，手表上点按钮或转 Digital Crown ，可以翻上一页/下一页。\n我想解决的场景比较窄：躺着看书、iPad 架在桌上、高铁小桌板、健身房这种不想一直伸手点屏幕的阅读姿势。\n隐私上没有云端书架，书和阅读数据都在本地。Pro 主要是无限导入、进阶阅读统计、iPad + Watch 翻页等。\n刚通过 App Store 审核，想找真实会用这个场景的人试一下。\n官网： https://doublewater777.github.io/PagePilot/\nApp Store: https://apps.apple.com/app/pagepilot/id6760964443",
-    "link": "https://www.v2ex.com/t/1218434#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:42:58.000Z"
-  },
-  {
-    "title": "[加密货币] 能不能越过 safepal 直接给 fiat24 充值？",
-    "summary": "目前是先从外面给 safepal 充值，然后再用 safepao 给 fiat24 充值\n感觉两次挺麻烦的还浪费手续费\n是不是可以直接从外面给 fiat24 充值？怎么获得充值地址呢？",
-    "link": "https://www.v2ex.com/t/1218433#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:33:59.000Z"
-  },
-  {
-    "title": "[推广] 推广一下自己的 AI 中转站， GPT 倍率 0.04， 1 元=25 刀， image2 生图 4K 0.06 元，注册进群即送",
-    "summary": "注册进群即送 0.5 元体验额度\nhttps://ainb.plus",
-    "link": "https://www.v2ex.com/t/1218432#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:33:49.000Z"
-  },
-  {
-    "title": "[OpenAI] OpenAI 的封号补偿来了",
-    "summary": "解封以后，免费续一个月的原套餐。\n哪怕是 pro ，补偿一个月。。\n从庆幸没被封，变成了恨自己赶不上。",
-    "link": "https://www.v2ex.com/t/1218431#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:33:30.000Z"
   },
   {
     "title": "当AI成“棋王父亲”，人类驾驶会沦为“3岁棋手”的奢侈游戏吗？ - patton88",
@@ -590,14 +670,6 @@
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-06-06T09:29:00.000Z"
-  },
-  {
-    "title": "[华为] 鸿蒙版的 APTV，我开发的 HMTV 上架啦！",
-    "summary": "HMTV 是一款高颜值的鸿蒙全平台 IPTV M3U 播放器，支持直播源实时预览、频道收藏、多源配置和云存储同步，让追剧、体育和新闻直播更容易找到、更顺手播放。\n目前支持两种内核，AVPlayer 和 IJKPlayer\n截图\n\n\n官网\nhttps://hmtv.xiaobingkj.com/\n直达链接\nhttps://appgallery.huawei.com/app/detail?id=com.xiaobingkj.hmtv&channelId=SHARE&source=appshare\n其实我知道，这东西最重要的是源，同时我也知道，这东西只可意会不可言传",
-    "link": "https://www.v2ex.com/t/1218430#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-06-06T09:25:25.000Z"
   },
   {
     "title": "Next.js 16.2 发布：开发提速 4 倍、渲染性能优化，新增深度适配 AI 智能体的开发工具",
@@ -638,14 +710,6 @@
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-06-06T06:10:00.000Z"
-  },
-  {
-    "title": "S&P 500 rejects SpaceX, also blocking entry for OpenAI and Anthropic",
-    "summary": "Comments",
-    "link": "https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 06 Jun 2026 04:38:36 +0000"
   },
   {
     "title": "15天学会AI应用开发（四）根据Token长度截断历史对话 - aqi00",
@@ -3131,70 +3195,6 @@
     "title": "Whose Alignment? Comparing LLM Process Alignment Across Diverse Organizational Decision Contexts",
     "summary": "arXiv:2605.25256v2 Announce Type: replace \nAbstract: Steerable pluralism requires a model to faithfully represent one specified perspective. Organizations are a natural setting for this demand, since they deploy LLMs to make decisions that must reflect their own policy. Yet, most existing work fixes that perspective at the level of individuals or demographic groups. We rely on a decision-policy capturing method to measure process alignment in organizational settings, assessing whether an LLM faithfully reproduces the organization's decision policy rather than merely reaching the same conclusions. We find heterogeneity along two axes. Across models, baseline alignment varies strongly and tracks neither pricing nor general benchmark performance. Across organizations, the structure of alignment changes. In ECHR Article 6 decisions, process alignment predicts output accuracy ($r = 0.85$, $p < .001$), and making the organization's past decision policy explicit improves poorly aligned models. In consumer credit decisions, process alignment is low overall but varies more than output accuracy, and the models resist adopting the organization's weighting of protected attributes. Because historical credit decisions encode potentially discriminatory patterns, higher alignment there is not always desirable. Process-level measurement is therefore necessary, and depending on whether the target policy is normatively desirable, the same procedure can calibrate or audit a model. Deciding which policy to align to, and whether higher alignment is feasible or desirable, makes organizational alignment a pluralistic problem in its own right.",
     "link": "https://arxiv.org/abs/2605.25256",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "PortBench: A Correlation-Aware, Full-Pipeline Benchmark for LLM-Driven Portfolio Management",
-    "summary": "arXiv:2605.27887v2 Announce Type: replace \nAbstract: Large language models (LLMs) have shown strong performance across diverse financial tasks, yet portfolio management (PM), a critical financial decision-making task, remains poorly benchmarked. Existing benchmarks exhibit two main gaps: they ignore cross-asset correlation structures, thereby failing to distinguish genuinely diversified portfolios from concentrated ones, and fail to evaluate the complete PM decision pipeline in real-world scenarios. We introduce PortBench, a benchmark spanning six heterogeneous asset classes over ten years. PortBench consists of two complementary layers: a static QA dataset of 6,269 correlation-based questions across seven task templates, and a dynamic five-stage allocation pipeline that mirrors the full PM decision cycle. To evaluate these layers, we introduce two dedicated metrics: a dual-layer correlation score that measures whether proposed portfolios exploit inter-class hedging and avoid intra-class concentration, and CEPS, a metric that quantifies how reasoning errors compound across pipeline stages. We further assess strategy robustness and investor alignment under three historical stress regimes and risk profiles. Evaluating ten frontier LLMs, we find that despite strong performance on static financial QA, 90\\% of model-profile combinations fail to outperform a basic equal-weight allocation, and models that satisfy every procedural constraint still suffer catastrophic drawdowns under stress. Our source code is available at \\href{https://github.com/AgenticFinLab/portbench}{this https URL}.",
-    "link": "https://arxiv.org/abs/2605.27887",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "MUSE: Benchmarking Manufacturable, Functional, and Assemblable Text-to-CAD Generation",
-    "summary": "arXiv:2605.28579v2 Announce Type: replace \nAbstract: Large language models (LLMs) have recently advanced text-driven 3D generation, yet Text-to-CAD remains far from supporting industrial product design. Existing benchmarks focus primarily on generating single-part CAD models and evaluate them using geometric similarity metrics that fail to capture functionality, manufacturability, and assemblability. To address this gap, we introduce MUSE, a Text-to-CAD benchmark focused on complex, editable boundary representation (B-Rep) assemblies. MUSE pairs practical design instances with structured Design Specifications and evaluates generated models through a three-stage protocol: code check, geometric check, and design-intent alignment. The final stage uses design-specific rubrics to assess functionality, manufacturability, and assemblability, moving beyond shape matching toward practical design quality. To enable scalable evaluation, we use a rubric-based visual language model (VLM) judge and validate its reliability through human annotation. Experiments on closed-source and open-source LLMs reveal a clear failure cascade from executable code to valid geometry and finally to engineering-ready design, with even the strongest models achieving limited success on fine-grained engineering criteria. Together, MUSE provides a realistic benchmark and evaluation framework for advancing Text-to-CAD from geometric generation toward true engineering design. Our project website, including the leaderboard, dataset, and code, is available at https://dong7313.github.io/muse-benchmark/.",
-    "link": "https://arxiv.org/abs/2605.28579",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Generating Graph-Like Logical Rules for Knowledge Graph Reasoning via Diffusion Models",
-    "summary": "arXiv:2605.30747v2 Announce Type: replace \nAbstract: Logical rules constitute a cornerstone of knowledge graph (KG) reasoning, valued for their interpretability and ability to model relational patterns. However, existing rule mining methods predominantly focus on simple chain-like rules and therefore neglect the richer relational information encoded in graph-like structures, such as cycles and branches. This limitation is further exacerbated by computational bottlenecks caused by the combinatorial explosion of the search space, which is especially challenging for graph-like rules. Meanwhile, generative approaches such as diffusion models, despite their success in other domains, cannot be directly applied to rule mining because their training objectives are not aligned with the goal of learning high-quality rules, and non-differentiable KG rule quality metrics cannot directly guide model optimization. To address these limitations, we propose GRiD, a framework that reformulates graph-like rule discovery as a discrete generative process conditioned on the target relation. GRiD employs a two-phase training strategy. First, supervised pre-training enables GRiD to capture structural priors from subgraphs sampled from the KG meta-graph. Subsequently, reinforcement learning is applied to fine-tune GRiD through policy gradient optimization guided directly by non-differentiable rule-quality metrics. Experiments on six benchmark datasets show that GRiD achieves competitive performance on KG completion tasks. Ablation studies confirm the efficiency and robustness of GRiD and further show that graph-like rules complement chain-like rules in KG completion. Our code and datasets are available in https://github.com/Haoxiang-Cheng/GRiD.",
-    "link": "https://arxiv.org/abs/2605.30747",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Industrializing Prediction-Powered Inference: The GLIDE Library for Reliable GenAI and Agentic Systems Evaluation",
-    "summary": "arXiv:2605.31278v2 Announce Type: replace \nAbstract: Reliable evaluation of agentic systems requires unbiased estimates with valid uncertainty, but standard practice navigates between costly human annotation and biased LLM-as-judge proxies. Prediction-powered inference (PPI) combines both into debiased estimates with valid confidence intervals, yet its various methods remain scattered across papers under partial implementations. We introduce GLIDE, an open-source Python library that unifies state-of-the-art PPI estimators (PPI++, Stratified PPI, Predict-Then-Debias and its stratified variants, Active Statistical Inference) and samplers (uniform, stratified, active, cost-optimal) under a scipy-style API specialized to mean estimation. GLIDE ships with a reproducible Monte Carlo validation suite, an empirically grounded decision tree for method selection, and an agentic evaluation case study showing substantial annotation savings at equivalent precision. The GLIDE package is available at this URL: https://github.com/EmertonData/glide",
-    "link": "https://arxiv.org/abs/2605.31278",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "ForeSci: Evaluating LLM Agents for Forward-Looking AI Research Judgment",
-    "summary": "arXiv:2606.00644v2 Announce Type: replace \nAbstract: AI research often requires decisions before future evidence exists: which bottleneck to attack, which direction to pursue, or where a project should be positioned. We introduce ForeSci, a temporally controlled benchmark for evaluating whether LLM agents can make such forward-looking research judgements from historical evidence. ForeSci contains 500 tasks across four fast-moving AI domains and four decision families. Each task is paired with a cutoff-aligned offline knowledge base; post-cutoff papers are hidden during generation and used only for validation. To avoid random future-event prediction, tasks are derived from pre-cutoff taxonomy branches and evidence signals, and answer-generation backbones are selected to precede the task cutoffs. We evaluate native LLMs, Hybrid RAG, and three research-agent adaptations across four backbones. Results show that explicit evidence organization improves traceability and factual support, but gains depend strongly on the decision family. Diagnostics reveal a recurring evidence-decision decoupling: agents may cite relevant evidence while forecasting the wrong research object. ForeSci turns forward-looking AI research judgement into a controlled benchmark for evaluating research agents as decision-making systems.",
-    "link": "https://arxiv.org/abs/2606.00644",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Community-Aware Assessment of Social Textual Engagement and Resonance: A Human-Centric Perspective on User-Generated Content Evaluation",
-    "summary": "arXiv:2606.01897v3 Announce Type: replace \nAbstract: Traditional Video Quality Assessment (VQA) focuses narrowly on aesthetic fidelity, overlooking the complex social dynamics that define quality in User-Generated Content (UGC). In this work, we propose a paradigm shift from signal-centric metrics to human-centric resonance assessment. We introduce CASTER (Community-Aware Assessment of Social Textual Engagement and Resonance), a new task that evaluates whether a UGC item achieves positive community resonance based on its multimodal attributes rather than visual quality alone. To address this, we present MEDEA (Multimodal Engagement-Driven Evaluation Architecture), which introduces a novel Social Chain-of-Thought (Social-CoT) mechanism. Unlike traditional logical CoT, Social-CoT performs multimodal perspective-taking, instantiating diverse viewer personas to simulate collective cognitive and emotional reactions (i.e., the \"community mind\") before deriving a quality judgment. MEDEA is trained via a two-stage approach involving supervised fine-tuning and process-supervised reinforcement learning with Social Alignment Reward to ensure reasoning paths are grounded in authentic human social cognition. To support this task, we release CASTER-Bench, a comprehensive human-annotated benchmark covering diverse UGC categories. Experiments demonstrate that MEDEA significantly outperforms state-of-the-art baselines on CASTER-Bench while providing interpretable and empathetic reasoning paths that align with real community feedback.",
-    "link": "https://arxiv.org/abs/2606.01897",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Toward Pre-Deployment Assurance for Enterprise AI Agents: Ontology-Grounded Simulation and Trust Certification",
-    "summary": "arXiv:2606.04037v2 Announce Type: replace \nAbstract: Pre-deployment verification of enterprise artificial intelligence (AI) agents remains a critical gap between large language model (LLM) capability benchmarking and production deployment. Post-deployment monitoring, human-in-the-loop controls, and prompt-level guardrails offer limited assurance once an agent is operating in production. We present an ontology-grounded verification framework -- to our knowledge the first to combine three components: an Agent Operational Envelope formalizing the certification space across permissions, domain constraints, safety properties, governance rules, and autonomy levels; an ontology-to-scenario generation pipeline that derives regulatory, operational, and adversarial test scenarios automatically; and a machine-verifiable Trust Certificate with graduated deployment verdicts. A controlled pilot across four regulated industries (Fintech, Banking, Insurance, Healthcare), instantiated as five industry-by-regulatory-regime cells across the United States and Vietnam (where Vietnam's 2025 AI Law makes such verification legally mandated for financial services), generated 1,800 scenarios evaluated against 125 primary-source regulatory requirements and 25 injected faults. Ontology-grounded generation significantly outperformed the dominant persona-based baseline on regulatory coverage (48.3% versus 33.1%; corrected p_c = .0006) and attained the highest domain specificity (4.77/5.0; p = 2e-6); transparently, its advantage over plain and retrieval-augmented prompting did not survive Bonferroni correction. Cross-validation across three LLM families (Claude Sonnet 4, Qwen 2.5 72B, Gemma 4 26B; 5,400 total scenarios) replicated the persona-versus-ontology pattern. The framework offers a reproducible, regulation-grounded route to pre-deployment assurance for enterprise AI agents, complementing runtime governance with an auditable deployment gate.",
-    "link": "https://arxiv.org/abs/2606.04037",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Knowledge Index of Noah's Ark",
-    "summary": "arXiv:2606.05104v2 Announce Type: replace \nAbstract: Knowledge benchmarks for LLMs face three issues: scaling-driven designs that do not operationalize disciplinary representativeness; flat-payment annotation that permits lazy consensus; and unaudited ranking instability under bounded test budgets. We introduce KINA, an 899-item benchmark across 261 fine-grained disciplines, with two formal results. First, we cast representativeness as a coverage-style objective over expert-elicited anchors and operationalize disciplinary representativeness through a proxy, yielding a (1-1/e) greedy approximation (Proposition 1); the guarantee applies to the proxy, not to population representativeness. Second, we prove a bonus-on-bar tournament weakly FOSD-dominates flat payment in released-review quality, with incentive-compatibility threshold B > Delta C / Delta p_min (Theorem 1). Evaluating 42 models from 13 labs, the top model, Gemini-3.1-Pro-Preview, reaches 53.17%, followed by Claude-Opus-4.6 at 49.92% and GPT-5.4 at 48.55%, leaving substantial headroom below saturation. The full leaderboard shows a tiered structure rather than a smooth total order: a small frontier tier lies above 48%, a dense strong-model tier spans roughly 38-45%, and low-performing models remain only modestly above the 10% chance baseline. Tool augmentation adds up to 5.17 points across the five tool-use evaluations, with gains varying substantially across models. We report bootstrap ranking-stability statistics to make bounded-budget variance explicit and to discourage over-interpretation of adjacent ranks.",
-    "link": "https://arxiv.org/abs/2606.05104",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Sat, 06 Jun 2026 00:00:00 -0400"
