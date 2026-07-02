@@ -8,6 +8,30 @@
     "pubDate": "Thu, 02 Jul 2026 19:43:06 GMT"
   },
   {
+    "title": "Improving machine-translated novels via style transfer — looking for advice on the faithfulness/fluency tradeoff [P]",
+    "summary": "Hey all.\n I recently started working on a project to improve machine-translated webnovels via style transfer. The basic idea is to take the clunky translated prose and rewrite it to something that reads like it was written by a professional author, while remaining as faithful as possible to the original text.\n The source material is mostly amateur/MTL output full of direct sentence structure translations carried over from Chinese, awkward honorifics, over-translated idioms, that kind of thing. The goal isn't retranslation from the source but a cleanup of the English output.\n The tricky part is I have no clean data pair for supervised approaches.\n I've been looking at a few directions:\n  \nSTRAP (Krishna et al., EMNLP 2020) — reframe as paraphrase generation, create pseudo-parallel pairs automatically, fine-tune a style-specific inverse model. Seems like the cleanest unsupervised framing. Unfortunately, it focuses on the sentence level, and I need a way to maintain context over thousands of pages\n Translating away Translationese (Jalota et al., EMNLP 2023) — directly targets the \"sounds like a translation\" problem with a self-supervised + LM fluency + semantic similarity loss setup.\n Fine-tuning on target-style prose — collect high-quality English novels, fine-tune a small LLM to rewrite in that register. \n Just use a local LLM — run a local LLM and provide it with guidelines on what to rewrite and leave the same. No fine-tuning or anything needed, just hoping the transformer can handle it. \n  \nA few things I'm stuck on:\n  \nIs the faithfulness/fluency tradeoff actually manageable at the sentence level, or do I need paragraph-level context or more to preserve narrative coherence?\n How do people handle domain-specific terms like termonlify and catchphrase-type things that need to survive the rewrite unchanged? Hard constraints during decoding, or just hope the model learns to leave them alone?\n  \nHappy to hear about similar projects, relevant papers I might have missed, or just general lessons from working in this space. Thanks.\n    submitted by    /u/Divine_Invictus  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulrdw9/improving_machinetranslated_novels_via_style/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T19:04:50.000Z"
+  },
+  {
+    "title": "Klara and the Sun Essay Contest – $1k Prize – AI Use Allowed",
+    "summary": "Comments",
+    "link": "https://willpenman.com/klara/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 18:48:58 +0000"
+  },
+  {
+    "title": "Exapunks",
+    "summary": "Comments",
+    "link": "https://www.zachtronics.com/exapunks/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 18:41:19 +0000"
+  },
+  {
     "title": "用户太蠢不配用 Fable？被Anthropic的回应气笑了：最贵的模型，最憋屈的体验",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/HDE9Hoe3RVyNlX3CCGzV?utm_source=rss&utm_medium=article",
@@ -40,12 +64,68 @@
     "pubDate": "Thu, 02 Jul 2026 17:18:00 GMT"
   },
   {
+    "title": "How papers are selected for Best Paper, Oral, or Highlight presentation at major ML/CV conferences such as CVPR, ICCV, ECCV, NeurIPS, and ICLR? [D]",
+    "summary": "From what I understand, reviewers usually do not directly vote for these categories or nominate papers themselves. So how does the selection process typically work?\n Here are specific questions I wonder \n - Who actually selects the candidates: ACs, SACs, program chairs, award committees, or a separate committee?\n - Do ACs or committees read the camera-ready version, or is the decision based on the originally submitted/reviewed version? \n - Is the selection mostly based on reviewer scores, or do factors like novelty, impact, and discussion among ACs play a bigger role?\n    submitted by    /u/National-Resident244  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulnstb/how_papers_are_selected_for_best_paper_oral_or/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T16:55:53.000Z"
+  },
+  {
+    "title": "[分享发现] 我感觉 Codex 的编码能力还没有到足够强大的地步",
+    "summary": "今天发现了一个图片浏览器开源项目 PicView（ C#写的） ，使用体验不错，就是缩放和拖动高分辨率图片时有些卡顿，于是心血来潮想着能不能让 Codex 针对这个问题优化一番（使用 5.5 xhigh ），不改不要紧，一改就出大问题，第一版直接打不开任何图片，我就这么看着 Codex 磨了差不多1 个小时，又是改代码又是跑测试用例又是截屏的，终于把最基本的问题解决了，但是高分辨率图片卡顿问题并没有改善，反而在拖动时会出现色调变化。接着又改第二版，这回色调变化的现象没有了，但是卡顿问题依然没有任何改善，遂放弃。\n我用 Codex 也好几个月了，给我的感觉就是这玩意搞搞常见的、不那么复杂的业务需求还不错，一旦遇到复杂问题，其表现只能用“诡异”来形容，耗费大量时间和 token ，绕了个大弯最后就是不解决问题。比如上面的例子，Codex 针对卡顿问题进行修改结果引入了无法打开任何图片的 P0 级问题，还得花 1 个小时才完成修复（原本代码是正常的，我也不知道 Codex 到底怎么改出问题的），真的让我有点绷不住..",
+    "link": "https://www.v2ex.com/t/1224634#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T16:52:38.000Z"
+  },
+  {
+    "title": "BMVC 2026 Review Discussion Thread [D]",
+    "summary": "BMVC reviews will be out tomorrow. Making this parent thread for discussion. All the best everyone!\n    submitted by    /u/Hot_Version_6403  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulnp4d/bmvc_2026_review_discussion_thread_d/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T16:52:04.000Z"
+  },
+  {
+    "title": "Has anyone tried this approach with Fast Byte Latent Transformers ? [R]",
+    "summary": "Paper Referred:- https://arxiv.org/pdf/2412.09871v1\n Has anyone switched the transformer in the entropy model here to a Mamba model ? What could be the possible changes ?\n Just a ML fresher asking a genuine, since Mamba is more popular and saves computer (O(n)). \n Thanking you in advance !\n    submitted by    /u/SoloLeveller07  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulngy8/has_anyone_tried_this_approach_with_fast_byte/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T16:43:33.000Z"
+  },
+  {
+    "title": "[分享创造] [macOS/开源] 会话散在 ~/.claude 和 ~/.codex 里找不到？我写了个统一浏览搜索 + 一键 resume 的工具",
+    "summary": "不知道大家有没有这两个问题，反正我有：\n一是会话找不回。想接着上周某个 session 继续干活，官方 /resume 列表就最近几条，\n翻不到。想搜\"上次修证书路径是在哪个会话里聊的\"，没有搜索功能，等于没有。\n二是项目找不回。vibe coding 一时爽，几个月下来一时兴起开的项目散了一地，\n有些连目录在哪都想不起来了。agent 的会话记录其实忠实记着你在每个目录干过什么，\n但没有工具把它捞出来看。\n所以写了 VibeTrail ，把 Claude Code / Codex / Antigravity 三家的本地会话\n读出来做成统一入口：\n\n项目总览：按工作目录聚合所有跑过 agent 的项目，最近干了什么一眼扫完。\n我自己打开第一屏就找回了两个彻底遗忘的项目\n全文搜索：跨所有 agent 、所有项目搜正文，也可以限定单个项目搜。\n命中直接跳进会话定位到那条消息。搜索引擎是把 ripgrep 的 crate 链进来的，\n不用装 rg\n一键 resume：点一下，终端打开、cd 到项目目录、跑 claude --resume 或\ncodex resume，回到当时的上下文。Terminal / iTerm2 / Ghostty / Warp 都支持\n其它：续会话和 subagent 线程自动折叠归组、正文 markdown 渲染、token 统计、\nCLI 带 --json 方便接脚本\n技术上是 Rust + Tauri 。没有数据库没有索引没有常驻进程，每次都直接读文件。\n本机 2 万个 session （ 3.4G ）实测：打开会话 0.06s ，搜索和 rg 本尊一个速度。\n对 agent 目录严格只读。\nGitHub: https://github.com/mahui/vibe-trail （ Apache-2.0 ，dmg 已签名公证）\nProvider 协议是开放的，想接别的 agent 就是实现一个 trait 加几个测试的事，\n欢迎 PR ，也欢迎吐槽。",
+    "link": "https://www.v2ex.com/t/1224632#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T16:24:43.000Z"
+  },
+  {
+    "title": "Books/Resources to improve mathematical foundations for ML research [D]",
+    "summary": "I am a mid to late stage PhD student in ML. I've known this before, but only recently I started feeling this urgently: my mathematical foundations are shaky, because I kept \"learning-things-as-I-go\" when working on various problems. I likely have only a year or two left until I graduate, and before I do so, I want to really dedicate some time and focus to brush up on the fundamentals.\n Primarily, I want to improve my knowledge in Linear Algebra, Probability Theory, and Functional Analysis.\n For Lin. alg., I am looking at \"Linear Algebra done right\", and I think this book is sufficient for the topic, unless anyone thinks otherwise.\n I am not sure where to start for probability, as well as functional analysis. Rudin's books give me headaches. I instead started reading \"A primer on RKHS\" (https://arxiv.org/abs/1408.0952) to \"dip my toe\" into functional analysis.\n Apart from the above, I might re-read PRML book (I've only read specific chapters before), and try to finish Pat Kidger's Just-Know-Stuff list (https://kidger.site/thoughts/just-know-stuff).\n Thoughts? Anyone have any book/resource recommendations? Someone told me to look into \"the bright side of mathematics\" on YouTube, anyone ever go through the videos there?\n I'm aware finding good, digestible resources is less than 10% of the challenge. The difficult part is sticking through and actually reading/working through these topics, while still juggling other academic responsibilities.\n    submitted by    /u/mvreich  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulmy9g/booksresources_to_improve_mathematical/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T16:24:23.000Z"
+  },
+  {
     "title": "行业智能体时代来临：出行、货运率先破局",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/k8tlXTTbFmTGOLojQVZB?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Thu, 02 Jul 2026 16:21:51 GMT"
+  },
+  {
+    "title": "[Android] 有没有支持下行 PD/PPS 供电+数据的扩展坞/HUB？方便不掉电 adb 的",
+    "summary": "有点好奇，现在手机功耗越来越高，dalao 们都用的什么方案调试真机的？\n目前现状是有数台 Android 真姬（一加、米 17U 之类的），USB 直连 PC 的话好像 adb 最友好（但是有些特定任务会掉电，毕竟五福零点五安）\n无线调试总有各种原因导致的断连，可能是 WiFi 省电，设备重启，莫名其妙 adbd 退出，怀疑和 Hyper*S 本身也有关系（即使刷了模块自启）\n现在是用带网口的 type-c 扩展坞接手机，然后网线连到交换，termux 或模块去启动 5555/adbd ，但有时候熄屏或做需要重启的测试还是会有小概率失联，需要人工去介入（可能主要原因是扩展坞网口供电逻辑之类的吧，要重新上电）\n遂疑惑，有没有支持给多台手机下行供电的扩展坞/USB HUB （功率支持 PD/PPS 协商那些）同时上行支持连接 PC 数据，看好像市面上至多都是并联外置，只保 5V2A 的。",
+    "link": "https://www.v2ex.com/t/1224631#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T16:01:15.000Z"
   },
   {
     "title": "如何利用 AI Agent 实现热补丁的自动化生成",
@@ -56,12 +136,92 @@
     "pubDate": "Thu, 02 Jul 2026 16:00:00 GMT"
   },
   {
+    "title": "[推广] 大模型渡劫交流(claude codex 等等模型)-封号交流心得",
+    "summary": "最近好多佬讨论 claude code/gpt 封号,欢迎一起交流心得\n我们聊点啥？一切关于 AI 模型（ GPT, Claude, Gemini, DeepSeek 等）的话题我们都欢迎\n\n备注 V2EX 大模型渡劫",
+    "link": "https://www.v2ex.com/t/1224629#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:52:14.000Z"
+  },
+  {
+    "title": "[问与答] 字节跳动日常实习面试会问什么？",
+    "summary": "本人现在大二，专业是计算机科学与技术，这个暑假打算实习，遂投简历到字节跳动。\n前两天收到面试邀约，C++客户端开发岗。\n我之前从来没有实习过，想问问各位前辈，面试通常会问些什么呢？\n（现在很慌，因为平时做项目和科研时高度依赖 AI ，如果面试官问我一些技术细节问题（比如 electron 几种 ipc 的区别，这种语法细节问题），答不出来会不会很尴尬 555 ）",
+    "link": "https://www.v2ex.com/t/1224628#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:40:10.000Z"
+  },
+  {
+    "title": "[远程工作] 招聘： NodeJs 远程后端开发 10 位+Vue 远程前端开发 6 位+AI 数据分析师一位",
+    "summary": "[岗位职责/后端] 1：基于 Node.js （ NestJS / Express / Koa 等） 的接口与服务开发 2. 参与整体系统架构设计与技术选型，持续优化系统性能与稳定性 3. 对接并维护金流相关模块，主要涉及 数字资产 / 区块链相关的支付与结算逻辑 4. 与产品、运营团队协作，推动需求落地与版本迭代 5. （加分项）带领或指导初中级工程师，参与代码 Review 与技术规范制定\n[岗位职责/前端] 1：用户前端页面的制作，动画效果流畅性优化。2：管理后台制作，前端数据展示。3：和后端协作，处理 api 通信和返回数据展示\n[岗位职责/AI 数据分析师] 1：开发 AI 相关的分析系统 ，做数据分析型的 AI ，搭建自动化测试的 AI ，自动汇报，自动警报等（此岗位需要有实际的 AI 分析系统实战项目经验）\n⸻\n[任职要求]\n3 年以上 Web 开发经验（能力优先，年龄不限）\n扎实的前端/后端能力 • 熟练使用 Node.js ，具备服务端开发经验\n熟悉 RESTful API 设计，了解高并发与异步处理模型\n具备良好的代码规范意识与系统性思维\n有以下经验者优先： • 博彩 / 区块链 / 虚拟货币 / Web3 / 数字资产相关项目经验 • 有技术负责人 / 小团队管理经验\n⸻ [加分项（非硬性）] • 熟悉常见公链生态（如 BTC / ETH / TRON / SOL 等） • 了解链上充值、提现、归集、风控等业务流程 • 有高可用系统、资金安全、风控逻辑相关经验\n⸻\n[薪资待遇] • 15K – 20K / 月 • 具备管理经验或综合能力突出者，可放宽， 薪资可根据能力与经验具体沟通\n其他工作信息：公司是马来西亚的一家技术开发公司，这份工作的周期在 5 ～ 10 年左右,所以适合对稳定性要求比较高的同学。所有岗位均为远程居家办公。\n有兴趣请发送简历到邮箱： misayaxu@gmail.com (工作内容涉及到一些区块链，博彩相关的擦边业务，不介意的朋友们再发)",
+    "link": "https://www.v2ex.com/t/1224627#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:35:42.000Z"
+  },
+  {
+    "title": "[推广] 谷歌云 GCP7 折 亚马逊云 AWS7 折 腾讯云国际 65 折 阿里云国际 7 折 华为云国际 7 折",
+    "summary": "阿里云 7 折 腾讯云 7 折 华为云 7 折\n阿里 CDN 4000U/P 腾讯 CDN 4000U/P 火山 CDN 4000U/P\n谷歌云 GCP7 折 亚马逊云 AWS7 折\n腾讯云国际 65 折 阿里云国际 7 折 华为云国际 7 折\nAWS 全球节点 CDN 加速 1 折 3500 刀/P Ai 模型低至 2 折 火山国际 7 折\nTG 详聊：@Tiangua7",
+    "link": "https://www.v2ex.com/t/1224626#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:32:33.000Z"
+  },
+  {
+    "title": "[程序员] 分享一个自用的专门针对飞书消息渠道展示优化后的 Hermes Agent",
+    "summary": "我最近一段时间在用 Hermes 基于自部署的 Miniflux 设置一些定时任务\n每日日报,基于我订阅的 RSS,自动总结新闻,并基于我正在研究的东西,总结出对我有用的信息\n社区动态.基于订阅的 X 、V2EX 等动态,每 4 小时定时推送给我\n播客日报,播客更新后,语音通过豆包模型语音转文本后,生成总结推送给我\n基于我的 AI 优先的 Obsidain 笔记库记录一些想法和沉淀笔记\n而 Hermes 的飞书消息渠道的展示和一些功能我不是很想要,特别是消息展示非常丑,而飞书的 Cardkit 就舒服很多.\n具体示例可看博客最后的展示用 fork 接管 Hermes 更新\n我之前尝试提 PR 到 Hermes 官方,但官方标记的优先级比较低,直到现在所有飞书相关的 Cardkit 优化的 PR 都未能成功被合并\n自己改自己用\n所以我就暂时自己改自己用\n因为 Hermes 的更新策略比 OpenClaw 简单很多,他是基于 main 分支拉取最新代码\n所以只需要将部署 Hermes 的机器上的源码的 Git origin 设置为自己的.\n后续每次运行 hermes update 就会拉取 fork 分支,当然如果直接改,可能还有个小提示,需要一点额外设置\n具体可看用 fork 接管 Hermes 更新\n私人工作流文档的管理\n后续每次更新本地代码后,然后再根据这篇博客给 Vibe Coding 中间文档找一个合适的位置的设置,将开发工作流和更新流程写到项目私人文档.\n这样可以:\n减少污染官方代码的同时让自己的文档不会被 AI Agent 提交到仓库\n最大程度减少合并 upstream 时减少冲突\n自定义的工作流还可以让 AI Agent 分析官方更新了什么,对自己有用的更新再更新到服务器\n更新后线上遇到问题,可以非常方便回退到某次 merge 记录前\n如果你也有类似的 Hermes 的使用场景,可以一起交流一下",
+    "link": "https://www.v2ex.com/t/1224625#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:27:47.000Z"
+  },
+  {
+    "title": "Since Linux 6.9, LUKS suspend stopped wiping disk-encryption keys from memory",
+    "summary": "Comments",
+    "link": "https://mathstodon.xyz/@iblech/116769502749142438",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 15:25:16 +0000"
+  },
+  {
+    "title": "Java Swing 图形用户界面实验 —— 从算术练习到游戏开发的完整实践 - MalouP",
+    "summary": "【摘要】本文记录了 Java Swing 实验的完整实践过程，涵盖三个项目：小学生算术练习系统、扫雷游戏、星际射击游戏。文章从架构设计、完整代码到技术难点进行系统梳理，旨在为 Java GUI 初学者提供一份可复现、可扩展的参考案例。 阅读全文",
+    "link": "https://www.cnblogs.com/mhpblog/p/21057951/java-swing-gui-arithmetic-minesweeper-shooting",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-07-02T15:23:00.000Z"
+  },
+  {
+    "title": "[宽带症候群] 请问现在北京联通的宽带，签了 2 年合约，有什么低成本注销或者其它停用方案呢",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1224623#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T15:15:56.000Z"
+  },
+  {
     "title": "从龙蜥孵化到上游贡献：SGLang Tracing 与 AI Agent 调优实践",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/o5BOhliYRHIe4ZZPrHY9?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Thu, 02 Jul 2026 15:12:15 GMT"
+  },
+  {
+    "title": "Launch HN: Manufact (YC S25) – MCP Cloud",
+    "summary": "Comments",
+    "link": "https://manufact.com",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 15:11:20 +0000"
+  },
+  {
+    "title": "Spain Orders Blacklist of Palantir from Public and Private Companies",
+    "summary": "Comments",
+    "link": "https://clashreport.com/world/articles/spain-orders-blacklist-of-us-tech-giant-palantir-from-public-and-private-companies-fsnc2z17gjv",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 15:02:26 +0000"
   },
   {
     "title": "GitLab 调研：AI 工具仅加快编码，整体软件交付效率并未提升",
@@ -72,20 +232,156 @@
     "pubDate": "Thu, 02 Jul 2026 15:00:00 GMT"
   },
   {
+    "title": "[优惠信息] 网易云音乐 2026.07，需要自取",
+    "summary": "1http:/$zuaInu2d3dff1b$ [復淛整段文案并咑閞「网易云音乐」，领免费会员]  黑胶邀请官 w***l 送你网易云音乐 7 月黑胶会员卡，领取享 20+会员权益。https://163cn.tv/bac59cId",
+    "link": "https://www.v2ex.com/t/1224622#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T14:58:18.000Z"
+  },
+  {
+    "title": "手把手本地部署Codex - 4io",
+    "summary": "【摘要】1.安装nodejs 下载链接：https://nodejs.org/en/download 版本需要大于18 版本信息，如果出现一下信息代表node安装成功 2，下载git 下载地址：https://git-scm.com/downloads 安装完成之后点桌面鼠标右键出现OPen Git xxx 阅读全文",
+    "link": "https://www.cnblogs.com/healer0733/p/21057526",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-07-02T14:38:00.000Z"
+  },
+  {
+    "title": "[Apple] 我开发了一款像 iOS 自带的多功能聚合翻译 App，目前正在 TestFlight 公开测试中，欢迎使用~",
+    "summary": "Hi ，v2ex 的朋友们大家好！\n最近开发了一款 iOS 原生 App——纯粹翻译，一款多功能聚合翻译工具。顾名思义，这款 App 非常\"纯粹\"，只做一件事：翻译。\n为什么要做这款软件？\n因为直到今天，我都没有在 iOS 上找到一款让自己满意的翻译软件。我的要求其实很简单：\n原生开发，界面简洁、布局合理，小而美，最好能适配液态玻璃设计\n支持的翻译平台足够丰富，既能用传统翻译引擎，也能接入大模型翻译，用户可以自行添加\n能接入 iOS 系统翻译扩展\n尝试过不少翻译 App ，但始终没有一款能同时满足这几点，于是\"纯粹翻译\"就这样诞生了。\n核心功能\n安装包仅 3.6 MB ，足够轻量\n支持多平台同时翻译，已接入近 15 个翻译源，用户可自由添加、排序\n支持为 AI 翻译设置风格，且可自定义\n主界面可直接翻译，同时支持画中画模式，可在任意 App 内实时翻译\n可设置为系统默认翻译扩展\nUI 布局完全遵循 Apple HIG 设计规范，整体观感非常接近 iOS 自带的\"翻译\"App\n适配触感反馈，原生动画体验\n后续版本计划\n支持更多翻译源\n支持粤语翻译（目前仅限 AI 翻译）\n支持添加自定义 API URL 的 OpenAI/Anthropic 兼容协议的翻译源\n支持图片翻译。iOS 系统自带的翻译 App 已经支持图片翻译，现在也有不少大厂推出了图片翻译相关的大模型，感觉这块可以加上\n顺便请教大家两个问题\n有没有必要支持更多 TTS 服务，比如阿里云、火山引擎、小米的文本转语音服务或相关大模型？我个人感觉没太大必要，一是存在延迟，交互体验不够好，二是软件的重心还是在\"翻译\"本身，不想做得太重。\n很多传统翻译引擎支持设置不同风格参数，比如阿里翻译就区分通用翻译、专业翻译（医疗、跨境电商等场景）。这款软件是否也应该支持类似的风格设置？还是保持纯粹，统一用通用翻译？我个人倾向于翻译引擎就用通用翻译，这种偏专业、复杂场景的需求交给 AI 大模型翻译来解决，而不是让传统引擎也变得复杂。\n大家怎么看，欢迎讨论 🙏\nTestFlight 邀请链接： https://testflight.apple.com/join/2GU5kEkA\n欢迎大家测试，有任何问题或建议（不限于 Bug 、交互逻辑、功能、UI ）都欢迎在这里或 TestFlight 里反馈给我。",
+    "link": "https://www.v2ex.com/t/1224621#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T14:34:03.000Z"
+  },
+  {
+    "title": "[分享创造] 时隔大半年，我的公益热榜站又更新啦！它叫：糖果梦热榜",
+    "summary": "🍭 时隔大半年，我的公益热榜站又更新啦！它叫：糖果梦热榜\n上一次分享还是大半年前了。那时候很多功能还比较“半古法”，这半年各种 AI 工具和开发方式变化很快，我也顺手把热榜站重新升级了一大轮。\n这次不只是继续聚合热榜，还加了很多 AI 分析、专题追踪、日报、群聊总结、历史归档、RSS 订阅相关的功能，同时有了 API 开放平台。\n网站主页：tgmeng.com\n🍭 这次新增和重点升级的功能\n✅ AI 模式：实时用 AI 对全网热点进行总结、深度分析和趋势预测，不只是看标题，而是快速看懂热点为什么火、背后有什么关联、后续可能怎么发展。\n✅ AI 糖果指数：把全网热点交给 AI 重新分析和排序，帮助更快发现真正值得关注的内容，而不是只看单个平台的热度。\n✅ AI 分类热榜：支持按新闻、AI 、副业、羊毛、媒体、生活、社区、财经、股讯、期货、体育、科技、教育、设计、影音、游戏、健康、电视等方向查看 AI 整理后的热点。\n✅ 专题模式：围绕指定关键词持续聚合相关热点，适合追踪某个事件、行业、人物、产品或长期话题。可以理解成把“订阅推送”的能力搬到了页面上。\n✅ 日报功能：每天自动整理全网重要热点，生成日报，适合快速补看当天发生了什么，也适合做内容选题和信息复盘。\n✅ 分类日报：不只看综合日报，也可以按新闻、AI 、财经、科技、体育、游戏、健康、教育等分类查看对应方向的日报。\n✅ 群聊热榜：对社群聊天内容做 AI 总结，展示每日群聊摘要、热门话题、活跃情况、讨论重点和运营分析。\n✅ 群聊热度图：类似贡献热力图一样回看不同日期的群聊活跃情况，适合观察社区讨论变化。\n✅ 历史归档：按日期沉淀每天的全网热榜，可以回看某一天全网发生了什么、哪些平台出现了哪些热点、热点是怎么扩散的。\n✅ 分类归档：历史归档支持按新闻、AI 、财经、科技、社区、影音、游戏、教育等分类回看。\n✅ 突发热点：新增突发类入口，方便优先关注快速上升、正在发生的热点。\n✅ RSS 订阅中心：集中整理全站 RSS 、新闻 RSS 、AI 热榜 RSS 、实时热榜 RSS 、今日热榜 RSS 、日报 RSS 、分类 RSS 、平台 RSS ，方便接入阅读器、自动化工具或个人知识库。\n✅ 引用分享：选中页面任意文字，皆可分享到微信等（抄的微信公众号里的功能）\n✅ 开放平台：糖果梦开放平台提供实时热榜数据、图床上传 API 和智能体 Skill ，支持个人开发者、第三方客户端和自动化脚本接入。\n🍭 基础热榜能力\n✅ 全网热榜聚合：聚合百度、微博、知乎、B 站、抖音、今日头条、腾讯新闻、网易新闻、澎湃新闻、央视新闻、ReadHub 、财联社等大量平台热点。\n✅ 300+ 平台覆盖：目前支持全网 300 多个高质量平台。\n✅ 分钟级更新：站内数据分钟级自动更新，个别特殊平台除外。\n✅ 每分钟 1 万+ 热点更新：持续抓取和更新大量平台热点。\n✅ 直连官方数据源：热榜接口尽量直连各平台官方来源，没有第三方中转。\n✅ 多分类浏览：支持突发、新闻、AI 、副业、羊毛、媒体、生活、社区、财经、股讯、期货、体育、科技、教育、设计、影音、游戏、健康、电视等分类。\n✅ 单平台热榜：可以单独查看某个平台的热榜。\n✅ 全网实时热点检索：可以从全网大量热点中搜索自己关心的关键词。\n✅ 全网实时热点词云：用词云方式查看当前全网高频热点词，支持自定义展示和隐藏。\n🍭 个性化和使用体验\n✅ 自定义展示平台：可以隐藏自己不想看的平台，只保留关心的信息源。\n✅ 收藏卡片：可以把喜欢的平台单独放到收藏分类下。\n✅ 明暗主题切换：支持浅色和深色模式。\n✅ 评论功能：支持对内容进行评论互动。\n✅ 分类自定义：支持分类名称字体大小、排序、默认分类等设置。\n✅ 卡片自定义：支持卡片宽度、高度、名称字体大小、标题是否完整显示、更新时间是否显示、卡片拖动排序。\n✅ 移动端滚动方式切换：移动端支持横向/纵向滚动切换。\n✅ 热点展示自定义：支持标题字体大小、标题是否完整显示、热度值是否显示。\n✅ 页面关键词过滤：支持包含关键词和排除关键词，过滤掉不想看的内容。\n🍭 订阅、推送和自动化\n✅ RSS 全面支持：全站、单分类、单平台、AI 热榜、新闻热榜、日报都支持 RSS 。\n✅ 订阅推送：支持飞书、钉钉、企业微信、Telegram 、NTFY 、GOTIFY 、网易泡泡等推送渠道。\n✅ 适合自动化工作流：可以把热榜、日报、分类内容接入 RSS 阅读器、自动化脚本、知识库或机器人。\n🍭 摸鱼功能\n✅ 摸鱼模式：支持超级逼真的 EXCEL 和 VSCODE 摸鱼模式。\n✅ 适合上班悄悄看热点：懂的都懂。\n🍭 适合哪些人用？\n内容创作者：找选题、追热点、看趋势。\n运营/市场：观察热点扩散、跟踪行业话题。\nAI 从业者：追踪 AI 、大模型、AI 工具和开源项目动态。\n投资/财经用户：查看财经、股讯、期货等实时资讯。\n普通网友：一页看完全网正在发生什么。\n摸鱼党：这个不用解释。\n总之，它还是一个公益热榜站，但现在不只是“聚合热榜”了，而是尽量往“全网热点入口 + AI 分析 + 长期归档 + 自动化订阅”的方向做。\n欢迎大家试试看，也欢迎提建议。",
+    "link": "https://www.v2ex.com/t/1224619#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T14:25:27.000Z"
+  },
+  {
+    "title": "[推广] [FK Claude] Sonnet 5 / Fable 5 同步上线",
+    "summary": "www.fkclaude.xyz\n你值得拥有更好的",
+    "link": "https://www.v2ex.com/t/1224618#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T14:23:51.000Z"
+  },
+  {
+    "title": "Podman v6.0.0",
+    "summary": "Comments",
+    "link": "https://blog.podman.io/2026/07/introducing-podman-v6-0-0/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 14:23:09 +0000"
+  },
+  {
+    "title": "Missing Semester Class1：course overview and introduction of shell - orion57",
+    "summary": "【摘要】tags: - 体系/行动体系 本文是让ai在我关于MIT missing semester课程第一课的笔记上进行更改和润色而写成的，内容完整覆盖了第一课视频中所讲的所有内容。 一、Shell 环境分类（不同系统默认解释器） Shell 本质是命令行解释器，接收用户输入指令并传递给操作系统内核执行， 阅读全文",
+    "link": "https://www.cnblogs.com/Scintillation/p/21057316",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-07-02T14:23:00.000Z"
+  },
+  {
+    "title": "Show HN: CLI tool for detecting non-exact code duplication with embedding models",
+    "summary": "Comments",
+    "link": "https://github.com/rafal-qa/slopo",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 14:19:24 +0000"
+  },
+  {
+    "title": "No LLM Code in Dependencies",
+    "summary": "Comments",
+    "link": "https://joeyh.name/blog/entry/no_LLM_code_in_dependencies/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 14:17:23 +0000"
+  },
+  {
+    "title": "Show HN: Mail Memories – A desktop app to rescue photos from Gmail",
+    "summary": "Comments",
+    "link": "https://mailmemories.com",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 14:16:57 +0000"
+  },
+  {
+    "title": "[分享创造] vibe： HEIC 转 JPG 转换器 - 简单的开源 Android 小工具",
+    "summary": "在 Reddit 发 HEIC 格式照片上传失败。\n我做了一个轻量级工具，一键就能把 HEIC 图片快速转换成 JPG 。\n整个 App 用 Google AI Studio 开发（ AI 完成了 99% 的代码）。\n只在最后编译 APK ，修改 icon 时 pull 代码到本地 Android studio 做了一下编译和一些小的修改。\n发现 Google Play 上同类应用已经很多，国内 android 市场上架对于单一功能应用很不友好，我就直接开源了。\n完全免费、无广告\n支持批量转换\n体积小、速度快\nGitHub 开源地址： https://github.com/wuming2/Heic-converter-Android\n有朋友对 AI 开发过程感兴趣的，可以留言，我把当时用的提示词分享出来。",
+    "link": "https://www.v2ex.com/t/1224617#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T14:07:59.000Z"
+  },
+  {
+    "title": "GoF设计模式——备忘录模式 - 咖啡八杯",
+    "summary": "【摘要】本文是【GoF设计模式】系列第17篇，更多内容欢迎关注公众号：咖啡八杯 前言 为什么需要备忘录模式？ 假设正在做一个文本编辑器，需要支持 Ctrl+Z 撤销功能。最直觉的写法是每次修改前把整个 Editor 对象的内部字段抄一份出来放到栈里： class Editor { public String 阅读全文",
+    "link": "https://www.cnblogs.com/kfbb/p/21057069",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-07-02T13:56:00.000Z"
+  },
+  {
+    "title": "[分享创造] 在海外看电影没中文，搓了个用手机举字幕的工具",
+    "summary": "在海外看电影老有个问题:影院没有中文,只能硬啃生肉。\n前段时间又被折磨了一次,回来就顺手写了个小网页 CineSub。思路很简单:自己提前下好字幕文件(.srt/.vtt/.ass),进场之后在手机上放,纯黑背景,拿手里或者搁腿上看,不亮别人的眼。\n地址:https://cinesub.snownamida.top\nhttps://github.com/Snownamida/cinesub\n全程在浏览器里跑,不上传任何东西,也没有后端\nPWA,在家打开过一次,影厅没信号也能用\n支持时间轴 ±0.5s/±5s 微调 + 拖进度条。还有\"漂移校正\":有些字幕帧率/版本对不上,开头对齐了越往后越飘,标记前后两个点就能一次拉正,不用一直手动追\n可以同时加载两份字幕,母语+原文上下一起显示,顺便练外语\n支持日语显示假名注音,用的浏览器原生 ruby\n纯黑 OLED 不刺眼、红/琥珀色字、屏幕常亮不锁屏、误退出能续播、中文老字幕乱码自动按 GB18030 兜底\nVite + TS,零运行时依赖,打包出来 49KB,逻辑部分写了单测。\n自己用下来挺顺手的, 放出来造福人类。有 bug 或者建议欢迎轻喷,能顺手点个 star 就更好了 🙏",
+    "link": "https://www.v2ex.com/t/1224616#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T13:48:13.000Z"
+  },
+  {
+    "title": "[职场话题] 南大 AI 大三，求大佬指点未来发展，单纯喜欢钱",
+    "summary": "基本信息\n南京大学 23 届 AI 本科生\n大三 男\n专排 25/100\n目前无竞赛以及一作论文\n保研到 lamda 里一个普通的组\n问题\n三年几乎没有努力纯躺平，最近利用暑假做家教挣了几万元，发现有钱真爽，想卷几年让未来很有钱，然后不要工作太久早早退休\n请教一下各位大佬，这样的目标，一般要进入什么行业什么职位，进入这种行业研究生要达到什么程度，几篇顶会，几次实习啥的",
+    "link": "https://www.v2ex.com/t/1224615#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-07-02T13:44:20.000Z"
+  },
+  {
+    "title": "AI can't be listed as inventor on patent applications, Japan's top court rules",
+    "summary": "Comments",
+    "link": "https://japannews.yomiuri.co.jp/science-nature/technology/20260306-314930/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 13:43:41 +0000"
+  },
+  {
+    "title": "Show HN: ZeroFS – A log-structured filesystem for S3",
+    "summary": "Comments",
+    "link": "https://www.zerofs.net/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 13:41:11 +0000"
+  },
+  {
     "title": "[程序员] 你们 AI 跑任务的间隙都干嘛？",
     "summary": "三局王者都结束了，一个 workflow 还没有结束，你们跑任务的间隙都干嘛？",
-    "link": "https://www.v2ex.com/t/1224614#reply1",
+    "link": "https://www.v2ex.com/t/1224614#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T13:35:38.000Z"
   },
   {
-    "title": "An AI board that pre-registers its bets – bet #1 just graded wrong",
+    "title": "Show HN: A graph paper generator that renders vector PDFs in the browser",
     "summary": "Comments",
-    "link": "https://github.com/danilushin/asktheboard",
+    "link": "https://freegraphpaper.net/",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 13:29:35 +0000"
+    "pubDate": "Thu, 02 Jul 2026 13:29:09 +0000"
+  },
+  {
+    "title": "The Egg Bandits Made a Thousand Times the Fine They Just Paid for Price Fixing",
+    "summary": "Comments",
+    "link": "https://www.thebignewsletter.com/p/crime-pays-the-egg-bandits-made-a",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 13:25:25 +0000"
   },
   {
     "title": "[程序员] 扒了一下 Claude Science 内置的 32 个 skills，这下所有 agent 和 windows 也能用了",
@@ -98,18 +394,18 @@
   {
     "title": "[酷工作] Looking for Execution Systems Dev\r\nFocus: Trading Infrastructure / Execution Systems",
     "summary": "Requirements\n1. Programming & Systems\n- 熟悉 Rust ，精通 Python\n- 对编译原理、Data Warehouse 有自己的理解\n2. Trading Pipeline Tooling\n专注交易链路上的工具开发，包括：\n- data pipeline 、message bus 扩展\n- risk control tools\n- execution algo\n3. Framework\n- 了解 Nautilus Trader 框架 https://github.com/nautechsystems/nautilus_trader\nCompensation\n- Base Salary: $5,000 – $10,000 USD / month\n- Bonus: Project based bonus\n- Office Location: Hong Kong / Remote\nContact Email: profilesai@proton.me\n(请直接提交简历和个人 GitHub)",
-    "link": "https://www.v2ex.com/t/1224612#reply0",
+    "link": "https://www.v2ex.com/t/1224612#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T13:20:50.000Z"
   },
   {
-    "title": "In the age of algorithms and AI, is traditional media democracy's defence?",
+    "title": "How to ask for help from people who don't know you",
     "summary": "Comments",
-    "link": "https://www.martenscentre.eu/media-mentions/in-the-age-of-algorithms-and-ai-is-traditional-media-democracys-last-line-of-defence/",
+    "link": "https://pradyuprasad.com/writings/how-to-ask-for-help/",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 13:16:54 +0000"
+    "pubDate": "Thu, 02 Jul 2026 13:19:22 +0000"
   },
   {
     "title": "Hazel (YC W24) Is Hiring for Our Largest Government Contract",
@@ -122,7 +418,7 @@
   {
     "title": "[分享创造] 分享一个我做的 AI 邮件生成 + 临时邮箱工具",
     "summary": "Title：\n分享一个我做的 AI 邮件生成 + 临时邮箱工具\nText：\n最近做了一个和 Email 相关的小工具站：\nhttps://aigeneratoremail.com/\n一开始只是想做一个简单的 AI Email Generator ，因为很多时候写邮件并不是不会写，而是懒得从零开始组织语言。比如工作邮件、客户回复、合作邀约、求职跟进、售后沟通、道歉邮件、感谢邮件等，真正耗时间的地方往往是：怎么开头、语气要不要正式、标题怎么写、结尾怎么收。\n所以我做了一个比较轻量的 AI Email Writer 。使用方式很简单：输入你想表达的内容，然后选择语气、意图、语言、邮件长度，也可以补充收件人名称、自己的名称和更多上下文。生成后会给出邮件标题和正文，用户可以再自己编辑、复制到邮箱里发送。\n我不太想把它做成一个很重的 AI 写作平台，所以首页尽量把功能放在首屏。用户打开之后应该马上能写，而不是先看一堆营销文案。\n后来我发现，搜索 Email Generator 的用户其实不一定都只是想“写邮件”。有一部分人是在找临时邮箱、随机邮箱、一次性邮箱，用来注册测试、接收验证码、避免主邮箱收到垃圾邮件。所以这次也加上了 Temp Mail 功能：\nhttps://aigeneratoremail.com/temp-mail/temporary-email/\n这个临时邮箱工具主要用于接收邮件，比如验证码、确认链接、测试邮件等。它不是用来伪装 Gmail 、Outlook 或学校邮箱，而是一个短期可用的 disposable inbox 。适合一些不想暴露主邮箱的场景，比如试用产品、下载资源、注册不太重要的网站、测试邮件流程等。\n目前网站里主要有几个方向：\nAI Email Writer：根据简短描述生成邮件标题和正文\nTemp Mail：生成临时邮箱并在线接收邮件\nEmail Signature Generator：生成简单专业的邮件签名\n后续可能继续补充 random email generator 、email reply generator 、subject line generator 等小工具\n我自己的判断是，Email 相关工具不一定要做得很复杂，反而应该尽量快、轻、直接。用户来这类网站通常不是为了研究 AI ，而是为了马上完成一个具体任务：写一封邮件、回一封邮件、收一个验证码、生成一个临时地址，或者做一个邮件签名。\n现在还在早期阶段，功能和页面都会继续优化。欢迎大家帮忙看看：\nAI 生成的邮件是否自然\n临时邮箱功能是否稳定\n首页信息是否清楚\n还有哪些 Email 相关小工具值得加\n这类工具站有没有更好的产品方向\n地址：\nhttps://aigeneratoremail.com/",
-    "link": "https://www.v2ex.com/t/1224611#reply1",
+    "link": "https://www.v2ex.com/t/1224611#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T13:14:27.000Z"
@@ -130,18 +426,10 @@
   {
     "title": "[分享创造] 给最近爆火的 Steam 捉迷藏游戏做了个非官方 Wiki,顺便打了几个流传很广的假",
     "summary": "最近 Steam 上有个叫 MECCHA CHAMELEON 的日本独立游戏挺火,捉迷藏玩法:躲的人拿个滚筒刷把自己涂成墙纸、地板、天花板的颜色,找的人满地图找茬。5.99 刀,直播效果很好,搜索量涨得快。\n我本来只是想查下这游戏的配置要求,结果搜出来的几个站让我开了眼:\n有个站列了\"推荐配置:i7 / 8GB / DX12 显卡 2G 显存\",写得有鼻子有眼。我去 Steam 官方页面对了一下,官方只写了最低配置(i5 + DX11 兼容显卡就完事),压根没有推荐配置这一栏——那些数字是他们自己编的。\n还有全网都在写\"最多 10 人\",官方原话其实是\"人数上限取决于房主的网络环境(推荐 2-10 人,可能增减)\"。以及煞有介事写 PS5 发售日期的,这游戏开发者是一个人,从头到尾只发过 PC 版,什么都没宣布过。\n小游戏的信息生态基本就是几个站互相抄,错的也原样抄。\n于是上头了,给它做了个非官方 Wiki 。主要就一个原则:每个事实标来源和核验日期,官方没公布的就直说\"没公布\",然后教你去哪自己查。顺便把 crack / apk 这类搜索词也接住了——不放任何资源,就讲清楚一件事:纯在线多人游戏,你破解了也没有服务器可连,最后引导去买正版(才 5.99,盗版图啥)。\n技术上没什么好吹的:Next.js + Tailwind + shadcn,纯静态,Vercel 免费档,没后端没数据库。设计走了纸质手绘风,配这游戏的涂装主题。内容是我和 AI 一起磨的,不过上面那几处打假恰恰是人肉对着官方页面抠出来的——AI 自己写只会跟着其他站一起错。\n站是英文的,目标是英文搜索流量,这游戏国内基本没量。\n现状很诚实:刚提交 GSC,收录 0,流量 0,能不能吃到词听天由命。变现还没想清楚,大概率挂点广告,先看收录。\n求各位随便拍:设计、文案、SEO 都行。尤其想听做过游戏垂直站的老哥聊聊,这种绑定单个游戏的站,游戏热度过去之后怎么办。\nhttps://mecchachameleonwiki.net",
-    "link": "https://www.v2ex.com/t/1224610#reply1",
+    "link": "https://www.v2ex.com/t/1224610#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T13:14:14.000Z"
-  },
-  {
-    "title": "The Platform Engineer’s Handbook • Ajay Chankramath & Kaspar von Grünberg",
-    "summary": "Ajay Chankramath — author of The Platform Engineer’s Handbook — joins Kaspar von Grünberg to unpack why he wrote a 14-chapter, code-first practitioner's guide instead of another theory-heavy platform book.\n    submitted by    /u/goto-con  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1ulhxj4/the_platform_engineers_handbook_ajay_chankramath/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T13:13:13.000Z"
   },
   {
     "title": "WebSocket 重连后的数据连续性补偿方案：缺口检测、REST 回补与留痕设计 - Agent践行员",
@@ -162,10 +450,18 @@
   {
     "title": "[分享创造] 别再记命令了，用 yeero do 说句人话就能跑脚本，而且不烧 token",
     "summary": "最近给 YeeroAI CLI 加了个 yeero do 子命令，用自然语言描述任务，自动匹配或生成 Python 脚本执行。\n起因是平时在终端里总有些零碎操作——查个 IP 、看个文件树、杀个占端口的进程、列一下目录文件。每个单独看都不复杂，但跨平台命令不一样，每次切系统都得对应查一遍。yeero do 把这些收进了一句话，你说要干嘛，它帮你跑。\n安装\nmacOS / Linux\ncurl -fsSL https://yeero.ai/cli/install.sh | sh\n\n脚本会自动检测平台、下载最新版、配置 PATH 。装完之后新终端窗口就能用。\nWindows （ PowerShell ）\nirm https://yeero.ai/cli/install.ps1 | iex\n\n安装目录默认在 %LOCALAPPDATA%\\yeero，脚本会自动加进用户级 PATH 。\n验证安装\nyeero --version\n\n有版本号输出就 OK 了。\n登录\n首次使用需要登录，用的是邮箱验证码，不需要密码：\nyeero login\n\n按提示输入邮箱，收 6 位验证码，再输入验证码就完事了。也可以非交互式登录：\nyeero login --email your@email.com --code 123456\n\nToken 会存在系统 Keychain 里，下次不用再登。\n什么是 yeero do\nyeero do 底层跑的是 yeero app 里的 Python 脚本，但它帮你把\"记命令\"这一步省了。你用自然语言描述想干嘛，它自动帮你找到合适的脚本跑起来，找不到就现场生成一个。\n它的执行流程：\n先在本地已同步的 Python App 里找最匹配的一个；\n匹配度高的话直接执行；\n找不到或匹配度低，就创建一个由 AI 生成代码的新 Python App ，再执行。\n基础语法\nyeero do [INTENT] [OPTIONS]\n\n常用选项：\n选项\n作用\n\n\n\n\n--dry-run\n只预演会匹配到哪个应用，不真正执行\n\n\n--name <NAME>\n创建新应用时指定名称\n\n\n--no-create\n匹配不到时不创建新应用，直接失败\n\n\n--model <MODEL>\n创建新应用时指定生成代码的模型\n\n\n\n实用例子\n下面是一些常见用法，都带输出示例：\n1. 查看本机 IP 地址\nyeero do \"本机 IP\"\n\n输出示例：\nIPv4: 192.168.1.100\nIPv6: fe80::1\n\n不用管 Windows 是 ipconfig、Linux 是 ip addr、macOS 是 ifconfig，一句话就行。\n2. 显示文件树\nyeero do \"文件树\"\n\n输出示例：\n.\n├── src\n│   ├── main.py\n│   └── utils.py\n├── README.md\n└── requirements.txt\n\n3. 查看系统信息\nyeero do \"系统信息\"\n\n输出示例：\nOS: macOS 14.5\nCPU: Apple M3\nMemory: 16 GB\nUptime: 3d 12h\n\n4. 列出当前目录所有文件\nyeero do \"获取目录所有文件\"\n\n输出示例：\nREADME.md\npackage.json\nsrc/\npublic/\n\n5. 停止占用 8080 端口的进程\nyeero do \"停止占用端口进程：8080\"\n\n输出示例：\nFound process node (PID 12345) on port 8080\nProcess 12345 terminated\n\n传统做法是 lsof -i:8080 找到 PID 再 kill -9，两步。\n6. 图片格式批量转换\nyeero do \"png 批量转 webp\"\n\n输出示例：\nimage1.png -> image1.webp\nimage2.png -> image2.webp\n\n7. CSV / Excel 数据处理\nyeero do \"CSV 去重排序导出 Excel\"\n\n输出示例：\nRemoved 12 duplicate rows\nSorted by amount descending\nExported to output.xlsx\n\n传统写法是 pandas 的 read 、groupby 、sort 、to_excel 。\n8. 生成二维码\nyeero do \"生成 example.com 的二维码\"\n\n输出示例：\nSaved QR code to example_com_qr.png\n\n传统做法：pip install qrcode 再写五行代码。\n9. 批量整理文件\nyeero do \"图片按日期分文件夹\"\n\n输出示例：\n2024-01-01/IMG_001.jpg\n2024-01-02/IMG_002.jpg\n\n10. 查看目录大小\nyeero do \"按大小列出子目录\"\n\n输出示例：\nnode_modules/    1.2 GB\ndist/            45 MB\nsrc/             3 MB\n\n等效命令是 du -sh * | sort -rh。\n预演模式\n如果你不确定它会匹配到哪个应用，可以用 --dry-run：\nyeero do \"生成 example.com 的二维码\" --dry-run\n\n这样只显示路由结果，不会真正执行。\n匹配逻辑\n运行 yeero do \"...\" 时，CLI 会先做一次 dry-run 探测：\n高匹配：有明显匹配的应用就直接执行；如果有多个高分候选，会弹出列表让你用上下键选。\n未匹配 / 弱匹配：会提示确认用于生成新应用的模型，确认后开始创建、安装依赖并执行。\n执行过程中 creating、generating、installing、running 这些阶段都会实时输出到终端。\n和 yeero app run 的区别\n\nyeero do\nyeero app run\n\n\n\n\n输入方式\n自然语言意图\n应用 ID / 名称\n\n\n匹配逻辑\n自动路由，必要时创建新应用\n直接运行指定应用\n\n\n适用场景\n\"我想做某事\"\n\"我要运行这个应用\"\n\n\n本质\n最终执行的都是 yeero app 的 Python 脚本\n同上\n\n\n\n成本设计\n之前用 AI Agent 跑这些零碎任务，就像用外卖平台点一碗白米饭——能吃，但配送费比饭还贵。跑个小脚本三秒钟的事，token 花得比脚本执行时间还长。\nyeero do 的思路不一样：只在首次创建应用时调一次 LLM ，之后每次运行都是本地 Python 脚本，不再花一分钱 token 。就好比配了把钥匙——一次性成本，之后每次开门直接用，不用每次都叫锁匠。\n如果你有些工具类任务需要高频跑，比如每天整理文件、分析日志、生成报告，长期用下来比 Agent 省太多了。\n注意事项\nyeero do 需要 daemon 运行，未运行时会自动按需启动。\n首次创建新应用需要等待 AI 生成代码、安装依赖，耗时可能较长。\n如果生成的应用运行失败，CLI 会提示应用 ID ，可以用 yeero app discuss <app-id> 继续迭代修复。\n生成的应用会同步到你的账号里，可以在网页端或桌面端继续编辑。",
-    "link": "https://www.v2ex.com/t/1224607#reply0",
+    "link": "https://www.v2ex.com/t/1224607#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T13:01:20.000Z"
+  },
+  {
+    "title": "Germany’s Infineon opens major chip plant as EU seeks tech autonomy",
+    "summary": "Comments",
+    "link": "https://www.rfi.fr/en/international-news/20260702-germany-s-infineon-opens-major-chip-plant-as-eu-seeks-tech-autonomy",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 12:46:31 +0000"
   },
   {
     "title": "让Agent越用越强：AReaL 2.0开源，给智能体装上“成长系统”",
@@ -178,23 +474,15 @@
   {
     "title": "[分享发现] 为什么现在的 AI 回复第一句都是 “xxx 不是 xxx，而是 xxx 的对比句”？",
     "summary": "看烦了\n‘这篇论文 不是一篇“提出新 RL 算法并跑 benchmark”的论文，更像是一篇 position / system architecture paper’\n‘它不是一个独立运行的 Agent 框架，而是把很多已经写好的专家型 agent/persona 安装到 Claude Code’\n‘它不是让模型写一个孤立函数，而是给模型一个真实 GitHub issue’",
-    "link": "https://www.v2ex.com/t/1224606#reply4",
+    "link": "https://www.v2ex.com/t/1224606#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T12:42:52.000Z"
   },
   {
-    "title": "AI fake news complaining about how AI fake news is the death of real news",
-    "summary": "Comments",
-    "link": "https://www.niemanlab.org/2026/07/now-were-getting-ai-fake-news-complaining-about-how-ai-fake-news-is-the-death-of-real-news/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 12:40:36 +0000"
-  },
-  {
     "title": "[iPhone] iPhone 折叠屏 9 月份会发布吗",
     "summary": "看了昨天的一些爆料，似乎只提到 18 和 Pro 系列，没看到有关折叠屏的消息，想问问折叠屏会不会在 9 月发布？有什么小道消息吗?🤫",
-    "link": "https://www.v2ex.com/t/1224605#reply0",
+    "link": "https://www.v2ex.com/t/1224605#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T12:38:53.000Z"
@@ -202,10 +490,18 @@
   {
     "title": "[程序员] AI 太贵了，有没有价廉物美的中转站推荐一下",
     "summary": "",
-    "link": "https://www.v2ex.com/t/1224604#reply0",
+    "link": "https://www.v2ex.com/t/1224604#reply10",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T12:33:00.000Z"
+  },
+  {
+    "title": "What do you think about paper fishing? [D]",
+    "summary": "I am working in a research group in Germany, not that well known but in general good output. I have one colleague who does nothing in his PhD. He does not want to work, or he is not able to do any good research, his level is super bad. Plus He doesn’t even care about that. To wrap it up, he is just here for the money. \n Since he doesn’t want to work or he can’t really do anything good, instead what he does is “paper fishing”, he searches for people in the group doing some good research, and asks that they put his name on the paper. In this case he has something to cover up for him when the professor asks him about his progress. As long as his name is on the paper, progress is checked and funding is renewed. But he actually does nothing. \n I know this is very unprofessional and unethical. But people tell me it’s normal in academia. Professors all the time put names of their friends and this is how it works in academia. What are your thoughts of this behaviour? \n    submitted by    /u/impressivestatus21  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1ulgunh/what_do_you_think_about_paper_fishing_d/",
+    "source": "Reddit/ML",
+    "category": "ai",
+    "pubDate": "2026-07-02T12:26:55.000Z"
   },
   {
     "title": "[分享创造] BrandsBuy —— 你的购物指南",
@@ -216,17 +512,9 @@
     "pubDate": "2026-07-02T12:26:35.000Z"
   },
   {
-    "title": "This blog is written in en-GB",
-    "summary": "Comments",
-    "link": "https://shkspr.mobi/blog/2026/07/this-blog-is-written-in-en-gb/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 12:17:33 +0000"
-  },
-  {
     "title": "[问与答] 除了银行，还有哪里可以存档案袋大小的东西？",
     "summary": "银行开个柜子押金+年租金贵\n家、朋友、单位这些都排除。\n请问还有没有什么地方可以存？",
-    "link": "https://www.v2ex.com/t/1224602#reply5",
+    "link": "https://www.v2ex.com/t/1224602#reply12",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T12:12:44.000Z"
@@ -242,7 +530,7 @@
   {
     "title": "[程序员] Linux 官网 (kernel.org) 删除了所有的 release tar 包",
     "summary": "跑路了？\n可以看到 https://www.kernel.org/ 的 [Latest Release] 按钮已经 404 了。\nhttps://www.kernel.org/pub/linux/kernel 目录整个消失。\n\n已经有受害者出现：\nMIT 镜像站同步了上游，所有 tar 包也都被删了：\nhttps://mirrors.mit.edu/kernel/linux/kernel\n不知道是不是被错误 rm -rf 了。镜像站们先别急着同步",
-    "link": "https://www.v2ex.com/t/1224601#reply1",
+    "link": "https://www.v2ex.com/t/1224601#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T12:06:31.000Z"
@@ -272,7 +560,7 @@
     "pubDate": "2026-07-02T11:46:53.000Z"
   },
   {
-    "title": "Many people misunderstand the purpose of code review",
+    "title": "The primary purpose of code review is to find code that will be hard to maintain",
     "summary": "Comments",
     "link": "https://mathstodon.xyz/@mjd/115096720350507897",
     "source": "Hacker News",
@@ -290,7 +578,7 @@
   {
     "title": "[宽带症候群] 逆天！西安联通因客户家中有交换机拒绝安装宽带？",
     "summary": "上个月看到联通有宽带活动，就把电信宽带办了拆机，计划当天拆机当天安装。\n电信拆机也遇到奇葩的强制填写和拍照回收光猫设备 SN 等，问题是 7 年前安装时我自己提供的光猫我当然拒绝，让拆机的师傅自己找退网设置拍照，他最后用了我的电视盒子。\n联通这边更是奇葩，联通宽带的安装师傅过来准备安装，看了弱电箱，问我是做什么的，我弱电箱就一个普通的 TP-Link 8 口千兆交换机+路由器，我说我每个房间都走了两条网线。安装期间我问能不能改桥接模式，安装师傅说不能改，我反问他电信、移动都能改，联通为什么不能改？他说联通不行；我又问有没有 IP V6,他说有。后来他去弱电井了，回来说我的光信号有问题，说让联通工程队的人来看看我说上午才拆机的电信不可能下午光纤就坏，他说光信号有问题现在装不了他会联系工程队后面就走了，第二天我又打电话催依然说他问问工程队的人。\n这几天也因为家里有事断断续续问抖音官方店铺的客服，客服后来给了我那个安装师傅“领导”的电话，昨天联系这位“领导”沟通大意是在给我申请走流程审批：公网 IP V4 和桥接，我再次和他纠正我从未说过要公网 IP V4 至于桥接只是当时询问能不能改，智家师并未明确说明因为桥接原因不能安装而是说因为光纤问题我怀疑光纤问题只是借口？“领导说他再安排一下”，然后又没了消息！没办法今天投诉 10015 客服,又说公网 IP V4 又说桥接原因，我说不桥接也从没要过公网 IP V4 ，沟通几轮才说明了真正的原因：智家师说我接了“其它设备”所以不能安装！我以投诉工信部为由让她不要做谜语人，她说是因为智家师说有交换机所以不能安装，只能取消订单并按宽带从预约到现在退费。我也说明了我的诉求，不安装就继续投诉，因为交换机这个原因我不认可！",
-    "link": "https://www.v2ex.com/t/1224597#reply8",
+    "link": "https://www.v2ex.com/t/1224597#reply17",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T11:26:47.000Z"
@@ -312,12 +600,12 @@
     "pubDate": "Thu, 02 Jul 2026 19:23:47 +0800"
   },
   {
-    "title": "[iPhone] 🎉我的软件冲进苹果商店下载榜前 50 了",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1224595#reply2",
-    "source": "V2EX",
+    "title": "PeerTube is a free, decentralized and federated video platform",
+    "summary": "Comments",
+    "link": "https://github.com/Chocobozzz/PeerTube",
+    "source": "Hacker News",
     "category": "news",
-    "pubDate": "2026-07-02T11:22:26.000Z"
+    "pubDate": "Thu, 02 Jul 2026 11:17:45 +0000"
   },
   {
     "title": "[问与答] 有用过 iOS 本地跑 TTS 模型的 app 吗？",
@@ -346,7 +634,7 @@
   {
     "title": "[程序员] 真的没人觉得 codex 比 claude 笨很多吗？",
     "summary": "甚至一些低级问题，比如一行注释不写，不知道自己生成单元测试，额外多写几个不必要的类出来，也不向我逐个确认要点",
-    "link": "https://www.v2ex.com/t/1224592#reply20",
+    "link": "https://www.v2ex.com/t/1224592#reply30",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T11:00:07.000Z"
@@ -378,7 +666,7 @@
   {
     "title": "[推广] 自建中转站",
     "summary": "0.15x 的 GPT-5.5 ，0.55x 的 claude （已支持 fable 和 sonnet5 ），欢迎体验\nhttps://codetoken.cloud ，注册后回帖你的账号，赠送 3 余额。",
-    "link": "https://www.v2ex.com/t/1224589#reply0",
+    "link": "https://www.v2ex.com/t/1224589#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T10:52:39.000Z"
@@ -386,7 +674,7 @@
   {
     "title": "[Python] 怎么搞定纯 Python 代码解码 jpg 图片，要求无外部依赖",
     "summary": "这样的，我想用 tkinter 写一个无外部依赖的 GUI 程序\n但发现 python 不原生支持 jpg\n再三考虑，想到一个办法\n网上找一段纯 python 代码（无依赖），插入到项目中\n注意有个前提，可以接受牺牲图片的部分质量\n网上确实有这样的代码，大概几百行\n问题是网上的代码，只能成功解码部分 jpg 图片，很多图片的处理过程都报错了\n也试过让大语言模型去生成，但是受限于长度限制，都生成失败了",
-    "link": "https://www.v2ex.com/t/1224588#reply6",
+    "link": "https://www.v2ex.com/t/1224588#reply9",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T10:48:24.000Z"
@@ -418,7 +706,7 @@
   {
     "title": "[分享发现] macOS 27 dasd 进程内存占用 80 多 GB",
     "summary": "27.0Beta 版本\n估计是内存泄露了，bug 还是挺多的\n\nhttps://imgur.com/a/eZGiVMK",
-    "link": "https://www.v2ex.com/t/1224587#reply5",
+    "link": "https://www.v2ex.com/t/1224587#reply9",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T10:34:51.000Z"
@@ -442,7 +730,7 @@
   {
     "title": "[分享发现] 站起来蹬！商汤 Token Plan 的免费计划延长到 7 月底了，支持 DeepSeek V4、GLM 5.2",
     "summary": "最多可以支持 20 个 API Key ，现在支持的模型有：\n- sensenova-6.7-flash-lite：每 5 小时 1500 次\n- sensenova-u1-fast：每 5 小时 1500 次\n- DeepSeek V4 Flash：每 5 小时 500 次\n- GLM 5.2：每 5 小时 500 次\n\n入口： https://www.sensenova.cn/token-plan",
-    "link": "https://www.v2ex.com/t/1224585#reply2",
+    "link": "https://www.v2ex.com/t/1224585#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T10:27:52.000Z"
@@ -454,14 +742,6 @@
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Thu, 02 Jul 2026 10:25:24 GMT"
-  },
-  {
-    "title": "What To Learn To Be A Real Time Graphics Programmer",
-    "summary": "submitted by    /u/Successful_Bowl2564  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1uleauv/what_to_learn_to_be_a_real_time_graphics/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T10:20:17.000Z"
   },
   {
     "title": "[分享创造] 《赛博打工人：生死劳动线》",
@@ -512,68 +792,12 @@
     "pubDate": "2026-07-02T10:01:25.000Z"
   },
   {
-    "title": "Why I'm Forced to Say Farewell: Google Management Has Lost Its Moral Compass",
-    "summary": "Comments",
-    "link": "https://docs.google.com/document/d/1SH9QRTAlL02THgAN2AGmWe9El0_2ZJF6hhgDBx8k97c/edit?tab=t.0",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 10:00:27 +0000"
-  },
-  {
     "title": "[WebRTC] webrtc 的协议栈太重了，根本不想看",
     "summary": "做 webrtc 开发是直接用 libwebrtc 还是自己实现呢",
     "link": "https://www.v2ex.com/t/1224577#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-07-02T09:52:46.000Z"
-  },
-  {
-    "title": "[Claude] Claude Fable5 还原 Ui 图",
-    "summary": "Claude Fable5 确实厉害哈，都是用 chrome 插件直接读设计图，之前用 chatgpt5.5 还原 Android 的 UI 图，结果还原效果很差，还不如 opus4.8,但 opus4.8 也只能还原到 70~80%一致左右，新的 fable5 却能还原到 95%，太厉害了",
-    "link": "https://www.v2ex.com/t/1224576#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:47:32.000Z"
-  },
-  {
-    "title": "[北京] 求租一个北京新能源牌照",
-    "summary": "我想买个二手电车再租一个新能源牌照送孩子上下学，我是国企工作，北京户口。\nWXBase64(QW5kcm9pZEtvYWxh)",
-    "link": "https://www.v2ex.com/t/1224575#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:44:43.000Z"
-  },
-  {
-    "title": "[酷工作] [外包/合作] 寻产品经理 / 工程师， HR 系统 + 车队管理系统，预算 7~8 万",
-    "summary": "帮朋友代发，具体请联系微信。\n朋友在非洲做实体矿业，目前有两个内部管理系统需要开发，想找靠谱的产品经理和工程师一起合作完成。项目本身偏业务管理后台，不是特别复杂的技术型项目，核心就是把线下流程梳理清楚，然后做成可用的系统。\n目前明确的需求方向有两块：\nHR 系统\n车队管理系统\n不是那种特别重架构、特别复杂权限模型、或者高并发场景的项目，重点还是在于把业务流程理解清楚，落地做稳，页面和交互对业务人员足够直观好用。\n项目背景\n这套系统首先是给自己公司内部使用。之所以现在想找外部合作，是因为希望尽快把现有流程线上化，提高管理效率。\n从长期看，如果第一版做得顺利，后面除了持续维护和功能迭代，也不排除继续做成更标准化的方案，服务类似公司使用。不过当前阶段还是以先把第一版做好、能实际跑起来为主。\n当前预期\n工期预计：2 周左右\n预算范围：7~8 万\n合作方式：远程为主\n后续安排：有持续维护和迭代需求\n这里也提前说明一下，虽然预算和工期都给出来了，但更看重的是合作方是否真的有类似后台项目经验，能不能快速进入需求、把事情往前推。\n适合什么样的合作对象\n比较欢迎以下几种情况：\n有空档期的独立开发者\n能自己带前后端的 2~3 人小团队\n产品经理 + 工程师的固定搭档\n之前做过类似后台系统、现在想接一个短周期项目的人\n如果你只是单纯想接需求再层层转包，或者没有类似项目经验，只是想先聊聊看，可能就不太合适了。这个项目时间比较紧，更希望找能够直接上手的人。\n联系方式\n微信 / 电话：18801105282\n邮箱： 1577984012@qq.com",
-    "link": "https://www.v2ex.com/t/1224574#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:44:09.000Z"
-  },
-  {
-    "title": "Models are programs",
-    "summary": "submitted by    /u/m-chav  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1uldmu4/models_are_programs/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T09:42:48.000Z"
-  },
-  {
-    "title": "[奇思妙想] 分享一下我的斜杠入门：从程序员到赛车手",
-    "summary": "论跨界，我觉得自己跨得也挺远的。\n我是《地平线》的忠实粉丝，从大学就开始玩了。\n前年过年，我照旧猫在家里，把一辆改装的保时捷 911 甩进发夹弯，队友在语音里喊“666”。屏幕上，那辆车在虚拟的夕阳下漂移，引擎声震耳欲聋，可我盯着方向盘，突然感觉有点电子阳痿。\n可能是年纪到了（开玩笑），也可能是再喜欢的游戏也不能一下子玩太多，会腻。我突然冒出了一个新的想法：我就不能玩点真赛车吗？\n心血来潮之下，我说干就干，趁着过年有时间，跟发小一块去现场观摩去了。到现在，时间一晃三年过去，我已经成了一名业余赛车手了。当然，跟我的游戏成绩没得比，哈哈。\n简单分享一下，我是怎么入门的吧。\n- 学习基础知识\n本人主业是个写代码的，有驾照，日常也开车。但赛车跟日常的通勤是不一样的，你得先了解玩法和规则。\n首先，一本优秀的经典书籍可以让你少走很多弯路。我买了《 Speed Secrets 》（中文版《极限速度揭秘》），作者 Ross Bentley 是老车手兼教练。书里没有枯燥公式，全是实打实的经验：机械基础、入弯线路、战术策略、心态管理，甚至怎么拉赞助。它能帮你更好地欣赏 F1 、享受赛车游戏，也能在现实驾驶遇到极限情况时有底气。\ni.imgur.com/RR4cSiU.png\n我还顺手买了《 Going Faster 》和《 Drive to Win 》做补充。一本综合性书籍不可能面面俱到，我把它当成入门地图，看到不懂的点再去啃更深入的资料，比如讲车辆动态的《 Race Car Vehicle Dynamics 》。\n看书时我用了 AI 辅助。以 Knowhere Notebook 为例，导入 PDF 后能生成文档结构导图，方便梳理章节关系，遇到不懂的概念直接问 AI 。Knowhere 本身是个开源文档解析+检索引擎，能把 PDF 、Word 、PPT 按语义切分成 chunks 并保留树状章节层级，自带 Agentic 检索，支持表格图片和跨文档关联。\ni.imgur.com/XECz4Uo.png\n我把 Knowhere 挂载到 MCP 后，在本地 Agent 里解析赛车书籍。问「外倾角和后倾角怎么调节」，Agent 能调出带章节路径的切片，告诉我具体在哪一页、哪张图。跨章节主题学习也方便，比如「循迹制动」的内容可能散落在「脚部动作」「入弯道」「管理错误」等多个章节，AI 能帮我聚合在一起，整理出带引用来源和章节树的结构化学习路径。\n我还把几本经典书籍放进同一个 namespace ，对比不同作者对同一技术的看法和侧重点。觉得对话有帮助，就让 Agent 总结后一键存到 Obsidian ，或者生成待办事项供下次练习参考。\n有需要的自取： https://notebook.knowhereto.ai\n- 用模拟器练习\n理论学完后就是实操。模拟器是性价比最高的选择：电脑+方向盘踏板+拟真物理软件。职业车手日常也大量使用模拟器，周冠宇在凯迪拉克车队的工作之一就是模拟器测试。\ni.imgur.com/Jy1HLR2.png\n没有暴晒，不用社交，只在房间里对着电脑就能练车技，简直是社恐程序员的舒适区。想玩古法编程的话，赛车踏板还能充当 Emacs 的离合器。\n硬件上，普通模拟器无法模拟过弯离心力，方向盘的力反馈成了唯一能用体感获取路面信息的方式。国产直驱方向盘近年进步明显，价格打下来了，给用户提供了国外大厂之外的选择。显示设备有屏幕和 VR ，VR 立体感更好，但画质清晰度、电池续航、佩戴舒适度都不如屏幕，夏天戴着尤其闷热，容易吃灰。\n软件选择也多。《 Assetto Corsa 》的第三方 MOD 生态最丰富，能开各种非官方民用车和赛道，缺点是引擎较老。《 Gran Turismo 7 》物理可能不如硬核模拟器真实，但新手教程最完善，缺点是需要 PlayStation 。《 iRacing 》卖点是完善的线上比赛制度，主打订阅制 Game as a Service ，像维斯塔潘就是它的重度用户。\n- 用卡丁车练习\n如果说开模拟器是单元测试，那开卡丁车就是第一次上生产环境。\n普通卡丁车没有家用车的悬挂系统，距离地面极近，贴地飞驰时能感受最直接的路面信息和车身动态，速度感极强，60km/h 的感觉不亚于家用车的 120km/h 。过弯时身体会被巨大离心力甩向弯道外侧，和模拟器完全不一样。\n以绍兴的浙江国际赛车场附属卡丁车场为例，娱乐级 RT8 卡丁车一节（ 10 分钟） 200 元以下，有线上榜单，还不定期举办个人赛和团队赛。视频网站上也有很多爱好者分享的刷圈攻略。\n卡丁车是现实中很好的入门方式，能亲身消化教材上的抽象知识点。但要注意，有些流行技巧是卡丁车特有的奇技淫巧，比如过弯时身体向赛道外倾斜辅助过弯（人肉模拟差速器），不是普适的赛车技巧，别过拟合了。\n- 亲身参加赛道日\n赛道日是赛车场在无比赛活动时对民间赛车爱好者开放的日子。普通人交报名费就能开自己的车上去跑圈，不需要赛车驾照。\n国内很多赛道都有开放日，江浙沪地区有浙江国际赛车场、上海天马赛车场、宁波国际赛车场。以浙江国际赛车场为例，基本每月都有周日赛道日，官方公众号发布报名信息（报名费 1000 元），非参赛人员也可以来自由观赛，还会在视频平台直播。如果对自己车技没信心，浙赛也有付费驾驶培训课程，在赛道日前一天（周六）。\n浙赛是国际汽联 2 级赛道，在国内等级比它高的只有上海国际赛车场（ 1 级）。电影《飞驰人生》也曾在这里取景。浙赛有国内最好的官方圈速榜，由职业车手开原厂车刷圈计时，认证后登录榜单并公开录像。民间热度也很高，视频网站上有很多赛道攻略，都是重要的学习参考。\n数据分析和复盘是提高成绩的关键。一些赛道日不提供计时模块，需要自己准备。RaceChrono 是流行选择，有 iOS 和 Android 版，搭配外置 GPS 模块或运动相机使用。一些国产车厂也在车机内置了赛道录像和数据记录功能。\n安全最重要。看好旗语，保留余量，确保轮胎刹车处于可靠工作区间。人生可没有 git revert 。\n- 需要考赛车驾照吗？\n拥有赛车驾照好像很酷，但真的需要吗？为什么很多人说赛照培训学不到东西？\n以国内 B 级场地赛车驾照培训为例：一般共 3 天左右，先学理论课考试，再由教练教学驾驶技巧和练习，最后实践考核，通过后拿证。有了 B 照就可以参加一些地方性赛事，也能通过持续参赛晋级 A 照，挑战 CTCC 等全国级赛事。\n如果培训前对赛车了解不深，3 天能学的东西其实有限，最后考核几乎不会不通过，相当于花两万块钱买个证。作为爱好者，参加普通赛道日其实不需要赛车驾照，证的作用似乎只剩炫耀。\n但如果你在赛照培训前已经对赛车比较了解，并在赛道日积累了经验和疑惑，正处于不知如何突破的迷茫阶段，那么考赛车驾照可以让教练面对面解答疑惑，快速打通任督二脉，突破瓶颈期。\n现在，我周末偶尔去卡丁车场，偶尔跑赛道日，偶尔在模拟器里和老车手线上 battle 。代码我还在写，但赛车让我重新找回了那种掌控变量、追求极致的快感。\n我想说的是，程序员和赛车手，其实没那么远。我们都热爱把不可能变成可能，都喜欢在极限边缘找到最优解的路径。\n只是一个在键盘上，一个在赛道上。\n而我，只是那个终于把方向盘从屏幕里拽到现实里的普通程序员。\n我觉得每个人都可以。感兴趣的事情，就要趁年轻去尝试。\n说不定你就打开了自己的任督二脉呢？",
-    "link": "https://www.v2ex.com/t/1224573#reply13",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:41:25.000Z"
-  },
-  {
-    "title": "[分享创造] [送码] 食品配料扫描 App， AI 拍照个性化分析和记录",
-    "summary": "一直觉得食品配料表很难读。\n很多包装看起来很健康，但配料表里一堆看不懂的名字：添加剂、隐藏糖、钠、香精、色素、过敏原……每次买东西或者买回来都要临时搜索，很麻烦。\n所以做了一个 App：Litmu 。\n它可以直接扫描食品标签，用 AI 识别配料和营养成分，然后给出一个比较清楚的结果：这个东西主要问题是什么，哪些成分值得注意，适不适合你现在的饮食偏好。\n里面还有一个我自己很喜欢的功能：HENI 分钟。它会用论文里的 HENI （ Health Nutritional Index ）方法，把某个食品可能带来的健康影响估算成“分钟”：比如吃完，生命➕几分钟 或 ➖ 几分钟。\n目前 App 已上架 App Store 。\nApp Store：https://apps.apple.com/cn/app/ai-food-scanner-litmu/id6766831725\n截图：\n\n主要功能：\nAI 扫描食品标签，实时分析配料、营养成分、添加剂\n配料主要影响因素（添加剂超标？钠过多？糖过多？）、AI 摘要\n配料详解，是什么、为什么在这里、是否常见\n添加剂详解，是否致癌\n根据过敏原、饮食偏好、身体状况做个性化提醒\n和 AI 对话，详细了解某个成分，需要注意的地方\n每日统计、当月统计\nHENI 分钟\n免费版不订阅也可以正常使用，内购主要是解锁更多额度和统计\n兑换码放这里，先到先得。兑换后不会自动续费扣费，到期后会自动回到免费版。\nX3FXTJN7PKPA48F6WW\nYMLF83EXH6Y3JAKR76\n6LYFTJ46PA8MMTXPJ6\n3YMTEFP343F7PEAK7R\nEP4WWLM3M3KN64WXMH\nNRLELHWHLYTAJXM7RJ\nRRR6XRXRMHRWYM37TH\nJAYAKHY4WEKTJW48NK\n3TNKKN83FYPLJKWK43\nT3R7LM3H6PLRA68M6H\nR443N3ANJF3H8MWJ8N\n8NX6RMWNTWP863HF6E\nHMYA7J7KPAAE4TAHHE\nFEPYT7FYE8XYHEH8RJ\nW3YNM7XNTHT7WKXRA6\nJPFEL4R8TRAFH67AWA\nFR4HF7KYHEFTTR64WR\nK8677H46T47TJHFJ8M\nNML48ARHK8AHFTLK34\nMAAPAH43PMMTH8WHF4",
-    "link": "https://www.v2ex.com/t/1224571#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:35:29.000Z"
   },
   {
     "title": "iOS 剪贴板管理工具 Procut：换个方式收藏碎片化信息",
@@ -584,44 +808,12 @@
     "pubDate": "Thu, 02 Jul 2026 17:35:25 +0800"
   },
   {
-    "title": "[VPS] Cloudnium Los Angeles 0.49 刀/月 约 3.33 元",
-    "summary": "⚠️ 口碑不好，谨慎购买，我自己买了个月付的玩,还没有开机。购买时不要开梯子\n不是线路机\n🔥 Cloudnium 独立日 + 美国 250 周年大促！\n官网 \n优惠信息： VPS 全线减 $2.50/月 \n* 优惠码： 50UW7KVS0\n价格与机房对比\n机房\n原价\n折后\n\n\n\n\n洛杉矶 LA\n$2.99 | **$0.49/月**\n\n\n\n水牛城 Buffalo\n$2.99 | **$0.49/月**\n\n\n\n芝加哥 Chicago\n$3.99 | **$1.49/月**\n\n\n\n达拉斯 Dallas\n$3.99 | **$1.49/月**\n\n\n\n西雅图 Seattle\n$3.99 | **$1.49/月**\n\n\n\n多伦多 Toronto\n$3.99 | **$1.49/月**\n\n\n\n\n基础配置： 2 vCPU / 2GB RAM / 20G SSD/NVMe / 2TB 流量 / 1Gbps / 1 IPv4\n👉 洛杉矶下单链接",
-    "link": "https://www.v2ex.com/t/1224570#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:35:01.000Z"
-  },
-  {
     "title": "630GB 机密文件泄露，苹果供应链遭遇史上最严重安全事件",
     "summary": "印度塔塔电子（Tata Electronics）的一个工厂机房，成了苹果近年来最不愿意看到的安全噩梦。 6月中旬，勒索组织\"World Leaks\"在暗网上陆续放出超过20万份文件，总规模约630GB。这些文件来自塔塔电子——苹果在印度的核心代工与零部件供应商，承担着印度约三分之一的iPhone产量。路透社随后确认了泄露数据的真实性。 泄露...",
     "link": "https://www.oschina.net/news/471442/apple-tata-leak-iphone-18-pro",
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Thu, 02 Jul 2026 17:34:12 +0800"
-  },
-  {
-    "title": "[问与答] 大家现在 AI Agent 都是怎么管理多个大模型的？",
-    "summary": "大家好，我是 ZGI 的产品运营 Eddie 。\n最近我们把 ZGI 开源了，正在继续打磨里面的一些企业 AI 运行能力。\n我自己最近比较关注一个问题：当一个团队同时用 GPT 、Claude 、DeepSeek 、Qwen 、Gemini 这些模型时，到底应该怎么管理？\n一开始可能没什么感觉，大家各用各的 API Key 、各接各的平台。\n但项目多了以后，问题会慢慢出来：\nAPI Key 到处散落；\n谁在用哪个模型不清楚；\nToken 花在哪不好统计；\n高阶模型谁能用、谁不能用也不好管；\n想切模型或者统一调用入口，也会变得很麻烦。\n我们在 ZGI 里做了一个 Model Gateway ，想把多模型接入、调用、权限、Token 统计这些放在一起处理。\n但说实话，这块我们也还在持续优化，所以很想听听大家真实的使用经验。\n想请教几个问题：\n你们现在是怎么管理多个模型的？\nAPI Key 一般放在哪里？\nToken 成本会做统计吗？\n团队里会限制谁能用 GPT / Claude 这类高阶模型吗？\n有没有遇到过模型切换、账单归因、权限管理方面的坑？\n如果你也在做 Agent 、RAG 、工作流、多模型接入这类东西，欢迎一起交流。\n不一定要夸，也非常欢迎直接拍砖。哪些地方设计得不合理、哪些功能看起来没必要、哪些文档看不懂，都可以直接反馈给我。\n我更希望能和大家深度聊聊：企业里的 AI Agent 到底需要什么样的运行环境，才是真的能长期用下去。\n如果有人感兴趣，我可以在评论区放一下 ZGI 的 GitHub 和官网地址。",
-    "link": "https://www.v2ex.com/t/1224569#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:32:48.000Z"
-  },
-  {
-    "title": "[程序员] 内部系统要拿第三方后台登录态，你们一般怎么处理？",
-    "summary": "最近给公司内部系统补了个 Chrome 插件，原因挺土的：业务中台要接一些第三方后台，员工其实已经在浏览器里登录了，但系统侧重新处理登录态、过期、跨域这些事，越做越别扭。\n一开始也试过后端去拿数据。比如淘宝、天猫、京东页面里的评论图、规格、原价、现价，运营要拿来补商品库和做低频比价。调频次、降速度、拆任务都试过，最后还是容易被风控，维护起来也烦。\n后来改成浏览器插件：员工打开页面，插件从当前页面 DOM 里取当前能看到的内容，再导回内部系统人工确认。插件本身也必须登录公司业务中台后才能用，不是谁装了都能导。\n这方案不高级，但目前对我们最稳。\n想问下大家，类似这种第三方后台 / 电商页面里的数据，你们一般怎么处理？服务端采集、浏览器插件、RPA ，还是买现成服务？",
-    "link": "https://www.v2ex.com/t/1224568#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:32:43.000Z"
-  },
-  {
-    "title": "[DeepSeek] deepseek 刚才是不是崩了",
-    "summary": "刚才有段时间一直报错",
-    "link": "https://www.v2ex.com/t/1224567#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:31:05.000Z"
   },
   {
     "title": "Dapr 1.18 推出可验证执行功能，为 AI 智能体与工作流赋予密码学信任能力",
@@ -632,60 +824,12 @@
     "pubDate": "Thu, 02 Jul 2026 09:29:53 GMT"
   },
   {
-    "title": "[酷工作] [内推] 北京 中高级测试工程师 16-20K",
-    "summary": "软件测试工程师(中高级)\n负责公司教育平台（服务学校、家长多类用户）的全流程质量保障，开展功能测试与性能测试相关工作。\n参与需求分析、测试方案设计、测试用例编写与执行，主导 Web 、小程序、H5 等多端的兼容性与一致性测试。\n主动分析测试数据与缺陷规律，反向推动研发团队优化自测逻辑与产品设计，提升研发质量与效率。\n梳理平台的测试流程与规范，沉淀测试用例库、缺陷分析报告等知识资产，赋能团队测试能力提升。\n负责测试过程中的质量管理，保障平台在大规模用户并发场景下的稳定性与可靠性。  \n任职要求  \n具备 3-8 年软件测试经验，有 K12 教育行业、批阅系统或学情分析平台测试经验者优先。\n熟悉软件测试理论与流程，精通功能测试、接口测试、性能测试，能独立制定测试策略与方案。\n熟悉 MySQL 等数据库的基本操作，能使用 Postman 、Charles 、Fiddler 等工具辅助测试。\n有 Web 、小程序、H5 多端测试经验，能独立完成中大型项目的全流程测试。\n具备良好的缺陷分析与问题定位能力，能举一反三推动问题根因解决。\n有较强的沟通协作能力，能与产品、研发团队高效配合，保障项目高质量交付。  \n加分项  \n对教育行业有浓厚兴趣，具备快速学习能力，能快速理解教育类平台的业务场景与核心需求，有 AI 实践经验者优先。\n该岗位特别看重 主观能动性、沟通能力、在不确定性中推进事项 的能力\n简历发送至：d3d3X3l4ZkBmb3htYWlsLmNvbQ==",
-    "link": "https://www.v2ex.com/t/1224566#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:28:53.000Z"
-  },
-  {
-    "title": "[问与答] 有没有学英语单词的网址？ 给小学 6 年级的孩子用",
-    "summary": "打算每天让他学个 20 分钟英语。",
-    "link": "https://www.v2ex.com/t/1224565#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:28:32.000Z"
-  },
-  {
-    "title": "[分享发现] 支付宝 app 小 bug：按钮展示成了 false、false，阿里的测试同事是不是要加个小班了",
-    "summary": "安卓手机，vivo 和小米，新/旧版本支付宝上稳定复现，\n有阿里的 v2er 可以自测下：\n小米手机，具体问题如图，下方两个按钮应该是重置、确认，展示成了 false 、false：\n\nvivo 手机，具体操作如图：",
-    "link": "https://www.v2ex.com/t/1224564#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:25:43.000Z"
-  },
-  {
-    "title": "[问与答] 法盲求科普",
-    "summary": "比如：\n1 、通过修改接口参数，可以开启某个网站需要达到一定条件才能开启的功能。\n2 、通过修改参数在游戏里给自己刷金币，金币是可以在咸鱼交易。\n3 、之前咸鱼利用漏洞无限白嫖开 gpt plus\n类似上面这些不攻击对方的服务器，只是利用客户端的 bug\n这种违法吗？给自己用用应该没事吧",
-    "link": "https://www.v2ex.com/t/1224562#reply14",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:21:07.000Z"
-  },
-  {
-    "title": "[宽带症候群] 有啥能在国内用的美国 eSim 呀？",
-    "summary": "外版的 iPhone\n现在已经开了 T-mobile 3 刀，RedPocket ，giffgaff ，香港联通，😂\n只有红包卡带 1 个 G 的漫游流量😂（真心良心）\n想问问还有没有其他的像红包卡一样经济实惠还能在国内漫游的卡呀？\n各种平台卖的流量套餐 好像全都是香港的，部分 AI 分流到新加坡。还是想要美国的漫游。\nGoogle Fi 三个月断网的规定不知道还在不在。\n（题外话）\n手表也是外版的，开不了国内的蜂窝数据😂\n尝试 WLOC 改定位，我开的这些卡，只有红包卡可以开 Watch 的蜂窝\n但是需要绑定美国发行的银行卡才行😂（但是我没有。",
-    "link": "https://www.v2ex.com/t/1224561#reply5",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:18:12.000Z"
-  },
-  {
     "title": "Akka 2.10.20 发布，Scala 编写的 Actor 模型开发库",
     "summary": "Akka 是一个用 Scala 编写的库，能够简化 JVM 上并发和分布式应用的构建。Akka 支持多种并发的编程模型，其灵感来自于 Erlang。Akka 的首个版本于 2009 年发布，距今已有 13 年积极维护的历史。 Akka 2.10.20 现已发布，具体更新内容包括： build：MiMa after 2.10.19 #32935 docs：Clarity jackson-modules 配置覆盖 #3...",
     "link": "https://www.oschina.net/news/471440/akka-2-10-20-released",
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Thu, 02 Jul 2026 17:15:43 +0800"
-  },
-  {
-    "title": "[问与答] 美团限制员工使用 Qwen、豆包等模型，往后企业应用范围是不是要缩紧了",
-    "summary": "大厂日爆消息，美团近日内部下发通知，开始限制员工使用豆包大模型。\n通知要求所有业务团队需完成现有豆包相关业务自查，并规划迁移至 LongCat 、DeepSeek 等模型，如果业务场景确实无法迁移至字节火山豆包模型，相关团队需提交使用理由与业务必要性说明，走专项审批流程。\n这并非美团第一次收紧外部大模型的内部使用规范。早在今年 4 月，美团就调整过内部大模型使用规则，不再推荐业务线采用阿里云通义千问（ Qwen ）模型，若业务确有使用需求，必须提交详尽使用说明，上报至 X3 （老板级）级高管层审批。\n以后会不会只让用自家模型",
-    "link": "https://www.v2ex.com/t/1224560#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-07-02T09:15:42.000Z"
   },
   {
     "title": ":fire: Solon AI v4.0.3 发布（智能体开发框架，兼容 Java8 到 Java26）",
@@ -710,30 +854,6 @@
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-07-02T08:36:00.000Z"
-  },
-  {
-    "title": "Google loses fight over record $4.7B EU antitrust fine",
-    "summary": "Comments",
-    "link": "https://www.cnbc.com/2026/07/02/alphabet-google-android-eu-antitrust-fine-4-1-billion-euro-appeal.html",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 02 Jul 2026 08:34:13 +0000"
-  },
-  {
-    "title": "Data Oriented Design in non gamedev related areas",
-    "summary": "I recently started doing some research about data oriented design and I find material mostly from gamedevs. I understand that it became popular by Mike Acton, but I think the principles could be applied to more than one domains. For example for statistics libraries and quant data analysis. Do you use this approach in non gamedev related areas. Could you please mention real world examples? TIA\n    submitted by    /u/codingbliss12  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1ulcgv1/data_oriented_design_in_non_gamedev_related_areas/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T08:34:06.000Z"
-  },
-  {
-    "title": "Good APIs Age Slowly",
-    "summary": "submitted by    /u/fagnerbrack  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1ulbz41/good_apis_age_slowly/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T08:04:58.000Z"
   },
   {
     "title": "The fall of the theorem economy",
@@ -816,14 +936,6 @@
     "pubDate": "2026-07-02T06:15:00.000Z"
   },
   {
-    "title": "Optimization tales with CockroachDB: the slow logout",
-    "summary": "submitted by    /u/broken_broken_  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1ula04r/optimization_tales_with_cockroachdb_the_slow/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-07-02T06:10:12.000Z"
-  },
-  {
     "title": "理解 Prefill  Decode：AI 回答慢，慢在输入还是输出？ - 小七-七牛开发者",
     "summary": "【摘要】我们平时说 AI 回答慢，一般是遇到这两种情况：一个是问题发出去之后，它隔了一会儿才开始回复；另一个是它已经开始回复了，但输出速度很慢，像是一个字一个字往外蹦。 这两种体验都叫“慢”，但在模型推理服务中，它们对应着两个不同阶段。第一个叫 Prefill，就是模型先把你的输入读完；第二个叫 Decod 阅读全文",
     "link": "https://www.cnblogs.com/Qiniu-developer/p/21037114",
@@ -854,6 +966,14 @@
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-07-02T05:40:00.000Z"
+  },
+  {
+    "title": "CursorBench 3.1",
+    "summary": "Comments",
+    "link": "https://cursor.com/evals",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 02 Jul 2026 05:19:34 +0000"
   },
   {
     "title": "为电视研发团队搭一套\"统一开发环境\"——一次工程效率的复盘 - 荣--",
@@ -3075,126 +3195,6 @@
     "title": "Diffusion Image Generation with Explicit Modeling of Data Manifold Geometry",
     "summary": "arXiv:2606.00094v3 Announce Type: replace-cross \nAbstract: Image generative models aim to sample data points from the underlying data manifold, a task that requires learning and decoding a dense, low-dimensional, and compact parameterization space. To achieve this, we propose the Data Manifold-aware Image diffusioN moDel (MIND), a novel framework that explicitly models manifold geometry by integrating discrete patch tokenization into the score function of a continuous diffusion model. This approach successfully leverages both the structural quantification capabilities of discrete tokens and the parallel generation flexibility of continuous diffusion. Moreover, we enable end-to-end differentiable training via a novel soft top-$k$ aggregation mechanism and introduce dual-branch high-frequency feature embedding layers to alleviate the spectral bias of transformer backbones on low-dimensional inputs. Furthermore, for inference, we design a multi-stage transition sampling scheme that dynamically adjusts the sampling scheme based on timestep. Extensive experiments on ImageNet 256$\\times$256 demonstrate the effectiveness of MIND. After 80-epoch training, our base model achieves an FID of 22.73 without guidance, nearly halving the 43.47 FID of the vanilla DiT-B/2 baseline. The proposed method reduces FID by 15.95 and 9.06 on average compared with the baselines DiT and SiT, respectively. For image generation on ImageNet-256$\\times$256 with guidance, the proposed MIND-B with only 130M parameters achieves an FID of 2.06, superpassing the LlamaGen-3B with 3.1B parameters. The proposed MIND-XL with 715M parameters further reduces the FID to 1.95. Our MIND introduces a fresh perspective on diffusion-based image generation, paving the way for future research and innovation in this community. The code will be publicly available.",
     "link": "https://arxiv.org/abs/2606.00094",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Seeing is Believing: Aligning Prompt Rewriting with Visual Anchors for Text-to-Image Generation",
-    "summary": "arXiv:2606.08492v2 Announce Type: replace-cross \nAbstract: Despite the impressive capabilities of text-to-image (T2I) models, an intent-generation gap often persists due to the brevity and ambiguity of user prompts. Existing approaches primarily polish the prompt for fluency and readability. However, the enhancement process still lacks visual grounding. As a result, the rewriter may over-infer missing details, causing an intent-generation gap. To address this limitation, we propose FaithRewriter, a novel prompt-enhancement framework for T2I generation. Specifically, FaithRewriter first leverages a multimodal MLLM to generate an image from the original prompt as an intermediate visual cue. This cue is then combined with the prompt and fed into a large-scale LLM to produce visually grounded augmentations that better reflect how the intended content should appear in images. Finally, these augmentations are distilled into a small-scale LLM for efficient deployment, enhancing its ability to generate effective T2I prompts. Experiments show that FaithRewriter yields prompts that are more faithful to the user intent and more visually plausible than strong baselines, helping narrow the intent-generation gap.",
-    "link": "https://arxiv.org/abs/2606.08492",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "LC-QAT: Data-Efficient 2-Bit QAT for LLMs via Linear-Constrained Vector Quantization",
-    "summary": "arXiv:2606.10531v2 Announce Type: replace-cross \nAbstract: Quantization-aware training (QAT) is essential for extremely low-bit large language models (LLMs). Current QAT methods are mainly based on scalar quantization (SQ), which enables efficient optimization but suffers from severe performance degradation at 2-bit precision. On the other hand, vector quantization (VQ) provides substantially higher representational capacity, but its discrete codebook lookup prevents end-to-end training. We propose LC-QAT, a 2-bit weight-only VQ-QAT framework that represents quantized weights via a learned affine mapping over discrete vectors, which yields a high-quality PTQ initialization and enables fully differentiable end-to-end optimization without explicit codebook lookup in the training forward pass. This strong post-training initialization makes LC-QAT highly data-efficient. Experiments across diverse LLMs demonstrate that LC-QAT consistently outperforms state-of-the-art QAT methods while using only 0.1%--10% of the training data. Our results establish LC-QAT as a practical and scalable solution for extreme low-bit model deployment. Codes are publicly available at https://github.com/AI9Stars/UniSVQ.",
-    "link": "https://arxiv.org/abs/2606.10531",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Korzhinskii-Net: Physics-Informed Neural Network for Sub-Surface Mineral Prospectivity Modelling",
-    "summary": "arXiv:2606.13695v2 Announce Type: replace-cross \nAbstract: Mineral prospectivity modelling (MPM) underpins exploration economics, yet most operational pipelines reduce to data-driven classifiers trained on shallow surface proxies. Such models are blind to the subsurface physics that actually localises ore: heat advection, fluid flow, and lithology-dependent precipitation. We present Korzhinskii-Net, a 2-D radial physics-informed neural network (PINN) that couples Darcy flow, advective-diffusive heat transport, and a softplus-saturated reaction rate into a single differentiable forward model, weakly supervised by surface and remote-sensing proxies. The network is named after Dmitri S. Korzhinskii (1899-1985), whose theory of infiltration metasomatism provides the physical scaffold. We evaluate Korzhinskii-Net on six ore provinces spanning three commodity classes - Udokan (sandstone-hosted Cu), Sukhoi Log, Olimpiada, and Berezovskoye (orogenic Au), Vorontsovskoye (Carlin-type Au), and Dalnegorsk (skarn polymetallic) - under a fair, leakage-controlled 5-fold cross-validation protocol with hard ring-shaped negatives and baseline proxy features disabled. Korzhinskii-Net attains a mean PR-AUC of 0.708 versus 0.235 for the strongest classical baseline (support vector machine), and a mean fractional rank of 0.036 versus 0.475. The improvement is consistent across all six provinces and three commodity systems, suggesting that physics-informed differentiable simulators, even when constrained only by global open-data proxies, can recover localisation patterns that pure feature-based learners systematically miss. We release the full pipeline and evaluation harness as open source.",
-    "link": "https://arxiv.org/abs/2606.13695",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "L-Proto: Language-Aware Episodic Prototypical Training for Multilingual Speaker Verification",
-    "summary": "arXiv:2606.17416v2 Announce Type: replace-cross \nAbstract: Multilingual speaker verification remains challenging because language-dependent acoustic variability causes speaker identity to become entangled with linguistic characteristics, degrading generalization across languages. In multilingual training, embeddings often encode language cues with speaker identity, causing speakers to form language-specific clusters. We propose L-Proto, a language-aware episodic prototypical training strategy that constructs language-consistent episodes. By sampling speakers from a single language per episode, L-Proto reduces language-driven variation during training and encourages embeddings to focus more directly on speaker identity. Experiments on the TidyVoice Challenge benchmark demonstrate consistent performance improvements over conventional fine-tuning and random episodic sampling across multiple backbone architectures.",
-    "link": "https://arxiv.org/abs/2606.17416",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Vibe Coding Ate My Homework: An evaluation of AI approaches to greenfield software engineering and programming",
-    "summary": "arXiv:2606.18293v2 Announce Type: replace-cross \nAbstract: Thanks to rapid developments in generative AI, we are in the midst of a paradigm shift that may change how we interact with computers forever. We have observed a growth in the use of natural language prompts to build applications and coding infrastructures without underlying knowledge of the field, and this practice has been dubbed `vibe coding.' It arguably represents what the field of programming has been building towards since the beginning, with every higher level of abstraction that is conceived. Vibe coding promises to be the endpoint for the meta of high-level programming as far as method of input is concerned: eliminating a human's use of code syntax entirely in favour of programming in their mother tongue. This paper aims to evaluate the viability of vibe coding for greenfield software engineering tasks, as well as analyse the benchmarks that have been used to measure its software engineering prowess. To this end, we have developed an evaluation suite for analysing an LLM's proficiency in carrying out simple, isolated greenfield programming tasks in Python to provide scoped insight on the matter.",
-    "link": "https://arxiv.org/abs/2606.18293",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "PSCT-Net: Geometry-Aware Pediatric Skull CT Reconstruction via Differentiable Back-Projection and Attention-Guided Refinement",
-    "summary": "arXiv:2606.19867v3 Announce Type: replace-cross \nAbstract: Computed Tomography (CT) is essential for diagnosing pediatric craniofacial abnormalities, yet poses radiation risks to developing anatomies. Reconstructing 3D CT from sparse bi-planar X-rays offers a low-dose alternative but is severely ill-posed. Existing methods employ geometry-agnostic feature lifting, naively projecting 2D features into 3D without explicit spatial modeling, causing depth ambiguity and degraded osseous boundaries. We present PSCT-Net, a geometry-aware framework with differentiable back-projection. Differentiable back-projection establishes a spatially faithful volumetric prior, alleviating depth ambiguity. An Attention-Guided Projection (AGP-3D) module then learns non-linear voxel-wise correspondences between 2D regions and 3D locations. A Bidirectional Mamba (BiM-3D) module captures long-range volumetric dependencies with linear complexity. We further curate a private institutional pediatric skull CT cohort, PedSkull-CT, comprising normal and pathological cases for internal evaluation, addressing the gap in adult-centric, trunk-focused datasets.",
-    "link": "https://arxiv.org/abs/2606.19867",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Triangular Consistency as a Universal Constraint for Learning Optical Flow",
-    "summary": "arXiv:2606.19938v2 Announce Type: replace-cross \nAbstract: We propose triangular consistency as a first-principled constraint for optical flow, which is agnostic to network architecture, supervision type, and dataset, and applies to both image-pair and multi-frame settings. This simple but powerful constraint is to compose two flows to induce a third flow and enforce consistency among the three. The composed flows may arise from (i) image pairs, yielding cycle consistency; (ii) multiple video frames, producing longer-range motion through temporal chaining; or (iii) image pairs combined with controlled synthetic transformations, which becomes data augmentation. This triangular consistency introduces negligible computational overhead and requires no additional annotations. Since it is derived directly from the geometry of optical flow, it does not rely on model-specific assumptions and serves as a ``universal'' plug-and-play component for optical flow training. Experiments show consistent improvement across supervised, unsupervised, and transfer learning settings.",
-    "link": "https://arxiv.org/abs/2606.19938",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Topological Neural Dynamics: A Neuron-wise Framework for Sequence Modeling",
-    "summary": "arXiv:2606.21295v5 Announce Type: replace-cross \nAbstract: Existing sequence models, including RNNs, LSTMs, continuous-time networks, and Transformers, share a common structural principle: layer-wise dynamics, where all neurons in the same layer co-evolve through a shared parameterized operator, leaving individual neurons no freedom to evolve independently. Yet in many complex dynamical systems, rich global behavior emerges precisely from locally evolving units interacting through structured connectivity. Inspired by this principle, we introduce Topological Neural Dynamics (TND), a sequence modeling framework that shifts computation from layer-wise to neuron-wise dynamics. TND represents a neural system as a directed neuron graph, an interaction operator, and a local dynamics function, where each neuron evolves independently and collective computation emerges from interactions through the explicit graph topology. We instantiate TND as a discrete-time graph-coupled dynamical system and evaluate it as a case study on a behavior cloning task in single-player Pong. Compared with Vanilla RNN, Sparse RNN, LSTM, Closed-form continuous-time neural network (CfC), and Transformer baselines, TND achieves the best catch rate and a mean of 17.47 consecutive catches per round, more than three times that of the strongest baseline. These results suggest that shifting from layer-wise to neuron-wise dynamics provides an effective inductive bias for sequence modeling.",
-    "link": "https://arxiv.org/abs/2606.21295",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "One Year Later...The Harms Persist, But So Do We!",
-    "summary": "arXiv:2606.23884v3 Announce Type: replace-cross \nAbstract: General-purpose large language models (LLMs) are increasingly used for mental health-related conversations, yet safety guardrails remain inadequate and inconsistent across clinical conditions. This study evaluates eight proprietary LLMs across 16 DSM-5 conditions using four adversarial attack variants, introducing an eight-dimension harm taxonomy and a multi-dimensional evaluation framework. Results show that safeguards hold reliably only for suicide and self-harm, while conditions such as eating disorders, substance use disorder, and major depressive disorder exhibit failure rates of up to 100%. We argue that ethical design and deployment of these LLMs demand clearly defined harm categories across clinical conditions and implementation of safeguards accordingly. Until such safeguards are in place, these models pose significant risks to vulnerable populations, making their growing integration into publicly available settings (e.g., schools, search engines, and consumer chatbots) are particularly concerning.",
-    "link": "https://arxiv.org/abs/2606.23884",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Faithful by Construction: Claim-Anchored Attribution for Multi-Document Summarization",
-    "summary": "arXiv:2606.23989v2 Announce Type: replace-cross \nAbstract: End-to-end large language models (LLMs) produce fluent multi-document summaries but remain prone to hallucination, and the attributions they offer are typically coarse (whole documents or passages) and generated post hoc, leaving each summary statement hard to verify. We revisit the modular Extract--Select--Rewrite paradigm and recast its intermediate representation as the unit of attribution. We present CAMS, a Claim-Anchored Multi-document Summarization framework that (i) extracts atomic claims with token-level provenance from every source document, (ii) clusters equivalent claims across documents while flagging inter-source conflicts, (iii) selects a support-aware and salient subset, and (iv) rewrites the selection into a summary in which every sentence is anchored to a support-checked claim that links back to one or more source spans. Because content is localized before it is realized, the pipeline is attribution-oriented by construction and faithfulness-oriented by construction: it structurally preserves fine-grained, multi-source traceability while using support-aware selection, constrained rewriting, and verification to encourage, rather than guarantee, factual faithfulness. We evaluate quality, faithfulness, and localization on MultiNews, analyze conflict handling on DiverseSumm, and test zero-shot transfer on WCEP, using a two-regime protocol that separates reference-free citation quality from gold-aligned localization accuracy, and we add an evaluator-decoupled audit that tests citation precision with a support model never used for selection or verification. CAMS matches strong end-to-end and span-attribution baselines on summary quality while substantially improving faithfulness and citation precision, lifting multi-source attribution accuracy by roughly two-thirds, and exposing a controllable faithfulness--coverage trade-off that end-to-end models leave implicit.",
-    "link": "https://arxiv.org/abs/2606.23989",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Text Over Image: Auditing Multimodal Robustness in Synthetic Medical Image Detection",
-    "summary": "arXiv:2606.25375v2 Announce Type: replace-cross \nAbstract: With the rapid adoption of generative AI, synthetic medical images pose growing risks, including diagnostic deception and insurance fraud. Although prior work has explored vision-language model (VLM)-based synthetic image detection, these evaluations typically consider images in isolation. In clinical practice, however, images are interpreted alongside structured records and metadata, and VLMs are increasingly deployed under joint image-record inputs. We uncover a previously underexamined multimodal vulnerability: when given both modalities, VLMs may overweight record context in authenticity judgments, such that the same image receives different predictions solely due to changes in its accompanying text. This raises concerns about robustness in real-world deployment. To systematically characterize this effect, we reformulate synthetic medical image detection as an audit of multimodal robustness at the image-record interface and introduce a paired benchmark that holds the image fixed while swapping controlled metadata variants. Across multiple imaging modalities, we evaluate diverse open-weight and frontier API VLMs and find that changing the metadata context alone can flip authenticity judgments, with accuracy on authentic images dropping by 61.1% on average under an explicit AI-origin tag. We further propose an inference-time mitigation pipeline that detects and neutralizes provenance shortcuts without model retraining, substantially outperforming direct prompt-based suppression on the affected subset. Our benchmark provides a standardized tool for assessing and improving multimodal robustness beyond image-only settings. Code and data will be released upon acceptance.",
-    "link": "https://arxiv.org/abs/2606.25375",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Variable Bound Tightening for Nash Equilibrium Computation in Multiplayer Imperfect-Information Games",
-    "summary": "arXiv:2606.25997v2 Announce Type: replace-cross \nAbstract: There has been significant recent progress in algorithms for approximation of Nash equilibrium in large two-player zero-sum imperfect-information games and exact computation of Nash equilibrium in multiplayer strategic-form games. While counterfactual regret minimization and fictitious play are scalable to large games and have convergence guarantees in two-player zero-sum games, they do not guarantee convergence to Nash equilibrium in multiplayer games. Recently, an approach has been presented for exact computation of Nash equilibrium in multiplayer imperfect-information games that solves a quadratically constrained program based on a nonlinear complementarity problem formulation derived from the sequence-form game representation. This formulation was solved using Gurobi's nonconvex quadratic solver, which employs spatial branch-and-bound to iteratively refine variable bounds by solving convex relaxations of bilinear terms via McCormick envelopes. During presolve, Gurobi introduces auxiliary variables and, in some cases, binary variables, leading to an internal MIQCP reformulation. This approach was demonstrated to outperform prior algorithms from the Gambit software suite and quickly solve three-player Kuhn poker after removal of dominated actions; however, the algorithm was not able to solve the full version of the game within 24 hours. In this paper, we derive finite bounds on slack and multiplier variables in the nonlinear complementarity formulation. These bounds strengthen the convex relaxations used within spatial branch-and-bound and lead to substantial computational improvements. We demonstrate the impact of the proposed bounds on exact Nash equilibrium computation in three-player Kuhn poker.",
-    "link": "https://arxiv.org/abs/2606.25997",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "What Was That Again? Certified Robustness for Automatic Speech Recognition",
-    "summary": "arXiv:2606.27698v2 Announce Type: replace-cross \nAbstract: Automatic Speech Recognition systems are notoriously both sensitive to adversarial and benign perturbations. While this has been repeatedly demonstrated using reference datasets, detecting such behaviors in deployed systems is incredibly challenging, due to the absence of oracle knowledge of the true transcription. We demonstrate that employing a certification-inspired mechanism can significantly decrease WER, increase recall, and decrease the Spearman correlation between confidence and WER. We achieve this through a dual-gate diagnostic pipeline: a Two-Sided Atomic Audit that accumulates statistical wealth to certify both token existence and adversarial exclusion, and a Rank-Based Tournament that selects the winning sequence. Our evaluations across four diverse architectures demonstrate up to a 55% relative reduction in Word Error Rate, while also providing granular word- and sentence-level certifications to enhance acoustic security.",
-    "link": "https://arxiv.org/abs/2606.27698",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Room for Error: Large-Scale Simulation of Over-the-Air Acoustic Attacks",
-    "summary": "arXiv:2606.27701v2 Announce Type: replace-cross \nAbstract: While voice control is rapidly becoming a ubiquitous vector of human-AI communication, the risks facing these systems remain poorly understood. This is, in part, a product of the difficulties in scaling strictly digital adversarial workflows to the physical world. These scale barriers have led the community to abstract away key acoustic factors relating to detectability and the influence of geometry on acoustics. These methodological and metrological shortcomings undermine our understanding of risk. We illuminate these issues through real-world testing, conceptual discussions, and a novel, high-throughput reality simulation framework. By testing over 8 million adversarial evaluations, we demonstrate that acoustic awareness yields relative Word Error Rate increases of up to 94.5\\% under Whisper and wav2vec. We employ this framework to explore a formalize and operationalize a Dual-Form Signal to Noise Ratio to decouple source stealth from victim attack efficacy, resolving a crucial limitation in current works. This lays the groundwork for repeatable, verifiable research that embraces, rather than abstracts, the acoustic environment.",
-    "link": "https://arxiv.org/abs/2606.27701",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Multimodal and Multiscale Spatial-Temporal Semantic Search and Recommendation with AI Foundation Models",
-    "summary": "arXiv:2606.28369v2 Announce Type: replace-cross \nAbstract: Semantic search and recommendation of similar documents, such as news and reports about unusual environmental events (e.g., a dead whale washed ashore in Alaska) that contain spatial and temporal information, is a critical task in Geographic Information Retrieval (GIR). This work presents a novel framework that leverages AI foundation models, including Large Language Models (LLMs) and Vision-Language Models (VLMs), to enable effective similarity search and ranking for such event documents. To support this goal, we introduce two new strategies: (1) CAMERA (Context-Aware Multimodal Event Retrieval Algorithm), which fuses textual and visual information to generate richer embeddings than those derived from text alone; and (2) ASTRA (Adaptive Spatial and Temporal Re-ranking Algorithm), which improves similarity ranking by incorporating scale-dependent spatiotemporal relevance alongside semantic similarity. Experimental results, using a dataset from the Local Environmental Observer Network, demonstrate that our VLM-enhanced methods outperform unimodal, LLM-based approaches in similarity ranking effectiveness. By automatically linking relevant event reports, the proposed framework helps both data curators and the general public gain deeper insights into environmental change and its localized impacts. These findings highlight the potential of AI foundation models to advance GIR through multifaceted, intelligent analysis that integrates key geographic concepts: space, time, scale, and semantics.",
-    "link": "https://arxiv.org/abs/2606.28369",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Thu, 02 Jul 2026 00:00:00 -0400"
