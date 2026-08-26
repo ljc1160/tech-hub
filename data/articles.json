@@ -1,11 +1,155 @@
 [
   {
-    "title": "Dolly Parton, queen of country music and humanitarian hero, dead at 80",
+    "title": "[美酒与美食] 咬牙下单了个茶，昨天晚上喝了一下真好喝啊，之前喝的都是啥玩意啊",
+    "summary": "价格 65 块 50g ，我之前都是和 65 150g 的，没想到提升一下预算差别这么明显\n茶叶 叶叶分明\n风味 跟说明的风味描述一直，荔枝风味很明显\n如果不是加了乱七八糟的调味，以后就加入口粮茶了\n在工位我喝猴王茉莉花茶量大管饱，家里用二才杯喝这个心情愉悦",
+    "link": "https://www.v2ex.com/t/1237223#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-26T00:39:28.000Z"
+  },
+  {
+    "title": "[分享创造] 史前动物博物馆更新：我把评论区的一个建议做成了「比一比」功能",
+    "summary": "大家好，我又来了。\n上次我在 V2EX 分享了自己给女儿做的「 3D 史前动物博物馆」。那是这个项目第一次真正被更多人看到，也收到了很多鼓励和建议。GitHub 项目当天新增了三百多个 Star ，对我来说算是一次非常重要的破冰。\n非常感谢上次参与讨论的各位 V 友。\n「比一比」是怎么来的\n上次发帖时，有位 V 友在评论区提议：能不能在恐龙旁边放一个小朋友，或者其他孩子熟悉的参照物？这样就能更直观地感受到恐龙和其他史前生物究竟有多大。\n看到这条评论时，我马上想到了女儿那段时间睡前很喜欢听的一首歌——《大和小》。\n这首歌也是通过比较生活中常见事物的大小，帮助孩子理解“大”和“小”。于是我当时就想：这个功能我一定要做。\n它首先是为我的女儿做的，但我也希望其他年龄较小的孩子能够用到它。\n这里也特别感谢带来「比一比」灵感的两位 V 友：@maicai666 和 @hellcer\n它具体怎么玩\n进入「比一比」后，家长可以先选择男孩或女孩角色，并填写孩子的真实身高。\n我还增加了一个“是否可以靠近史前生物”的选项。因为有些年龄较小的孩子可能会害怕，家长可以让角色保持一定距离，不必走得太近。\n进入场景后，孩子的角色会按照填写的身高，与史前生物一起出现在同一个 3D 空间里。\n相比“体长十米”“翼展十二米”这类比较抽象的数字，孩子可以直接看到：\n> 如果我站在它旁边，我大概会到它身体的哪个位置？\n场景中还会有女声旁白，介绍史前生物的外形、身高、体长或者翼展。\n目前共有四类场景和 18 种史前生物：\n森林\n雪地\n天空\n海洋\n不同场景中的人物服装也不一样。\n在森林里，角色会穿丛林探险装；在雪地里会换上厚厚的防寒服；进入天空后会穿着翼装，与飞行生物一起飞翔；到了海洋里，则会穿上潜水服、脚蹼并背着氧气罐。\n角色可以使用方向键移动，从不同距离和角度观察史前生物。\n空格键在不同场景中也有不同作用：在陆地上是跳跃，在天空和水下则是加速。水下加速时，脚蹼后方还会出现水流和气泡效果。\n这些都是比较小的细节，但也是我自己做完以后比较喜欢的地方。\n\n一个看起来很简单、实际做了半个月的功能\n一开始，我把这个功能想得太简单了。\n我觉得现在有 AI ，也有各种 3D 工具，把人物和史前生物放进同一个场景里，应该很快就能完成。\n真正开始做以后才发现，完全不是这么回事。\n这半个月里，我几乎没有铺开做其他新功能，主要时间都花在「比一比」的反复打磨上。\n最早的地面是用程序化方式生成的，纹理排列得非常整齐，看起来像一块块瓷砖，特别假。\n远景也试过使用 4K 、8K 图片，但图片被放到足够远、足够大的位置后，山体和背景会变得模糊，同样缺少真实感。\n后来又换了很多方案，反复调整，才做到现在这个相对自然一些的版本。\n人物模型则是另一个大坑。\n我最初想让 AI 操作 Blender ，先生成男孩和女孩两个基础模型，再分别给它们增加四个场景的服装。\n结果生成出来的装备非常离谱。\n\n做到这里时，我想起上次 V2EX 评论区里还有一位 V 友提到过 Meshy ，可以通过图片生成 3D 模型。\n于是我重新回去研究图片生成模型的流程。\n这里也感谢当时提供这条线索的 V 友：@avenger\n我最开始仍然想只做两个基础人物，再通过 Blender 增加服装，但实际效果依然很假。最后只能改变思路，针对四个场景和两个角色，分别制作八套完整模型。\n为了让同一个男孩或女孩在不同场景中保持相同的长相，还需要先生成角色的正面、背面、左侧和右侧图片，再用这些多视图图片生成 3D 模型。\n中间还有很多关于人物一致性、多视图生成和模型调整的坑。如果大家感兴趣，我之后可以再单独写一篇文章，分享这部分的尝试。\n在 AI 时代，从 60 分继续往上走\n做这个功能的过程中，我还有一个很深的感受。\n在 AI 时代，从 0 分做到 60 分，确实比以前容易了很多。\n只要把需求描述清楚，AI 很快就能生成一套看起来可以运行的东西。页面有了，3D 场景有了，人物也能够移动。仅仅从“什么都没有”走到“有一个可以演示的版本”，现在的门槛已经被大幅降低。\n但从 60 分开始，难度会迅速上升。\n从 60 分做到 80 分有点难，从 80 分做到 90 分很难，而从 90 分继续接近 100 分，可能真的难如登天。\n这里并不是说我已经把「比一比」做到了 90 分或者 100 分。以我自己的判断，它现在大概只完成到了 70 ～ 80 分，距离真正成熟、自然和完整，还有很长一段路。\n前面的 60 分，AI 可以很快帮我搭出来；但后面的每一分，都开始变得越来越具体。\n地面纹理为什么看起来像瓷砖？远景为什么一放大就显得模糊？人物的装备为什么像几块几何体拼在身上？不同场景中的光线、材质、比例和动作怎样才能看起来更协调？水下移动时应该给用户怎样的视觉反馈？\n这些问题并不是再多说几句“帮我做得真实一点”“帮我优化一下”就能自动解决的。\nAI 可以给出代码和方案，但我仍然需要先判断问题究竟出在哪里，理解不同方案的取舍，再一次次运行、观察、调整和推翻重来。如果自己不知道什么是对的，也就很难判断 AI 给出的结果到底能不能用。\n如果想让这个功能继续往上突破，我还需要认真学习更多 Three.js 的知识，也需要补上自己在 3D 场景构建、灯光、材质、镜头、动画和性能方面的不足。\n这里面存在大量无法直接写进提示词的隐性知识。它们可能来自专业基础，也可能只能在实际制作过程中，通过一次次失败慢慢积累。\n所以我现在越来越觉得，AI 降低的是“开始做”的门槛，但没有取消“把事情做好”的成本。\n它可以让一个普通人更快地拥有第一个版本，却不会自动把第一个版本变成真正成熟的产品。越接近后面的那几十分钟，越需要人的判断、审美、耐心和持续学习。\n而这半个月，我做的事情其实就是在不断尝试补上后面的这些分数。\n也在学习怎样让产品被更多人看到\n最近除了继续做产品，我也开始尝试在小红书、微信公众号和 X 上分享自己的制作过程。\n效果目前还谈不上多好，我也仍在摸索不同平台的内容方式。\n做了一段时间以后，我发现追热点获得一些流量并不难，难的是让真正对产品感兴趣、愿意持续关注的人留下来。\n单纯介绍产品，可能没有多少流量；直接放 GitHub 链接，在有些平台又可能被当作站外引流。很多规则和内容形式，只有真正开始做以后才能慢慢理解。\n我现在也没有找到标准答案，只是越来越觉得：把产品做出来是一件事，让真正需要它的人看到，又是另一件需要长期学习的事。\n对我来说，这些尝试最终还是希望让更多家长和孩子看到这个项目，而不仅仅是得到一组短期的流量数字。\n最后\n「比一比」最初来自 V2EX 评论区，也是我想为女儿做的一次尝试。\n从功能的想法，到图片生成 3D 模型的线索，都受到了上次 V 友回复的启发。所以这次更新也算是向之前关注过这个项目的朋友汇报一下进度。\n现在把它分享出来，希望大家可以帮忙体验一下。\n尤其想听听大家对下面这些问题的反馈：\n体型对比是否足够直观\n移动和观察方式是否容易理解\n场景和人物模型有没有明显异常\n“保持距离”的设计是否合理\n在不同设备上的加载和运行是否流畅\n任何建议、问题和 Bug 都欢迎直接回复。\n在线体验： https://leon-made-this.work/museum\nGitHub： https://github.com/s010s/prehistoric-animal-museum\n上一次的 V2EX 帖子： https://v2ex.com/t/1233153\n我的个人网站： https://leon-made-this.work\n如果觉得这个项目有意思，也欢迎顺手点个 Star 。",
+    "link": "https://www.v2ex.com/t/1237222#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-26T00:38:12.000Z"
+  },
+  {
+    "title": "[生活] 最近老刷到男性觉醒的视频",
+    "summary": "总感觉是男性觉醒和女性觉醒会搞流量的在网络上输出，然后生活中的傻子全盘接受他们的理论在线下对线。\n视频切片都刷到吐了，这些应用厂商也都是无良厂商，微信、淘宝、支付宝、京东……等一系列的都添加了视频模块。很方案国内应用厂商，但又没得选。",
+    "link": "https://www.v2ex.com/t/1237221#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-26T00:35:14.000Z"
+  },
+  {
+    "title": "项目管理，被AI困在2026年 - 三范式",
+    "summary": "【摘要】AI技术不停往前迭代，人的缓慢脚步注定跟不上。趋势何时才能停下，暂时没有浮现答案，似乎只能寄希望于历史进程。 阅读全文",
+    "link": "https://www.cnblogs.com/cicada-smile/p/22689631",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-08-26T00:12:00.000Z"
+  },
+  {
+    "title": "[问与答] 日常开发 M6 +32 内存 Macmini 在 Mac 系列是不是最具有性价比？",
+    "summary": "Apple 刚刚发布了新的 MacMini 。日常开发（含 App 开发, nextjs 和 golang 项目），如果设备打算四年一换，下面那个配置是不是 M6 更具有性价比？\nm6(12cpu + 12GPU)+32GB 内存+1TB 13749 元\nm5pro(15CPU+16GPU)+48GB 内存+1TB 19749 元\n差价 6000 元\nAI 建议选 M6 。但他也说明 M6 其实是 2 超级核+4 性能核+6 能效核。对比 m5pro 其实是 5 超级核+10 性能核。\n点击苹果的芯片选择建议，他提到 m6 适合代码编译而 m5pro 适合软件开发。不知道这两者是不是有诱导的意思。",
+    "link": "https://www.v2ex.com/t/1237219#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-25T23:09:51.000Z"
+  },
+  {
+    "title": "Mac 小技巧：用方向键优雅处理超长网址 - AlfredZhao",
+    "summary": "【摘要】复制网址很简单：⌘ + A、⌘ + C。但面对超长链接，若只想保留站点地址，鼠标拖选既慢又容易选不准。 例如： https://example.com/article/2026/08/mac-shortcuts-guide?utm_source=wechat&utm_medium=article&u 阅读全文",
+    "link": "https://www.cnblogs.com/jyzhao/p/22688854",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-08-25T23:07:00.000Z"
+  },
+  {
+    "title": "Maiao: Gerrit-style code review workflow for GitHub, GitLab, Gitea, others",
     "summary": "Comments",
-    "link": "https://www.cnn.com/2026/08/25/entertainment/dolly-parton-death",
+    "link": "https://github.com/runetes/maiao",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 18:11:52 +0000"
+    "pubDate": "Tue, 25 Aug 2026 22:40:07 +0000"
+  },
+  {
+    "title": "Show HN: TeXbrain, a LaTeX editor that runs pdfTeX in the browser via WASM",
+    "summary": "Comments",
+    "link": "https://github.com/swimmingbrain/texbrain",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 22:08:50 +0000"
+  },
+  {
+    "title": "Python's pre-declared constants are kinda weird",
+    "summary": "Comments",
+    "link": "https://sebsite.pw/w/20260801-pythonconstants.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 21:39:02 +0000"
+  },
+  {
+    "title": "[宽带症候群] 陕西电信宽带被白名单限速症状",
+    "summary": "前天晚上起来打算用手机刷会 B 站，结果发现视频加载特变慢，以为是 AP 路由器或者软路由出啥问题了，都重启后没解决。排查了下发现症状是：电脑打开网页刷视频玩游戏都没啥问题，用全球网测速度正常，就手机打开 B 站抖音视频和评论区加载不出来，怀疑是被限速了。\n然后我用 iperf3 连我托管的一台物理机测试，测试后发现上传速度被限制在 2Mbps 左右，并且 UDP 丢包率高达 90%，TCP 频繁超时重连，确认应该是被 dpi 限速了。目前就手机 APP 使用有问题，电脑上网玩游戏基本没啥影响，传文件啥的没测试，由于本人是玩 PT 的，以前用联通宽带也被限速过，所以一直限速 1m/s 上行挂 qb 的，最近可能由于往托管的服务器一天传了几十 G 数据导致触发上行流量阈值了。这种之前办宽带问过电信营业员说是应该解不了，也不打算折腾走投诉麻烦宽带师傅上门啥的，明天准备去电信营业厅注销了换其他两家用了。",
+    "link": "https://www.v2ex.com/t/1237218#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-25T21:18:34.000Z"
+  },
+  {
+    "title": "XCancel also down, at least for time being",
+    "summary": "Comments",
+    "link": "https://news.ycombinator.com/item?id=49440786",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 21:18:23 +0000"
+  },
+  {
+    "title": "Latency optimizations on the system level",
+    "summary": "submitted by    /u/wineandcode  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1vycpx9/latency_optimizations_on_the_system_level/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-08-25T21:11:41.000Z"
+  },
+  {
+    "title": "When str.lower() is a security vulnerability in Python – Seth Larson",
+    "summary": "Comments",
+    "link": "https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 20:49:03 +0000"
+  },
+  {
+    "title": "Memory ordering in CPUs",
+    "summary": "submitted by    /u/mttd  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1vyb1js/memory_ordering_in_cpus/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-08-25T20:11:46.000Z"
+  },
+  {
+    "title": "C2PA Cameras Do Not Survive Contact with Reality",
+    "summary": "Comments",
+    "link": "https://www.da.vidbuchanan.co.uk/blog/android-c2pa.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 19:38:24 +0000"
+  },
+  {
+    "title": "A brief history of federal lift ticket regulation",
+    "summary": "Comments",
+    "link": "https://zakpodmore.substack.com/p/a-brief-history-of-federal-lift-ticket",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 19:25:43 +0000"
+  },
+  {
+    "title": "FDA authorizes first wearable device that monitors ketone and blood sugar levels",
+    "summary": "Comments",
+    "link": "https://www.fda.gov/news-events/press-announcements/fda-authorizes-first-wearable-device-continuously-monitors-both-ketone-levels-and-blood-sugar",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 19:07:01 +0000"
+  },
+  {
+    "title": "[OpenAI] Tibo 今天重置后，增加了 5 小时限额，这算是给个甜枣再敲你一棒",
+    "summary": "目前 plus 增加了 5 小时限额，估计大部分人都不够用了，pro 好像就成了最佳答案",
+    "link": "https://www.v2ex.com/t/1237217#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-25T18:43:27.000Z"
+  },
+  {
+    "title": "[宽带症候群] 花了好几天让 ai 帮我把旧安卓手机改造成了软路由！",
+    "summary": "之前用的 R2S ，内存只有 1G ，好多软件都不能开。正好有一台一加 7pro 没用，问了问 ai 有可行性就开动了。所有过程包括 bootloader 解锁，先从 Android12 降级到 Android9 ，再升级到 Android11 ，然后发现廉价 usb 网卡带宽太低，买了新 usb 网卡结果芯片太新驱动支持不好，又下载内核源码改源码编译，然后发现网络驱动性能不够好第二次改动源码编译，最终到一个稳定版本目前已经在网络性能上和 R2S 持平了，wan 带宽 300M 吃满，局域网无线 600M 传输，没什么性能问题，稳定性跑了一天多也没什么问题。\n这要是没有 ai 完全不可能搞定啊。",
+    "link": "https://www.v2ex.com/t/1237216#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-25T18:25:44.000Z"
   },
   {
     "title": "[Vibe Coding] 一个人干了一周，终于完成了人生第一个 App： AI 错题本",
@@ -56,14 +200,6 @@
     "pubDate": "Tue, 25 Aug 2026 17:23:07 +0000"
   },
   {
-    "title": "Lightweight system monitor for Linux VPS written in Go",
-    "summary": "Comments",
-    "link": "https://github.com/leodeim/vpsmon",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 17:13:59 +0000"
-  },
-  {
     "title": "[分享创造] 这是地球上第一个硅基生命的蓝图",
     "summary": "根据人类大脑结构 {额叶+脑干+左海马体+右海马体+小脑} 五大部件组成：\n         上文(左海马体)\n           |\n  AI 模型(额叶)-----指针(脑干)------外界接口(小脑)\n           |\n         下文(右海马体)\n模型训练：文音图帧喂入 Embedding 表(迭代)转为向量(顺变) 与 Transformer 矩阵里的标量(逆变) 正反向乘积和并(微调)\n 文字：原始文本 -> 分词器 -----> TokenID --> 文本 Embedding 向量表 -------> X -> Transformer 浮点矩阵+外挂 LoRA\n 音频：原始波形 -> 梅尔频谱提炼 -> H/W 编码 --> 音频 Embedding 向量表 --> X -> Transformer 浮点矩阵+外挂 LoRA\n 图片：原图归一缩放 -> 切分 Patch 块 -> 单帧图像 Patch 向量 -----------------> X -> Transformer 浮点矩阵+外挂 LoRA\n 视频：隔帧抽取缩放 -> 切分 Patch 块 -> 多帧 Patch 向量融合 -> 时序向量 ---> X -> Transformer 浮点矩阵+外挂 LoRA\n模型推理：文音图帧通过 Embedding 表(只读)转为向量(顺变) 与 Transformer 矩阵里的标量(只读) 正向乘积和并且(返回)\n硅基生命(意识数字化 X)：\n---------------------      --------------------------------------------------------------------------------------------------\n|   <<<<     |    /       \\    主观意识指针(潜意识:记忆脑海里无序涌现)反向训练 /      |\n|  OpenClaw  |    /  <<<<<  \\   联想右海马体=微积分:堆涌•关联联想想象创造记忆)  /  我的本性  |\n|  外界接口  \\   /   文音图+帧   \\                             \\   /              /       |\n| Chroma 肌肉记忆  ==<  Embedding   >--三角循环并交叉使用左 X 右向量海马体的自动指针---<  Transformer   |\n|  真实世界  /   \\   文音图+帧   /            / \\              \\         |\n|  OpenClaw  |    \\   >>>>>   /   逻辑左海马体=微积分:堆栈•被动思考检索向量记忆)   \\   我的本能   |\n|   >>>>     |    \\        /    客观认知指针(显意识:记忆脑海里相似检索)多向推理   \\        |\n---------------------      --------------------------------------------------------------------------------------------------\nSecondMe(人格外挂 LoRA+前置 L2)：\n---------------------    ------------------------------------------------------------------------------------------------\n|          |    |  你的本能:  \\  客观认知指针(显意识:记忆脑海里相似检索)多向推理  \\   <<<<<   \\\n|   LoRA    | <<< |      \\   L0-逻辑海马体=微积分:堆栈•被动思考检索原始记忆)   \\  OpenClaw   \\\n|  本地模型    |    | 你哪来-L0 \\                \\   /             \\   真实世界    \\\n|    AI     |    |  你是谁-L2 >===三角循环并交叉使用左 X 右向量海马体的自动指针== >  L3-肌肉记忆  >\n|  网络模型    |    | 你哪去-L1 /                /   \\             /   外界接口   /\n|   LoRA    | >>> |      /   L1-联想海马体=微积分:堆涌•关联联想想象创造记忆)   / OpenClaw   /\n|          |    |  你的本性:  /  主观意识指针(潜意识:记忆脑海里无序涌现)反向训练  /  >>>>>   /\n---------------------    ------------------------------------------------------------------------------------------------\n\n  -----------------------------\n  |            |        本能(习惯理智执念认知)反应：L3==L0 > L3\n   意  能源堆(实录)    |\n   识             |        触发：你哪来==L2+L0+L1 > L0     #由 L3 触发:L2 合并最新 L0 交给模型>返回迭代 L0\n   反   |> 概率堆(模型)    |        顺序：你是谁==L2+L0+L1 > L2     #迭代 L2 里存放的三句话，用于后续的上下文\n   应             |        循环：你哪去==L2+L1+L0 > L1     #递归指令:逻辑关联联想想象==意识种子\n   堆  聚变堆(联想)    |\n  |            |        本性(喜好情绪意念良知)显露：L3==L1 > L3\n  -----------------------------",
     "link": "https://www.v2ex.com/t/1237214#reply1",
@@ -94,14 +230,6 @@
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T16:59:34.000Z"
-  },
-  {
-    "title": "A new ceiling for Λ: the de Bruijn–Newman constant",
-    "summary": "Comments",
-    "link": "https://www.judegomila.com/posts/riemann-lambda-0.1787854",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 16:59:31 +0000"
   },
   {
     "title": "My Friend Aaron",
@@ -136,28 +264,12 @@
     "pubDate": "Tue, 25 Aug 2026 16:35:36 +0000"
   },
   {
-    "title": "Fuzzing the Gleam Compiler",
-    "summary": "Comments",
-    "link": "https://www.kurz.net/posts/fuzzing-gleam-compiler",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 16:30:55 +0000"
-  },
-  {
     "title": "主要前沿模型提供商采用水印技术以满足欧盟法规要求",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/4mIQfr4w5gPLXSIW7YST?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Tue, 25 Aug 2026 16:16:00 GMT"
-  },
-  {
-    "title": "Run Minecraft in a Windows sandbox for computer use agents",
-    "summary": "Comments",
-    "link": "https://cua.ai/docs/how-to-guides/sandbox/minecraft",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 16:09:48 +0000"
   },
   {
     "title": "[Java] 善于学习的 Java 后端朋友们，想请教下你是如何榨干自己的工作项目经验，把它沉淀下来慢慢积攒成自己的能力的？",
@@ -168,17 +280,9 @@
     "pubDate": "2026-08-25T16:00:49.000Z"
   },
   {
-    "title": "[创业组队] Ainexa 创始人决策雷达 #48",
-    "summary": "AI Agent 验证平台\n一个创业者是否应该花未来 6 个月打造这个方向？\n由 Ainexa AI 创业决策雷达生成\n执行摘要\nAI Agent 正在变得越来越强大，并且正在从简单的助手发展成为能够完成真实任务的系统。\n但是，一个重要的问题正在出现：\n用户和企业如何信任 AI Agent ？\n当 AI Agent 开始：\n做决策\n使用工具\n访问数据\n执行业务流程\n用户需要确认它的输出是否可靠。\n这创造了一个潜在创业机会：\n围绕 AI Agent 的：\n验证\n监控\n可靠性分析\n建立新的工具和基础设施。\n但是，目前这个市场仍处于早期阶段。\n现在不应该直接打造一个大型平台。\n推荐行动：\n先验证（ VALIDATE FIRST ）\n机会证据评分\n82 / 100\n为什么这个机会存在：\n用户讨论\n发现 45+ 个相关讨论：\n围绕：\nAI Agent 可靠性\nAI 输出准确性\nAgent 犯错问题\n是否需要验证系统\n用户痛点\n18+ 用户表达了以下担忧：\nAI 做出错误决策\nAI 幻觉问题\n缺少透明度\n难以信任自主 Agent\n市场时机\nAI Agent 正从实验阶段进入真实工作流程。\n企业开始使用 AI Agent 处理：\n客户支持\n信息研究\n编程开发\n企业自动化\n内部运营\n随着使用规模扩大，可靠性问题会越来越重要。\n现有解决方案缺口\n目前大多数解决方案关注：\n如何构建 AI Agent\n如何提升模型能力\nPrompt 工程优化\n但是：\nAI Agent 的验证层仍然不成熟。\n潜在机会：\n成为 AI Agent 的信任层。\n创始人决策评分\n76 / 100\n6 个月投入决策：\n先验证（ VALIDATE FIRST ）\n为什么现在不能直接 BUILD ？\n问题看起来是真实存在的。\n但是，还有几个关键问题没有解决：\n谁会付钱？\n潜在客户：\nAI 创业公司\n企业 AI 团队\n构建自动化 Agent 的开发者\n但是：\n用户是否愿意付费，需要验证。\n切入点是什么？\n“AI Agent 验证平台” 太宽泛。\n成功创业公司通常从一个具体问题开始。\n例如：\n验证 AI 编程 Agent\n帮助开发者发现：\n代码错误\nAgent 操作失败\n自动化风险\n监控客服 Agent\n帮助企业发现：\n错误回复\n客户投诉风险\n检查研究 Agent\n帮助用户验证：\n数据来源\n引用真实性\n分析质量\n审计企业自动化 Agent\n帮助企业控制：\n风险\n合规\n决策透明度\n3. 竞争风险\n潜在竞争者：\nAI 基础设施公司\n大模型公司\n企业 AI 平台\n创业公司需要找到明确切入口。\n目标用户\n第一类用户\nAI 开发者\n问题：\nAgent 会静默失败\n很难调试复杂流程\n需要监控和评估工具\n第二类用户\nAI 创业者\n问题：\n上线 Agent 前需要确认可靠性\n需要向客户证明产品可信\n第三类用户\n使用 AI 自动化的企业\n问题：\n需要责任追踪\n需要看到 AI 如何做决定\n需要风险控制\nMVP 策略\n不要打造完整 AI 安全平台。\n先解决一个具体场景。\nMVP 示例：\nAI Agent 验证 Chrome 插件\n功能：\n检查 AI 生成答案\n验证信息来源\n检测可能的幻觉\n跟踪 Agent 行为\n生成可靠性报告\n开发周期\n目标：\n30 天 MVP\n第一阶段验证\n在开发之前：\n访谈：\n20 名 AI 开发者\n10 名 AI 创业者\n5 家正在使用 AI 自动化的公司\n问题：\nAI Agent 是否曾经在你的工作流中犯错？\n你现在如何发现这些错误？\n如果有验证工具，会不会提升你的产品？\n你愿意为这个工具付费吗？\n成功标准\n继续投入：\n✅ 5+ 用户愿意测试 MVP\n✅ 3+ 用户存在重复痛点\n✅ 至少 1 个用户愿意付费\n停止或转型：\n❌ 用户认为现有方案已经足够\n❌ 问题只是有趣，并不痛\n❌ 没有人拥有购买预算\n最终创始人建议\n决策：\n先验证（ VALIDATE FIRST ）\n这个机会有潜力，因为：\nAI Agent 正在创造一个新的信任问题。\n但是：\n市场仍然正在形成。\n正确策略不是：\n“我要打造一个 AI Agent 验证平台。”\n而是：\n“找到一个最痛的 AI Agent 失败场景，并成为这个场景最好的解决方案。”\nAinexa 创始人决策雷达\n帮助 AI 创业者回答：\n“这个机会值得我投入未来 6 个月吗？”\n报告编号：#48",
-    "link": "https://www.v2ex.com/t/1237210#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T15:47:59.000Z"
-  },
-  {
     "title": "[程序员] Agent 开发时代，你们还在做 Code Rview 吗？",
     "summary": "大家目前都是 codex 、claude code 等 Agent 逻辑一把梭，现在大家内部还有 Code review 吗？\n大家的团队都是如何保证工程质量的？",
-    "link": "https://www.v2ex.com/t/1237209#reply5",
+    "link": "https://www.v2ex.com/t/1237209#reply10",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T15:40:21.000Z"
@@ -208,17 +312,25 @@
     "pubDate": "2026-08-25T15:28:34.000Z"
   },
   {
-    "title": "Warnock: Harnessing GPU geometry amplification for vector graphics",
+    "title": "Show HN: I made a Raspberry with Qwen my local car AI",
     "summary": "Comments",
-    "link": "https://dl.acm.org/doi/pdf/10.1145/3820012",
+    "link": "https://github.com/ThinkOffApp/CarWatch",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 15:26:45 +0000"
+    "pubDate": "Tue, 25 Aug 2026 15:20:20 +0000"
+  },
+  {
+    "title": "Behaviorally fingerprinting Ox Alpha's provenance",
+    "summary": "Comments",
+    "link": "https://www.ctgt.ai/research/behaviorally-fingerprinting-ox-alphas-provenance",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 15:18:22 +0000"
   },
   {
     "title": "[分享创造] [送兑换码] 还...还有人玩炉石吗？做了卡组收集的 app，想收集建议",
     "summary": "iOS APP 宣传网站： https://hsbobnote.site/\n兑换码\nFN6WEXW7KRRAJKNTXM\nFXEMAEFT43KN8FTWXN\nHLKYP7FYYNW3LRL37P\nKXJK7XLNWFAHPEKXXK\nK66AF66NMPJ8YXY3H4\nTT4ETWWAAAFL88NM4L\nWNRNTNYAMX77AXT3FL\nEKH44R7F4LXNTREX36\n4K8EAAM44WFYTHXH48\n8TY3YYRTLJJFWWWHA6\n还请大家多提提宝贵建议，谢谢～",
-    "link": "https://www.v2ex.com/t/1237204#reply4",
+    "link": "https://www.v2ex.com/t/1237204#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T15:16:27.000Z"
@@ -240,14 +352,6 @@
     "pubDate": "2026-08-25T15:12:48.000Z"
   },
   {
-    "title": "Otto Dix, Nietzsche, and the Great War (2019)",
-    "summary": "Comments",
-    "link": "https://www.historytoday.com/archive/feature/beyond-good-and-evil-nietzsche-and-great-war",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 15:09:20 +0000"
-  },
-  {
     "title": "[分享发现] stealth/ox-alpha 牛来模型使用感受",
     "summary": "这两天重度尝试使用了一下神秘的牛来模型，整体感觉其实还不错的，通过 claude code 执行长任务没啥大问题，最终的产出也相对符合预期，虽然在难任务上不及 gpt5.6 sol 和 opus5 ，但是可以感受到也是一个相当不错的模型了。\n听说是智谱的模型，期待能够尽早揭开神秘面纱。\n邀请注册有奖励： https://y-api.bestvirtualgoods.com/zh/login?aff=DNTXWYCU",
     "link": "https://www.v2ex.com/t/1237201#reply0",
@@ -258,7 +362,7 @@
   {
     "title": "[问与答] 现在千元 4k 显示器有什么推荐的",
     "summary": "看了一圈感觉还是红米，但 27 寸的，办公系列还是 60Hz 刷新率，是不是买电竞系列的高刷要好一些？",
-    "link": "https://www.v2ex.com/t/1237200#reply0",
+    "link": "https://www.v2ex.com/t/1237200#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T15:05:19.000Z"
@@ -266,7 +370,7 @@
   {
     "title": "[生活] 动态血糖仪打太低了怎么办",
     "summary": "上次打的时候磨磨蹭蹭弄了半天结果一扎下去插出血了，晕血晕了一会儿。\n这次快刀斩乱麻，两眼一黑就是扎，是不出血了，但是位置太低了，打到手肘关节上方 7 、8cm 的样子。\n感觉接下来半个月要穿长袖了",
-    "link": "https://www.v2ex.com/t/1237198#reply4",
+    "link": "https://www.v2ex.com/t/1237198#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T15:04:18.000Z"
@@ -298,7 +402,7 @@
   {
     "title": "[分享发现] 卧槽 codex 又重置了 而且加了 5 小时限制",
     "summary": "刚刚发现重置的，关键的是加了 5 小时限制。。。",
-    "link": "https://www.v2ex.com/t/1237193#reply0",
+    "link": "https://www.v2ex.com/t/1237193#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T14:36:21.000Z"
@@ -306,7 +410,7 @@
   {
     "title": "[Apple] 卧槽，苹果上新了，更新了 Mac mini6 和 Mac mini5 Pro",
     "summary": "",
-    "link": "https://www.v2ex.com/t/1237192#reply3",
+    "link": "https://www.v2ex.com/t/1237192#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T14:35:28.000Z"
@@ -408,6 +512,14 @@
     "pubDate": "2026-08-25T14:08:05.000Z"
   },
   {
+    "title": "OpenAI Jalapeño: Better than Nvidia Blackwell",
+    "summary": "Comments",
+    "link": "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 14:06:02 +0000"
+  },
+  {
     "title": "[OpenAI] 爽吃，这个月我已经弄了 2w 的 codex 额度了",
     "summary": "现在感觉 business 还挺香的，可以在网页用 GPT-5.6-sol pro 就不说了。上个月我弄了一下 codex business 的 2 个车位，25 美刀，结果 8 月来了邀请活动，business 比 plus/pro 好的一点在于，邀请双方的 codex 额度可以累计！！\n比如 plus/pro 中邀请额度是双方各 1000,但是 business 是将双方的 2000 都算作空间里的额度，而且，空间最多可以邀请 10 个人，于是我爽吃 2w 的额度！！ 尤其是成本只需要十几块钱\nhttps://imgur.com/VLm4fZb\n[img]( )\nhttps://imgur.com/TULXR4q\n[img]( )\n兄弟们，business 有席位优惠的话是可以上车的！！",
     "link": "https://www.v2ex.com/t/1237182#reply0",
@@ -434,7 +546,7 @@
   {
     "title": "[程序员] AI 时代，如何学习 C 语言？",
     "summary": "作为一名学生，还是用以前的 Visual studio ？还是用 visual studio code ？有没有优雅的方法？",
-    "link": "https://www.v2ex.com/t/1237179#reply8",
+    "link": "https://www.v2ex.com/t/1237179#reply11",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T13:57:19.000Z"
@@ -442,7 +554,7 @@
   {
     "title": "[分享发现] 毛利率 87%， BOSS 直聘赚翻了，但我们却越来越难找工作",
     "summary": "刚看了一下 BOSS 直聘最新一季度的财报数据，有几个数据值得注意：毛利率高达 86.97%，\n移动端 MAU 破 7,020 万，而同期付费企业客户数是 720 万，算下来求职者和付费企业的比例接近 10:1 。\n内卷的最大赢家竟是一个招聘网站，吃到了所谓的“人才红利”。\n来源",
-    "link": "https://www.v2ex.com/t/1237178#reply4",
+    "link": "https://www.v2ex.com/t/1237178#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T13:55:57.000Z"
@@ -466,10 +578,18 @@
   {
     "title": "[Claude] Claude 是真是👍，四天被封俩号，不想折腾了",
     "summary": "最近重构一个项目，sol5.6 老降智商，防御性编码太多，设计出来的东西也要跟他掰扯很久才能如意\n第一次\n想想开个 Claude 试试，AppStore 付款，爽蹬一个下午，感觉还挺耐用，一个半小时差不多跑完了五小时限额的 80%。\n然后喜提 ON HOLD 。很快啊，写了解封邮件。calude 你不讲武德啊，我正儿八经搞项目呢，你给我封了是弄啥嘞。\n然后丝滑小连招，appleStore 同步申请退款。\n过了一天 apple 退款到账，第二天 calude 回复 remain ON HOLD 。不给我解封是吧，你等着\n第二次\n然后又注册了一个号\n这次做足准备，查了 calude 封号原因，ip 是很大一个因素，重金上车了美区 DMIT EB VPS 。号称家宽优化\n那顶的确实比第一次久一点，足足用了三天！不过我分析可能是头两天没怎么用，今天重度使用了一下，直接又 ON HOLD 了， 我淦霖娘啊 CLAUDE ！\n让 gpt 帮我写了解封申请，不过已经不抱什么希望了，就这样吧 bro 。\n最后\n折腾了一圈，用回了 GPT 、感觉也不是那么差嘛。\nclaude 不让用，咱也没必要上赶着给他送钱\n自此 openAI 又眉清目秀了起来\n一切又回到了原来的起点...\n(多写点 promote 就好啦",
-    "link": "https://www.v2ex.com/t/1237175#reply25",
+    "link": "https://www.v2ex.com/t/1237175#reply42",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T13:43:44.000Z"
+  },
+  {
+    "title": "4060笔记本用Docker部署ComfyUI绘图 - ICollection",
+    "summary": "【摘要】使用一台安装了RTX4060显卡8G显存的笔记本用ComfyUI绘图。笔记本安装了Ubuntu26.04操作系统，使用Docker部署服务，已经安装好了显卡驱动和cuda-13对Dockers的支持包，远程操作ComfyUI绘图。文中用到的一些软件或者模型需要梯子才能下载到。 阅读全文",
+    "link": "https://www.cnblogs.com/ICollection/p/22685017",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-08-25T13:43:00.000Z"
   },
   {
     "title": "频谱分析架构演进笔记：扫频、步进 FFT 与实时架构 - AARONIA",
@@ -482,7 +602,7 @@
   {
     "title": "[分享发现] 新款 Mac Mini 来了， 现搭载 M6 或 M5 Pro",
     "summary": "新款 Mac Mini 来了， 现搭载 M6 或 M5 Pro\nhttps://www.apple.com.cn/",
-    "link": "https://www.v2ex.com/t/1237174#reply2",
+    "link": "https://www.v2ex.com/t/1237174#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T13:41:51.000Z"
@@ -586,7 +706,7 @@
   {
     "title": "[分享发现] 语言学习 - 日本人是如何学英语的",
     "summary": "背景\n今天跟 AI 的闲聊，注意到日本的认知基础措施极佳。\n小红书的那些内容，大量重包装而轻逻辑。没有东西。\n日本那里没有防火墙。\n二\n由于，我现在在学日语的原因，我产生了这个问题：“那么，那里的精英，会是如何学习外语的？”\n于是跟 AI 进行探讨。  \n三\nGemini 3 Pro 说，refold 在那里非常小众。\n《英語上達完全マップ》（英语进步完全地图）—— 森泽洋介 著\n《一億人の英文法》（一亿人的英文法）—— 大西泰斗 著\n《どんどん話すための瞬間英作文トレーニング》（越说越溜的瞬间英作文训练）—— 森泽洋介 著\n《決定版 英語シャドーイング》（决定版 英语影子跟读）—— 门田修平 著\n《 Distinction 》系列 —— Atsu (Atsueigo) 著\n由于涉及我的隐私问题，我不能把我的聊天链接贴出来。  \n希望这条帖子为大家带来启发、产生更好的想法。\n运气好的话，产生更多的高质量信息，潜移默化中出现最佳实践，方便日后我也可以有幸从中受益。\n写得仓促，错误和不妥之处不免会有，见笑了。",
-    "link": "https://www.v2ex.com/t/1237165#reply3",
+    "link": "https://www.v2ex.com/t/1237165#reply7",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-25T12:43:42.000Z"
@@ -600,60 +720,12 @@
     "pubDate": "2026-08-25T12:35:18.000Z"
   },
   {
-    "title": "[macOS] AI Textile Designer for Seamless Fabric Patterns",
-    "summary": "https://textilegen.com/\nCreate textile patterns from ideas, sketches, and fabric images. Develop repeats, colorways, and product previews in one workspace.\nTurn any fabric reference into a reusable pattern.\nExtract clean artwork from garments, fabric photos, or references, then build a repeat that is ready for the next design step.",
-    "link": "https://www.v2ex.com/t/1237163#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T12:30:26.000Z"
-  },
-  {
-    "title": "[程序员] 微软又是生什么大病了 edge 更新后一直询问设置为默认 pdf 阅读器",
-    "summary": "你一个浏览器询问默认浏览器还能理解, 结果最近一直在顶部弹出询问设置为默认 pdf 阅读器关了还弹太恶心了",
-    "link": "https://www.v2ex.com/t/1237162#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T12:28:48.000Z"
-  },
-  {
-    "title": "Solving the 1+N Query Problem",
-    "summary": "Comments",
-    "link": "https://acadia.engineering/blog/solving-the-1-plus-N-query-problem",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 12:26:58 +0000"
-  },
-  {
-    "title": "[健康] kiro 反代现在是不是在大量封锁呀",
-    "summary": "kiro cli 还能用，但反代出来的就不行。同事也是这样子。",
-    "link": "https://www.v2ex.com/t/1237160#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T12:24:49.000Z"
-  },
-  {
     "title": "Every Event, Everywhere, All at Once • Jacqui Read",
     "summary": "submitted by    /u/goto-con  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1vxyb6o/every_event_everywhere_all_at_once_jacqui_read/",
     "source": "Reddit/programming",
     "category": "news",
     "pubDate": "2026-08-25T12:22:35.000Z"
-  },
-  {
-    "title": "[Docker] windows 装 docker 哪种方式体验最好？",
-    "summary": "是直接用 Docker Desktop + WSL 2 后端还是 WSL 2 + Docker Engine",
-    "link": "https://www.v2ex.com/t/1237159#reply6",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T12:21:14.000Z"
-  },
-  {
-    "title": "[分享创造] vibe coding 了一个私有待办服务",
-    "summary": "因为局域网设备多，所以搞了个局域网部署的个人待办服务，并且根据自己的需求增加删除了一些功能，整体实现并不复杂，只用了 node + js + sqlite 实现。\n支持分类，进度，邮件提醒，坚果云备份。移动端也正常操作，出门在外可以用 tailscale 远程操作\n感兴趣的可以体验下，github 地址：\nhttps://github.com/nerkeler/personal-todo-vault.git",
-    "link": "https://www.v2ex.com/t/1237158#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T12:13:54.000Z"
   },
   {
     "title": "Cloudflare 将 CI 管道转变为 TypeScript 工作流",
@@ -664,36 +736,12 @@
     "pubDate": "Tue, 25 Aug 2026 12:12:00 GMT"
   },
   {
-    "title": "[程序员] 我又做了一份 AI 顶会论文数据集，可喂给 agent 做技术选型，需要自取",
-    "summary": "上次我做了一份 2023 年的 AI 论文数据集，有 7000 多篇，没想到还挺受欢迎的👉https://www.v2ex.com/t/1229793?p=1#reply9 ，还有老哥问我啥时候更新。所以今天我又来了。\n这次我整理了 2024 年的四大 AI 顶会论文，总共 9817 篇。在等更新的各位可以自取啦👉https://huggingface.co/datasets/JensCS/top-ml-conference-papers-2024\n\n这次收录的论文来自四场 AI 顶会：\n- NeurIPS 2024：3960 篇\n- CVPR 2024：2692 篇\n- ICLR 2024：2251 篇\n- ACL 2024：914 篇\n机器学习、计算机视觉、自然语言处理，过去一年几个最活跃的 AI 研究方向，基本都在这里了。\n\n这份数据集并不是一份只有标题和摘要的目录。每篇论文都整理了研究领域、具体任务、核心问题、主要创新、方法、基线和实验结果，算下来一共 24 个字段。\n数据里还留着论文的原文片段和对应的章节位置。看到一个实验结果，可以顺着位置查一下它是写在主实验、消融实验，还是附录里，不用只信一句脱离上下文的总结了。\n接下来我大概讲下怎么用。\n平时我们想知道一个方向最近在研究什么，通常要从搜论文开始。但是搜论文你只能搜到一些很浅层的信息，比方说主题、摘要什么的，AI 论文常常涉及到的基线啊、测评集、试验条件啥的，你还是要去自己翻。你读十篇还能靠耐心，面对几千篇论文，靠人一篇篇翻就不太现实了。\n所以这时候，你就可以拿到这份数据集，作为一份可以直接筛选和比较的研究材料，去加快你的工作进度。\n比如你正在找下一个实验方向，那么你可以先选定任务，再把相关论文的核心问题、主要创新、基线和关键指标摆在一起看。这样哪些问题已经被研究烂了，哪些假设还没有充分验证不可靠，以及哪些方法只在少数数据集上成立，一对比看得清清楚楚。沿着这些缺口继续追，就有机会找到值得验证的新问题。\n你也可以把这批数据直接交给 Research Agent 。让它先梳理某个方向的技术路线，归纳不同论文共同依赖的假设，寻找尚未覆盖的场景或相互矛盾的结论，再据此整理 research gap ，提出下一步可验证的实验方向。因为数据里保留了原文片段和章节位置，Agent 给出的判断还能继续回到论文中核对，而不是只剩一段没有出处的总结。\n如果不搞科研，那做技术选型也能用上。你可以先找出使用同一评测集的论文，再核对模型规模、基线和实验条件。论文里都说自己效果好，但如果训练资源、数据和评价指标不一样，数字放在一起并没有多少意义。数据集能先帮你把比较范围理顺，最后再回到原文确认。\n平时要写报告、做分享，这份数据也能派上用场。比方说一个概念最近是不是真的热，大家是在反复讨论同一个问题，还是已经分出了几条不同的技术路线，都可以从论文里找依据。下次领导问起来，你就可以装一波顶回去，免得他又说你跟时代脱节不进步。\n最后，如果你觉得数据集喂 AI 这个想法很有用，但是 AI 研究不是你的方向，那么我也可以给你提供方法，这样你就能拿工具去生成自己领域的数据集了，无论是做工程、通讯、硬件等等的吧，我觉得都能派上用场。\n首先，你需要准备你所在领域的论文素材，然后用到的工具是这个——Knowhere ，开源小项目，平常使用基本免费： https://knowhereto.ai/github?utm_source=v2ex\n这些论文基本都是 PDF 格式，在人眼里看着规整，交给程序却很容易乱套。因为它有很多双栏正文、跨页表格和图片啥的，直接转成纯文本关系就丢了，文字跟资料对不上。\n所以第一步，解析 PDF 。用 Knowhere 识别论文里的文字、表格、公式和版面，把正文整理成带有章节路径的内容片段。这里的 chunk 不是按固定字数随手切开的一段文字，它会同时记录自己来自哪一节。Knowhere 会重建整篇论文的章节树，生成 doc_nav.json 。从一级标题到下面的子章节，每个节点都有自己的标题、路径、层级、摘要和片段数量。\n接下来我们再让 LLM 判断论文属于模型架构、方法流程、理论分析还是 Agent 系统，并按类型提取不同信息。Agent 论文重点找环境、工具、规划方式和评测基准；理论论文则关注分析对象、理论工具、主要结论和适用边界。\n最后，我们把通用信息、分类后的专属字段、原文片段和章节树装回同一条记录，再导出成 JSONL 和 Parquet 。Hugging Face 数据中的 chunks 和 hierarchy ，就是 Knowhere 解析后保留下来的内容。\n这样做出来的不是“9817 份论文摘要合集”，而是一批可以筛选和比较、也能顺着章节路径回到原文核对的研究材料了。\n除了 PDF ，Knowhere 也可以处理 Word 、PPT 、图片等常见格式，并输出适合 AI Agent 和 RAG 使用的结构化 chunks 与 JSON 。如果你手里也有一批论文、报告或其他复杂文档，都可以拿去试试。\n其他没了，下个月可能还会做一份具身智能论文数据集，覆盖 CoRL 、ICRA 、IROS 、RSS 等机器人领域的重要会议。除了核心问题、方法和实验结果，还会继续往下拆动作空间、观测空间、传感器配置、真实机器人平台，以及 sim-to-real 方法。\n有需要的老哥可以先关注一下，谢谢。",
-    "link": "https://www.v2ex.com/t/1237157#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-25T11:56:36.000Z"
-  },
-  {
     "title": "Don't Wordle",
     "summary": "Comments",
     "link": "https://dontwordle.com/",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Tue, 25 Aug 2026 11:49:48 +0000"
-  },
-  {
-    "title": "Qwen 3.8-Flash-Next releasing tomorrow (125B a6B)",
-    "summary": "Comments",
-    "link": "https://modelscope.cn/models/Qwen/Qwen3.8-Flash-Next",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 11:49:43 +0000"
-  },
-  {
-    "title": "HelloAssembly: The smallest possible complete Windows application (2021)",
-    "summary": "Comments",
-    "link": "https://github.com/PlummersSoftwareLLC/HelloAssembly",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 11:40:00 +0000"
   },
   {
     "title": "Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original",
@@ -832,6 +880,14 @@
     "pubDate": "2026-08-25T07:37:00.000Z"
   },
   {
+    "title": "Show HN: I built self-hosted deployment automation tool for Windows and IIS",
+    "summary": "Comments",
+    "link": "https://fdeploy.com/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 07:32:11 +0000"
+  },
+  {
     "title": "四款 APP 加固强度测评：让 AI 拆了四个包，结果有点出乎意料 - 字节暗面",
     "summary": "【摘要】一直想做一次几家加固的静态强度横评，一直嫌手撸 readelf、strings、数类表太琐碎。这次干脆让 AI 上：四个真实上线的包（起点读书/360、123云盘/爱加密、汽车街/梆梆、凤凰视频/乐固）交给它，解包、解 manifest、遍历 dex、算熵值、扫 ELF，基础数据它出，我做复核和判断 阅读全文",
     "link": "https://www.cnblogs.com/bytehidden/p/22677308",
@@ -846,14 +902,6 @@
     "source": "少数派",
     "category": "tools",
     "pubDate": "Tue, 25 Aug 2026 15:00:00 +0800"
-  },
-  {
-    "title": "Windows 95 released August 24, 1995",
-    "summary": "Comments",
-    "link": "https://dfarq.homeip.net/happy-20th-birthday-to-windows-95/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 06:56:55 +0000"
   },
   {
     "title": "61 亿次请求背后：LLM Serving 的 Cache 与调度难题 - 小七-七牛开发者",
@@ -3147,54 +3195,6 @@
     "title": "Hyperbolic Hierarchical Clustering for Visual Representation Learning",
     "summary": "arXiv:2608.22665v1 Announce Type: cross \nAbstract: We investigate the token mixer in vision backbones by revisiting clustering, one of the most classic approaches in machine learning. An effective token mixer is a fundamental component of modern vision backbones like vision Transformers, facilitating information exchange between image patches. Mainstream token mixers, which rely on convolution, attention, MLP, or their hybrids, primarily focus on navigating the trade-off between accuracy and computational cost. However, a significant drawback of these methods is their black-box nature; their encoding process is opaque and lacks interpretability. Diverging from these opaque designs, we introduce ClusterMixer, a transparent token mixer that is grounded in a clustering paradigm and interpretable by design. ClusterMixer explicitly formulates the token mixing process through a hierarchical clustering mechanism. To model the natural, tree-like relationships inherent in visual data, the clustering is performed in hyperbolic space, which is well-suited for embedding hierarchies with low distortion. Building on this innovation, we present HCFormer, a new backbone architecture that integrates ClusterMixer with a series of meticulously designed clustering strategies to ensure robust performance across tasks. Extensive experiments demonstrate that HCFormer consistently outperforms its counterparts across diverse tasks, including image classification, object detection, instance segmentation, and semantic segmentation. Considering its transparency and efficacy, we hope HCFormer can facilitate a paradigm shift toward interpretable backbones.",
     "link": "https://arxiv.org/abs/2608.22665",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "RACO: Reliability-Aware Coarse-Goal Optimization for Inspection-Oriented UAV Vision-Language Navigation",
-    "summary": "arXiv:2608.22678v1 Announce Type: cross \nAbstract: UAV vision-language navigation (UAV-VLN) is commonly evaluated as goal reaching, but inspection-oriented deployment requires the agent to stop within a valid inspection region and avoid falsely confirming visually or semantically similar distractors. This requirement exposes a key weakness in existing coarse-to-fine UAV-VLN policies: the coarse goal predicted before local refinement is often treated as reliable, although it may drift toward plausible but incorrect object regions and limit the ability of the local stage to recover. To systematically evaluate this problem, we introduce LG-UVI, an object-centric inspection evaluation setting derived from CityNav/CityRefer. LG-UVI extends standard UAV-VLN episodes with target objects, hard distractors, type-aware inspection regions, and diagnostics for inspection-region arrival and object-level confirmation. To address this inspection-oriented setting, we further propose RACO, a reliability-aware adaptive coarse-to-fine navigation framework. Instead of treating the predicted coarse goal as a fixed waypoint, RACO views it as a runtime hypothesis and uses object-level candidate anchors to check and correct coarse localization before Stage 1 and at the Stage 1-to-Stage 2 boundary. RACO also applies scale-adaptive terminal refinement to handle terminal near-miss cases using runtime-observable geometric and anchor-based evidence. Under a unified online evaluation protocol, RACO improves SR over the reproduced HETT baseline by 9.53 and 7.98 percentage points on validation-unseen and test-unseen, respectively. It also improves inspection-region arrival and reduces false verification risk, showing that coarse-goal reliability optimization is an effective complement to existing coarse-to-fine UAV-VLN policies.",
-    "link": "https://arxiv.org/abs/2608.22678",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Enrich-Retrieve-Rank: Scaling Capability Discovery Beyond In-Context Routing",
-    "summary": "arXiv:2608.22695v1 Announce Type: cross \nAbstract: Agent ecosystems now include thousands of MATS components (Models, Agents, Tools, and Skills), yet their discovery still relies on in-context routing. These systems read a registry (names, hints, or descriptions, as context budget permits), pick a candidate, invoke it, and retry on failure. This pattern degrades with scale, and registries are growing fast. We recast capability discovery as search over a registry by defining an offline enrichment step that turns sparse metadata into searchable profiles, and an online retrieve-then-rank pipeline that returns a ranked shortlist without invoking any candidates online. We show that from N=10 to 7,278 capabilities, in-context routing's top-1 accuracy (Match@1) collapses (0.85 to 0.12), while retrieve-then-rank degrades more gently (0.81 to 0.39) because its reranker still ranks the right capability first 0.70-0.87 of the time once retrieval finds it. In the Nova Micro sweep, the crossover is around N=500. We compare against two in-context baselines. Full-Ctx puts the whole registry in the prompt and asks the LLM to pick. Search&Pick gives the LLM a search tool to narrow candidates before it picks. At full scale the pipeline leads Search&Pick by 6.5 percentage points (pp) on Match@1 at about half the cost. It reduces cost 70x versus Full-Ctx. We use a fixed configuration (same enrichment, retriever, and scorer weights) across agent, tool, and skill registries. The pipeline runs in production as the default capability-discovery layer of a large-scale multi-agent platform.",
-    "link": "https://arxiv.org/abs/2608.22695",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "TEE-X: TEE-aware Acceleration Framework for Large Vision Models at the Edge",
-    "summary": "arXiv:2608.22716v1 Announce Type: cross \nAbstract: Despite their remarkable success, machine learning models, particularly in vision applications, are alarmingly vulnerable to a range of security threats. One key factor in the attack landscape is the distinction between white-box and black-box threat models, as the latter poses challenges that limit attack effectiveness when access to model information is limited. As a result, using Trusted Execution Environments (TEEs) enhances security for machine learning applications by protecting model confidentiality and execution integrity, effectively shifting the execution environment from the white-box to the black-box side of the threat model spectrum. While adopting TEEs for large vision models, e.g., Vision Transformers (ViTs), is crucial for enhancing security and privacy, significant challenges related to memory constraints and increased computational latency must be addressed, especially in time-sensitive edge applications where safety and privacy are paramount. The objective of this work is to enable large vision models to be fully hosted within TEEs, achieving GPU-level inference latency for time-sensitive edge vision applications while maintaining performance. To this end, we propose TEE-X, a TEE-aware acceleration framework that introduces a sensitivity-aware modularization technique and enables vectorization in TEE inference. This design is validated on OP-TEE for Arm TrustZone, configured to optimize performance on the NVIDIA Jetson AGX Xavier for efficient edge vision applications using ViT models. The findings reveal that TEE-X delivers an effective TEE-aware acceleration framework that achieves minimal accuracy-latency trade-offs while ensuring fast and secure edge inference for vision models.",
-    "link": "https://arxiv.org/abs/2608.22716",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "DiaRelay: Relaying Dialogue Context with a Constant-Size Memory for Emotion Recognition in Conversation",
-    "summary": "arXiv:2608.22745v1 Announce Type: cross \nAbstract: Emotion Recognition in Conversation (ERC) requires models to identify subtle emotional cues that are often distributed across distant dialogue turns. Existing methods typically incorporate dialogue history through a fixed context window. However, short windows discard potentially useful long-range evidence, while enlarging the window repeatedly re-encodes overlapping utterances, increases computational and memory costs, and may introduce irrelevant context. Moreover, commonly used parameter-efficient adaptation methods, such as LoRA, mainly introduce fixed low-rank transformations in the feature space and do not explicitly maintain a dialogue-level state or condition their transformations on the evolving conversational context. To address these limitations, we propose a lightweight adapter, DiaRelay, to enable LLMs to explicitly maintain a dialogue-level memory for accurate ERC. Based on LoRA, DiaRelay introduces two extra tightly collaborative components, Selective Relay Memory Transition and Dual-axis Relay Memory Read. Selective Relay Memory Transition progressively aggregates useful historical evidence into a bounded relay memory and propagates it across successive utterance predictions. This allows earlier emotional cues to influence later predictions after they leave the local context window, without re-encoding the complete dialogue history or expanding the backbone context length. Dual-axis Relay Memory Read uses the propagated memory to dynamically modulate low-rank feature transformations, enabling context-dependent representation adaptation without test-time gradient updates. Extensive experiments show that DiaRelay can achieve SOTA weighted F1 and accuracy on MELD while obtaining competitive results on IEMOCAP with only an extra 7.1M trainable parameters, indicating the effectiveness and generalizability of our DiaRelay in enhancing LLM-based emotional understanding.",
-    "link": "https://arxiv.org/abs/2608.22745",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Object-Uni: A Unified Model for Object-Centric Spatial Understanding and Controllable Generation",
-    "summary": "arXiv:2608.22757v1 Announce Type: cross \nAbstract: Unified models for visual understanding and generation have made rapid progress, yet they still lack the ability to understand and manipulate the spatial states of object instances. Existing models can describe objects in natural language, but they struggle to precisely represent continuous object poses and generate geometrically consistent images under target viewpoints. To mitigate this, we propose \\emph{Object-Uni}, a unified model for object-centric spatial understanding and controllable generation. Specifically, we formulate object-centric spatial intelligence as a unified problem connecting pose perception, spatial reasoning, pose-conditioned generation, and object-centric novel view synthesis. We treat object pose as an explicit geometric variable shared by understanding and generation, rather than merely a prediction label or control signal. To make pose usable by multimodal large language models, we propose a viewpoint-based orientation abstraction that maps orientation into structured viewpoint descriptions while preserving continuous geometric supervision. We further construct an object-centric spatial benchmark (UniSpatial-80K) and train a unified model with an object-token-grounded pose anchor to associate each instance with its pose state. Experiments show that our model improves object-level pose understanding and pose-controllable generation, moving unified models from describing objects toward manipulating spatial states.",
-    "link": "https://arxiv.org/abs/2608.22757",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
-  },
-  {
-    "title": "XTC: Head-Aware Sampling by Excluding Top Choices",
-    "summary": "arXiv:2608.22758v1 Announce Type: cross \nAbstract: Standard decoding rules for autoregressive language models promote diversity by rescaling the full next-token distribution or truncating its low-probability tail. These strategies overlook a common regime of open-ended generation in which several continuations are plausible but too much probability mass remains concentrated on the most generic choice. We introduce XTC (Exclude Top Choices), a lightweight head-aware decoding operator that targets this regime directly. XTC identifies tokens whose probabilities exceed an absolute plausibility threshold $\\tau$: when at least two qualify, it removes the dominant eligible choices with probability $\\rho$ and retains only the weakest plausible alternative before renormalization. Across 60 experiments on Gemma 3 27B Q4, Gemma 3 12B Q6, and DeepSeek R1 14B Q6, with scaling validation on Llama 3.3 70B Q4, XTC improves the diversity-repetition Pareto frontier. On creative generation, Distinct-2 increases by 11--15% and repeat trigrams decrease by 27--47% across the four models. Combined with temperature scaling, gains reach 38% in Distinct-2 and 71% in repeat-trigram reduction over baseline. A blinded Amazon Mechanical Turk study with 150 Master raters yields a 62.3% creativity preference for XTC ($p<10^{-4}$) without reduced fluency, while a GPT-4o control judge reproduces the Anthropic-judge direction on every measure. On IFEval with Llama 3.3 70B Q4, XTC preserves prompt-level strict accuracy within 1.7 percentage points of baseline while recovering most of the diversity gain; a temperature setting matched on Distinct-2 reduces IFEval by 8.8 points. The effect is additive with temperature and repetition penalties, robust across quantization levels and model families, and consistent across twelve prompt genres. XTC has been adopted by llama.cpp, ExLlamaV2, and text-generation-webui.",
-    "link": "https://arxiv.org/abs/2608.22758",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Tue, 25 Aug 2026 00:00:00 -0400"
