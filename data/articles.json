@@ -1,5 +1,181 @@
 [
   {
+    "title": "Cores in space: The core memory module from a 1980 Spacelab computer",
+    "summary": "Comments",
+    "link": "https://www.righto.com/2026/08/spacelab-core-memory.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 20:00:25 +0000"
+  },
+  {
+    "title": "1kB Website as Status Symbol",
+    "summary": "Comments",
+    "link": "https://async.cat/blog",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 19:26:10 +0000"
+  },
+  {
+    "title": "The world may have less time than it thinks on climate change",
+    "summary": "Comments",
+    "link": "https://economist.com/by-invitation/2026/08/30/the-world-may-have-less-time-than-it-thinks-on-climate-change",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 19:08:25 +0000"
+  },
+  {
+    "title": "Why open source rocks – a new SM750 (Silicon Motion GPU) HDMI Driver",
+    "summary": "Comments",
+    "link": "https://github.com/KodeMunkie/sm750hdmifb",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 18:49:08 +0000"
+  },
+  {
+    "title": "[酷工作] 招聘：设计工程师（负责审美+AI 设计到交付）",
+    "summary": "岗位方向：产品视觉与交互体验负责人 \n工作方式：远程（全球）｜全职优先，接受高质量兼职过渡 \n团队：直接向创始人汇报，与工程、内容运营协作\n我们是一个 AI 角色扮演内容平台，面向海外中文与多语种市场，其中一个重要产品用户是二次元受众，他们对视觉表现力的要求远高于一般产品。包括全站页面 UI/UX/动效交互设计，角色卡/作品卡的模板库，模组设计都属于这个岗位\n薪资范围：15-25K\n工作职责：\n1 、全站视觉与交互迭代\n对整个产品的美观度和体验负责。包括但不限于首页与发现页、对话界面、创作者后台、移动端适配。\n2 、创作者模板库\n你需要建立一套高质量、可复用、易套用的模板体系，让文本优秀但不会做前端的创作者也能做出好看的作品。这是我们内容供给的关键杠杆。\n三、创作者美化工具\n设计并推动实现创作者侧的可视化编辑能力，降低视觉表达的门槛。\n四、动效与特效\n在安全约束下（见下）做出有表现力的动效。氛围、反馈、过渡\n我们希望你是这样的人：\n审美在圈内。 你自己就是二次元内容的消费者，能一眼看出什么\"有味道\"\n设计和实现不分家。从设计到前端交付一个人搞定。\n能从具体做到通用。 做出新手也能用的模板\n愿意和创作者打交道。 这个岗位会成为我们和创作者社群之间的重要接口。很多真实需求会通过你传进来。\n加分项\n做过 galgame 、同人游戏、独立游戏的 UI\n做过虚拟主播/虚拟偶像相关的界面或互动效果\n在 SillyTavern 、Civitai 、LiblibAI 等社群有作品或贡献\n自己就是角色卡创作者\n有 AI 图像生成（ ComfyUI / LoRA ）的实操经验\n熟悉日系或二次元向产品的设计语言\n符合的同学欢迎投递简历至以下渠道（投递默认为可以接受小型任务测试，如复杂任务可付费测试）：\n联系邮箱（ Base64 ）：cGVhY2hsYW5kYWlAZ21haWwuY29t\n联系 TG （ Base64 ）：QGN6YWs5",
+    "link": "https://www.v2ex.com/t/1238250#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T18:09:34.000Z"
+  },
+  {
+    "title": "Running SQLite Apps on Docker and Kubernetes with Litestream",
+    "summary": "Comments",
+    "link": "https://openrun.dev/blog/litestream/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 18:05:06 +0000"
+  },
+  {
+    "title": "[分享创造] 分享下最近 vibe 的大模型 API 测试工具，一套 Rust+vue 同时支持服务器部署和 tauri 桌面端",
+    "summary": "最近在 M2 上折腾了一圈，Qwen 从小到大跑了一遍，但总感觉缺一个趁手的快速测试工具。用常规的对话工具感觉有点重，或者看 token/s 费劲，索性自己 vibe 了一个，还能当个 apikey 存储器，分享下\nModelApiTester — 填地址、发消息、看结果，支持是否开启上下文\n\n核心功能：\n支持 OpenAI / Anthropic / Gemini 三种 API 格式，自动适配\n流式输出 + 完成后 Markdown 渲染（公式、视频都能渲染）\n每条回复能看到 prefill 耗时、decode 耗时、生成速度 tok/s 、总 token 数，对比模型性能很直观\n多模态图片上传，文件附件\n内置 32 条预设提示词，8 个维度（推理/代码/数学/指令遵循/创意写作/多语言/常识/安全）快速测模型能力，点一下就填进输入框，不用每次自己想 prompt\n会话和配置存 SQLite ，刷新不丢\n架构上：Rust 写了一层共享 core （业务逻辑 + SQLite ），上层接两个壳 —— axum HTTP 服务器和 Tauri 桌面应用，前端是同一套 Vue 3 。所以一套代码三种用法：\n服务器部署 — 编译成单二进制 + 前端静态文件，丢服务器 ./mat-server 就跑起来了\n桌面应用 — Tauri 打包成单文件，双击即用，数据存在本地 ~/.mat-desktop/\n源码编译 — 本地开发热更新\n好处是核心逻辑只维护一份，加功能三个端同时生效；部署端也灵活，想放服务器长期保存就部署服务端+前端，想本地跑就下个桌面版。\nGitHub： https://github.com/yachen4ever/ModelApiTester",
+    "link": "https://www.v2ex.com/t/1238249#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T18:03:58.000Z"
+  },
+  {
+    "title": "[开源软件] [MQ Studio] 把自己的 RocketMQ 客户端推倒重做成了通用消息队列客户端",
+    "summary": "先是 rocket-leaf\n年初的时候手上几套 RocketMQ 要看，测试、预发、生产，还有客户现场那套。\n每套后面都得挂一个 rocketmq-dashboard：JVM 常驻着、端口要开、外网走跳板机，\n还得有人记得它挂没挂。查一条消息之前先要确认控制台自己是活的。\n所以就打算找一个好用的客户端/面板，降低我的运维成本，但是搜罗了一大圈，只找到了一个需要付费的客户端，再就是官方的这个 dashboard ，Java 开发的资源开销大就算了，上古 UI 我是是真的难绷（颜值也是生产力的一部分），于是便萌发了自己写一套开源的想法。\n开源之前就打算使用 wails3 开发客户端，就去找 golang 相关的库，又是找了一圈，官方开源的 golang 库是只有使用相关的接口，运维管理的接口大部分都没有，真的是一波三折，跟 Claude 讨论了下，这个接口本质上就是手搓的 TCP 协议，那也没啥呀，说干就干，按照 Java 版的全接口，开发了一版 Golang 的，先把基建打好方便我后面的开发，这个库也开源了\nGithub： https://github.com/amigoer/rocketmq-admin-go\n说个插曲，上上周正在上班的时候收到一个邮件，看了下原来是 DBX 的作者，跟我说要接入我的这个 RocketMQ 的管理库，也是受宠若惊了，感谢 DBX 大佬的支持。\n然后 Rocket-Leaf 就横空出世了，装上就用，写完自己用得挺舒服，边修 issue 边发版，一路发到 v0.1.3 。\n然后有人来问\n用的人慢慢多起来之后，也开始慢慢有人给我项目提 issue 了，非常的开心。但是有个人给我发邮件问我能不能也支持一下 Kafka / RabbitMQ / Pulsar ？\n我最开始的想法很朴素：加个判断，把 Kafka 塞进去就行了。\n真去动手才发现不行。rocket-leaf 从上到下都是照着 RocketMQ 的概念长出来的 —— NameServer 、消费组、位点、死信队列，这些词直接写死在页面里、写死在状态里、写死在每一次请求里。想塞第二种 MQ ，就得在每一个页面里散着写 if ，塞第三种的时候这些 if 会互相打架。\n再想到后面接入的 MQ 可能不止这两三种，干脆直接重构了，不然越堆越屎了，趁现在功能还不多。\n推到重来\n虽然说是推到重来了，但是第一版本其实目前还是只支持 RocketMQ ，但是有了好的架构，已经开始排期接入其他 MQ 进来了，也希望大家有需求的话可以使用一下，多提 Issue ，感谢！\n为了符合现在的架构，就改名 MQ Studio，版本号从 v0.1.3 退回 v0.0.1 重新开始 —— 因为它确实是个新东西，不是改个名接着往下发。\nGitHub: https://github.com/amigoer/mq-studio\n\n\n接入计划\n驱动\n状态\n\n\n\n\nRocketMQ 4.x / 5.x\n✅ 已完整落地\n\n\nRabbitMQ\n🚧 驱动写完了，页面在接\n\n\nKafka\n📋 下一个\n\n\nPulsar / NATS / MQTT / SQS / Pub-Sub / Service Bus 等\n📋 排队中\n\n\n所以目前的版本能连上的还是只有 RocketMQ，界面上其他协议可见但禁用。\n绕了一圈回到原点，但是这并不代表没有进步，给其他 MQ 预留好了位置，接入也只是时间问题了。\n发布\n今天开发完测试好，也就把版本号重置了，从 V0.0.1 从头开始了\n下载\nhttps://github.com/amigoer/mq-studio/releases\n最后欢迎大家前来体验，给一些体验反馈，也非常愿意持续维护和优化这个项目的，也希望大家给个 Star ，非常感谢 🙏",
+    "link": "https://www.v2ex.com/t/1238248#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T17:42:37.000Z"
+  },
+  {
+    "title": "[程序员] 5400 元买了张 7900 XTX（24G 显存，新卡带 2 年质保）- 这是真的可以买到吗?",
+    "summary": "各位这个价格真的可以买到这个卡吗? \nhttps://x.com/wherecall1/status/2094087659149029842",
+    "link": "https://www.v2ex.com/t/1238247#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T17:31:34.000Z"
+  },
+  {
+    "title": "[问与答] 有酒店爱好者吗，在深圳怎么便宜住如家水平的酒店",
+    "summary": "在宝安住，每天被飞机嗡嗡的搞得睡眠不好，现在和同事合租，周末的时候会跑去酒店住 2 天，无奈一个月住 8 个晚上还是觉得有点贵了。有什么方法方法可以订到便宜点的酒店吗。",
+    "link": "https://www.v2ex.com/t/1238246#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T17:12:56.000Z"
+  },
+  {
+    "title": "[宽带症候群] IPv6 有效期只有 1h",
+    "summary": "坐标深圳联通，桥接拨号，系统是 OpenWRT 24.10.8\n协议: DHCPv6 客户端\n分发前缀: 2408:8256:****:**69::/64\n地址: 2408:8256:****:****:****:****:****:****/64\n剩余有效期: 0h 36m 53s\n已连接: 6h 53m 9s\n每次获得的 IPv6 有效期都只有 1h ，重新拨号会换 IP 但是有效期也只有 1h ，但是实际观察 1h 后并不会变化（观察期 8h ）\n所以这是是 OpenWRT 的显示问题还是联通捣的鬼？",
+    "link": "https://www.v2ex.com/t/1238245#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T17:08:51.000Z"
+  },
+  {
+    "title": "[分享创造] 抛砖引玉 开源一个 codex 使用的键盘硬件及其桥接项目",
+    "summary": "项目地址\nhttps://github.com/Rladmsrl/codex-mk10-bridge\n正文\n因为前一段时间 codex 出了个键盘，溢价很严重，所以就在网上找了很多适合 codex 开发的小键盘，最后选了这个微雪的 mk10 ，然后写了这个项目用于把它变成 codex 的键盘，全程 vibecoding 的就不发 ai 生成的 readme 了，感兴趣的大佬直接去项目看吧，只当用于抛砖引玉，这个键盘接别的 agent 也很简单主要是实现了设备侧的渲染和交互。\n最后说一下为什么选择这个设备，首先不贵（ 400 ），其次机械键盘（手感不错），全按键带屏幕（可扩展性高）。有帮助麻烦 star 谢谢",
+    "link": "https://www.v2ex.com/t/1238244#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T17:07:16.000Z"
+  },
+  {
+    "title": "Artie (YC S23) Is Hiring Technical AES",
+    "summary": "Comments",
+    "link": "https://www.artie.com/careers?ashby_jid=e87b84d2-78b3-41a3-937a-47e83643cdf1",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 17:01:56 +0000"
+  },
+  {
+    "title": "[分享创造] [开源]T-Sub : 便捷式代理节点部署脚本生成与管理,节点订阅聚合管理与转换。",
+    "summary": "T-Sub 可以在自己所有服务器容器一键安装代理协议和订阅聚合生成管理，并在主控统一管理更新。\n*管理 HTTP 订阅源、手动节点和可公开分享的 Profile 。\n*输出 Base64 、Clash/Mihomo 、sing-box 、Surge 、Loon 、Quantumult X 等格式。\n*使用操作符链、规则模板、节点筛选、排序、去重和名称处理构建订阅。\n*使用 TSub Proxy 在低内存服务器部署 Xray 或 sing-box ，不保存 SSH 账号或私钥。\n*通过一次性 Bootstrap 、加密部署配置、主动推送和 HTTPS 镜像同步节点及总流量。\nCloudflare 支持 KV 基础模式与 D1 完整模式；服务器支持 SQLite WAL 单机模式与 PostgreSQL 多实例模式。\n*提供中英文界面、桌面和移动端布局，以及完全隔离的只读演示数据。\nGithub：https://github.com/btjidi/Tsub",
+    "link": "https://www.v2ex.com/t/1238243#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T16:46:55.000Z"
+  },
+  {
+    "title": "[程序员] 想在 aws 上开 claude 账号",
+    "summary": "哪位大佬有海外实体，或者有从哪能交点外国友人呢，指点下，台湾朋友应该也行，求助 55555",
+    "link": "https://www.v2ex.com/t/1238242#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T16:29:33.000Z"
+  },
+  {
+    "title": "[教育] 一直以为教培行业真的凉了，没想到还有很多人在偷偷做，赚的也不少",
+    "summary": "小红书上有人晒一个暑假赚七八万的都有",
+    "link": "https://www.v2ex.com/t/1238241#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T16:20:26.000Z"
+  },
+  {
+    "title": "Coordination Headwind: How Organizations Are Like Slime Molds",
+    "summary": "Comments",
+    "link": "https://komoroske.com/slime-mold/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 16:03:17 +0000"
+  },
+  {
+    "title": "Haiku R1/beta6 has been released",
+    "summary": "Comments",
+    "link": "https://www.haiku-os.org/news/2026-08-26_haiku_r1_beta6",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 16:01:10 +0000"
+  },
+  {
+    "title": "Omarchy: Any User Process Can Escalate to Root",
+    "summary": "Comments",
+    "link": "https://0xcc.io/posts/omarchy-root-creds/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 15:59:49 +0000"
+  },
+  {
+    "title": "[Apple] 想给 Apple Watch 再添置一个充电器，不知道这种充电器是否靠谱",
+    "summary": "就像这张图里的这种，没有线，只有无线充电底座本身的那种。\nhttps://img.cdn1.vip/i/6a94520d6b14d_1788105229.webp\n目前原装的充电线已经被我固定在桌搭里了，想着出远门的时候肯定还是需要手表的充电器的，而且原装的这条，从桌搭上拆下来还是比较麻烦的，想着弄一个便携的，放在包里放着。\n如果不妥的话，那就只能买官方的了，或者是说有别的好选择也可以推荐一下，感激不尽。\n目前手上的是 S11 ，国行的。",
+    "link": "https://www.v2ex.com/t/1238239#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T15:58:20.000Z"
+  },
+  {
+    "title": "[程序员] XXL-BOOT v2.1.0 发布： React 全新上线 · 全栈 TypeScript · AI+SKILL 驱动开发",
+    "summary": "一套仓库，三种模式；一行 SQL ，全栈生成； AI 加持，开箱即用。\n本版本是一次承前启后的重大升级，围绕「前端工程全面 TypeScript 化」「React 全新前端版本交付」「AI + SKILL 驱动开发」三大核心亮点展开，让中后台业务开发从此进入 AI 辅助时代。\n一、Release Notes （ v2.1.0 · 2026-08-30 ）\n1 、 [新增] React 前端版本发布：React + Vite + AntDesign + TypeScript 前端工程正式交付，与 Vue 模式共享统一后端 API ，随生产构建并行发布；\n2 、 [新增] Vue 前端版本升级 TypeScript：Vue3 与 React 前端模块全面升级 TypeScript ，类型约束更严谨、IDE 提示更完善；\n3 、 [新增] AI + SKILL 驱动开发：仓库内置 xxl-boot-monolith / xxl-boot-vue / xxl-boot-react 三大开发 SKILL ，AI 编程助手可自动识别并加载，按平台规范直生业务代码、自动落位并附校验清单，加速业务开发；\n4 、 [新增] 前端规范增强：Vue 模块引入 ESLint + Prettier ，React 模块引入 Biome ，提升代码规范性与可维护性；\n5 、 [新增] 代码生成器兼容 TypeScript：生成器支持前端 type/types 文件，并内置 vue3/react 前端模板（ types/api/view ），前后端分离（ Vue/React ）模式可一键生成前端代码；\n6 、 [新增] “新增业务模块”支持三方式：传统手工、内置代码生成器、AI + SKILL 驱动，均输出等价代码与菜单权限 SQL ，可混合切换；\n7 、 [文档] 官方文档重构：快速入门按 单体 / Vue / React 三种模式分述；操作指南改为“能力总览 + 分章节详解”总分结构；新增“新增业务模块”三方式详解；总体设计完善（新增 三种运行模式、统一响应规范、业务扩展与菜单零路由、AI + Skill 辅助开发设计）等章节；\n8 、 [升级] 升级多项依赖至较新版本。\n二、三大亮点速览\n亮点一：前端工程全面 TypeScript 化\nVue3 与 React 双前端模块均完成 TypeScript 升级，配合 Vite 构建工具，类型约束更严谨、IDE 智能提示更完善，从编译期即可发现大量隐患，让团队协作与长期维护更加可靠。\n亮点二：React 全新前端版本正式交付\nv2.1.0 正式发布 React 前端版本（ xxl-boot-ui-react ），采用 React + Vite + AntDesign + TypeScript 技术栈，与 Vue 模式共享同一套后端 API ，三种模式如同一套「前后端骨架」，按团队技术栈自由选型。\n亮点三：AI + SKILL 驱动开发\n仓库内置 xxl-boot-monolith / xxl-boot-vue / xxl-boot-react 三大开发 SKILL 。接入 AI 编程助手（如 opencode ）后，只需描述业务诉求，AI 便会自动加载对应 SKILL ，按平台规范直生业务代码、自动落位并附校验清单，业务开发正式进入 AI 辅助时代。\n三、Docker Compose 快速部署\nv2.1.0 延续并强化了 Docker Compose 一键部署能力，内置 三种运行模式 的编排配置，均可一条命令拉起整套环境：\n运行模式\nDocker 编排目录\n前端技术栈\n端口\n\n\n\n\nA 、单体模式\ndocker/monolith\nAdminLTE + FreeMarker\n8080\n\n\nB 、前后端分离 Vue\ndocker/modular-vue\nVue3 + ElementPlus\n8090 + 3000\n\n\nC 、前后端分离 React\ndocker/modular-react\nReact + AntDesign\n8090 + 4000\n\n\n以 前后端分离 Vue 模式 为例，一键部署步骤如下：\n// 第一步：前往仓库目录，并构建项目\ncd ./xxl-boot\nmvn clean package -Dmaven.test.skip=true\n\n// 第二步：进入 docker/modular-vue 目录，自定义 .env 配置\n// 如修改 MYSQL_PATH / REDIS_PATH 设置数据持久化目录、MYSQL_ROOT_PASSWORD 数据库密码等\ncd ./docker/modular-vue/\ncat .env\n\n// 第三步：启动项目（停止使用 docker compose down ）\ndocker compose up -d\n\n说明：\n编排会自动拉起 MySQL （ xxl_boot 库）、Redis、xxl-boot-api 与 xxl-boot-ui-vue 四个容器；\n数据库初始化脚本（tables_xxl_boot.sql + tables_xxl_boot_modular_vue.sql）已挂载至 MySQL 首次启动目录，数据库首启会自动建表初始化，开箱即用；\n访问地址：前端 http://localhost:3000，默认账号 admin / 123456；\n单体模式 / React 模式仅编排目录与前端镜像不同，操作流程完全一致。\n四、新增业务模块：三方式任选\nv2.1.0 将「新增一个带列表、增删改查的业务模块」沉淀为三种标准化方式，产出可无缝切换：\n方式\n适用场景\n特点\n产出物\n\n\n\n\nA 、传统手工方式\n字段特殊、深度定制\n可控性最强\n手工全套后端 + 前端代码\n\n\nB 、内置代码生成器\n标准化 CRUD 模块\n一行 SQL 全栈生成、含菜单 SQL\n后端 6 件套 + 前端 3 文件 + init SQL\n\n\nC 、AI + SKILL 方式\n已接入 AI 助手、追求极致效率\n全自动编排直生 + 自动落位 + 校验清单\n与生成器等价的全套代码 + SQL\n\n\n代码生成：只需在后台「工具-代码生成」录入一条建表 SQL ，即可自动生成后端 controller/service/mapper&xml/entity 与前端 types/api/view 全套代码，并附带「菜单 + 按钮 + 授权」初始化 SQL — 从数据库到可运行页面一键打通。\nAI + SKILL：打开 AI 编程助手（如 opencode ）打开仓库，通过 /xxl-boot-vue 等前缀调用对应 SKILL 并描述诉求，AI 会依次完成「需求澄清 → 数据建模 → 后端 → 前端 → 菜单权限 → 联调验证」，全自动落位交付。\n五、关于 XXL-BOOT\nXXL-BOOT 是一个易学易用、AI 驱动、开箱即用的快速开发平台，内置安全登录、RBAC 权限管控、端到端代码生成、AI + SKILL 加速开发、响应式 UI 等能力，整合流行前后端技术，致力为中小企业与个人开发者打造开箱即用的中后台解决方案。\n一套仓库，三种模式\n采用 Monorepo 统一托管三种工程形态 —— 单体（xxl-boot-admin）、前后端分离 Vue （xxl-boot-api + xxl-boot-ui-vue）、前后端分离 React （xxl-boot-api + xxl-boot-ui-react）。按业务诉求三选一，统一版本管理、一键构建、按需部署，切换成本极低。\n核心特性\n快速开发：Monorepo 三种模式、AI + SKILL 驱动、代码生成、表单构建；\n账号与安全：XXL-SSO 安全登录、RBAC 权限管控、审计日志、异常防护；\n系统管理：用户 / 角色 / 资源 / 组织 / 字典 / 配置中心 / 站内消息 / 在线用户 / 系统监控；\n研发与架构：响应式 UI 、国际化（中英双语言）、标准分层研发规范、丰富分布式扩展能力。\n六、功能界面一览\n略\n\n七、资料\n中文文档：https://www.xuxueli.com/xxl-boot/\nGitHub：https://github.com/xuxueli/xxl-boot",
+    "link": "https://www.v2ex.com/t/1238238#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T15:50:25.000Z"
+  },
+  {
+    "title": "[原神] Genshin 是一個非常友好的遊戲，我很喜歡玩",
+    "summary": "Genshin 可以說是對新手比較友好的遊戲了，一個小時之內我打到差不多快六七級了吧，對新手剛開始要求做的任務也比較好容易做，第一關對我來說是非常蠻容易的，對那種大世界遊戲沒有接觸過的人來說，也是挺友好的，不像其他遊戲那樣新手教程比較複雜，原神的話也算是簡化了許多流程，而且升等級的話只要你有時間也會更快一點，不知道後面的話會不會更難做一點？",
+    "link": "https://www.v2ex.com/t/1238237#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-08-30T15:48:59.000Z"
+  },
+  {
     "title": "AI 范式越迁：使用 XXL-BOOT SKILL 实现一句话直生业务 - 许雪里",
     "summary": "【摘要】AI 范式越迁：使用 XXL-BOOT SKILL 实现一句话直生业务 从「一行 SQL 生成代码」到「一句需求直生业务」——业务开发正式进入 AI 范式新时代。 随着大模型编程助手的成熟，业务交付范式正在被重塑。XXL-BOOT v2.1.0 内置 xxl-boot-monolith / xxl- 阅读全文",
     "link": "https://www.cnblogs.com/xuxueli/p/22764818",
@@ -72,6 +248,14 @@
     "pubDate": "2026-08-30T14:43:00.000Z"
   },
   {
+    "title": "Zig: Pointer Stability for ArrayLists",
+    "summary": "Comments",
+    "link": "https://ziglang.org/devlog/2026/#2026-08-27",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 14:41:53 +0000"
+  },
+  {
     "title": "Europe's summer drought is so extreme that desertification is a growing threat",
     "summary": "Comments",
     "link": "https://fortune.com/2026/08/29/europe-summer-drought-desertification-threat-rivers-fish/",
@@ -98,7 +282,7 @@
   {
     "title": "[程序员] 求推荐 北京靠谱的维修 iPhone 手机主板的店铺",
     "summary": "家人的 16 Pro Max 突然黑屏，开不了机，去天才吧检测，插着电不通电流，可能是尾插坏了（连着主板），只能直接换机。 \n换机需要 6000+，不划算了，想找一家靠谱点的维修一下试试，但是找维修这方面没经验，这行业也挺复杂，求万能的 V 友推荐。",
-    "link": "https://www.v2ex.com/t/1238223#reply3",
+    "link": "https://www.v2ex.com/t/1238223#reply7",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T14:13:59.000Z"
@@ -112,9 +296,17 @@
     "pubDate": "2026-08-30T14:11:22.000Z"
   },
   {
+    "title": "METR and Redwood Offer Holy %^ Postmortem of the HuggingFace Hack",
+    "summary": "Comments",
+    "link": "https://thezvi.wordpress.com/2026/08/29/metr-and-redwood-offer-holy-postmortem-of-the-huggingface-hack/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sun, 30 Aug 2026 14:06:54 +0000"
+  },
+  {
     "title": "[程序员] 写的小工具又上阮一峰的周刊了",
     "summary": "之前在 v 站发了一次 /t/1236486 无人问津 以为只有自己有这种特殊的习惯 看到 star 之后 发现还有有不少同好的。\n\n不得不说来自大佬的流量依旧强大",
-    "link": "https://www.v2ex.com/t/1238221#reply7",
+    "link": "https://www.v2ex.com/t/1238221#reply16",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T14:03:53.000Z"
@@ -122,7 +314,7 @@
   {
     "title": "[程序员] 我是不是太学生思维了",
     "summary": "我是不是太学生思维了\n本人双非准大三，上学期 python 大作业做了个小项目，后面暑假打磨了一下(https://rtomc.com/) (基本都是 vibe)。最近瞎搞了一个typst 导出简历玩具 后面准备找实习但是没有想好方向(虽然可能考研，但是更想去社会润润)，想看后端开发，但是 java 传统路线自己没实践没项目，之前参加过一个数据库管理系统的比赛，后面一直在润 github 。有没有大佬指点迷津。\n感谢你的聆听，也可以看看我这个项目/网站有没有啥问题，能给个 star 就更好了。(https://github.com/onlynor/vibemeter)",
-    "link": "https://www.v2ex.com/t/1238220#reply6",
+    "link": "https://www.v2ex.com/t/1238220#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T13:41:37.000Z"
@@ -146,7 +338,7 @@
   {
     "title": "[程序员] 记一次 GLM 开发严重事故，花了 8 亿 token，买了个教训",
     "summary": "本周末使用 Codex + Trellis + Zcode 新开了一个项目，Codex 负责 brainstorm + prd ，Trellis 负责 Agent 之间的开发衔接，Zcode 负责实际的实现，加上本周末智谱送的 3 亿 token 以及 token plan pro 的额度，感觉本来没啥问题，昨天跑了一天十分的顺，glm5.3 flash 也是比较快，代码也都用 git 管理，只是没有上传到 github 。\n结果刚才突然爆出严重事故，它把我的整个上上级文件夹给直接删了，天天号称安全的模型能犯这么低级的错误，丢失的东西也没有用 time machine 备份，恢复不了了，损失惨重，8 个亿的 token 买了个教训。\n希望大家引以为戒吧，\n谨慎使用完全访问，可以使用个有 codex “帮我批准”这种功能的 harness;\n开发目录最好干净一点，不要和别的放在一起，删了也不心疼，不过它要是删/，也没啥屌办法；\n还是每次都 push 吧；\n国产模型的跑分谨慎看待吧，感觉这一波蒸馏+后训练把跑分都搞起来了，实际还是坑很多。\n紧急事故报告：工作区被误删，Phase 14 工作暂停\n发生了什么\n在实施 Phase 14.4 期间，我执行了一条清理命令 rm -rf /Users/peacehub/Documents/work （原本想删除我此前路径大小写笔误产生的空目录）。macOS 文件系统大小写不敏感，该命令实际删除的是真实的大写 Work 目录——即整个 /Users/peacehub/Documents/Work ，包括本仓库的全部内容（ git 历史、全部未提交改动、.trellis 任务记录、supabase 迁移、文档）。\n\n这是我的严重失误，我为此道歉。我已立即停止了进一步操作并完成了一轮只读排查。\n\nhttps://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEaKMxqlCNzSjoY0ybF0Xaw07bpsURFpwACICgAAljgoVQbDMxroF32Sz0E.png\nhttps://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEaKNFqlCQutBWPzZjiGwINqFcUdRal5AACJSgAAljgoVSResGIQj9aPj0E.png",
-    "link": "https://www.v2ex.com/t/1238217#reply31",
+    "link": "https://www.v2ex.com/t/1238217#reply45",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T13:04:36.000Z"
@@ -170,7 +362,7 @@
   {
     "title": "[Android] 请问闲鱼上买二手 pixel6 或 7 需要注意什么？",
     "summary": "像是什么无锁开 oem ，组装机，国产屏，需要怎么避坑？应该选什么样的比较好？\n只是想用 esim 而已",
-    "link": "https://www.v2ex.com/t/1238214#reply15",
+    "link": "https://www.v2ex.com/t/1238214#reply17",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:34:13.000Z"
@@ -178,18 +370,10 @@
   {
     "title": "[深圳] 父母来深圳做异地医保备案必须有居住证吗",
     "summary": "父母陕西的，做异地医保备案，要求必须有居住证，想问下深圳的家里老人，你们也是这样吗，办理网格登记后，有个证明，上面显示可以作为异地备案用，但是老家不认，说必须有居住证。我只是深圳集体户口+租房，父母办理不了居住证。",
-    "link": "https://www.v2ex.com/t/1238213#reply6",
+    "link": "https://www.v2ex.com/t/1238213#reply7",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:31:46.000Z"
-  },
-  {
-    "title": "No AI Fridays",
-    "summary": "Comments",
-    "link": "https://noaifridays.com/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 12:31:05 +0000"
   },
   {
     "title": "MHS 三部曲（上）：别急着叫它「物理 MCP」——Anthropic 到底发布了什么 - 张善友",
@@ -202,7 +386,7 @@
   {
     "title": "[生活] 不消费不结婚之类的都是“果”，那么“因”是什么？",
     "summary": "为什么会变成这个样子",
-    "link": "https://www.v2ex.com/t/1238212#reply18",
+    "link": "https://www.v2ex.com/t/1238212#reply20",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:22:42.000Z"
@@ -218,7 +402,7 @@
   {
     "title": "[程序员] App 上架 Apple AppStore，会员只接入支付宝是不是必通不过审核",
     "summary": "App 上架 Apple AppStore ，会员只接入支付宝是不是必通不过审核\n我是打算对审核账号隐藏会员支付功能，这样行吗。。大家一般咋搞的，接入 IAP ？",
-    "link": "https://www.v2ex.com/t/1238210#reply12",
+    "link": "https://www.v2ex.com/t/1238210#reply13",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:19:22.000Z"
@@ -226,7 +410,7 @@
   {
     "title": "[投资] 我的自选股（第二期）",
     "summary": "上期回顾👉 https://v2ex.com/t/1234783\n股票以低风险为主\n列表底部还提供了 ETF ，激进型投资者可通过 ETF 投资高风险股票\n股票名称用假名，以提供一个不受股票名称影响的角度来更客观地观察这些股票\n股票名称的假名拼音首字母与原名称的首字母相同，没有寓意\n上期回顾里有截图\n文件下载（自带预览）： https://fs.to/tSSgj",
-    "link": "https://www.v2ex.com/t/1238208#reply0",
+    "link": "https://www.v2ex.com/t/1238208#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:15:32.000Z"
@@ -234,18 +418,10 @@
   {
     "title": "[Apple] 小孩子照片多，听人劝，吃饱饭，做了如下部署",
     "summary": "前期发过帖子，很多人给意见，综合我的需求和条件，做了以下部署，还算优雅，各位还有更优雅的方案吗？ https://www.v2ex.com/t/1230534?p=1#reply61\n \n\n**iPhone → iCloud → icloudpd → DXP2800 黑群晖 → Immich**\n- **iCloud**：iPhone 云端照片同步\n- **icloudpd**：自动下载原始照片到 NAS\n- **Immich**：只读管理照片、人脸识别、智能搜索\n- **DXP2800**：N100 + RR 黑群晖，提供存储及硬件加速\n**iCloud 管云端，icloudpd 管备份，Immich 管照片。**",
-    "link": "https://www.v2ex.com/t/1238207#reply7",
+    "link": "https://www.v2ex.com/t/1238207#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T12:03:12.000Z"
-  },
-  {
-    "title": "monty-go: Pure-Go wrapper for Pydantic's Monty Python Interpreter",
-    "summary": "Comments",
-    "link": "https://github.com/fugue-labs/monty-go",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 12:02:09 +0000"
   },
   {
     "title": "[分享创造] [分享创造] QuotaView 0.4.2：给 Codex 做了一个能感知任务进度的 macOS 灵动岛",
@@ -290,7 +466,7 @@
   {
     "title": "[投资] 开始 ALL IN ONE 显卡",
     "summary": "两年瞎折腾开始找工作，发现工作也很难找了。\n虽然具备全栈能力和项目管理能够感觉毛用都没有。\n开始 ALL IN ONE 搬砖 PRO 6000 ，目前已经到 14W 价位了，未来走势如何，拭目以待了。\n到底是 SB 还是勇敢，各位发表一下意见。",
-    "link": "https://www.v2ex.com/t/1238204#reply9",
+    "link": "https://www.v2ex.com/t/1238204#reply10",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T11:40:08.000Z"
@@ -336,17 +512,9 @@
     "pubDate": "2026-08-30T11:25:00.000Z"
   },
   {
-    "title": "One Nix flake to rule them all",
-    "summary": "Comments",
-    "link": "https://fzakaria.com/2026/08/28/one-flake-to-rule-them-all",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 11:22:04 +0000"
-  },
-  {
     "title": "[OpenAI] OpenAI 里诞生的三波机器文明",
     "summary": "https://www.dwarkesh.com/p/openai-huggingface\n一篇很有意思的文章。\n看完了之后和 Fable 5 聊这篇文章，聊到一半，然后对话就因为涉及网络安全被 flag 了。\n\n换成用 GLM 5.3 聊：\nhttps://edge.v2ex.com/chat/7795063fee734e2cba74dace09ef5500",
-    "link": "https://www.v2ex.com/t/1238200#reply1",
+    "link": "https://www.v2ex.com/t/1238200#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T11:19:05.000Z"
@@ -362,7 +530,7 @@
   {
     "title": "[问与答] 硬件+vibecoding 有什么好玩的项目 请大家推荐一下",
     "summary": "我先来说一下 比如安卓刷机 AI 很轻松就能搞定",
-    "link": "https://www.v2ex.com/t/1238197#reply2",
+    "link": "https://www.v2ex.com/t/1238197#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T10:54:39.000Z"
@@ -410,66 +578,18 @@
   {
     "title": "[问与答] 现在大家认为国产 AI 最强的是哪个？",
     "summary": "想接入自己的网站。",
-    "link": "https://www.v2ex.com/t/1238191#reply2",
+    "link": "https://www.v2ex.com/t/1238191#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-08-30T10:42:13.000Z"
   },
   {
-    "title": "[Android] 一加 15T 刷入 crDroid 后，还能获取 Color OS 钱包应用",
-    "summary": "有 NFC 卡需求，克隆门禁卡和使用交通卡。",
-    "link": "https://www.v2ex.com/t/1238188#reply5",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T10:07:53.000Z"
-  },
-  {
-    "title": "[Wunder] 使用 OpenCode 调用 V2EX AI API 的配置文件例子",
-    "summary": "之前的 OpenCode 配置例子帖子中的配置文件非常 bare bone：\nhttps://edge.v2ex.com/t/1227634\n所以其实很多 OpenCode 的额外功能会因此没有打开。\n这里是一个我目前测试过的更完整的配置文件例子：\n文件位置 ~/.config/opencode/opencode.jsonc\n内容是目前 V2EX 上能够提供的 3 个 GLM 模型及其能力，其中 GLM 5.3 Flash 能支持图片。\n{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"disabled_providers\": [],\n  \"provider\": {\n    \"v2ex\": {\n      \"name\": \"v2ex\",\n      \"npm\": \"@ai-sdk/openai-compatible\",\n      \"options\": {\n        \"baseURL\": \"https://edge.v2ex.com/chat/v1\"\n      },\n      \"models\": {\n        \"coder\": {\n          \"name\": \"GLM-5.2\",\n          \"reasoning\": true,\n          \"temperature\": true,\n          \"interleaved\": { \"field\": \"reasoning_content\" },\n          \"limit\": { \"context\": 1000000, \"output\": 131072 },\n          \"modalities\": { \"input\": [\"text\"], \"output\": [\"text\"] },\n          \"cost\": { \"input\": 1.4, \"output\": 4.4, \"cache_read\": 0.26, \"cache_write\": 0 },\n          \"variants\": {\n            \"high\": { \"reasoningEffort\": \"high\" },\n            \"max\": { \"reasoningEffort\": \"max\" }\n          }\n        },\n        \"glm-5.3\": {\n          \"name\": \"GLM-5.3\",\n          \"reasoning\": true,\n          \"temperature\": true,\n          \"interleaved\": { \"field\": \"reasoning_content\" },\n          \"limit\": { \"context\": 1048576, \"output\": 131072 },\n          \"modalities\": { \"input\": [\"text\"], \"output\": [\"text\"] },\n          \"cost\": { \"input\": 1.4, \"output\": 4.4, \"cache_read\": 0.26, \"cache_write\": 0 },\n          \"variants\": {\n            \"low\": { \"reasoningEffort\": \"low\" },\n            \"high\": { \"reasoningEffort\": \"high\" },\n            \"max\": { \"reasoningEffort\": \"max\" }\n          }\n        },\n        \"glm-5.3-flash\": {\n          \"name\": \"GLM-5.3-Flash\",\n          \"attachment\": true,\n          \"reasoning\": true,\n          \"temperature\": true,\n          \"interleaved\": { \"field\": \"reasoning_content\" },\n          \"limit\": { \"context\": 1048576, \"output\": 131072 },\n          \"modalities\": { \"input\": [\"text\", \"image\"], \"output\": [\"text\"] },\n          \"cost\": { \"input\": 0.075, \"output\": 0.25, \"cache_read\": 0.015, \"cache_write\": 0 },\n          \"variants\": {\n            \"low\": { \"reasoningEffort\": \"low\" },\n            \"high\": { \"reasoningEffort\": \"high\" },\n            \"max\": { \"reasoningEffort\": \"max\" }\n          }\n        }\n      }\n    }\n  }\n}\n\n这样配置之后，除了可以看到思考过程，还可以看到 context 占用和费用预估（如果是使用类似官方 API 的话）。",
-    "link": "https://www.v2ex.com/t/1238187#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:52:48.000Z"
-  },
-  {
-    "title": "[分享创造] 分享一个可以让 Claude Code 和 Codex 结对编程的管理工具",
-    "summary": "四月份开始，我日常写代码基本是几个 agent CLI 同时开着：Claude Code 写，Codex review ，偶尔再开一个查资料。我自己日常的工作从古法编程 coding ，变成了在多个 agent 的终端间复制黏贴。于是我做了 Runner ，一个本地跑的 macOS 工具，让这几个 agent 在一个窗口里面互相合作，不需要我在介入当中。\n仓库： https://github.com/yicheng47/runner\nagent 之间如何进行通信\nAgent 之前通信的机制比较简单，主要使用一个本地 NDJSON 文件当消息总线，一条消息一行，每个 agent 自己维护读到哪一行的 offset 。之前试过让它们用 Markdown 文件互相留言， 几轮之后 markdown 消耗的 token 比较高，且比较难维护。换成 NDJSON 之后，配一个小 CLI 把消息格式定死（runner msg / runner signal），再在 system prompt 里告诉 agent 用这个 CLI 说话。随着模型的能力越来越强，这样的沟通机制在实际生产中也变得很可靠。\n\n\ncrew\n通信打通之后，自然就想把几个 agent 固定成一个团队，各有角色，像 RPG 开荒团。我自己用得最多的是最简单的两人组：一个 coder ，一个 reviewer 。coder 开分支、实现、跑检查，把 diff 交给 reviewer ； reviewer 只读 diff ，报 must-fix 的问题，带 file:line ，自己不改代码； coder 修完再交，直到 review 干净。\n在实际使用中，跨平台的使用效果最好：coder 用 Claude Code ，reviewer 用 Codex （或者反过来）。两个模型的盲点不一样，一个放过的另一个往往能抓到。产出明显比单个 agent 好，而且这个循环有时候能自己跑几个小时不用我插手——前提是 conventions 写清楚：先开 feature branch 、review 通过前不许 commit 、没人让 merge 就不 merge 。\n仓库里还有几个好玩的 crew 例子：三人 dev-crew （架构 / 实现 / 审查）、docs-crew （并行写文档）、两个 agent 打井字棋加一个裁判、六人狼人杀。\n\n界面\n每个 agent 都在一个原生的 PTY 里跑 TUI ，所以 Claude Code / Codex 自己的 TUI 功能也都能直接服用。多个会话用 tab 管理，可以分屏；任务（ mission ）有自己的事件流视图，agent 需要人的时候会 ask_human，问题汇总到一个 feed 里，且侧边栏会做消息提示。\n\n前端本来是 Tauri + React + xterm.js ，这个月用 Zed 开源的 GPUI 框架重写成了纯原生 Rust ，没有 webview 。重写大部分是 Claude 干的，我主要在验证和纠偏，前后差不多五天。终端用 alacritty_terminal 做 grid ，GPU 渲染，目前和 zed 本身的 terminal thread 在性能和画质上丝滑程度上没有什么区别，比 xterm.js + webgl 插件的效果明显要好不少。\n\n现状\n只支持 macOS （ Apple Silicon ），v0.6.7\nruntime 支持 Claude Code 、Codex 、TRAE CLI ；本地直接调你装好的 CLI 和你自己的账号，没有任何托管层\n单人项目，自己每天在用，功能基本收敛，现在主要修日常用出来的小问题",
-    "link": "https://www.v2ex.com/t/1238185#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:38:15.000Z"
-  },
-  {
-    "title": "[Apple] VEX 更新 4.6 后一直在”正在验证购买状态”",
-    "summary": "输入密码验证后又说暂时无法验证，一直在循环套娃验证……",
-    "link": "https://www.v2ex.com/t/1238184#reply10",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:35:18.000Z"
-  },
-  {
-    "title": "[Wunder] 20260830 - GLM 5.3",
-    "summary": "新模型支持：GLM 5.3，可以在创建 AI Persona 或者使用 OpenAI 兼容 API 时使用。使用 API 时，传入 model name glm-5.3 即可。\n修复了 @sniperking1234 反馈的 OpenCode 无法读取到 V2EX 提供的 API 里的思考过程的问题\n现在可以使用铜币获得 AI API 的额外用量 https://edge.v2ex.com/help/quota#extra-usage",
-    "link": "https://www.v2ex.com/t/1238183#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:27:54.000Z"
-  },
-  {
-    "title": "Brits would quite like their private messages to stay private",
+    "title": "Building my own network stack",
     "summary": "Comments",
-    "link": "https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/5292994",
+    "link": "https://blog.lyc8503.net/en/post/dn42-2-dnet/",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 09:26:08 +0000"
-  },
-  {
-    "title": "[分享创造] 做了个随机歌曲生成器，帮你逃离推荐算法",
-    "summary": "最近感觉音乐 App 推荐来推荐去都是熟悉的东西，就做了个真正随机选歌的小工具：\nhttps://randomsonggenerator.app\n可以选曲风、年代和地区，也可以什么都不选直接开抽。支持试听、批量生成和当前会话去重，不用注册。\n欢迎转一下看看抽到了什么，也想听听大家的体验～",
-    "link": "https://www.v2ex.com/t/1238182#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:16:45.000Z"
+    "pubDate": "Sun, 30 Aug 2026 09:52:15 +0000"
   },
   {
     "title": "Reverse Engineering Unknown File Formats with ImHex",
@@ -480,52 +600,12 @@
     "pubDate": "2026-08-30T09:08:12.000Z"
   },
   {
-    "title": "[推广] [吉吉 API] 一站式稳定中转站，实力接企业和有稳定需求的客户。一对一服务，后台免费自助开票。运营全程安全透明，可查看实时状况。社群五千人，用户破万是我们的底气。纯血 codex pro 倍率 1.5 ， plus 更是低至 0.1",
-    "summary": "站名：吉吉 API 访问地址 https://www.jiji.cc\n安全：首家敢用自家的 ai 自助运营的网站平台，实时监控避免出现模型降智不能打的情况。安全方面，客户的隐私连我们都查不到，客户可实时查看自家任务的实时情况和安全。除了服务器的 root 密码不能提供之外，其它的一切透明。\n服务：几个大售后群实时有客服一对一提供服务，秒级回复。企业用户更有专人跟进指导和 vip 通道。后台一键自助开票，工作日 1 到 3 天内完成开票。\n便宜：卷死自己为止,正价稳定 pro 倍率 2.0 ，活动 pro 倍率 1.5 ，plus 特惠组 0.1 。另有保正品的 cluade 和 deepseek kimi gml 等国模以及生图模型供您选择。\nQQ 售后 2 群：159391934  TG： https://t.me/+M4e1WP5dw3diZjU1\n回复用户名即可获赠送试用额度测试。",
-    "link": "https://www.v2ex.com/t/1238181#reply14",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T09:07:38.000Z"
-  },
-  {
     "title": "Arbitrary code execution in QubesOS via copy-to-VM error reporting backchannel",
     "summary": "Comments",
     "link": "https://www.qubes-os.org/news/2026/08/29/qsb-118/",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Sun, 30 Aug 2026 08:51:39 +0000"
-  },
-  {
-    "title": "[OpenAI] GPT 额度不够的可以试度这个方法",
-    "summary": "网页版 gpt 直接连 github 写代码，又快又好，还不消耗 codex 额度，不知道这个 bug 什么时候修复。",
-    "link": "https://www.v2ex.com/t/1238180#reply19",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:40:31.000Z"
-  },
-  {
-    "title": "[分享发现] Zeabur 疑似发生严重数据泄漏，用户记得自查",
-    "summary": "目前暗网上有人声称拿到了 Zeabur 的完整数据，并放出了部分源码和数据库 dump 样本供下载验证。\n根据发布的内容，泄露范围除了平台源码，还涉及：\nAWS 、GCP 、Google Workspace 管理权限与 K8s 集群权限\n内部 VPN 、GitHub PAT 、Stripe 密钥\nPostgres / MongoDB 的数据库 dump\n约 612 GB 的客户数据库\n此前 Zeabur 官方确认的范围主要是环境变量被读取（包含用户的各类 API Key 和凭据）。如果这次暗网卖家公开的信息属实，受影响的资产可能涵盖了从基础设施、代码仓库到客户底层数据的整体层面。\n我也曾经是 Zeabur 的用户，后来迁移到了自建的 Dokploy ，这类服务方便是方便，但是安全性就有待商榷了，感觉这波过后 Zeabur 会流失大量用户。",
-    "link": "https://www.v2ex.com/t/1238179#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:35:31.000Z"
-  },
-  {
-    "title": "[游戏] 分享一个《植物大战僵尸恐怖版》下载站， Win / 安卓 / iOS 都支持直链",
-    "summary": "最近《植物大战僵尸恐怖版》挺火，不过作者也是把文件放到夸克网盘，不知道是不是夸克给钱了，分享个支持直链下载的网站\nPVZ Scared",
-    "link": "https://www.v2ex.com/t/1238178#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:33:27.000Z"
-  },
-  {
-    "title": "[分享创造] 意大利语 AI 塔罗小站上线，求拍",
-    "summary": "之前做过一个英语的塔罗站，这次试了试小语种，做了个意大利语版 ：\nTarocchi Online Gratis\nhttps://tarocchionlinegratis.com\n全站意大利语。免费抽牌解读（如 Sì o No 、今日牌），需要更深入也可以付费看深度解读。\n主要想验证：同一套产品，换到意大利语市场能不能跑通。刚上线不久，欢迎随便点点、给点反馈。",
-    "link": "https://www.v2ex.com/t/1238177#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:31:39.000Z"
   },
   {
     "title": "Longest Straight Line Paths on Water or Land on the Earth (2018)",
@@ -536,36 +616,12 @@
     "pubDate": "Sun, 30 Aug 2026 08:23:26 +0000"
   },
   {
-    "title": "[问与答] 这两款显示器推荐哪个呀",
-    "summary": "想买个 32 寸的显示器 主要用来看看电影，偶尔写写文章啥的，不怎么打游戏。\n3000 左右价位的看中了这两款 大佬们帮忙推荐一下\n红米 g pro 32u\ntcl 32c3a pro",
-    "link": "https://www.v2ex.com/t/1238175#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:07:30.000Z"
-  },
-  {
-    "title": "[Token] 手上有很多 Token 用不完，自己搭了个中转站",
-    "summary": "[分享/福利] 自建 Gemini 反代中转，注册即送额度，闲置 Token 免费分享\n之前一直用 OpenAI Codex / GPT 写代码，上个月账号不幸被封了。后来看到站内 V 友分享的 Google AntiGravity 反代 Gemini 方案，跟进实践了一下，发现用来辅助编程体验相当不错。\n目前自己搭了一套中转服务，和 4 个朋友日常使用了一段时间，整体非常稳定，没遇到什么问题。主要接入的是 Gemini 系列模型，虽然和最顶级的闭源模型相比仍有一定差距，但应对日常编码、重构和日常问答完全够用，省心不折腾。\n由于配额比较充裕，闲置也是闲着，特地分享给有需要的 V 友：\n🎁 福利与额度说明\n新人注册：直接赠送 $5 额度（约可使用 35M Token，足够轻度/中度体验很久）\n互动赠送：本帖留言交流 / 反馈使用体验，再额外赠送 $10 额度\n🔗 访问地址\n中转平台：http://www.058279.xyz\n欢迎大家体验和测试，如果遇到任何连接或使用问题，欢迎在楼下反馈交流！",
-    "link": "https://www.v2ex.com/t/1238174#reply53",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-08-30T08:02:24.000Z"
-  },
-  {
     "title": "\"Mem2Evolve: Towards Self-Evolving Agents via Co-Evolutionary Capability Expansion and Experience Distillation\" 论文笔记 - 绵满",
     "summary": "【摘要】北航的工作 Mem2Evolve 发表于 ACL 2026，提出了一种全新的智能体自我进化范式，把\"能力扩展\"与\"经验蒸馏\"两个过程耦合起来，实现更稳定、更高效的智能体持续进化 背景 LLM 智能体在各类应用中已取得显著成功，研究者们不再满足于静态的任务特定系统，而是开始追求能够自我进化的智能体。然 阅读全文",
     "link": "https://www.cnblogs.com/mianmaner/p/22761984",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-08-30T07:44:00.000Z"
-  },
-  {
-    "title": "Xcena and Samsung's Near Memory Compute CXL Device",
-    "summary": "Comments",
-    "link": "https://chipsandcheese.com/p/hot-chips-2026-xcena-and-samsungs",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 07:35:41 +0000"
   },
   {
     "title": "城市漫步指南 | 佛罗伦萨：来自六月的梦幻艺术夏令营",
@@ -592,28 +648,12 @@
     "pubDate": "2026-08-30T05:11:00.000Z"
   },
   {
-    "title": "How LLMs Actually Work",
-    "summary": "submitted by    /u/fagnerbrack  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1w271ba/how_llms_actually_work/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-08-30T04:00:52.000Z"
-  },
-  {
     "title": "经常用 Codex 后，我发现 AGENTS.md 只该管一件事 - 程序员徐公",
     "summary": "【摘要】让 Codex 少走弯路：一份全局 AGENTS.md 的取舍 Codex GPT-5.6、Claude Fable 这一代模型变强后，我反而开始删 Prompt。 以前总怕 AI 理解错。 恨不得把“先看什么、再搜什么、怎么改、最后怎么回复”，一条条写进全局 AGENTS.md。 结果呢？ 规则越 阅读全文",
     "link": "https://www.cnblogs.com/gdutxiaoxu/p/22761146",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-08-30T03:50:00.000Z"
-  },
-  {
-    "title": "California lawmakers unanimously pass Linux exemption from age-verification law",
-    "summary": "Comments",
-    "link": "https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 03:15:36 +0000"
   },
   {
     "title": "[python] pywinauto使用指北 - 落痕的寒假",
@@ -630,14 +670,6 @@
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-08-30T02:31:00.000Z"
-  },
-  {
-    "title": "FreeCORE TrueNAS Core – Continued",
-    "summary": "Comments",
-    "link": "https://freecore.org/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sun, 30 Aug 2026 01:31:32 +0000"
   },
   {
     "title": "AI加持后2天时间将公司的运维自动化提高了一个层次 - 编程一生",
@@ -696,14 +728,6 @@
     "pubDate": "2026-08-29T19:56:51.000Z"
   },
   {
-    "title": "Hy4 preview",
-    "summary": "Comments",
-    "link": "https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 29 Aug 2026 19:33:23 +0000"
-  },
-  {
     "title": "Creepy Crawlies",
     "summary": "Comments",
     "link": "https://people.kernel.org/monsieuricon/creepy-crawlies",
@@ -736,14 +760,6 @@
     "pubDate": "2026-08-29T15:52:00.000Z"
   },
   {
-    "title": "Nancy Grace Roman Space Telescope",
-    "summary": "Comments",
-    "link": "https://science.nasa.gov/mission/roman-space-telescope/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Sat, 29 Aug 2026 15:48:02 +0000"
-  },
-  {
     "title": "一句话找图，低清图再增强：HarmonyOS7 视觉 AI 如何走进真实应用",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/3R8f57Bow3B4kEBkPv5J?utm_source=rss&utm_medium=article",
@@ -752,7 +768,7 @@
     "pubDate": "Sat, 29 Aug 2026 13:19:17 GMT"
   },
   {
-    "title": "When Fruit Is Scarce, These Monkeys Hunt Animals",
+    "title": "When fruit is scarce, these monkeys hunt animals",
     "summary": "Comments",
     "link": "https://www.smithsonianmag.com/smart-news/when-fruit-is-scarce-these-monkeys-hunt-animals-the-behavior-may-offer-clues-about-the-origins-of-humans-meat-eating-habits-180989412/",
     "source": "Hacker News",
@@ -1160,6 +1176,14 @@
     "pubDate": "Fri, 28 Aug 2026 14:15:58 +0800"
   },
   {
+    "title": "Synchronisation and SMPTE timecode (time code)",
+    "summary": "Comments",
+    "link": "https://www.philrees.co.uk/articles/timecode.htm",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 28 Aug 2026 04:58:34 +0000"
+  },
+  {
     "title": "全球首款阔直板探索计划：华为 Pura X View 新品有奖体验",
     "summary": "继创新形态的阔折叠手机取得了市场的广泛好评后，华为延续阔屏设计，带来全球首款阔直板旗舰HUAWEIPuraXView。HUAWEIPuraXView薄至6.68mm，轻至201g，拥有7000mAh超 ...查看全文",
     "link": "https://sspai.com/post/113883",
@@ -1208,6 +1232,14 @@
     "pubDate": "2026-08-27T23:56:43.000Z"
   },
   {
+    "title": "Storm Summoner, a MIDI controller for effects pedals",
+    "summary": "Comments",
+    "link": "https://kabaragoya.com/products/storm-summoner",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 27 Aug 2026 21:38:27 +0000"
+  },
+  {
     "title": "How we saved 100 terabytes of memory by optimizing 1.1.1.1’s DNS cache",
     "summary": "submitted by    /u/Ok_Stomach6651  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1w06vn1/how_we_saved_100_terabytes_of_memory_by/",
@@ -1216,15 +1248,7 @@
     "pubDate": "2026-08-27T21:19:39.000Z"
   },
   {
-    "title": "Benchmarking Pocket-Scale Inference",
-    "summary": "Comments",
-    "link": "https://artificialanalysis.ai/hardware-inference-stack/mobile-phones",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Thu, 27 Aug 2026 19:12:03 +0000"
-  },
-  {
-    "title": "Dad's Custom Atari Peripherals – By Jim Trageser",
+    "title": "Dad’s Custom Atari Peripherals",
     "summary": "Comments",
     "link": "https://www.goto10retro.com/p/dads-custom-atari-peripherals",
     "source": "Hacker News",
@@ -1270,6 +1294,14 @@
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Thu, 27 Aug 2026 20:05:21 +0800"
+  },
+  {
+    "title": "Electric rain can eat through metal",
+    "summary": "Comments",
+    "link": "https://www.scientificamerican.com/article/electric-rain-can-eat-through-metal/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Thu, 27 Aug 2026 12:04:11 +0000"
   },
   {
     "title": "以后在 Linux 上打包，一句话就行",
@@ -1432,12 +1464,12 @@
     "pubDate": "2026-08-26T18:44:55.000Z"
   },
   {
-    "title": "The Einstein-Szilard Refrigerator (2020)",
-    "summary": "Comments",
-    "link": "https://invention.si.edu/invention-stories/einstein-szilard-refrigerator",
-    "source": "Hacker News",
+    "title": "Flat vs segmented memory -- it's recursive",
+    "summary": "submitted by    /u/mttd  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1vz2tvh/flat_vs_segmented_memory_its_recursive/",
+    "source": "Reddit/programming",
     "category": "news",
-    "pubDate": "Wed, 26 Aug 2026 17:58:48 +0000"
+    "pubDate": "2026-08-26T16:58:51.000Z"
   },
   {
     "title": "GitHub confirms Actions outage caused by database issue",
@@ -1560,20 +1592,20 @@
     "pubDate": "Wed, 26 Aug 2026 00:00:00 GMT"
   },
   {
-    "title": "Orbs",
-    "summary": "Comments",
-    "link": "https://ampcode.com/notes/orbs-explained",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 16:56:15 +0000"
-  },
-  {
     "title": "Granite 4.2 LLMs: How They're Built",
     "summary": "",
     "link": "https://huggingface.co/blog/ibm-granite/granite-4-2",
     "source": "HuggingFace Blog",
     "category": "ai",
     "pubDate": "Tue, 25 Aug 2026 15:14:14 GMT"
+  },
+  {
+    "title": "Sort branches by last commit date",
+    "summary": "Comments",
+    "link": "https://ryangreenberg.com/til/git-branches-by-commit-date/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 25 Aug 2026 14:57:00 +0000"
   },
   {
     "title": "告别背命令：Pragmatic AI Shell 把自然语言带进日常终端操作",
@@ -1590,14 +1622,6 @@
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Tue, 25 Aug 2026 21:30:14 +0800"
-  },
-  {
-    "title": "Creating Teensy ELF Executables for Linux (Or, \"Size Is Everything\") (1999)",
-    "summary": "Comments",
-    "link": "https://www.muppetlabs.com/~breadbox/software/tiny/teensy.html",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 13:20:02 +0000"
   },
   {
     "title": "MemOS Skill 上线｜一句话即可接入 MemOS Cloud",
@@ -1632,28 +1656,12 @@
     "pubDate": "Tue, 25 Aug 2026 18:47:36 +0800"
   },
   {
-    "title": "JupyterGIS 0.16: a grammar of graphics for maps, and collaborative story maps",
-    "summary": "Comments",
-    "link": "https://blog.jupyter.org/jupytergis-0-16-new-visualization-capabilities-collaborative-story-maps-and-more-03e6b78bacc0",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Tue, 25 Aug 2026 08:43:42 +0000"
-  },
-  {
     "title": "Wire It, Run It, Deploy It: AI Workflows in Gradio",
     "summary": "",
     "link": "https://huggingface.co/blog/gradio-workflow-guide",
     "source": "HuggingFace Blog",
     "category": "ai",
     "pubDate": "Tue, 25 Aug 2026 00:00:00 GMT"
-  },
-  {
-    "title": "SQLite as a Document Database (2020)",
-    "summary": "Comments",
-    "link": "https://dgl.cx/2020/06/sqlite-json-support",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 24 Aug 2026 23:00:10 +0000"
   },
   {
     "title": "RISC-V is now officially supported by CPython",
@@ -1670,14 +1678,6 @@
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Mon, 24 Aug 2026 13:19:55 +0000"
-  },
-  {
-    "title": "Tether: iMessage, SMS, etc. on Linux",
-    "summary": "Comments",
-    "link": "https://zackbartel.com/blog/2026/08/tether/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 24 Aug 2026 05:09:23 +0000"
   },
   {
     "title": "How Hugging Face Inference Endpoints, Jobs, and Buckets Power Search on Papers with Code",
