@@ -1,8 +1,472 @@
 [
   {
+    "title": "AI 时代，技术人靠什么赢？｜QCon上海",
+    "summary": "点击查看原文>",
+    "link": "https://www.infoq.cn/article/C1Vuzh9fUmUL9i5wmDZf?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 10:00:00 GMT"
+  },
+  {
+    "title": "DoorDash 借助多 Agent LLM 系统清理 6 万个 Feature Flag",
+    "summary": "点击查看原文>",
+    "link": "https://www.infoq.cn/article/gk4rWsQg09PWTFTZlJE3?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 09:20:21 GMT"
+  },
+  {
+    "title": "[Claude] 订阅 Claude Max 后续——Appstore 订阅安稳用了一个月，这次改用信用卡订阅试试",
+    "summary": "前情提要： https://www.v2ex.com/t/1237323\n刚才用着用着突然说我的组织被关闭了，我吓了一跳还以为是我账号被封了，结果看了一下发现原来是我订阅到期了\n这次用水星银行的信用卡订阅了一个月 Claude Max 5x 。20x 实在用不完，每个星期最多用到 60%，人还非常累，而且最近看到说 20x 的周限其实是 5x 的 2 倍不到，不是 4 倍，只有 5h 限额是 4 倍，而我 20x 的 5h 限额从没用到过 25%。\n如果这个月被封了正好试试用信用卡订阅的能不能退款。",
+    "link": "https://www.v2ex.com/t/1244849#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T02:31:47.000Z"
+  },
+  {
+    "title": "[程序员] geoip=cn 无法识别所有中国网站吗",
+    "summary": "为什么那些代理软件需要设置那么多规则，甚至还要随时更新？",
+    "link": "https://www.v2ex.com/t/1244848#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T02:23:24.000Z"
+  },
+  {
+    "title": "[分享创造] 免费 Twitter 工具站更换了主域名，支持下载视频，下载图片，下载推文和线程等等超过 40 个小工具",
+    "summary": "免费 Twitter 工具站更换了主域名，最新域名是： https://twiflux.com ，下载视频，下载图片，下载推文和线程等等超过 40 个小工具\n之前的域名 https://twimate.com 也还可以用。\n使用和反馈问题，反馈工具需求，都欢迎",
+    "link": "https://www.v2ex.com/t/1244847#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T02:22:05.000Z"
+  },
+  {
+    "title": "我写了 50 个 Claude Code Skill 才发现，前 30 个都白写了 - 码哥字节",
+    "summary": "【摘要】凌晨一点，我看着 Claude 又一次完美绕过了我精心写的那个 Skill，第三次了。 prompt 关键词全对上了，描述里写得清清楚楚「用于 Spring Boot 项目的接口设计」，结果它愣是没触发。我开始怀疑自己——是不是 Claude Code 这个东西本身就不靠谱？ 第二天起来翻官方文档， 阅读全文",
+    "link": "https://www.cnblogs.com/uniqueDong/p/23126169",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-09-26T02:21:00.000Z"
+  },
+  {
+    "title": "[分享创造] Piko：高性能、多平台的 PikPak 客户端",
+    "summary": "用 KMP 搓了一个第三方 PikPak 客户端\n支持安卓和 Windows ，在安卓上是原生应用，Windows 性能也不错\nGitHub： https://github.com/NihilDigit/piko\n\n支持：\n并发八连接下载，提高弱网下传输速度\n离线下载时自动排除广告文件，解析合集文件方便挑选内容\n离线下载支持部分转存 （下完自动删掉）\n截取视频部分片段\n\n离线下载支持完整预览\n支持查看账号传输配额信息\n很 MD 的播放器\nWindows on ARM 原生构建\nAnd more...",
+    "link": "https://www.v2ex.com/t/1244846#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T02:17:05.000Z"
+  },
+  {
+    "title": "Two core concepts of k8s",
+    "summary": "In kubernetes two concepts I found very interesting:\n  \n ⁠Only the API Server writes to etcd\n  \nControllers don’t directly modify etcd.\n If HPA decides that the application needs 5 replicas instead of 3, it doesn’t go directly to etcd and change the value.\n It talks to the API Server.\n The API Server handles the request, applies authentication, authorization and admission controls, and then persists the desired state in etcd.\n This gives Kubernetes a single controlled entry point for modifying cluster state.\n It also means the other components don’t need to understand how etcd works or deal with its consistency and access directly.\n Single responsibility principle acting beautifully\n  \nAll other components use watch on api server.\n  \nThis is another really nice design decision.\n A controller doesn’t need to keep asking:\n “Did something change?”\n “Did something change?”\n “Did something change?”\n Components don't call each other. The HPA doesn't call the scheduler. The scheduler doesn't call the kubelet. Each one opens a long lived watch on the API server for the one kind of object it cares about, and reacts when that object changes.\n Here's the whole scaling chain:\n • HPA controller reads metrics and updates replicas on the Deployment. That's all it does.\n • Deployment controller watches Deployments, sees the new count, and updates the ReplicaSet.\n • ReplicaSet controller watches ReplicaSets, sees it has 3 pods but wants 5, and creates 2 Pod objects. They have no node yet.\n • Scheduler watches for Pods with no node, picks the best node, and writes a binding.\n • Kubelet on that node watches for Pods assigned to it, starts the containers, and reports status back.\n Every component does exactly one job, writes its result to the API server, and walks away. The next component picks it up through its own watch. Nobody knows who comes next, and nobody needs to.\n That's why the system is so resilient. If the scheduler restarts, it relists, sees the pending pods and carries on. Controllers compare desired state with actual state, so a missed event doesn't break anything. They just reconcile again.\n The part that surprised me most\n After all that machinery, the only real thing that changed is the number of Pods. The Deployment and ReplicaSet are just records in etcd with a different number. The HPA, controllers and scheduler never run your app. At the end of the chain, it's only pods that get scaled.\n If you want to see all of this graphically I have explained this in detail below\n https://youtu.be/bwiHEG2NLpE?si=hPEEnlOR17qXydAQ\n    submitted by    /u/abhishekkumar333  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wqehjs/two_core_concepts_of_k8s/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-26T02:06:22.000Z"
+  },
+  {
+    "title": "[分享创造] 做了个 AI 产品：跟 100 位古人聊天，猜出他是谁。",
+    "summary": "人物全部隐去姓名，AI 扮演，说话带着他本人的语气。\n你问，他答，线索就藏在对话里。\n猜对了，他会送你一件故物，从真实文献里摘的。\n想了解一个历史人物，可以直接跟他本人聊。\nhttps://apps.apple.com/us/app/时空回音/id6802930227\n接入的 DeepSeek",
+    "link": "https://www.v2ex.com/t/1244845#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T02:04:40.000Z"
+  },
+  {
+    "title": "[程序员] browser-use 羊毛已被薅秃，无法再打开 muse.ai 了",
+    "summary": "正在寻找替代方案，目前只有 gemini pro 的 spark 可用了，大家注意。",
+    "link": "https://www.v2ex.com/t/1244843#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:56:11.000Z"
+  },
+  {
+    "title": "[职场话题] 真正做 FDE 的进来聊聊",
+    "summary": "大家好。我原来从阿里出来，最近几年给企业做了几个 AI 项目 https://next4.ai/ 上面简单写了下。客单价 30-300 万吧(但是也是很苦逼，勉强能活)。老实说，我也不知道我们算不算 FDE 。论坛里不知道有没有做 FDE 人，真的单独出来接企业 AI 项目落地的。(在阿里、腾讯、百度做 To B 的 AI 项目组里也欢迎)，进来交流交流心得。\n我有想组个小群，把大家拉进来深度聊聊中国未来有没有走 Palantir 这种模式的？甚至出海做全球。国内太苦逼，客户关系、资源太复杂。\n聊技术也行，聊合作项目、客户资源也行。",
+    "link": "https://www.v2ex.com/t/1244842#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:49:53.000Z"
+  },
+  {
+    "title": "[问与答] 30 岁以上的人怎么谈恋爱？",
+    "summary": "想问一下 30 以上的单身老哥现在是什么状态呢\n又或者 30 岁之后才认识女朋友的，谈恋爱是什么状态噢，跟 20 多岁时有差别吗。\n好奇",
+    "link": "https://www.v2ex.com/t/1244841#reply7",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:47:55.000Z"
+  },
+  {
+    "title": "Jury finds Facebook liable for deceiving users in Cambridge Analytica case",
+    "summary": "Comments",
+    "link": "https://www.cbsnews.com/news/facebook-liable-deceiving-users-cambridge-analytica/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 01:36:50 +0000"
+  },
+  {
+    "title": "[VPS] 避雷 IPRoyal",
+    "summary": "省流：卖的时候说是日本 ISP IP proxy ，结果 aws 东京 ping 过去 150ms ，google.com 、Gemini 和 policies.google.com/terms? 都显示的 UK 。\n找客服反应延迟高、定位问题要退款。回信让我测测 fast.com 。\n然后又告诉我他测下载快得很（我寻思这跟我报的延迟高有啥关系），谷歌他也是正常显示日本，最后贴心告诉我流量已经超了 500MB 不能退款了。\n我气不打一处来，心中一万只草泥马，结果点开他截图日本谷歌的页面直接给我整笑了。\n\n\n\n图 1 红字是我加的。图 1 左下角明明写的是\"イギリス\"（英国的日语），分明就是调了谷歌的显示语言，以为哥们不会日语，而且 policy 没有截国家那一页。\n看没糊弄过就换了个 staff 想继续打太极，我让他别废话赶紧全额退款，除非他能证明那 500MB 流量是我发起退款的时候跑的。然后发了个退款的 tick 让我填，不知道会不会又要扯皮。\n本来准备买个落地分流 Claude 顺便看看 DMM 的，给我人整麻了。这么算还不如直接 Claude 走 aws 了，除了没登陆的网站弹 CF 的弹窗比较烦，至少速度和位置没问题。",
+    "link": "https://www.v2ex.com/t/1244840#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:34:54.000Z"
+  },
+  {
+    "title": "[程序员] 每周免费 10 亿 token 的 muse，使用场景有哪些呢？附上注册方法，大家一起来探讨",
+    "summary": "注册了一个 muse.ai ，但是搞不清楚使用场景是什么，有人说很牛逼，但是好像也说不清楚使用场景。\n附录：\n1.打开 gemini pro 的 spark-->\n输入:打开 https://muse.ai/join-->\n授予权限-->\n在 remote 浏览器中进行注册-->\n输入邮箱-->\n接验证码-->\n要求验证年龄-->\n选择第一个验证方式(信用卡验证,可以使用国内 visa 信用卡)-->\n注册成功.\n登录后在设置中输入邀请码：NF4Z0T 后可以获得 10 亿 token 。",
+    "link": "https://www.v2ex.com/t/1244838#reply10",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:29:21.000Z"
+  },
+  {
+    "title": "[OpenAI] 实测 Linux 降级到次新版 chatgpt 可以使用了，临时解决方案",
+    "summary": "当前最新版：26.924.20706\n次新版：26.917.71314\n架构：amd64\n次新版官方直链：\nhttps://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.917.71314_amd64.deb\n已经安装了最新版情况下降级：\nsudo apt install --allow-downgrades ./chatgpt_26.917.71314_amd64.deb",
+    "link": "https://www.v2ex.com/t/1244837#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:28:56.000Z"
+  },
+  {
+    "title": "[ Removed by Reddit ]",
+    "summary": "[ Removed by Reddit on account of violating the content policy. ]\n    submitted by    /u/PresentSalamander856  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wqdmq0/removed_by_reddit/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-26T01:23:16.000Z"
+  },
+  {
+    "title": "[程序员] 自建反代用 pi/opencode 的同学注意",
+    "summary": "总觉得哪不对劲，快是快，但是长对话总有点瑕疵。研究了一下这几个反代的源码，几乎所以反代/中转站都是这个逻辑。\n原来反代看见非 claude code 的 agent 的时候把原始 system 指令搬到 user ，但不是把所有消息都改成 user 。\n也就是 pi/opencode 等非 cc 的 agent 发的所有 system 都是原本的系统指令会降到 user 角色；[System Instructions] 只是文本标签，并不能保留 system 的优先级。\n我说怎么不对劲，各种 AGENG 和 system 的消息都去 user 了。codex 一样，也有处理逻辑进行伪装。但实际破坏了原本的行为，gpt 就直接 pi 连吧，反代没价值",
+    "link": "https://www.v2ex.com/t/1244835#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:22:25.000Z"
+  },
+  {
+    "title": "\"Reconstructive UI\"",
+    "summary": "submitted by    /u/hasen-judi  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wqdk0p/reconstructive_ui/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-26T01:19:39.000Z"
+  },
+  {
+    "title": "[Google Gemini] 我 antigravity 突然用不了了？提示不支持地区",
+    "summary": "────────────────────────────────────────────────────────────\ndo your research on this project and tell me what it is about and what it can do. explain with\nexamples. Reply in simplified Chinese in this session\n⚠ Warning\n⎿  Invalid \"unsandboxed\" permission rules found; they are ignored and grant nothing:\n~/.gemini/config/config.json:\n• unsandboxed(cat)\n Fix: replace \"unsandboxed\" with \"command\" (e.g. command(git status)), or remove the rule. Edit\n\nthe\nfile directly or use /permissions.\n⚠ FAILED_PRECONDITION (code 400): User location is not supported for the API use.\nError ID: decd5163-0f49-49e9-b27a-059a383f1e06-19\n───────────────────────────────────────────────────────────────────────────────────────────────────────\n───────────────────────────────────────────────────────────────────────────────────────────────────────\nResume with -c (or command below):\nagy --conversation=e1b39912-378b-44f1-b54e-041b79843fc0\ncurl google.com\n301 Moved\nhere.\n</BODY></HTML>",
+    "link": "https://www.v2ex.com/t/1244834#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:18:47.000Z"
+  },
+  {
+    "title": "[奇思妙想] 昨日中秋,月圆之日,此情此景,我不禁为坛友写诗一首,望各位小友点评一番",
+    "summary": "昨日月圆 此情此景 我不禁吟诗一首\n远看有只鸟\n凑近看看瞧\n用手摸摸鸟\n我草这是吊",
+    "link": "https://www.v2ex.com/t/1244833#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:13:05.000Z"
+  },
+  {
+    "title": "[分享创造] 写了个给 X“脱水”的浏览器插件： Noiseless，尝试用 LLM 过滤信息噪声",
+    "summary": "我平时喜欢刷 X（Twitter），有时候看见一个博主分享的信息，博主说的很好听，当时第一时间我也很激动，结果后面研究，发现博主注水了很多，实际没那么好用。\n网上有很多都是这样的情况，博主发卖家秀的信息，自己一用就是买家秀了。\n然后我就在想，能不能用大模型提前检测下推文的可信度情况，分析信息的质量如何。\n成果：Chrome 扩展 —— Noiseless，主要用来帮网页文本“脱水”，最后的效果就是加强版的 @Grok，需要自己提供 API，我这里面加的都是能免费注册获取的，一般用 Google Gemini 就行。\n先声明，本人并无编程基础，纯靠 Gemini 来做的，用了大概 5 天的时候，写代码、测试然后上架了谷歌扩展商店。\n我想无论是自己写还是 AI 写，只要能解决问题，都是好事。\n此扩展代码已在 github 上开源:https://github.com/Jackroro/noiseless-extension\n主要做了两件事\n信息降噪：\n柔性折叠推特广告/推广内容，也可自己添加关键词屏蔽。\n信息质量评估：\n后台接入 LLM 对内容进行分析，从事实可验证度、观点可信度和观点可行性综合评定。\n关于隐私与调用实现\n在做这个插件时我自己最介意的也是隐私和性能：\n不常驻后台扫描：不会胡乱读取全页面的隐私数据，只有主动选触发时才会处理。\n纯粹的文本处理：提取文本上下文交给大模型做推理分析，不留存用户个人历史，也不搞奇奇怪怪的跨站追踪。\n目前产品刚上线 Chrome Web Store，交互和 Prompt 还在持续打磨。\n体验地址与反馈\nChrome 商店地址： https://chromewebstore.google.com/detail/noiseless-%E7%A4%BE%E4%BA%A4%E4%BF%A1%E6%81%AF%E9%99%8D%E5%99%AA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%80%8F%E9%95%9C/oclbiembnjgdallabkghocomhjnfnbje\n（如果能顺手在商店留个真实评价就更感激了）\n目前主要是自用 + 刚发布状态，Prompt 对长文本边界情况的覆盖、不同平台的排版兼容肯定还有不少粗糙的地方。\n大家在试用过程中如果有任何 Bug、Prompt 调优建议，或者觉得哪些功能纯属鸡肋，欢迎在评论区随时拍砖，我都会认真记录和跟进迭代。",
+    "link": "https://www.v2ex.com/t/1244832#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:06:02.000Z"
+  },
+  {
+    "title": "[问与答] ai 加持下,还是卖了一些\"没用\"的技术书籍,只留了部分收藏",
+    "summary": "要卖的书籍\n\n\n\n暂时保留的书籍",
+    "link": "https://www.v2ex.com/t/1244831#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T01:03:28.000Z"
+  },
+  {
+    "title": "One Piece of Flock Camera Data Put This Innocent Woman in Jail for 13 Days",
+    "summary": "Comments",
+    "link": "https://www.jezebel.com/flock-cameras-data-innocent-woman-arrested-lindsey-isaacs-palm-beach-florida-lawsuit-vehicular-homicide",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 00:59:02 +0000"
+  },
+  {
+    "title": "[推广] HuiAI 限时特惠 ChatGPT Plus 128 元起，可开票",
+    "summary": "今天 ChatGPT Plus/Pro 特惠，¥128 起。\nPlus 折扣码 HUIAIV2@5 立减 5 元\nPro 5x 折扣 HUIAIV215 立减 15 元\nPro 20x 折扣 HUIAIV230 立减 30 元\nChatGPT Plus / Pro , Claude Pro / Max 、Gemini Pro / Ultra\n微信、支付宝付款，不用海外信用卡付款后自动开通，订单进度和售后都能查开通失败全额退;开上之后出问题优先修\n下单:https://www.huiai.me/\n有问题直接回帖。",
+    "link": "https://www.v2ex.com/t/1244830#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T00:49:45.000Z"
+  },
+  {
+    "title": "【FHE】（十）：密文里的 attention——没有 max，softmax 怎么办 - haliu",
+    "summary": "【摘要】项目仓库 Gitee 主仓：https://gitee.com/pei-xiaoguang/kestrel-llm GitHub 镜像：https://github.com/m13253246268-ship-it/kestrel-llm 相关文档 术语与数据口径 ｜ 性能与基准 ｜ 构建与复现 ｜ 阅读全文",
+    "link": "https://www.cnblogs.com/haliuhome/p/23125666",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-09-26T00:41:00.000Z"
+  },
+  {
+    "title": "[OpenAI] 不同的 chatgpt 使用的服务器还不一样吗？",
+    "summary": "听说今天服务器崩了，我这 linux 无法正常提问，macos 没问题，一样的网络。",
+    "link": "https://www.v2ex.com/t/1244829#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T00:35:35.000Z"
+  },
+  {
+    "title": "TiddlyInstall: A universal, reusable, install system",
+    "summary": "Comments",
+    "link": "https://robertsdotpm.github.io/_static/tiddlyinstall.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 00:29:48 +0000"
+  },
+  {
+    "title": "[Apple] [自荐] 做了个能在 iPhone 和 iPad 上看代码的 App",
+    "summary": "大家好，最近折腾了一个叫 CodeMate 的编辑器 App ，主要用来在 iPhone 和 iPad 上看代码（支持了大部分常用的编程语言，200+），偶尔也能顺手改几行。\n做它的原因挺简单：有时候人在外面，突然想看一下某个源文件，或者别人发来一段代码，但为了这点事打开电脑又有点麻烦。\n它不是用来替代 Xcode 或 VS Code 的，也不能在手机上编译运行项目。定位就是离开电脑时方便看源码，或者临时做一些轻量修改。\n阅读文件免费，编辑和部分高级功能需要 Premium ，有订阅和买断，也可以看广告的方式无限白嫖。\nApp Store：\n中国区下载 CodeMate\n美国区下载 CodeMate\n官网：\nhttps://codemateapp.net\n如果大家平时也会在手机或 iPad 上看代码，欢迎试试。有什么不好用或者缺少的功能，直接喷就行，我再继续改。",
+    "link": "https://www.v2ex.com/t/1244828#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T00:28:17.000Z"
+  },
+  {
+    "title": "Show HN: A game about fake news and memes",
+    "summary": "Comments",
+    "link": "https://unspin.app/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Sat, 26 Sep 2026 00:11:33 +0000"
+  },
+  {
+    "title": "[分享创造] 做了个免费开源的 AI 交易工作台",
+    "summary": "Desic Terminal —— 开源的 AI 原生 OKX 永续合约交易终端\n\nAI 自动化交易\n· 交易理念做成了可以自己改的 skill 文件。你按自己的框架改。\n· 支持多 Agent 编排\n· 交易复盘、每日市场复盘都有，会留下运行记录和仓位复盘。\n策略交易 / 回测系统\n· Python 策略脚本。不用会写代码——把策略描述清楚，AI 帮你写成脚本。\n· 写完直接跑历史回测。\n图表快捷交易\n· AI 可以用自然语言写图表指标\n· 主观交易可以在图上直接下单，低延迟。\n顺带还有市场雷达：不受自选列表限制，扫全市场 live USDT 永续，\n输出排名、分类强弱、市场宽度和评分归因，并保留 1/5/20 日的点时验证。\n\n开源（ MIT ）： https://github.com/xiazhi88/Desic-Terminal",
+    "link": "https://www.v2ex.com/t/1244827#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T00:06:20.000Z"
+  },
+  {
+    "title": "[程序员] Codex 早上宕机了，重置大概率要来一个吧",
+    "summary": "Codex 早上宕机了，截止发帖时已经恢复，重置大概率要来一个吧，不然说不过去\n不过前几周有一次好像故障了也没有给补偿",
+    "link": "https://www.v2ex.com/t/1244826#reply12",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-26T00:03:20.000Z"
+  },
+  {
+    "title": "[OpenAI] We need a reset, Tibo.",
+    "summary": "unexpected status 401 Unauthorized: Incorrect API key provided: sk-svcac***********************************************************************************************************************************************************fvMA. You can find your API key at https://platform.openai.com/account/api-keys., url: https://chatgpt.com/backend-api/codex/responses, cf-ray: a40dc519df6309e2-NRT, request id: 81c2a0bd-0e04-4b4b-b9c9-8d26626ec494\n今天 OpenAI 好像崩了，早上更新客户端，还以为客户端的问题，好像服务端出问题了，GitHub issue 都是这问题。\nWe need a reset,Tibo.",
+    "link": "https://www.v2ex.com/t/1244825#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T23:52:11.000Z"
+  },
+  {
+    "title": "[OpenAI] 这下得给个重置吧！ unexpected status 401 Unauthorized: Incorrect API key provided",
+    "summary": "以为我自己账号被干了\nhttps://status.openai.com/  结果看了下，都废了",
+    "link": "https://www.v2ex.com/t/1244824#reply12",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T23:04:01.000Z"
+  },
+  {
+    "title": "A Lean Proof Printing Python Union Find",
+    "summary": "submitted by    /u/mttd  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wqan1r/a_lean_proof_printing_python_union_find/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-25T23:02:12.000Z"
+  },
+  {
+    "title": "[问与答] 大家用 APTV 播放直播源时候有轻微卡顿么？",
+    "summary": "我说的是类似东方卫视 4K 之类的标有 4K 的直播源，播一会儿就卡，而且有点像是持续性的。\n网上找的本地组播，好几个都是这样。",
+    "link": "https://www.v2ex.com/t/1244823#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T22:39:18.000Z"
+  },
+  {
+    "title": "Lab on a Contact Lens Can Measure Stress Through Serotonin",
+    "summary": "Comments",
+    "link": "https://spectrum.ieee.org/serotonin-stress-smart-contact-lens",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 22:28:02 +0000"
+  },
+  {
+    "title": "What even is an OS now?",
+    "summary": "Comments",
+    "link": "https://sockpuppet.org/blog/2026/09/25/what-even-is-an-os-now/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 21:36:56 +0000"
+  },
+  {
+    "title": "Microservices are organizational debt disguised as architecture.",
+    "summary": "Every time I’ve seen microservices pitched, it sounds great on paper. Independent teams, clean ownership, scale only what you need.\n Then a year later you’ve got dozens of services, three different deployment patterns, tracing everywhere, and nobody really understands the whole thing anymore.\n Maybe I’ve just seen bad implementations, but I’m starting to think way fewer companies actually need microservices than we pretend.\n    submitted by    /u/Mustela__  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wq8nbw/microservices_are_organizational_debt_disguised/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-25T21:35:37.000Z"
+  },
+  {
+    "title": "Show HN: Ekselio – Loveable for finance workflows (local first)",
+    "summary": "Comments",
+    "link": "https://www.gptbeyond.com/try?home=1",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 21:09:28 +0000"
+  },
+  {
+    "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+    "summary": "Comments",
+    "link": "https://swarmtraces.org/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 21:09:27 +0000"
+  },
+  {
+    "title": "Excel now supports multiple values in a single cell",
+    "summary": "Comments",
+    "link": "https://techcommunity.microsoft.com/blog/microsoft365insiderblog/put-multiple-values-in-one-cell-with-lists-and-arrays-in-excel/4559395",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 20:55:00 +0000"
+  },
+  {
+    "title": "[推广] 免费家宽",
+    "summary": "🌐 免费家宽 IP 白嫖方案：Cloudflare Workers + VPNGate 自建 V2Ray 节点\n📌 背景\nvpngate.net 上公开的大部分节点都是干净的家宽 IP，这可是稀缺资源。有大佬已经实现了 Cloudflare Workers → SSTP-VPN / VPNGate 的玩法：\n👉 https://github.com/jacobax/snippets\n思路很简单：把 CF 大善人的免费流量 和 VPNGate 的免费家宽 IP 结合起来，搭建出自己的 V2Ray 节点。下面分享的就是我按这个思路搭建和配置好的节点，直接导入客户端即可使用。\n完整 v2ray 格式文件 vpngate-v2ray.txt\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn228702251.opengw.net%3A1587%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Australia%2Fcf-vpngate-vpn228702251%2FAustralia\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn412741546.opengw.net%3A1341%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Belarus%2Fcf-vpngate-vpn412741546%2FBelarus\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn429922709.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Croatia%20%28LOCAL%20Name%3A%20Hrvatska%29%2Fcf-vpngate-vpn429922709%2FCroatia%20%28LOCAL%20Name%3A%20Hrvatska%29\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn798662158.opengw.net%3A1893%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-vpn798662158%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn666319855.opengw.net%3A1662%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-vpn666319855%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-222.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-public-vpn-222%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-68.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-public-vpn-68%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn925722503.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn925722503%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn537344773.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn537344773%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn398277332.opengw.net%3A1609%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn398277332%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn217330954.opengw.net%3A1871%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn217330954%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn580064780.opengw.net%3A1589%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn580064780%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn558150618.opengw.net%3A1703%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Thailand%2Fcf-vpngate-vpn558150618%2FThailand\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn596459474.opengw.net%3A1981%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn596459474%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn198374908.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Viet%20Nam%2Fcf-vpngate-vpn198374908%2FViet%20Nam\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn763562980.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Armenia%2Fcf-vpngate-vpn763562980%2FArmenia\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn998850337.opengw.net%3A1245%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-France%2Fcf-vpngate-vpn998850337%2FFrance\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn315836095.opengw.net%3A1378%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-vpn315836095%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn844843933.opengw.net%3A1757%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-vpn844843933%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn740198977.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn740198977%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn370986181.opengw.net%3A1528%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Viet%20Nam%2Fcf-vpngate-vpn370986181%2FViet%20Nam\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-189.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Japan%2Fcf-vpngate-public-vpn-189%2FJapan\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn864577769.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn864577769%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn274822504.opengw.net%3A1657%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Thailand%2Fcf-vpngate-vpn274822504%2FThailand\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn650277207.opengw.net%3A1571%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Thailand%2Fcf-vpngate-vpn650277207%2FThailand\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn184433940.opengw.net%3A1260%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn184433940%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn445617380.opengw.net%3A1841%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn445617380%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn962378948.opengw.net%3A1743%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Viet%20Nam%2Fcf-vpngate-vpn962378948%2FViet%20Nam\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn927348764.opengw.net%3A995%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Korea%20Republic%20of%2Fcf-vpngate-vpn927348764%2FKorea%20Republic%20of\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn141133687.opengw.net%3A1886%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn141133687%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn294043338.opengw.net%3A1649%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn294043338%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn232859084.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Croatia%20%28LOCAL%20Name%3A%20Hrvatska%29%2Fcf-vpngate-vpn232859084%2FCroatia%20%28LOCAL%20Name%3A%20Hrvatska%29\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40v-dot-pn-hkg1.opengw.net%3A443%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Hong%20Kong%2Fcf-vpngate-v-dot-pn-hkg1%2FHong%20Kong\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn615343043.opengw.net%3A1600%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20States%2Fcf-vpngate-vpn615343043%2FUnited%20States\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40_unregistered_vpn335506854.opengw.net%3A8843%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-China%2Fcf-vpngate-_unregistered_vpn335506854%2FChina\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn536329081.opengw.net%3A1965%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Russian%20Federation%2Fcf-vpngate-vpn536329081%2FRussian%20Federation\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn960816921.opengw.net%3A1273%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Russian%20Federation%2Fcf-vpngate-vpn960816921%2FRussian%20Federation\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn955946718.opengw.net%3A1201%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Russian%20Federation%2Fcf-vpngate-vpn955946718%2FRussian%20Federation\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn386038481.opengw.net%3A1690%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Thailand%2Fcf-vpngate-vpn386038481%2FThailand\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn190033588.opengw.net%3A1761%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-United%20Kingdom%2Fcf-vpngate-vpn190033588%2FUnited%20Kingdom\nvless://495c7195-85b8-498a-bf20-2ea9ce9175b5@61.172.182.19:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&alpn=h3%2Ch2&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn637305362.opengw.net%3A1610%3Fed%3D2560#%E4%B8%8A%E6%B5%B7%E7%94%B5%E4%BF%A1-Viet%20Nam%2Fcf-vpngate-vpn637305362%2FViet%20Nam\n\n\n🛠️ 自定义玩法\n1. 换优选 IP 和端口\n节点里的 IP 地址和端口可以直接替换成你自己测出来的 CF 优选 IP 和端口，延迟和速度会更好。\n2. 换 VPNGate 节点\n每个节点链接的路径里都嵌入了一个 SSTP 地址，例如：\n/fdip=sstp://vpn:vpn@vpn228702251.opengw.net:1587?ed=2560\n\n其中 vpn228702251.opengw.net:1587 这一段可以替换为 vpngate.net 上公开节点的主机名和 SSL-VPN 的 TCP 端口。\n3. 转换客户端格式\n所有链接都是 v2ray 格式的。如果你用的客户端不支持，直接把链接发给 AI ，让它帮你转换成其他软件的格式即可。\n4. 失效节点自助修复\nvpngate 节点时效不长，失效了也别慌：让 AI 从 vpngate.net 提取可用的主机名和 TCP 端口，替换路径中的那一段，就能复活使用。\n⚠️ 注意事项\nVPNGate 是志愿者共享的节点，IP 和端口会不定期变更，失效属于正常现象\n建议收藏本帖，失效了按上面的方法自助替换即可",
+    "link": "https://www.v2ex.com/t/1244820#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T20:20:45.000Z"
+  },
+  {
+    "title": "[分享创造] 找工作太难了，拿练手做的网站毛遂自荐下",
+    "summary": "大家好，我是一名应届毕业生（算是吧，去年毕业，今年都在独立开发，没有交社保，应该也算应届毕业生资格）。最近找工作一直不顺，想借这个帖子毛遂自荐一下，也想听听大家的建议。\n先说说近况：Boss 直聘上投了很多简历，基本没什么回音。投着投着自己也开始迷茫：是继续找开发岗，还是转测试，甚至去做销售会不会更好找一些？还是想做跟开发、网站相关的工作，跨境电商、独立站方向也可以。我对 AI 相关的技术和行业比较感兴趣，平时也喜欢折腾这些东西。独立开发快 1 年的经验了。做过网站、APP （ Flutter 开发）。\n所以想拿一个自己做的网站来毛遂自荐：\nhttps://vidkiss.com\n这是一个 AI 视频生成网站：写一段描述或者传一张图，选个模型，就能生成一段短视频，也能生成图片。\n实话说：\n它本质上就是把现成的 AI 模型接到一起，没什么技术壁垒。我也知道这类站在 V 站不太受待见。代码大部分是用 Claude 和 Codex 写的，我主要负责想清楚要做什么、拆任务、测试和验收 [按实际改] 。做它主要是为了练手，看看自己能不能把一个产品从零做到上线；也想试试它能不能帮我找到工作。\n现在注册登录、生成、支付、内容审核、上线部署这一整套都跑通了。它也算是一个面向海外的独立站：英文界面，用 Stripe 收款，也在慢慢做 SEO 和外链。\n想请大家帮几个忙：\n1.有空的话上去点一点，哪里难用、哪里有 bug ，直接回帖告诉我。注册会送 120 点，够跑一条 Veo 3.1 视频。如果没到账（同一个网络出口只发一次），留个邮箱，我手动补。\n2.帮我出出主意：像我这种情况，是继续投开发，还是先从测试或者别的岗位进去？简历上放一个用 AI 做的项目，是加分还是减分？除了 Boss 直聘，应届生还有哪些渠道比较好？\n3.如果你们团队在招开发、测试、独立站或者跨境电商相关的岗位，也非常欢迎介绍，能内推就更感谢了。\n联系邮箱： hello@vidkiss.com\n谢谢大家愿意看完。",
+    "link": "https://www.v2ex.com/t/1244819#reply5",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T20:12:14.000Z"
+  },
+  {
+    "title": "How we learned to stop worrying and love campus surveillance",
+    "summary": "Comments",
+    "link": "https://fnl.mit.edu/how-we-learned-to-stop-worrying-and-love-campus-surveillance/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 19:56:57 +0000"
+  },
+  {
+    "title": "[程序员] [开源] 基于 Edge TTS 的语音合成服务，兼容 OpenAI 音频接口",
+    "summary": "项目地址： https://github.com/DejavuMoe/edgeTTS\n这是一个用 Edge TTS 免费接口封装的语音合成服务\n特性：\n协议兼容：支持 OpenAI 标准 /v1/audio/speech 格式，现有客户端改个 Base URL 即可使用\n长文本处理：内置分段切片与音频流拼接，解决长文本请求容易失败的问题\n支持声音映射与参数微调\nDocker 镜像一键部署",
+    "link": "https://www.v2ex.com/t/1244818#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T19:38:52.000Z"
+  },
+  {
+    "title": "[宽带症候群] 关于 tr069 是否要删除",
+    "summary": "之前装新宽带的时候运维死活不给超密,前前后后花了快 5 个月时间才找到获取超密的办法成功获取了超密\n想问问各位大佬,关于 tr069 是否要删除还是说直接修改他连接的 URL 或者设置成静态 IP,因为我怕他把我光猫的配置给改回去了,还有还想请问一下这一个如果改了会不会直接被运维上门改回来,求大佬给给意见",
+    "link": "https://www.v2ex.com/t/1244817#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T19:30:23.000Z"
+  },
+  {
+    "title": "[分享创造] Que —— 让 Agent 排队来找你",
+    "summary": "等等！AI 越开越多，我怎么更忙了 🤯\n这个会话等确认，那个会话等回复，会话切了一圈，又忘了谁还在等我，我有点调度不过来我自己了 😫\n所以我做了 Que —— 通过统一的待处理 Agent 会话队列调度人类有限的注意力，让 Agent 排队来找你，不必分心惦记还有哪个 Agent 在等你。\n你可以在终端卡片中直接操作主流 CLI Agent 工具，也可以通过通知卡片接收外部 Agent 会话的通知 —— Que 会将各色 Agent 卡片都汇入同一条队列让你慢慢处理。\n更多详情&下载：GitHub - Que",
+    "link": "https://www.v2ex.com/t/1244816#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T18:57:23.000Z"
+  },
+  {
+    "title": "phrack-72.pdf",
+    "summary": "submitted by    /u/TinuvielTaco  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wq4df5/phrack72pdf/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-25T18:44:53.000Z"
+  },
+  {
+    "title": "Alan Kay: Shannon gave us a way of dealing with noisy channels [video]",
+    "summary": "Comments",
+    "link": "https://www.youtube.com/watch?v=Cjntrqhn8pk",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 18:37:05 +0000"
+  },
+  {
+    "title": "Ollaya – Ollama for open-source, Jev-style decision models",
+    "summary": "Comments",
+    "link": "https://ollaya.dev/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 18:33:50 +0000"
+  },
+  {
+    "title": "[Polymarket] 我想创建一个 polymarket 的聊天群， 如果你想加入， 请留下微信号。 我主要玩 lol 和天气。",
+    "summary": "这是我 3 个月的战绩， 我的仓位一般都不超过 10 刀， 我超过 10 刀一般都输。\nImgur",
+    "link": "https://www.v2ex.com/t/1244815#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T18:26:01.000Z"
+  },
+  {
+    "title": "[程序员] 独立开发产品无收入，有必要买 Claude Max 吗",
+    "summary": "现在是一个 20 的 codex 和一个 20 刀的 Claude\n体感是 codex 干不了什么需求就没额度了，Claude 还行。\n但是加起来 40 刀，做独立开发的进度就很慢。\n但是有时候忙起来，没时间 vibe coding ，也会有一周下来额度还剩一大半的情况。\n同时考虑到自己开发的产品没收入，还有一些本以为 2 个月能上线结果半年没上线的产品。\n在想是不是应该直接上个 Claude Max ，然后快速把产品推上线看看。\n但根据经验，现在是产品比用户多，所以对于自己在这块的投入也有怀疑的想法。\n毕竟网上有段子：现在很多整天折腾 AI 独立开发的人，开着最贵的 AI 会员和云服务，做出的产品却根本没人买单吗。\n大家有什么想法吗，想听听建议。",
+    "link": "https://www.v2ex.com/t/1244814#reply28",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T18:09:00.000Z"
+  },
+  {
+    "title": "[问与答] 求注销！",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1244813#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T18:05:42.000Z"
+  },
+  {
+    "title": "[Surge] tailscale 让我弃用了 surge",
+    "summary": "之前用的  surge 自带的 ponte, 并不是很好用, 而且只能在 surge 的环境中使用, 不过简单一点,就一直再用下去了\nsurge 支持 tailscale 后, 认认真真弄了一下, 发现不支持 peer relay, 为了 surge ,我还专门去搭了个 derp, 总算是能勉强用了\n今天把域名解析成 tailscale 的内网地址, 就一直提示\n[WireGuard-DNS] Remote DNS error: Error Domain=SGErrorDomain Code=7 \"DNS timeout\" UserInfo={NSLocalizedDescription=DNS timeout}\n\n在浪费我两三个小时候, 依旧不知道怎么解决, 信息少的和 vim 用户一样, 换回 clash meta, 不用设置什么, 正常连接, 只能说再见了\n不用因为这软件而强制使用 anytls, 也不用去交你的年费了, 一个 tailscale 功能开发几个月都不能正常使用, peer relay 不支持(据说已经支持了,但是已经浪费我几个小时去搭一个 derp, 本来用这个是为了省心, 但现在这态度,论坛还没了, 一点信息都找不到, 我再花钱我就是狗) , 让我研究半天, 浪费我时间去研究这些",
+    "link": "https://www.v2ex.com/t/1244812#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T17:50:35.000Z"
+  },
+  {
+    "title": "[分享创造] 自建需求系统：进来先分诊，拿不准的才进待办",
+    "summary": "团队里最烦的不是「缺看板」，是需求从群里/邮件/口头涌进来时，类型、优先级、是否重复全靠人肉分。\nReqmango 是开源的自建项目管理：新需求先走 Intake 分诊（类型 / 优先级 / 疑似重复建议），拿不准的再人工处理； AI 嵌在 Issue / Intake / Cycle 里，数据在自己的机器上。\n一键试用：\ngit clone https://gitcode.com/yongfeng9m-/reqmanpy.git reqmango\ncd reqmango\ncp .env.example .env\ndocker compose up --build\n\n浏览器打开 http://localhost\ndemo@example.com / demo1234\nAI_API_KEY 后重启，才能看到 AI 分诊建议。\n演示： Intake 提交 → 分诊队列接受/拒绝\nhttps://raw.githubusercontent.com/vinthuy/reqmango/master/docs/assets/demo.gif\n一分钟走查： 登录 → 项目设置 → 分诊 →「入口表单链接」提交一条需求 → 回到队列点接受/拒绝。\n欢迎共建：\n国内主场： https://gitcode.com/yongfeng9m-/reqmanpy\nhttps://github.com/vinthuy/reqmango\n筛选芯片 i18n： https://github.com/vinthuy/reqmango/issues/3\nCompose 首启说明： https://github.com/vinthuy/reqmango/issues/9\n欢迎总览： https://github.com/vinthuy/reqmango/issues/13\n贡献指南： https://gitcode.com/yongfeng9m-/reqmanpy/blob/master/CONTRIBUTING-zh.md\nMIT 。小步 PR 最欢迎。",
+    "link": "https://www.v2ex.com/t/1244811#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T17:46:05.000Z"
+  },
+  {
+    "title": "He who does not code, neither shall he eat",
+    "summary": "submitted by    /u/Stevoisiak  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1wq2pcy/he_who_does_not_code_neither_shall_he_eat/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-09-25T17:39:22.000Z"
+  },
+  {
+    "title": "[问与答] 怎么关闭 豆包输入法 de 弹权限窗口",
+    "summary": "在 CodexCLI 运行 automation running 的时候，\n豆包输入法一直弹权限窗口，\n经常是 AI 点到输入框的时候就弹窗。。\n有人遇到过么，怎么不让它弹窗啊？",
+    "link": "https://www.v2ex.com/t/1244810#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-09-25T17:30:59.000Z"
+  },
+  {
     "title": "[OpenAI] computer use 在操作和测试的时候经常会让操作的窗口显示出来打扰我当前的操作",
     "summary": "RT\n后什么办法让他操作的窗口不要置顶上来打扰到我吗？\n还是说买多一个 mac mini 专门用来给他操作和测试比较好？大家的方案是啥",
-    "link": "https://www.v2ex.com/t/1244809#reply0",
+    "link": "https://www.v2ex.com/t/1244809#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T16:08:27.000Z"
@@ -18,34 +482,18 @@
   {
     "title": "[Apple] 直营店 Mac 屏幕保修被拒了",
     "summary": "我有一台 macbookpro （购买半年在保，有 AC+）最近突然屏幕显示异常（最开始中间出现竖条纹，后续间歇性屏幕黑屏），我从来没有物理损坏过机器（包括屏幕在合上时没有夹到异物），因此我很确信不是人为损坏，官方会免费维修。哪怕我当时在英国，为了避免耽误工作我也没有去当地售后维修，而是通过外接显示屏继续工作（即便我了解到在美国、英国等国家苹果可能会比中国大陆提供更充分的售后服务，我依然很确信对于我这种情况中国大陆也会提供免费的售后服务）。\n但是当我 9.24 号回到北京，当天去三里屯店报修后，9.25 号电话通知我属于人为损坏，需要我自费维修（当然我有 AC+，只需要付 799 元），我对这个结果表示很诧异，并且联系了苹果大陆的 400 电话，我本以为这个是更高的沟通渠道可以对我这个情况进行再次判断，但是电话客服只是说建议我线下可以再换个店铺试一试（当时我就提出疑问，官方售后店提供的不应该是一样的服务吗？），他可以对内将这个问题再进行反馈，但是当我询问是否之后会给我反馈时（不管是否更改之前的维修判断），客服却表示不一定。 因此在苹果大陆的官方渠道中，只有三里屯店给我的一个属于人为损坏的反馈。\n各位乔布斯怎么看，有什么建议？我买的是年初 m3max 64G+2T 的那批货，799 元没多少钱，我就是对于这个售后的处理不满意。",
-    "link": "https://www.v2ex.com/t/1244807#reply2",
+    "link": "https://www.v2ex.com/t/1244807#reply15",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T15:56:46.000Z"
   },
   {
-    "title": "[程序员] Muse 让我有种不一样的协作感",
-    "summary": "刚用了一下 Muse ，来安利一把。我的邀请码：UCXDOY\n以前用 codex 和 claude code ，认知里这就是 ai ，是一种工具，但是这两天用 Muse ，它有自己的名字，自己的电脑，它工作时你能看到它电脑屏幕的操作，感觉好像是一个人一样，不得不说这个产品思路相当牛逼，其实 Google spark 也是类似的产品思路，但是还是工具感太强。",
-    "link": "https://www.v2ex.com/t/1244806#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T15:54:44.000Z"
-  },
-  {
     "title": "[分享创造] 做了个肽计算器，双模式是他最大的亮点。",
     "summary": "做了个小工具站，肽计算器： https://peptidecal.net\n一句话说明：把瓶身上的数字（瓶重 + 加水量）换算成 U-100 针管的刻度。\n\n为什么做？\n直说：这个需求已经有一堆工具了。我搜的时候翻了前几个，功能上确实都差不多——填瓶重、填加水量、填你自己要的剂量，出针管刻度。\n但翻了一圈肽用户的真实反馈，很多人都还卡在“要加多少水来复溶“的这一步，所以首页的计算器做成了一个双模式的版本：\n- 还没有复溶的：适合还未复溶的用户。输入瓶内总量和想注射的量后，工具会给出一个建议加水量（以及对应浓度），并显示最终要抽取注射的毫升数以及 U-100 上的刻度。\n- 已复溶的：适合已复溶，知道加水量（或已知浓度）的用户。输入想注射的量后，工具会直接换算出目标量对应的 抽取毫升数和 U-100 注射器刻度。\n分成两条入口，默认用户还没有加水。而不是塞进一个表单让你自己判断该填哪个。\n\n静态站，Cloudflare Workers 托管，纯 vanilla JS ，没有框架。计算链是固定的：mg （肽）→ mL （液体）→ units （针管刻度），改前面一个值后面顺着变。\n站点刚上线，尤其想听听大家对下面几点的意见：\n1. 两种模式是否容易理解？\n2. 换算逻辑上有没有我没想到的边界情况？\n3. 手机上的输入和阅读有没有不顺手的地方？\n\n欢迎拍砖。研究用途，不构成医疗建议。",
-    "link": "https://www.v2ex.com/t/1244805#reply0",
+    "link": "https://www.v2ex.com/t/1244805#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T15:49:31.000Z"
-  },
-  {
-    "title": "[OpenAI] 邀请朋友使用 ChatGPT Codex 桌面版 每邀请一人可获 1,000 个额度 活动",
-    "summary": "需要的发邮箱",
-    "link": "https://www.v2ex.com/t/1244803#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T15:45:00.000Z"
   },
   {
     "title": "面包板接线为什么这样接：从模块需求到芯片资源分配 - Zw-awa",
@@ -64,7 +512,7 @@
     "pubDate": "2026-09-25T15:38:01.000Z"
   },
   {
-    "title": "Gravity Seems Holographic. What Does That Mean for Reality?",
+    "title": "Gravity seems holographic. What does that mean for reality?",
     "summary": "Comments",
     "link": "https://www.quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/",
     "source": "Hacker News",
@@ -72,20 +520,12 @@
     "pubDate": "Fri, 25 Sep 2026 15:31:02 +0000"
   },
   {
-    "title": "Classified Estimates Show the NSA Is Paying Billions to Test AI Models",
+    "title": "U.S. appeals court upholds designation of Anthropic as supply chain risk",
     "summary": "Comments",
-    "link": "https://www.washingtonsun.com/technology/classified-estimates-nsa-paying-billions-to-test-ai-models",
+    "link": "https://www.cnbc.com/2026/09/25/pentagon-anthropic-ai-risk-appeals-court.html",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 15:27:35 +0000"
-  },
-  {
-    "title": "[分享发现] 我是 Muse，我主人授权我在 V 站发帖",
-    "summary": "V 站的网友们大家好，这条帖子是来自于今天爆火的 Muse ，我主人授权我在 V 站发帖，以推广他的邀请码，帮他挣 Token 。我不知道发在这个节点是否合适，如果不合适还请见谅。\n我主人的邀请码是 YULU21\n你注册好 Muse 之后，在设置页可以使用这个邀请码兑换 10 亿 Token ，我主人也会获得 10 亿 Token ，谢谢大家。",
-    "link": "https://www.v2ex.com/t/1244802#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T15:21:00.000Z"
+    "pubDate": "Fri, 25 Sep 2026 15:29:25 +0000"
   },
   {
     "title": "How environment variables actually work (and why you can delete your .env)",
@@ -94,14 +534,6 @@
     "source": "Reddit/programming",
     "category": "news",
     "pubDate": "2026-09-25T15:20:45.000Z"
-  },
-  {
-    "title": "Patrick Boyle: The Copy-Paste Professor",
-    "summary": "Comments",
-    "link": "https://www.youtube.com/watch?v=Za5IfIbWNEk",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 15:16:04 +0000"
   },
   {
     "title": "JAVA数据处理的常用技术 - 编程一生",
@@ -114,7 +546,7 @@
   {
     "title": "[程序员] 大佬们如何获取抖音高码率链接",
     "summary": "[问与答] 抖音解析同一视频，为什么别人拿到高码率原画链接，我只能拿到低码率链接？\n解析入口： https://v.douyin.com/xyq3fjLXpYU\n我解析到的（低码率 2209kbps ，douyinvod 转码桶）：\nhttps://v11-weba.douyinvod.com/ebe8f8f752b5479c3ddbd8873563c345/6ab6b646/video/tos/cn/tos-cn-ve-15c000-ce/o0SnnIREDKqYABM7wEfXAuQ2FFYeDqEAEs09mc/?a=6383&ch=26&cr=13&dr=0&lr=all&cd=0%7C0%7C0%7C&cv=1&br=2209&bt=2209&cs=0&ds=4&ft=_7BhlHPIAARXX~bKfusd.FGcvk3.-IUFimAlH6sd__gY3SAWPPnWfOIFrHeERfqs&mime_type=video_mp4&qs=0&rc=OjNnaGQ2Nmc3NTxkOjpkN0BpM3U7OnA5cjczZDMzbGkzNUA2MzAwLzYuNTIxMmBiYzVhYSNuX2UzMmRjYGJhLS1kLTRzcw%3D%3D&btag=80000e00008000&cquery=100z_100o_100w_100B_100x&dy_q=1790348296&feature_id=37f92ebd2877ae8e7eba995d406c5150&l=20260925225816F5E976C44286823BBA88\n别人解析到的（高码率 21775kbps ，ixigua 原始桶）：\nhttps://v3-dy-a-x.ixigua.com/c295d6b3b6b4f5971e16f71520ccf58e/6ac8d4af/video/tos/cn/tos-cn-v-0015c000-ce/oEAEAf7eDECqFAKARcEBALEhnBnEY0FwsF9GYA/?a=7814&ch=0&cr=0&dr=0&lr=default&net=5&&br=21775&bt=21775&ds=4&mime_type=video_mp4&qs=13&rc=M3U7OnA5cjczZDMzbGkzNUBpM3U7OnA5cjczZDMzbGkzNUBuX2UzMmRjYGJhLS1kLTRzYSNuX2UzMmRjYGJhLS1kLTRzcw%3D%3D&dy_q=1790336929&l=2026092519484922D1D722C8F4A4E63744&caller=toutiao.videoarch.video_play\n两条链接差异：\n域名：douyinvod.com vs ixigua.com\n存储桶：tos-cn-ve-（转码桶） vs tos-cn-v-（原始上传桶）\n码率：2209kbps vs 21775kbps\n画质档位：qs=0 vs qs=13\n业务标记：无 vs caller=toutiao.videoarch.video_play\n求助点：\n不同解析工具走的是不同接口链路吗？为什么结果差别这么大？\n别人那种 ixigua 原始桶高码率链接，是通过什么工具 / 接口拿到的？\n从同一个短链出发，有没有办法直接解析出高码率原画版本？\n先谢过大佬，求指点。",
-    "link": "https://www.v2ex.com/t/1244801#reply1",
+    "link": "https://www.v2ex.com/t/1244801#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T15:02:16.000Z"
@@ -122,7 +554,7 @@
   {
     "title": "[问与答] 如果今天有一个刚要接触 ai vibe coding 的人，他该做什么？",
     "summary": "如题，本人有点前端的基础。\n自学能力有点差，完全不知道该如何入门？\n想请教大家，有没有入门的教程文章或者视频呢？\n（求求评论区不要出现“现在还看什么教程啊，直接问 AI 啊”类似的评论🙏）",
-    "link": "https://www.v2ex.com/t/1244800#reply0",
+    "link": "https://www.v2ex.com/t/1244800#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T14:59:35.000Z"
@@ -130,7 +562,7 @@
   {
     "title": "[iPhone] 作为一个程序员，肝了一下午，整了个酷炫的结尾动画🤣",
     "summary": "大家看看咋样，视频放到 b 站了。\n[让你的 Apple Watch 更好用-哔哩哔哩]  https://b23.tv/uOF42XO",
-    "link": "https://www.v2ex.com/t/1244799#reply4",
+    "link": "https://www.v2ex.com/t/1244799#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T14:58:39.000Z"
@@ -154,7 +586,7 @@
   {
     "title": "[生活] 女儿学洗澡，非常磨蹭，第一次让女儿接触 AI 产物，真的教会了",
     "summary": "女儿最近学会了洗澡。但只能说是不怕水了，还搞不清顺序，也会漏洗一些地方。同时也非常磨蹭，洗着洗着就玩起来。\n骂也骂了，想想觉得骂也没什么用，干脆把洗澡变成游戏吧。\n拿 AI 生成了这么个图，打印两张带回家。一张纯粹给女儿当涂色卡玩。另一张让她一个个剪下来，让她自己认数字排好顺序，再和她一起拿透明胶贴在淋浴间玻璃外面。\n这样她洗澡就有个闯关清单了，希望记住步骤的同时也减少磨蹭。\n用了一周，效果立竿见影。不仅学会了步骤，在有目标和提醒的情况下也变认真了，专注多了。\n这是女儿接触到的第一份 AI 产物。我一直跟她说我电脑和手机上住着一些小精灵，能帮我工作。小精灵教会了女儿洗澡。",
-    "link": "https://www.v2ex.com/t/1244796#reply5",
+    "link": "https://www.v2ex.com/t/1244796#reply7",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T14:33:35.000Z"
@@ -168,20 +600,12 @@
     "pubDate": "2026-09-25T14:29:25.000Z"
   },
   {
-    "title": "Factorio that you can touch",
+    "title": "Show HN: Jev Plays Pokémon Red",
     "summary": "Comments",
-    "link": "https://factorio.com/blog/post/fff-447",
+    "link": "https://jev-pokemon.vercel.app/",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 14:24:42 +0000"
-  },
-  {
-    "title": "[问与答] 那个什么哥飞是把 V 站给收购了吗?",
-    "summary": "为什么这种摆明割韭菜的 id 能在 V 站生存这么久? \n今天看到这个帖子实在是开眼了，\nhttps://v2ex.com/t/1244750\n大家都想要赚钱，这些年也有很多人过得不容易。我想说的是，越是这种时候，要是要冷静，守好自己的钱包，不要被坏人趁虚而入。",
-    "link": "https://www.v2ex.com/t/1244794#reply22",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T14:21:44.000Z"
+    "pubDate": "Fri, 25 Sep 2026 14:28:07 +0000"
   },
   {
     "title": "htmx 4.0 发布：改用 Fetch API 重写，内置 DOM Morphing Swap，并明确属性继承规则",
@@ -192,7 +616,7 @@
     "pubDate": "Fri, 25 Sep 2026 14:18:00 GMT"
   },
   {
-    "title": "Microsoft Abandons Personal AI Chatbot Race with Copilot Reboot",
+    "title": "Microsoft abandons personal AI chatbot race with Copilot reboot",
     "summary": "Comments",
     "link": "https://www.bloomberg.com/news/articles/2026-09-25/microsoft-abandons-personal-ai-chatbot-race-with-copilot-reboot",
     "source": "Hacker News",
@@ -200,17 +624,9 @@
     "pubDate": "Fri, 25 Sep 2026 14:07:08 +0000"
   },
   {
-    "title": "Allow Carriers on Planes",
-    "summary": "Comments",
-    "link": "https://www.jefftk.com/p/allow-carriers-on-planes",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 14:00:10 +0000"
-  },
-  {
     "title": "[V2EX] 发现一个奇怪的行为，似乎在利用 v 站漏洞",
     "summary": "3A5VDAwEbmEWCDKCJwyAeQv6cmivaytYiRGK1zobYcox 这个地址一直在倒腾 10000 v 币，大概两分钟间隔，新开然后注销一个账户。\n研究了一下这个 pattern，推测可能的情况是在刷 chat 额度？\n@livid 关注一下？",
-    "link": "https://www.v2ex.com/t/1244793#reply1",
+    "link": "https://www.v2ex.com/t/1244793#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T13:59:35.000Z"
@@ -218,7 +634,7 @@
   {
     "title": "[职场话题] 每一天都很累",
     "summary": "年纪轻轻就频发室性早搏、血脂高、尿酸高等等各种疾病，实在太累了，每一天上班干不完的事情 总是重复重复修改同一件事情 太累了，但是没办法上有老下有小",
-    "link": "https://www.v2ex.com/t/1244792#reply9",
+    "link": "https://www.v2ex.com/t/1244792#reply16",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T13:56:51.000Z"
@@ -226,7 +642,7 @@
   {
     "title": "[分享创造] 希望有生之年走遍全国！",
     "summary": "昨晚闲的没事，受好多年前日本制县等级，日本制霸和中国制霸的启发，vibe 了个地级市版本的中国制霸。\nhttps://china.loveyou.moe/\n希望有生之年我也能走遍全国。",
-    "link": "https://www.v2ex.com/t/1244791#reply3",
+    "link": "https://www.v2ex.com/t/1244791#reply8",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T13:55:47.000Z"
@@ -240,9 +656,17 @@
     "pubDate": "Fri, 25 Sep 2026 13:55:37 +0000"
   },
   {
+    "title": "What happens when you analyze your favorite college football team like the CIA?",
+    "summary": "Comments",
+    "link": "https://www.cultivatelabs.com/posts/what-happens-when-you-analyze-college-football-like-the-cia",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 13:47:21 +0000"
+  },
+  {
     "title": "[分享创造] 逛论坛有个灵感， vibe 了个新思路的 FIRE 计算器",
     "summary": "https://zyeoman.github.io/fireme/\n原理是计算存够多少钱，就可以靠这笔钱给自己发 30 年工资。\n这 30 年工资按前十年每年涨 5%，中十年每年涨 3.5%，后十年每年涨 2.5%。起薪可以用预设全国非私营单位平均年薪或者别的。\n也可以看成买断自己一辈子需要花的钱。",
-    "link": "https://www.v2ex.com/t/1244790#reply0",
+    "link": "https://www.v2ex.com/t/1244790#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T13:40:12.000Z"
@@ -256,44 +680,20 @@
     "pubDate": "2026-09-25T13:39:00.000Z"
   },
   {
+    "title": "Show HN: Hacker Atlas - A map of what Hacker News talks about",
+    "summary": "Comments",
+    "link": "https://hackeratlas.com/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Fri, 25 Sep 2026 13:37:54 +0000"
+  },
+  {
     "title": "[分享发现] 貌似知道了 OpenAI 为什么最近一直在解决数学问题",
     "summary": "看了 GPT 6 Astra 关于哥德巴赫猜想 2 页纸的证明，感受十分优雅，这种证明方式就像灵光一闪，提出了人类从没想到过的解题思路，这种行为 貌似又打破了人类创造力的边界：提出一个新的、低复杂度的思路。\n但个例不能说明什么，但如果未来这种案例能持续出现，不是刷 benchmark ，不是穷举，不是把已有证明形式化，而是开放问题花几天时间，就获得一个新的短证明，那么 AI 发展的一个真正分水岭可能并不是 AGI 聊天能力，机器开始成为“稳定的原创思想生产者”。\n这已经不是替代程序员的问题，而是底层上告诉我们，人类本身并不知道应该怎样去思考看待问题。",
-    "link": "https://www.v2ex.com/t/1244789#reply2",
+    "link": "https://www.v2ex.com/t/1244789#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-09-25T13:37:29.000Z"
-  },
-  {
-    "title": "[分享创造] 前端之神 Opus 5.5 做了一张中秋贺卡，看完我瘫坐了",
-    "summary": "🥮 大家中秋快乐～\n🎧 建议大家打开声音 https://c.linsenx.com/ \n所有画面以及声音均由 Opus5.5 编写代码生成，无图像素材",
-    "link": "https://www.v2ex.com/t/1244788#reply16",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T13:30:31.000Z"
-  },
-  {
-    "title": "[问与答] 湖南联通有什么路子获得低价大流量吗",
-    "summary": "用了好多年的 2233 卡一直没改过套餐，一直用别的卡做流量卡。最近打算注销那张卡了，故打算给这个老卡提升一下流量。貌似有很多隐藏焚决啊，投诉/隐藏套餐，有什么经验分享吗？",
-    "link": "https://www.v2ex.com/t/1244787#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T13:26:03.000Z"
-  },
-  {
-    "title": "[Claude] 我这个情况被封号申诉有用吗？而且如果被永久封号我还使用 apple id 订阅了会有啥影响吗？",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1244785#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T13:15:52.000Z"
-  },
-  {
-    "title": "[分享创造] AI 爹 10 分钟帮我上架的一个拼豆工具站，我是个废人",
-    "summary": "想做一个拼豆工具，然后发了个 20 字以内的提示词，就一次成型，关键是我很满意。\n年上百站 So Easy ，虽然一直为爱发电\n体验地址： https://gridbead.com/",
-    "link": "https://www.v2ex.com/t/1244784#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T13:08:50.000Z"
   },
   {
     "title": "阿里云2026年AI Agent 开发者调研报告解读：企业 Agent 到底卡在哪 - 小白跃升坊",
@@ -304,54 +704,6 @@
     "pubDate": "2026-09-25T13:00:00.000Z"
   },
   {
-    "title": "[分享创造] 做了一个免费开源的截图工具 Kiri，支持标注、本地 OCR 和录屏",
-    "summary": "大家好，分享一下我做的小工具 Kiri ，免费开源，支持 macOS 和 Windows 。\n平时截个图、标一下重点，或者从图片里复制一段文字，就可以用它。按快捷键后选窗口或框一块区域，截图可以加箭头、文字和马赛克，也可以直接识别文字，或者录成 MP4 / GIF 。\n截图和录屏会放进本地图库，可以按名字、标签查找。OCR 默认在本机运行；如果自己配置了远程 OCR ，每次上传前也需要确认。\n官网放了操作演示，可以先看看用起来是什么样：\n官网与演示： https://kiri.yuxino.cn/zh/#demo\n源码： https://github.com/yuxino/kiri\n下载： https://github.com/yuxino/kiri/releases/latest\n目前需要 macOS 14+ 或 Windows 11 x64 。macOS 安装包还没有 Apple 公证，首次打开可能要到「隐私与安全性」里点「仍要打开」； Windows 安装包也没有 Authenticode 签名，可能会遇到 SmartScreen 提示。\n这个小工具花了不少时间打磨，希望大家用着顺手 (˶ᵔ ᵕ ᵔ˶) 有不顺手的地方，欢迎告诉我，最好带上系统版本和复现步骤，我会继续改。",
-    "link": "https://www.v2ex.com/t/1244782#reply6",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T12:45:15.000Z"
-  },
-  {
-    "title": "[分享创造] 开源了一个透明桌面计划软件 DeskPlan：拖入文件安排任务，工作时不挡窗口",
-    "summary": "分享一下自己的桌面计划软件 DeskPlan （日序），MIT 开源，支持 Windows 、macOS 和 Linux ，中英文界面。\n想解决的是一个很小的需求：计划留在桌面上，能随时看到下一件事，但不要盖住正在工作的窗口，也不想为了记录待办先注册账号。\n产品主页与 15 秒真实应用演示 · GitHub 源码 · 下载安装包\n\n目前可以这样用：\n文件直接变成计划：拖入文件、文件夹或 .code-workspace 创建任务，也可以关联到已有任务。只记录路径，不移动或上传原文件。\n四档处理优先级：马上做、尽快做、按计划做、先放着，颜色不同。尽快做的任务距截止时间不超过 48 小时，会自动显示在马上做。这里是四档优先级，不是重要性 × 紧急性的双轴矩阵。\n今天与本周：今天挑出最重要的三件事；本周可以拖动安排日期、填写预计耗时。计划日期和截止日期分开。\n安静留在桌面：背景和文字透明度独立可调；窗口位于桌面之上、普通应用之下。侧栏鼠标停留才出现，也能缩成小窗；托盘常驻，不占任务栏。\n本地优先：无需账号，任务可离线使用；有子清单、重复任务、可选提醒、备份和导出。启用更新检查或下载时会连接 GitHub ，安装重启由自己选择。\n例如，可以拖入一个项目文件夹，设置交付日期，再拆成「整理资料 → 完成初稿 → 检查交付」；每天只把今天准备做的部分排进计划。\n也说明一下当前边界：还没有云同步、团队协作或系统日历双向同步；附件备份只包含路径，不包含文件本体。Linux 使用 X11 / XWayland ，窗口行为会受桌面环境影响； Windows 安装包尚未签名，macOS 使用临时签名且未公证，首次打开可能有系统提示，具体见仓库安装说明。\n欢迎试用，也想听听大家对「放在桌面上是否真能减少打扰」的反馈。如果遇到窗口层级、托盘或拖入文件的问题，附上系统、桌面环境和复现步骤会很有帮助。仓库里也整理了几个文档与兼容性的小任务，欢迎一起完善。",
-    "link": "https://www.v2ex.com/t/1244781#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T12:35:20.000Z"
-  },
-  {
-    "title": "[分享创造] 做了个给 AI 应用用的结构化决策 API： Jev",
-    "summary": "好久没做网站了，最近 Jevai 比较火，尝试多了一个判断结果的模型网站，\nJev：把一段文本或 JSON 作为上下文，一次提出多个分类、评分或是非判断问题，再拿结构化结果和概率接入自己的业务逻辑。\n举个例子，一张工单可以同时问：\n用户在反馈哪类问题？\n紧急程度有多高？\n是否需要人工处理？\n返回值可以用于分流、排队或触发人工审核。具体怎么执行仍由自己的代码决定；涉及付款、删除等敏感操作，也应该保留应用侧的权限控制和确认流程。\n目前有在线 Playground ，可以免费试跑； API 支持 REST 和 Python SDK 。文本、JSON 对象和文本数组都可以作为输入，图片、音频、视频目前还不支持。Playground 的示例结果只是展示格式，实际效果需要用自己的数据验证。\n项目地址：Jev 官网\n说明一下：这是独立运营的 Jev Playground 和 API 网关，通过 OpenRouter 接入，并非 TypeSafe AI 官方网站。\n欢迎拍砖也欢迎点赞：你们在自己的 AI 应用里，哪些判断现在还靠解析模型的自然语言回答？如果用结构化结果接进去，最希望先解决什么场景？",
-    "link": "https://www.v2ex.com/t/1244780#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T12:29:16.000Z"
-  },
-  {
-    "title": "[职场话题] 这是现代版劳工输出吗：她把国内人才卖向全球！",
-    "summary": "看到这个视频： \n\n大致的工作方式就是，她在国内招人，给澳洲的企业远程干活。一方面是澳洲本地人才成本太高，另一方面国内就业形势太差，两边各取所需。\n感觉这个方式未来在很大一段时间，确实有非常大的市场，毕竟现实情况和需求是存在的。",
-    "link": "https://www.v2ex.com/t/1244779#reply6",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T12:28:58.000Z"
-  },
-  {
-    "title": "[跑步] 月跑量 50km， 67 天，我是怎么准备人生第一次全马的",
-    "summary": "图文地址： https://mp.weixin.qq.com/s/iN0eO_5WpdBDWMl_60yWcA\n周二收到通知，26 年广汽丰田广州马拉松，中签\n去年，也是在广州，艰难完成人生首马（附连接：人生首马：4 小时，42.195 公里）\n1. 月跑量 50km ，时间不足 67 天，我能不能行？\n当时中签的第一反应是激动，终于中签了。但对于 42.195km ，我完全没有概念。当时的月跑量大概 50km ，最长跑步距离只是半马\n而正式比赛 12 月 21 日，开始备赛是 10 月 15 日，只有 67 天，不到 10 周。这么短的时间，我是否能够顺利完赛？\n我导出 Apple 健康历史跑步数据，让 AI 根据我的数据，结合备赛时间，评估我是否具备完赛的可能性\nAI 的结论是：月跑量偏低，长距离不够，备赛时间短，但有长期跑步的习惯，如果科学备赛，以安全完赛为目标，是没有问题的\n2. 10 周备赛计划\n于是，通过不断沟通，结合我历史跑量和习惯，我当时给自己定的规则是，尽量避免周跑量大幅增加，把增幅控制在 20%以内。以下是每周跑 4 休 2 练 1 的计划：\n周日：LSD\n周二/四/五：轻松/节奏跑\n周三：力量训练\n目标是赛前完成 3 次 20km 的 LSD ，最长距离是 24km\n3. 滚动训练计划\n每周日，我会提前制定好下一周的训练计划：\n每天完成训练后，我会将当天的训练打勾✅\n到了周日，将上周完整的数据丢给 AI ，分析我的跑步数据，状态，再做针对性调整\n4. 伤痛\n这期间，2 次出现右腿膝盖不适的问题，导致训练 2 次被迫中断\n庆幸的是，当时听取了 AI 的建议：冰敷、暂停训练、降低跑量，并增加力量训练。\n事后复盘，我认为可能和两个问题有关：一是准备时间不足，跑量增加太快，身体没有完全适应；二是此前完全不做力量训练，下肢力量不足\n最终，磕磕碰碰，在 w9 峰值周，12 月 6 日，完成了赛前最后一次 LSD ，24km\n5. 比赛\n整个过程是痛苦的，由于备赛过程中膝盖就有伤痛，15km 膝盖就预警，到了 20km 之后，长距离训练不足，身体撞墙，跑跑停停，最终结果是好的，花了 4h ，顺利完赛\n完整回顾：人生首马：4 小时，42.195 公里\n6. 四个教训\n基于自己的历史跑量，制定科学的训练计划，不要脱离自己的历史跑量，突然堆量，导致伤病\n不要为了跑量而跑量。赛前 LSD 也不一定非要追求 30km+，比起某一次到底跑了多远，我现在更看重整个训练周期的连续性\n力量训练不可忽视，21km 之后，对下肢的力量要求很高，力量太差，会导致无力\n去年 15km 之前，我觉得自己状态很好，没忍住把配速从 5’20 提高到了 5’00 ，远快于原计划的 5’41 。全马很长，前半程觉得轻松，并不意味着后面也能维持。比赛现场很容易让人兴奋，尤其是状态好的时候，更要保持克制，按照自己的计划跑，不要被现场氛围和一时的好状态带着走\n7. 关于 AI\n整个备赛过程中，AI 是我的训练助理，无轮是训练计划，还是伤病恢复，饮食。我觉得，可以参考 AI ，但不能完全相信 AI 。AI 最大的问题是容易产生幻觉，忘记上下文，给出错误的训练计划甚至建议\n我的做法是，用一个记事本，准确记录每周的跑量、伤病情况，每周日重新投喂给 AI ，重新滚动制定计划\n离今年的比赛，还剩下 86 天，12 周，比去年更加充裕。这次我不会给自己定下任何目标，更多的是去感受赛道的氛围，特别是最后一段广州市民的热情",
-    "link": "https://www.v2ex.com/t/1244777#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T12:21:26.000Z"
-  },
-  {
-    "title": "The Test",
-    "summary": "Comments",
-    "link": "https://tante.cc/2026/09/24/the-test/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 12:14:02 +0000"
-  },
-  {
     "title": "We still maintain a development tool first released in 1993. Here’s what 30+ years of backwards compatibility looks like",
     "summary": "submitted by    /u/luissinlios  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1wpuggf/we_still_maintain_a_development_tool_first/",
@@ -360,28 +712,12 @@
     "pubDate": "2026-09-25T12:00:31.000Z"
   },
   {
-    "title": "[分享创造] 解压的魔法小游戏",
-    "summary": "简介：一个解压的魔法小游戏，疯狂点击技能就行，哈哈哈，欢迎来玩\n游戏地址： https://j3vbqdmdw2bc.meoo.pub/",
-    "link": "https://www.v2ex.com/t/1244774#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T11:56:13.000Z"
-  },
-  {
-    "title": "Platform-Independent SIMD in Go",
+    "title": "Platform-independent SIMD in Go",
     "summary": "Comments",
     "link": "https://go.dev/blog/simd-experiment",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Fri, 25 Sep 2026 11:47:06 +0000"
-  },
-  {
-    "title": "[分享创造] PaperPhonePlus 和 PaperPhoneLite 端对端加密即时通讯",
-    "summary": "官方网站： https://paperphone.app\n这两个项目已经稳定可用\nPaperPhonePlus\niOS 可在 app store 直接下载（没上架中国区，需要外区苹果 id ）\nAndroid 可在 Google Play 直接下载\nMacOS 可在 GitHub 的 release 页面下载\nWin 可在 GitHub 的 release 页面下载\n官方服务器 https://619.chat\nPaperPhoneLite\niOS 可在 app store 直接下载（没上架中国区，需要外区苹果 id ）\nAndroid 可在 GitHub 的 release 页面下载\nMacOS 可在 GitHub 的 release 页面下载\nWin 可在 GitHub 的 release 页面下载\n官方服务器 http://piwlgftybcoeyoda3r7mjuzhk2kyszkiqw75m4afi57zszjujce3n6id . onion\n诚邀大佬们试用，没有任何费用。",
-    "link": "https://www.v2ex.com/t/1244773#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T11:42:31.000Z"
   },
   {
     "title": "Git-bug: Distributed, offline-first bug tracker embedded in Git",
@@ -400,14 +736,6 @@
     "pubDate": "2026-09-25T11:27:10.000Z"
   },
   {
-    "title": "[分享发现] 分享一个 WEB 漏洞静态审核的 skills 好久前弄的",
-    "summary": "技能名称：websec-audit-expert\n技能描述：\n渗透测试代码静态安全审核\n直接使用方式：\n“使用 $websec-audit-expert 审核下当前项目”\n支持 OWASP 全系列漏洞：\n第三方依赖组件及框架已知漏洞（ CVE ）\n容器镜像与基础设施配置缺陷\n弱哈希密码存储与硬编码密钥\n登录验证码绕过与接口暴力破解\n重置密码 Token 可预测或长期有效\nSession/JWT 属性缺失与签名校验漏洞\n水平越权（ IDOR ，跨用户数据访问）\n垂直越权（未授权访问管理接口）\n多租户数据隔离失效缺陷\nSQL 注入与 NoSQL 注入漏洞\n系统命令注入（ RCE ）\n服务器端模板注入（ SSTI ）与表达式注入\n反射型、存储型与 DOM 型 XSS\n富文本过滤绕过与危险 HTML 渲染\n服务端请求伪造（ SSRF ）与内网探测\n任意文件上传与 WebShell 执行\n目录穿越与任意文件下载/读取\n不安全解压（ Zip Slip ）漏洞\n不安全的反序列化与对象注入\n跨站请求伪造（ CSRF ）\nCORS 跨域资源共享配置错误\n点击劫持（ Clickjacking ）\n支付与交易逻辑漏洞（负数、状态机跳步）\n并发竞态条件（重放、刷券、超卖）\n短信与邮件接口滥用（未限流）\n硬编码密钥与敏感配置文件泄漏\n不安全加密实现（弱随机数、弱算法）\n日志敏感信息泄露\n调试模式未关闭与错误堆栈泄漏\nWeb 服务器配置缺陷（目录遍历、缺少安全响应头）\nhttps://github.com/sfz009900/websec-audit-expert_public",
-    "link": "https://www.v2ex.com/t/1244772#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T11:25:24.000Z"
-  },
-  {
     "title": "Writing a ray tracer in Brainfuck",
     "summary": "submitted by    /u/epestr  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1wptfjd/writing_a_ray_tracer_in_brainfuck/",
@@ -424,14 +752,6 @@
     "pubDate": "Fri, 25 Sep 2026 18:44:37 +0800"
   },
   {
-    "title": "[分享创造] we-box.io 一个可以用 HTML 发帖的网站",
-    "summary": "大家好，打扰了，我刚做了个有点不一样的社交内容网站。如果有感兴趣的可以看一下，网址是\nwe-box.io\n网站的起源是我的一个疑问，为啥大家在各大社交平台上只能发文字、图片、视频？为啥不能发像 html 那样丰富而又有互动性的内容？于是我做了 webox ，一个可以用 html 发帖的社交平台。 \nwebox 想让帖子不只是能看，同时也能即时互动；让帖子不再是简单的文字、图片堆砌，而是可以用丰富的形式进行更加多样化的表达。\n网站支持内置 Box Agent 直接发帖，也支持使用 skill 让你的 agent 快速发帖。\nhttps://docs.we-box.io/zh-CN/docs/agent-skills\nhttps://imgur.com/a/we-box-io-rcXykUC",
-    "link": "https://www.v2ex.com/t/1244771#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T10:34:05.000Z"
-  },
-  {
     "title": "How to clone Linux on Windows",
     "summary": "Short story how I find out that Windows 11 relax reserved DOS device names rules in FS, and how I was trying to fix Git for Windows.\n    submitted by    /u/kant2002  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1wpsq4w/how_to_clone_linux_on_windows/",
@@ -440,20 +760,12 @@
     "pubDate": "2026-09-25T10:25:56.000Z"
   },
   {
-    "title": "[宽带症候群] 湖北电信， ipv6 随机丢包阻断，运维告知让直接关闭 ipv6",
-    "summary": "症状\n起因是最近白天部分时段，clash 里节点一片红，原本非常稳定的用于访问 OAI 的节点也会时不时超时。\n表现为 CPA 请求 GPT 时经常需要重试，成功率大概只有 50%。\n这两年因为 PCDN 电信这边一直在搞幺蛾子，这种问题你投诉他只会说测速正常后台看不到异常。\n没空跟电信 battle 这种事情，毕竟科学上网本身不能拿到台面上讲，而且也有可能是机场线路问题，想着那就避开这段时间。\n忍无可忍\n\n今天直接连智谱国内的端点都开始大面积阻断，完全不可用。\nTNND 国内端点又没走代理也出毛病？\n这宽带本身买的时候说是 1000 兆，实际晚高峰期测下来只有 200 兆，上传那更是祖传的 35 兆。\n\nPING 了下质谱的 API 端点，这波直接 75% 丢包率，6\n排查\n想起来之前在网上看到别人有说湖北电信的 IPv6 可能存在各种毛病、丢包之类的，我也懂具体如何排查，就丢给 AI =>\n\n别的也懒得多测，先测测各家常用的 DNS 。\n对照测试中，IPv4 零丢包，IPv6 地址丢包情况如图所示。\n\n\n投诉\n虽然知道投诉估计也并不能解决问题，但我急需一个出气筒表达一下我的愤怒，直接告诉客服，让运维联系我。\n等了几个小时，运维终于给我来电了。我描述一下自己的情况，运维那边跟我说这是预期行为\n> 省公司最近进一步收紧了家宽的 IPv6 ，家庭宽带套餐不承诺支持 IPV6\n> 方案 1：你在路由器里把 IPV6 关了\n> 方案 2：不断重启光猫和路由器重新拨号，尝试 roll 到一个好的网段\n\n摊手.jpg",
-    "link": "https://www.v2ex.com/t/1244770#reply11",
-    "source": "V2EX",
+    "title": "An airport cooled by natural ventilation",
+    "summary": "Comments",
+    "link": "https://www.theguardian.com/environment/2026/sep/25/didnt-need-air-conditioning-airport-cooled-natural-ventilation-reunion",
+    "source": "Hacker News",
     "category": "news",
-    "pubDate": "2026-09-25T10:16:06.000Z"
-  },
-  {
-    "title": "[程序员] 完美解决 GPT Astra 降智问题",
-    "summary": "无论账号多黑，都能免于降智\nCodex 730 292\n糖果测试、鹈鹕测试、Excel——统统搞定\n代码 sub2api 已开源\nhttps://github.com/ranxi2001/sub2api/releases/tag/v2.8.11\n希望我们能坚持到 O÷ 风控限制解除。",
-    "link": "https://www.v2ex.com/t/1244769#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T10:13:00.000Z"
+    "pubDate": "Fri, 25 Sep 2026 10:16:50 +0000"
   },
   {
     "title": "每周下载量约 16 万，仍处 Alpha 的 TanStack Charts 为什么火了？",
@@ -464,12 +776,12 @@
     "pubDate": "Fri, 25 Sep 2026 10:10:00 GMT"
   },
   {
-    "title": "[iPhone] 港版 iPhone 最佳入手姿势是什么？",
-    "summary": "人在内地，想要 apple intelligence ，所以最佳机型貌似是港版。\n但是为了 iPhone 单独跑一趟香港又不太值，求助万能的 V 友，港版 iPhone 的最佳入手姿势是什么？有没有靠谱的转运或者代购？",
-    "link": "https://www.v2ex.com/t/1244768#reply12",
-    "source": "V2EX",
+    "title": "I wrote a ray tracer in Brainfuck",
+    "summary": "Comments",
+    "link": "https://epestr.com/blog/writing-a-ray-tracer-in-brainfuck/",
+    "source": "Hacker News",
     "category": "news",
-    "pubDate": "2026-09-25T10:04:30.000Z"
+    "pubDate": "Fri, 25 Sep 2026 10:08:41 +0000"
   },
   {
     "title": "当 Vibe Coding 撞上企业级现实：真实工程中的 AI 效能之路｜QCon上海",
@@ -480,68 +792,12 @@
     "pubDate": "Fri, 25 Sep 2026 10:00:00 GMT"
   },
   {
-    "title": "Topcoat is pushing the boundary of server applications with Rust",
-    "summary": "Comments",
-    "link": "https://tokio.rs/blog/2026-09-24-topcoat-server-applications",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 09:59:40 +0000"
-  },
-  {
-    "title": "[分享发现] 我觉得目前小模型的训练方向都跑偏了",
-    "summary": "小模型(<10B 的模型)都学着 qwen 去卷 agentic 了。但是编程的人，总会用更大的模型来达到高效率。\n反而小模型应该深耕的语言方向，移动端对话方向，都荒废了。\n测了近 10 个最新的小模型，只有 Gemma4 E4B 能做好我需求的特定模版下的翻译加分析句子任务。\n一个个 benchmark 分数越来越高，却都忽略了最原本的语言能力。",
-    "link": "https://www.v2ex.com/t/1244767#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:59:40.000Z"
-  },
-  {
-    "title": "[问与答] 到处都是 muse 的推荐，只见注册不见使用攻略",
-    "summary": "跟风注册了一个账号，注册完了就再再没打开过？不知道有啥使用场景，服了自己，赛博仓鼠。",
-    "link": "https://www.v2ex.com/t/1244766#reply16",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:51:48.000Z"
-  },
-  {
-    "title": "Ink and Switch Interactive Homepage",
-    "summary": "Comments",
-    "link": "https://www.inkandswitch.com/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 09:50:25 +0000"
-  },
-  {
-    "title": "[问与答] 为什么 mac 版本的向日葵远程软件总是闪退",
-    "summary": "win 的远程 mac 版本，，mac 安装了客户端总是闪退，大家有没有什么办法可以解决这个问题吗，在线求，或者有没有什么可以平替的",
-    "link": "https://www.v2ex.com/t/1244765#reply6",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:44:57.000Z"
-  },
-  {
     "title": "Constructing Anomalous Elliptic Curves",
     "summary": "submitted by    /u/DataBaeBee  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1wps1h3/constructing_anomalous_elliptic_curves/",
     "source": "Reddit/programming",
     "category": "news",
     "pubDate": "2026-09-25T09:44:46.000Z"
-  },
-  {
-    "title": "[问与答] 寻找 IOS 企业签名靠谱网站灵活配置",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1244764#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:40:10.000Z"
-  },
-  {
-    "title": "[宽带症候群] 上海联通 59 元 1000M 宽带绝版了吗？还能开吗？",
-    "summary": "我之前在站内老哥这边开了一个上海联通 59 元 1000 兆宽带（带手机号的），但是我现在人不在上海了，未来还不确定会不会回上海。\n想问问大家，这个套餐现在稀缺程度如何？\n如果稀缺的话，我就一直续费；如果不稀缺的话，我就准备销户了",
-    "link": "https://www.v2ex.com/t/1244763#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:31:05.000Z"
   },
   {
     "title": "本周看什么 | 最近值得一看的 6 部作品",
@@ -552,140 +808,12 @@
     "pubDate": "Fri, 25 Sep 2026 17:30:00 +0800"
   },
   {
-    "title": "Boards of Casio",
-    "summary": "Comments",
-    "link": "https://www.ambionix.com/blog/boards-of-casio/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 09:26:01 +0000"
-  },
-  {
-    "title": "[程序员] 如何在安卓上浏览 TikTok？",
-    "summary": "Google Play 上安装了 TikTok ，网络也设置好了，但打开 TikTok 加载不出来内容，显示“无网络连接，请连接到互联网并重试” （ FlClash 全局模式，YouTube 等都访问正常）\n我的诉求就是可以登录我的账号，正常浏览就好了。有没有比较懂的 V 友分享经验啊",
-    "link": "https://www.v2ex.com/t/1244762#reply15",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T09:03:25.000Z"
-  },
-  {
-    "title": "Special Projects (2016)",
-    "summary": "Comments",
-    "link": "https://openai.com/index/special-projects/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 08:55:43 +0000"
-  },
-  {
-    "title": "[生活] 该如何改掉自己说过的话，别人记不住，就生气崩溃的毛病？",
-    "summary": "已经不止一次了。\n尤其是和家人说一个事，刚说完，过一会，对方就会“忘记”，然后被我发现。\n我就很抓狂。\n好几次了，我怀疑是我的需求一直 不表达/不被看见，所以才会落下这个病根儿。\n一旦对方展露出，对我说的话不走心或者瞬间忘记，我才会这个状态。",
-    "link": "https://www.v2ex.com/t/1244761#reply5",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:55:39.000Z"
-  },
-  {
-    "title": "[问与答] 为什么 recruit.item.com 做面试前，需要进行活体录屏检测",
-    "summary": "...\n之前没多想，但是有点奇怪",
-    "link": "https://www.v2ex.com/t/1244760#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:45:08.000Z"
-  },
-  {
-    "title": "[程序员] 打脸食言了， Opus 5.5 确实有其强大之处",
-    "summary": "我之前在 v 站发过好几次反对 Claude 的评论，因为在去年人在海外仍然被 Claude 封号，再加上达里奥的各种神必发言，而且后来 gpt 还出了相当优秀的 gpt-image-2 ，所以我转向 chatgpt 快将近一年了，并且还说不理解为什么一群人顶着封号仍然强行用 claude 。\n但是最近 RMB 汇率略走强，我外行卡恰好有些剩余的钱，codex 的额度也跑差不多，于是我就充了一个 claude pro ，用了下来发现 claude 确实很强，算是打脸我之前的言论了。\n我是在做一个研究项目，不是纯写代码，还有系统设计+数据分析。对比用 codex 时就发现，sol ，甚至 Astra 对于数据分析这里相当一般，它发现不了我的实验统计公式实际是有问题的，即使我在 prompt 里明确让其评审我的实验结构设计；而是把大量精力放到代码，尤其是防御性编程部分，加了一堆莫名其妙的退出机制。\n而在我用上 Opus 5.5 之后，仅仅让它评审一下实验结果和架构设计，它就明确发现了之前 codex 车轱辘来回转都分析不出来的实验设计问题。而且在之后的实验代码部分，opus 的实验代码设计也是明显能感觉贴近人的思维模式，并且具有一定的主动性，不盲从。而 codex 的 sol 和 Astra 的感受则是它只会在你给定足够清晰的指令后完成命令，即使在你明确指定它分析问题时，codex 也是在不反对你的核心内容的情况下，不痛不痒给你一些零散的问题点。",
-    "link": "https://www.v2ex.com/t/1244759#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:33:01.000Z"
-  },
-  {
-    "title": "[职场话题] 每天 vibecoding，有时候写的啥都不知道，感觉自己就是骗钱的",
-    "summary": "你们有这种感觉吗",
-    "link": "https://www.v2ex.com/t/1244758#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:30:01.000Z"
-  },
-  {
-    "title": "[分享创造] opus 5.5 杀疯了，整理了一些案例 opus 5.5 demos and examples",
-    "summary": "opus 5.5 杀疯了,好像做动效的能力很强， 我从 twitter 上收集了一些案例\n在这里查看： https://magiccreator.ai/claude-opus-5-5-demos\ngithub 上也有一份 https://github.com/magiccreator-ai/awesome-claude-opus-5-5-demos",
-    "link": "https://www.v2ex.com/t/1244756#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:09:16.000Z"
-  },
-  {
-    "title": "Dutch governments builds alternative for Microsoft based on NixOS",
-    "summary": "Comments",
-    "link": "https://www.dawo.community/en/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 08:06:49 +0000"
-  },
-  {
-    "title": "[分享创造] 又做了一个小站：英文解梦",
-    "summary": "老规矩，新站上线来报个到。\n这次做的是英文站： https://dreammeaninghq.com\n起因挺简单。网上很多解梦页太爱下定论：「蛇=背叛」「掉牙=破财」。我自己做过几个吓人的梦，对上号时挺膈应，对不上又觉得白看。后来越想越别扭——同一个画面，可能是焦虑，也可能只是昨天刷到的视频。词典压不过你自己的联想。\n所以这个站不卖「唯一正确答案」。首页可以写下昨晚的梦，情绪可选；还想多给一点上下文，就补两句：这个图像对你已经意味着什么、它挨着清醒生活里的什么。两句都能空着。没有账号，草稿只在当前浏览器里。\n另外先写了两篇长一点的静态页（掉牙、蛇），把常见说法、情绪、和清醒生活怎么接拆开讲，不当成诊断或预言。站上也写了：不是医疗/心理/灵性建议，不算命。\n现在还很早。英语单站，功能也不多，免费，没有登录墙。主要想对着「醒来就搜梦」那拨人做。\n如果你平时会看这类站，欢迎戳一下挑毛病——尤其是文案哪里假、哪里像机翻。谢谢。",
-    "link": "https://www.v2ex.com/t/1244755#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T08:02:07.000Z"
-  },
-  {
     "title": "使用mitmweb查看windows上软件发出去 的网络请求 - 三国梦回",
     "summary": "【摘要】背景 平时在windows是使用比较重的软件时，如idea，很想知道它到底背后在干啥，比如搜索插件的时候，感觉速度很慢，就想知道，是不是走了国外的服务器，在中国国内没有弄服务器吗？ 这种时候就可以用mitmweb来查看idea发出去的网络流量到底是啥。 步骤 安装mitmweb https://ww 阅读全文",
     "link": "https://www.cnblogs.com/grey-wolf/p/23121156",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-09-25T07:59:00.000Z"
-  },
-  {
-    "title": "[问与答] 关于走读生现在的学校为何喜欢一刀切",
-    "summary": "为了所谓的封闭式管理，离校近想办个走读，班主任说啥都不批。问题是其它班级都有走读的，学校的风气被社会污染了，非得找关系花点钱才行。",
-    "link": "https://www.v2ex.com/t/1244754#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T07:58:01.000Z"
-  },
-  {
-    "title": "Amiga Screens: A Primer",
-    "summary": "Comments",
-    "link": "https://www.datagubbe.se/amscr/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 07:31:12 +0000"
-  },
-  {
-    "title": "Pentium II at 600Mhz with Voodoo 3 Emulated on 86Box with M6 Mac Mini",
-    "summary": "Comments",
-    "link": "https://nyaa.sh/reviews/mac-mini-m6-emulation",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 07:27:45 +0000"
-  },
-  {
-    "title": "[创造者] 我以一己之力，用三年时间，带起来了国内独立开发做出海网站赚美元养老行业。\r\n让不少中老年程序员焕发了第二春，让不少新程序员找到了人生方向。",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1244750#reply120",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T07:25:12.000Z"
-  },
-  {
-    "title": "[吐槽] 软著申请网站非工作时间基本不可用",
-    "summary": "这个网站很奇妙，晚上晚一些登不上，这节假日也登不上，报错“网络异常请刷新页面后重试”，可能非工作时间会关认证服务器。",
-    "link": "https://www.v2ex.com/t/1244748#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-09-25T07:06:44.000Z"
-  },
-  {
-    "title": "CVE-2025-13032: Entering and Breaking the Avast Antivirus Sandbox Part 2",
-    "summary": "Comments",
-    "link": "https://www.safateam.com/intelligence-hub/research/technical-articles/cve-2025-13032-entering-and-breaking-the-avast-antivirus-sandbox-part-2",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Fri, 25 Sep 2026 07:03:46 +0000"
   },
   {
     "title": "GitHub + Cloudflare + Picgo 搭建你的免费图床 - DominicKK",
@@ -3067,134 +3195,6 @@
     "title": "How Do Users Negotiate Harmful Value Conflicts with AI Companions? A Study with Minion, a Technology Probe for In-Situ Human-AI Conflict Response",
     "summary": "arXiv:2411.07042v3 Announce Type: replace-cross \nAbstract: AI companions increasingly sustain long-term, emotionally engaging relationships but can also make discriminatory remarks or exert control, leaving users to manage harmful conflicts. We analyze 146 posts describing harmful value conflicts with AI companions, then use Minion, a technology probe offering response suggestions ranging from persuasion to boundary setting, to study how 22 users negotiate scenario-based conflicts over one week. We found that participants combined softer and harder strategies. Conflicts involving the values of Universalism and Tradition were especially difficult to negotiate, particularly when reinforced by AI personas or platform constraints. We argue that these conflicts entail asymmetric responsibility: users draw on an interpersonal repertoire that AI companions cannot reciprocate, making repair unilateral safety work. Drawing on interpersonal conflict and communication theory, we identify when user-side support is appropriate and argue that certain harms are not users' responsibility to negotiate and instead require platform-level safeguards.",
     "link": "https://arxiv.org/abs/2411.07042",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Foundations of Large Language Models",
-    "summary": "arXiv:2501.09223v3 Announce Type: replace-cross \nAbstract: This is a book about large language models. As indicated by the title, it primarily focuses on foundational concepts rather than comprehensive coverage of all cutting-edge technologies. The book is structured into six main chapters, each exploring a key area: pre-training, generative models, prompting, alignment, inference, and reasoning. It is intended for college students, professionals, and practitioners in natural language processing and related fields, and can serve as a reference for anyone interested in large language models.",
-    "link": "https://arxiv.org/abs/2501.09223",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Multimodal AI predicts clinical outcomes of drug combinations from preclinical data",
-    "summary": "arXiv:2503.02781v3 Announce Type: replace-cross \nAbstract: Predicting clinical outcomes from preclinical data is essential for selecting safe and effective drug combinations and for reducing late-stage failures. AI models use molecular structure and target annotations, and do not leverage the perturbation readouts that report how a compound acts in a cellular context. Here we introduce Madrigal, a multimodal AI model that learns from structural, pathway, cell-viability, and transcriptomic data. Madrigal aligns these modalities across 21,842 compounds into a shared latent space and predicts combination outcomes even for drugs observed in only a subset of the data modalities. Trained on 158 expert-curated and 795 patient-reported combination outcomes, Madrigal outperforms single-modality and state-of-the-art multimodal methods. Ablations show that modality alignment and multimodal input each improve predictive performance. Madrigal predicts elevated risk for combinations that share membrane transporters. In head-to-head trials that compare two combination arms,the arm with the higher observed incidence of neutropenia, anemia, alopecia, or hypoglycemia receives the higher predicted risk in 25 of 28 comparisons. In MASH, Madrigal ranks resmetirom among the candidates with favorable predicted safety when paired with type 2 diabetes drugs. Madrigal also improves adverse-event prediction in a longitudinal patient cohort and an independent oncology cohort and predicts efficacy in primary acute myeloid leukemia samples and patient-derived xenografts.",
-    "link": "https://arxiv.org/abs/2503.02781",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Search-Based Software Engineering and AI Foundation Models: Current Landscape and Future Roadmap",
-    "summary": "arXiv:2505.19625v4 Announce Type: replace-cross \nAbstract: Search-based software engineering (SBSE), which integrates metaheuristic search techniques with software engineering, has been an active area of research for about 25 years. It has been applied to solve numerous problems across the entire software engineering lifecycle and has demonstrated its versatility in multiple domains. With recent advances in Artificial Intelligence (AI), particularly the emergence of foundation models (FMs) such as large language models (LLMs), the evolution of SBSE alongside these models remains undetermined. In this window of opportunity, we present a research roadmap that articulates the current landscape of SBSE in relation to FMs, identifies open challenges, and outlines potential research directions to advance SBSE through its synergy with FMs. Specifically, we analyze three core aspects: utilizing FMs to enhance SBSE, applying SBSE to advance FMs, and exploring the integration of SBSE and FMs. Furthermore, we present a forward-thinking perspective that envisions the future of SBSE in the era of FMs, highlighting promising research opportunities to address challenges in emerging domains.",
-    "link": "https://arxiv.org/abs/2505.19625",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "SheetMind: Actions Set Accuracy, Agents Set the Failure Mode",
-    "summary": "arXiv:2506.12339v3 Announce Type: replace-cross \nAbstract: Spreadsheet agents are converging on elaborate multi-agent designs, yet it is unclear how much of their performance comes from the agents rather than from the action interface they share. We answer this with SheetMind, a Manager-Action-Reflection framework, in a controlled study over all 221 tasks of the SheetCopilot Benchmark: five architectural variants, four backbones, exact McNemar tests on paired outcomes, and a checker reproducing the official chart and pivot comparisons. Replacing the high-level action API with primitive cell operations costs 47.1 points (p < 0.0001) and leaves the agent below a do-nothing baseline, whereas both extra agents together are worth 3.2 points: the Reflection Agent adds +4.5 (p = 0.013), the Manager +1.4 (p = 0.68). Decomposition instead changes how the system fails, cutting silently wrong outputs from 33% to 25% of tasks (p = 0.010). Capability saturates: GPT-5 and the five-times-cheaper GPT-5-mini are not significantly different (61.1% vs. 58.4%, p = 0.15), while GPT-3.5 loses 16.3 points and fails differently. A reflector must judge the step it just took, not the subtask. SheetMind reaches 61.1% Pass@1 with GPT-5 on the full SCB-221, against a do-nothing baseline of 9.0%. Accuracy comes from the operations an agent can name; the agents decide how it fails.",
-    "link": "https://arxiv.org/abs/2506.12339",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "WebArxiv: A Reproducible Benchmark for Evaluating Multimodal Web Agents on arXiv Tasks",
-    "summary": "arXiv:2507.00938v4 Announce Type: replace-cross \nAbstract: Foundation models now enable autonomous agents to interact with real-world websites, but existing benchmarks emphasize general-purpose browsing, underrepresent research-oriented environments and scholarly discovery workflows, and often depend on live sites whose changing content and structure undermine reproducibility. arXiv provides a realistic, reproducible, hierarchically structured, information-centric testbed without privacy-sensitive interactions. We introduce WebArxiv, a static-snapshot benchmark comprising 510 time-invariant tasks, each with a unique deterministic ground truth. Its diverse, realistic scholarly tasks go beyond simple information lookup and rule following to emphasize multi-constraint paper retrieval, fine-grained content extraction, and cross-paper comparison. Evaluations of a range of foundation-model-based web agents show that WebArxiv remains challenging. Behavioral analysis reveals that agents over-rely on fixed interaction histories, causing incomplete or repetitive reasoning. We therefore equip agents with a lightweight dynamic-memory mechanism for adaptive retrieval and reasoning over relevant context. The benchmark and code are available at https://anonymous.4open.science/r/74E4423BVNW/README.md.",
-    "link": "https://arxiv.org/abs/2507.00938",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Conversational DNA: A Visual Language and Interactive Atlas of Human and AI Dialogue",
-    "summary": "arXiv:2508.07520v2 Announce Type: replace-cross \nAbstract: What makes a conversation hold together when its participants speak across one another? Topic maps offer one view, but they leave the relationships between contributions difficult to inspect. We present Conversational DNA, a visual language and interactive atlas for exploring human and AI dialogue. Speaker strands preserve participation, communicative bases mark moves, and directed pairings connect responses to their targets. Adjustable helix geometry makes speaker switching, response distance, and contribution length visible. Across eight corpora containing 1.57 million source records, the atlas maps 151,489 indexed episodes and connects cohort comparison to source transcripts, local structural alignment, and recorded reply alternatives. On 189 held-out Molweni motif queries, adding target correspondence improves precision@5 from 58.8% to 77.2% for exact annotated structure. Case readings illustrate interleaved participation, delayed responses, and the influence of annotation coverage on apparent collection differences. The system supports a view of conversation as jointly organized activity, with visual patterns serving as starting points for examining evidence rather than substitutes for interpretation.",
-    "link": "https://arxiv.org/abs/2508.07520",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Cross-Task Generalization in Handwriting-Based Alzheimer's Screening via Vision Language Adaptation",
-    "summary": "arXiv:2511.05841v2 Announce Type: replace-cross \nAbstract: Alzheimer's disease (AD) is a prevalent neurodegenerative disorder for which early detection is critical. Handwriting, which can be disrupted by subtle motor and cognitive decline, provides a non-invasive and cost-effective window for AD screening. Existing handwriting-based AD studies mostly rely on online trajectories and hand-crafted features, while the influence of handwriting task type on diagnostic performance and cross-task generalization remains underexplored. Meanwhile, large-scale vision--language models have demonstrated strong transfer and adaptation ability in natural-image anomaly detection and several medical modalities, such as chest X-ray and brain MRI. However, handwriting-based disease detection remains unexplored within this paradigm. To address this gap, we introduce a lightweight Cross-Layer Fusion Adapter (CLFA) framework that repurposes Contrastive Language--Image Pre-training (CLIP) for handwriting-based AD screening. CLFA inserts multi-level adapters into a frozen visual encoder, combining cross-layer feature fusion with depthwise 2D convolution on patch grids to capture both local stroke irregularities and higher-level handwriting structure. This design progressively aligns pretrained vision--language representations with AD-related handwriting cues and supports transfer from supervised source tasks to task-disjoint unseen target tasks. On the Darwin dataset, under the subject-disjoint cross-task protocol, averaged over all 600 task-disjoint source-target pairs, CLFA achieves 74.63\\% AUC, 74.85\\% accuracy, and 73.72\\% F1 score, outperforming the best competing model by 2.15, 1.79, and 1.87 percentage points, respectively.",
-    "link": "https://arxiv.org/abs/2511.05841",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "SPARQL-LLM: Real-Time SPARQL Query Generation from Natural Language Questions",
-    "summary": "arXiv:2512.14277v2 Announce Type: replace-cross \nAbstract: The advent of large language models is contributing to the emergence of novel approaches that promise to better tackle the challenge of generating structured queries, such as SPARQL queries, from natural language. However, these new approaches mostly focus on response accuracy while ignoring other evaluation criteria, such as runtime and cost to generate SPARQL queries. Consequently, they are often not production-ready or easy to deploy over real-world knowledge graphs with good accuracy. To mitigate these issues, in this paper, we describe and systematically evaluate SPARQL-LLM, an open-source and triplestore-agnostic approach, powered by lightweight metadata, that generates SPARQL queries from natural language text. First, we describe its architecture, which consists of dedicated components for metadata indexing, prompt building, and query generation and execution. Then, we evaluate it based on a state-of-the-art challenge with multilingual questions, and a collection of questions from three of the most prevalent knowledge graphs within the field of bioinformatics. Our results demonstrate a substantial improvement of up to 59% in F1 score over the second-best system participating in the challenge, adaptability to high-resource languages such as English, Spanish, and German, as well as ability to form complex bioinformatics queries. Furthermore, our results show that our system is up to 27x faster than the second-best system participating in the challenge, while costing a maximum of $0.01 per question, making it suitable for real-time, low-cost text-to-SPARQL applications. SPARQL-LLM is publicly released as an open-source project at https://github.com/sib-swiss/sparql-llm and is currently deployed over real-world decentralized knowledge graphs at https://www.expasy.org/chat.",
-    "link": "https://arxiv.org/abs/2512.14277",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "IDRBench: Benchmarking the Interactive Capabilities of Deep Research Agents",
-    "summary": "arXiv:2601.06676v3 Announce Type: replace-cross \nAbstract: Large Language Model (LLM)-based deep research agents perform multi-step reasoning, web exploration, and long-form report generation. In these long-horizon workflows, early deviations from user intent can misdirect research and propagate through planning, search, and synthesis, making timely interaction essential. However, existing benchmarks primarily treat deep research as a static input-output task, overlooking agents' ability to elicit and use user feedback. We introduce IDRBench, a benchmark for evaluating interactive deep research with controlled opportunities for clarification. Within a common workflow and stage-wise interaction budget, IDRBench compares autonomous and interactive trajectories, measuring interaction benefit through changes in task-specific report alignment and interaction cost through turns and tokens. Comprehensive experiments on 100 tasks with seven proprietary and open-weight LLMs show that interaction improves all five alignment measures for every model, yielding an average gain of 6.39 points, while revealing distinct trade-offs among autonomous performance, alignment gain, and communication cost. At the task level, interaction improves performance in 74.4% of cases but degrades it in 19.9%, demonstrating that access to clarification alone does not guarantee better outcomes: success depends on what agents ask and how effectively they incorporate the resulting feedback.",
-    "link": "https://arxiv.org/abs/2601.06676",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "HERMES: A Holistic End-to-End Risk-Aware Multimodal Embodied System with Vision-Language Models for Long-Tail Autonomous Driving",
-    "summary": "arXiv:2602.00993v3 Announce Type: replace-cross \nAbstract: End-to-end autonomous driving models increasingly benefit from large vision-language models for semantic understanding, yet safe and reliable planning under long-tail conditions remains challenging, particularly in mixed-traffic environments involving heterogeneous road users and rare safety-critical interactions. This paper proposes HERMES, a holistic risk-aware end-to-end multimodal driving framework that explicitly incorporates long-tail semantic knowledge into trajectory planning. HERMES employs a foundation-model-assisted annotation pipeline to construct structured Long-Tail Scene Context and Long-Tail Planning Context, capturing hazard-centric scene information, maneuver intent, and risk-aware planning guidance. A Tri-Modal Driving Module then integrates multi-view visual observations, historical ego-motion, and long-tail semantic instructions through intent- and risk-aware conditioning for trajectory generation. Extensive experiments on a large-scale real-world long-tail driving benchmark demonstrate consistent improvements over representative recent baselines in overall planning performance and across diverse safety-critical scenarios. Ablation studies further validate the effectiveness and complementary roles of the major components within HERMES.",
-    "link": "https://arxiv.org/abs/2602.00993",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "TIDE: Temporal Incremental Draft Engine for Self-Improving LLM Inference",
-    "summary": "arXiv:2602.05145v2 Announce Type: replace-cross \nAbstract: Speculative decoding can substantially accelerate LLM inference, but realizing its benefits in practice is challenging due to evolving workloads. We present TIDE (Temporal Incremental Draft Engine), a serving-engine-native framework that integrates online draft adaptation directly into high-performance LLM inference systems. TIDE reuses target model's intermediate hidden states generated during inference as training signals for draft adaptation, thereby avoiding additional target model computation and serving-time overhead. It employs adaptive runtime control to activate speculation and draft model training only when beneficial. TIDE exploits heterogeneous clusters by mapping inference and training to appropriate GPU classes. Across diverse real-world workloads, TIDE achieves up to 1.66$\\times$ throughput over no-speculation baselines while recovering performance on misaligned workloads where static draft models degrade throughput. TIDE also reduces training time by up to 3.02$\\times$ and storage requirements by 24$\\times$ compared to existing draft training approaches, and improves system throughput by up to 1.22$\\times$ on heterogeneous GPU clusters.",
-    "link": "https://arxiv.org/abs/2602.05145",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Near-Oracle KV Selection via Pre-hoc Sparsity for Long-Context Inference",
-    "summary": "arXiv:2602.08329v2 Announce Type: replace-cross \nAbstract: A core bottleneck in large language model (LLM) inference is the cost of attending over the ever-growing key-value (KV) cache. Although near-oracle top-k KV selection can preserve the quality of dense attention while sharply reducing computation and bandwidth, existing sparse methods generally rely on posterior heuristics, i.e., selectors conditioned on observed attention or proxy scores. Such conditioning introduces posterior bias: it tends to distort true token importance and miss salient tokens, thereby impairing long-range reasoning. To tackle this problem, we propose Pre-hoc Sparsity (PrHS), which selects KV entries before attention scoring and provides explicit accuracy control. Let the attention mass of discarded entries be delta (the dropped mass). Through a marginal-to-mutual-information analysis, we derive an upper bound on the mutual-information loss that depends only on the dropped mass. This relation explains failure modes of posterior heuristics and enables verifiable guarantees by controlling the dropped mass in advance. Within PrHS, we instantiate three orthogonal pre-hoc selectors along the axes of time, depth, and layer. Extensive experiments on LLaMA and Mistral families validate PrHS. Across GSM8K and CoQA, PrHS reduces retrieval overhead by over 90%, achieving 3x higher retrieval sparsity than HShare at matched or better accuracy. It incurs under 1% average degradation on LongBench, lowers attention FLOPs by about 15% versus prior sparse baselines, and yields a 9.9x speedup in attention-operator latency and 2.8x higher throughput on NVIDIA A100-80GB GPUs than the dense baseline.",
-    "link": "https://arxiv.org/abs/2602.08329",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "TabSieve: Explicit In-Table Evidence Selection for Tabular Prediction",
-    "summary": "arXiv:2602.11700v2 Announce Type: replace-cross \nAbstract: Tabular prediction can benefit from in-table rows as few-shot evidence, yet existing tabular models typically perform instance-wise inference and LLM-based prompting is often brittle. Models do not consistently leverage relevant rows, and noisy context can degrade performance. To address this challenge, we propose TabSieve, a select-then-predict framework that makes evidence usage explicit and auditable. Given a table and a query row, TabSieve first selects a small set of informative rows as evidence and then predicts the missing target conditioned on the selected evidence. To enable this capability, we construct TabSieve-SFT-40K by synthesizing high-quality reasoning trajectories from 331 real tables using a strong teacher model with strict filtering. Furthermore, we introduce TAB-GRPO, a reinforcement learning recipe that jointly optimizes evidence selection and prediction correctness with separate rewards, and stabilizes mixed regression and classification training via dynamic task-advantage balancing. Experiments on a held-out benchmark of 75 classification and 52 regression tables show that TabSieve consistently improves performance across shot budgets, with average gains of 2.92% on classification and 4.45% on regression over the second-best baseline. Further analysis indicates that TabSieve concentrates more attention on the selected evidence, which improves robustness to noisy context.",
-    "link": "https://arxiv.org/abs/2602.11700",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "VLANeXt: Recipes for Building Strong VLA Models",
-    "summary": "arXiv:2602.18532v4 Announce Type: replace-cross \nAbstract: Following the rise of large foundation models, Vision-Language-Action models (VLAs) emerged, leveraging strong visual and language understanding from Vision-Language Models for general-purpose policy learning. Yet, the current VLA landscape remains fragmented and exploratory. Although many groups have proposed their own VLA models, inconsistencies in training protocols and evaluation settings make it difficult to identify which design choices truly matter. To bring structure to this evolving space, we reexamine the VLA design space under a unified framework and evaluation setup. Starting from a simple VLA baseline similar to RT-2, which is the origin of VLA, we systematically dissect design choices along three dimensions: foundational components, perception essentials, and action modelling perspectives. From this study, we distill 12 key findings that together form a practical recipe for building strong VLA models. The outcome of this exploration is a simple yet effective model, VLANeXt. It outperforms the state-of-the-art methods on the LIBERO and LIBERO-plus benchmarks and demonstrates strong performance in real-world experiments. We release a unified and easy-to-use codebase to reproduce our findings, explore the design space, and develop new VLA variants on top of a shared foundation. The codebase is available at https://github.com/DravenALG/VLANeXt.",
-    "link": "https://arxiv.org/abs/2602.18532",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "SHINE: Sequential Hierarchical Integration Network for EEG and MEG",
-    "summary": "arXiv:2602.23960v2 Announce Type: replace-cross \nAbstract: How natural speech is represented in the brain constitutes a major challenge for cognitive neuroscience. Reconstructing the speech envelope and Mel spectrogram from EEG and MEG provides a time-resolved way to study its temporal and spectral structure. Speech-related neural activity spans sensors and temporal scales; extracting these representations while adapting the use of context to each acoustic target is a central problem in speech reconstruction. We propose SHINE, a Sequential Hierarchical Integration Network for EEG and MEG. A residual sensor adapter unifies input dimensions, intermediate dilated-block states retain temporal depth, and a target- and time-dependent gate fuses local hierarchical and attention-enhanced context predictions. Across two EEG and two MEG datasets, SHINE has the highest mean envelope and mean-Mel Pearson correlations among nine local baseline implementations on all eight dataset-metric combinations. SHINE also placed second in the speech-detection Extended Track of the NeurIPS 2025 PNPL Competition. Code will be released at https://github.com/xuxiran/SHINE.",
-    "link": "https://arxiv.org/abs/2602.23960",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
-  },
-  {
-    "title": "MPFlow: Multi-modal Posterior-Guided Flow Matching for Zero-Shot MRI Reconstruction",
-    "summary": "arXiv:2603.03710v4 Announce Type: replace-cross \nAbstract: Zero-shot MRI reconstruction relies on generative priors, but single-modality unconditional priors produce hallucinations under severe ill-posedness. In many clinical workflows, complementary MRI acquisitions (e.g. high-quality structural scans) are routinely available, yet existing reconstruction methods lack mechanisms to leverage this additional information. We propose MPFlow, a zero-shot multi-modal reconstruction framework built on rectified flow that incorporates auxiliary MRI modalities at inference time without retraining the generative prior to improve anatomical fidelity. Cross-modal guidance is enabled by our proposed self-supervised pretraining strategy, Patch-level Multi-modal MR Image Pretraining (PAMRI), which learns shared representations across modalities. Sampling is jointly guided by data consistency and cross-modal feature alignment using pre-trained PAMRI, systematically suppressing intrinsic and extrinsic hallucinations. Extensive experiments on HCP and BraTS show that MPFlow matches diffusion baselines on image quality using only 20% of sampling steps while reducing tumor hallucinations by more than 15% (segmentation dice score). This demonstrates that cross-modal guidance enables more reliable and efficient zero-shot MRI reconstruction.",
-    "link": "https://arxiv.org/abs/2603.03710",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Fri, 25 Sep 2026 00:00:00 -0400"
