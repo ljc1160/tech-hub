@@ -1,14 +1,366 @@
 [
   {
-    "title": "Worth Building",
-    "summary": "Comments",
-    "link": "https://armstr.ng/writing/worth-building",
-    "source": "Hacker News",
+    "title": "AI + SRE ≠ AISRE：AI 如何真正进入生产运维闭环｜QCon上海",
+    "summary": "点击查看原文>",
+    "link": "https://www.infoq.cn/article/u70P77XPmsXmRBciu6fL?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
     "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 22:59:24 +0000"
+    "pubDate": "Tue, 06 Oct 2026 10:00:00 GMT"
   },
   {
-    "title": "Example.com Just Launched the Biggest Redesign in Decades",
+    "title": "一边是 WebGPU 视觉革命，一边是浏览器垄断争议：Canvas UI 发布 35 个组件",
+    "summary": "点击查看原文>",
+    "link": "https://www.infoq.cn/article/6jvNkzZCm5mjr22zr04D?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "category": "news",
+    "pubDate": "Tue, 06 Oct 2026 10:00:00 GMT"
+  },
+  {
+    "title": "[Xcode] 告别 Xcode IDE:用 VS Code + SweetPad + XcodeGen 开发 iOS 应用的完整指南",
+    "summary": "本文以一个真实的小项目 FloatingBottomSheetsApp(一个 SwiftUI 底部浮层 Demo)为例,手把手带你搭好一套完全不打开 Xcode IDE 的 iOS 开发环境:工程生成、构建运行、调试、代码补全、格式化、热重载,一次讲清。\n配套示例代码:cyub/sweetpad-demo,文中所有配置文件都可以直接对照源码查看。\n为什么是 VS Code + SweetPad?\n很多从其他技术栈转来、或者常年写前端的开发者,对 Xcode 那套 IDE 并不亲近——窗口繁重、编辑器手感一般、和 git 工作流的结合也别扭。SweetPad 是一个 VS Code 扩展,它把 Xcode 的核心能力(构建、运行、调试、热重载)全部搬进了 VS Code,底层驱动的仍然是苹果官方的 xcodebuild 和 lldb,所以构建产物、签名行为和 Xcode IDE 完全一致,团队成员可以混用两种开发方式,互不影响。\n再配上 XcodeGen,.xcodeproj 不再是一个需要手工维护(和 git merge 时痛苦)的二进制格式文件,而是一个几十行的 YAML 清单。\n一句话总结这套组合的分工:\n工具\n职责\n\n\n\n\nXcodeGen\n用 project.yml 声明工程,生成 .xcodeproj\n\n\nSweetPad\n在 VS Code 里构建、运行、调试、热重载\n\n\nVS Code + Swift 扩展\n编辑器、代码补全(SourceKit-LSP)、格式化\n\n\n准备工作\n你需要一台装了完整 Xcode 的 Mac(Xcode 自带 xcodebuild、模拟器、LLDB,这些是 SweetPad 的地基)。\n安装 SweetPad 扩展:打开 VS Code 扩展面板,搜索 \"SweetPad\" 安装即可(在 Cursor 里同样可用,它是 VS Code 的 fork)。\n\n安装 SweetPad CLI(后面代码补全和调试会用到):\nbrew install sweetpad-dev/tap/sweetpad\n\n建议顺手把 xcbeautify 也装上,构建日志会好看很多:\nbrew install xcbeautify\n\n当然,SweetPad 侧边栏的 Tools 面板提供了一键安装这些工具的入口,不想敲命令行也可以。\n用 XcodeGen 管理工程\n为什么需要工程生成器\n.xcodeproj 里的 project.pbxproj 是出了名的难合并、难 review 。XcodeGen 的思路是:整个工程用一个 YAML 文件描述,.xcodeproj 变成生成产物,可以随时删掉重新生成,git 里甚至可以忽略它。\n本项目根目录的 project.yml 长这样:\nname: FloatingBottomSheetsApp\noptions:\n  bundleIdPrefix: com.tink\npackages:\n  Inject:\n    url: https://github.com/krzysztofzablocki/Inject\n    from: 1.0.0\ntargets:\n  FloatingBottomSheetsApp:\n    type: application\n    platform: iOS\n    deploymentTarget: \"17.0\"\n    sources:\n      - path: FloatingBottomSheetsApp\n    dependencies:\n      - package: Inject\n    settings:\n      GENERATE_INFOPLIST_FILE: YES\n\n几行配置就声明了:应用 target 、iOS 17 起步、源码目录、一个 SPM 依赖(Inject,热重载一节会讲),以及让 Xcode 自动生成 Info.plist 。\n在终端运行:\nxcodegen generate\n\n就会在根目录生成 FloatingBottomSheetsApp.xcodeproj。\n一个新手常见坑:如果 target 既没有 INFOPLIST_FILE 也没有 GENERATE_INFOPLIST_FILE: YES,构建时会报:\nerror: Cannot code sign because the target does not have an Info.plist file\nand one is not being generated automatically.\n\n这就是上面配置里 GENERATE_INFOPLIST_FILE: YES 的来历(Xcode 16 起官方推荐的做法,纯 SwiftUI App 不需要手写 plist)。\n让 SweetPad 自动重新生成工程\nXcodeGen 的工作模式有一个隐患:它只在执行 xcodegen generate 的那一刻扫描源码目录,之后新建的 Swift 文件不会自动进入工程。如果你新建了 BottomSheetDemoView.swift 却忘了重新生成,编译时就会得到一个摸不着头脑的错误:\nerror: cannot find 'BottomSheetDemoView' in scope\n\nSweetPad 可以替你盯着这件事。在 .vscode/settings.json 里加一行:\n{\n  \"sweetpad.xcodegen.autogenerate\": true\n}\n\nSweetPad 会监听 Swift 文件的新增和删除,自动在后台重跑 xcodegen generate。注意两点:\n改完设置要重启 VS Code,watcher 才会激活;\nwatcher 只在工作区根目录存在 project.yml 时生效。\n也可以随时手动触发:命令面板(⌘⇧P)运行 SweetPad: Generate an Xcode project using XcodeGen。\n进阶提示:XcodeGen 2.44+ 支持给 source 加 type: syncedFolder(或在 options 下设 defaultSourceDirectoryType: syncedFolder),生成的工程直接引用文件夹而不是罗列文件,Xcode 会自动感知磁盘上的文件增删,连重新生成都省了。不过修改 project.yml 本身仍然需要 regenerate 。\n构建与运行\n第一次构建\n用 VS Code 打开项目根目录(即包含 .xcodeproj 的文件夹,不是 .xcodeproj 本身),点开左侧的 SweetPad 侧边栏(棒棒糖图标 🍭)。\n\n侧边栏分三块:\nBuild:所有 scheme,每个都有 ▶️ 构建运行按钮;\nDestinations:所有可运行的位置(模拟器、真机、macOS);\nTools:辅助工具一键安装。\n点击 scheme 旁边的 ▶️,SweetPad 会让你选一个模拟器,然后执行构建、启动模拟器、安装并拉起 App——全程不需要碰 Xcode 。官方的完整流程演示:\n\n构建视图速览:\n▶️ Build & Run:scheme 名字旁的播放键,构建并运行;\n⚙️ Build:齿轮键,只构建不运行;\n右键 scheme:SweetPad: Clean(清理构建目录)、SweetPad: Resolve Dependencies(解析 SPM 依赖)。\n构建过程中, scheme 旁会出现 ⏹ 停止按钮,点它(或命令面板运行 SweetPad: Stop build / running app)可以随时终止构建或正在运行的 App——对付卡死的测试或停不下来的进程特别好用。\n\n固定 scheme 和目标设备\n每次构建都弹选择框很烦。可以直接在 .vscode/settings.json 里固定:\n{\n  \"sweetpad.build.scheme\": \"FloatingBottomSheetsApp\",\n  \"sweetpad.build.destination\": {\n    \"type\": \"iOSSimulator\",\n    \"id\": \"iossimulator-AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE\"\n  }\n}\n\ndestination 最省事的写法是运行命令 SweetPad: Select destination,让 SweetPad 帮你写入。也可以手动粘贴 xcrun simctl list 里的 UDID 。\n协作提示:destination 里的模拟器 UDID 是机器相关的(每台 Mac 都不同),提交到 git 会在别人机器上显示为本地改动。团队项目建议只固定 scheme,destination 留给每个人自己选。\n常用构建配置\nSweetPad 暴露了不少构建设置,按需取用:\n{\n  // 自定义 DerivedData 路径(比如放进项目内,方便 CI 缓存)\n  \"sweetpad.build.derivedDataPath\": \".build/derivedData\",\n\n  // 透传给 xcodebuild 的额外参数\n  \"sweetpad.build.args\": [\"-skipMacroValidation\"],\n\n  // 传给 App 本身的启动参数 / 环境变量\n  \"sweetpad.build.launchArgs\": [\"--my-arg\"],\n  \"sweetpad.build.launchEnv\": {\n    \"MY_ENV_VAR\": \"my-value\"\n  }\n}\n\n把构建接入 tasks.json\nSweetPad 注册了 VS Code 的 task provider,构建动作天然出现在 Tasks: Run Task 里。也可以写进 .vscode/tasks.json 组合使用。本项目的配置:\n{\n  \"version\": \"2.0.0\",\n  \"tasks\": [\n    {\n      \"type\": \"sweetpad\",\n      \"action\": \"launch\",\n      \"label\": \"sweetpad: launch\",\n      \"detail\": \"Build and launch the app\",\n      \"isBackground\": true,\n      \"problemMatcher\": [\"$sweetpad-watch\"]\n    }\n  ]\n}\n\nisBackground: true 和 $sweetpad-watch 两个属性在把该 task 用作调试的 preLaunchTask 时缺一不可,它们让 VS Code 知道\"构建已就绪、App 正在启动\"。\n代码补全:让 SourceKit-LSP 认识 Xcode 工程\nVS Code 的 Swift 补全由 Swift 扩展的 SourceKit-LSP 提供,但 SourceKit-LSP 需要一个 build server 告诉它每个文件是怎么编译的(SDK 、模块名、编译条件……)。纯 Swift Package 不需要额外配置,而 .xcodeproj 工程需要 buildServer.json。\nSweetPad 内置了自家的 build server(通过 sweetpad bsp serve 运行,无需先构建一次,补全立即可用)。第一次构建时 SweetPad 会自动在工作区根目录生成 buildServer.json,也可以用命令面板手动生成:SweetPad: Generate Build Server Config。\n生成的 buildServer.json 大致长这样(argv 里的路径因机器而异,所以这个文件不需要提交,.gitignore 掉即可,首次构建时 SweetPad 会重新生成):\n{\n  \"name\": \"sweetpad\",\n  \"version\": \"0.2.18\",\n  \"bspVersion\": \"2.2.0\",\n  \"languages\": [\"swift\", \"objective-c\", \"objective-cpp\", \"c\", \"cpp\"],\n  \"argv\": [\n    \"/opt/homebrew/bin/sweetpad\",\n    \"bsp\",\n    \"serve\",\n    \"--config\",\n    \"/Users/tinker/.local/state/sweetpad/projects/6d30e6004bc5/bsp.json\"\n  ]\n}\n\n配置好后打开任意 Swift 文件,补全、跳转定义、悬浮文档、实时的编译诊断就都有了:\n\n如果补全不工作,运行 SweetPad: Diagnose BSP (Doctor),它会逐项检查整条链路并给出修复建议。\n格式化代码:保存即格式化\nSweetPad 默认使用 Apple 官方的 swift-format(Xcode 16 起随 Xcode 附带,无需单独安装;Xcode 15 及更早需要 brew install swift-format)。\n在 .vscode/settings.json 中配置保存时自动格式化:\n{\n  \"[swift]\": {\n    \"editor.defaultFormatter\": \"sweetpad.sweetpad\",\n    \"editor.formatOnSave\": true\n  }\n}\n\n之后打开 Swift 文件按 ⌘S,文件就会自动整理格式:\n\n不喜欢 swift-format 的风格?可以换成社区流行的 SwiftFormat:\n{\n  \"sweetpad.format.path\": \"swiftformat\",\n  \"sweetpad.format.args\": [\"--quiet\", \"${file}\"]\n}\n\n--quiet 让 stderr 安静下来,避免 SweetPad 把正常输出误判为格式化失败。格式化报错时,运行 SweetPad: Show format logs 查看原因。\n调试:断点、LLDB 一应俱全\n最小配置\nSweetPad 有两种调试后端:\nSweetPad CLI 的 sweetpad dap(驱动 Xcode 自带的 lldb-dap,零配置,推荐);\nCodeLLDB 扩展(CLI 未安装时的回退,需要手动指定 Xcode 的 LLDB 库路径)。\n在 .vscode 下创建 launch.json:\n{\n  \"version\": \"0.2.0\",\n  \"configurations\": [\n    {\n      \"type\": \"sweetpad-lldb\",\n      \"request\": \"launch\",\n      \"name\": \"SweetPad: Build and Run\"\n    }\n  ]\n}\n\n也可以在 Run and Debug 面板点击 \"Create a launch.json file\" 自动生成:\n\n选择 SweetPad 调试器:\n\n开始调试\n按 F5。SweetPad 会构建 App 、装进模拟器、启动,然后把 LLDB 附到运行中的进程上。设好断点,当代码命中断点时,你会在 VS Code 里看到完整熟悉的面板:变量查看、调用栈、单步执行、LLDB 控制台,和任何语言的调试体验一致。\n\n\n之后的每次调试,直接按 F5 就行——重建、重启、重新附加,一条龙。\n使用 CodeLLDB 的情况\n如果没装 SweetPad CLI 走的是 CodeLLDB,需要在 settings.json 里把 CodeLLDB 指向 Xcode 内置的 LLDB:\n{\n  \"lldb.library\": \"/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB\"\n}\n\n调试进阶\n想调试 Release 配置?在 tasks.json 里定义一个自定义 task(scheme/configuration 填 Release,同样带 isBackground + $sweetpad-watch),然后 launch.json 里用 \"preLaunchTask\" 引用;\nlaunch.json 顶层的 scheme、configuration、destination、args、env 可以覆盖 SweetPad 面板中的选择;\n真机调试开箱即用(iOS 17+ 真机走 devicectl / pymobiledevice3 的开发者隧道,首次连接有一次性的信任设置)。\n热重载:保存即见效\n这是整套工作流里最爽的一环:改一行 SwiftUI 代码,⌘S 保存,模拟器里的 App 不重新构建、不重启,一秒内就更新了。做 UI 微调时,这个反馈循环从\"编译 30 秒\"缩短到\"眨眼之间\"。\nSweetPad 为你接好了开源项目 InjectionNext,不用动任何 Xcode 构建设置或 AppDelegate 。\n平台限制:热重载只支持 iOS / tvOS / visionOS 模拟器和 macOS 。真机因为苹果的代码签名机制(会剥离 DYLD_INSERT_LIBRARIES)无法使用;watchOS 不支持。\n安装 InjectionNext\n命令行安装(InjectionNext 不在 Homebrew,GitHub Releases 是唯一渠道):\ncurl -L -o /tmp/InjectionNext.zip \\\n  https://github.com/johnno1962/InjectionNext/releases/latest/download/InjectionNext.zip\nunzip -d /tmp /tmp/InjectionNext.zip\nmv /tmp/InjectionNext.app /Applications/\n\n或者从 SweetPad 侧边栏 Tools 面板的 InjectionNext 一键入口跳到 Releases 页面下载。不需要手动启动它,SweetPad 运行 App 时会自动拉起。\n打开开关\n.vscode/settings.json:\n{\n  \"sweetpad.hotReload.enabled\": true\n}\n\n打开后,SweetPad 会自动做三件事:\n构建参数:给 xcodebuild 追加 OTHER_LDFLAGS=$(inherited) -Xlinker -interposable(把 Swift 函数发射为可替换符号)和 EMIT_FRONTEND_COMMAND_LINES=YES;\n启动环境:设置 DYLD_INSERT_LIBRARIES 自动加载注入 dylib,设置 INJECTION_PROJECT_ROOT 告诉 InjectionNext 监听哪个目录;\n框架路径:把当前 Xcode 的平台目录前置于 DYLD_FRAMEWORK_PATH,避免 dyld 找不到 XCTest 框架。\n添加 Inject 依赖(SwiftUI 项目)\nSwiftUI 会缓存 body 的计算结果,需要 Krzysztof Zabłocki 的 Inject 包配合刷新。XcodeGen 项目在 project.yml 里声明:\npackages:\n  Inject:\n    url: https://github.com/krzysztofzablocki/Inject\n    from: 1.0.0\n\ntargets:\n  FloatingBottomSheetsApp:\n    # ...\n    dependencies:\n      - package: Inject\n\n然后 xcodegen generate 重新生成工程。\n给视图加两行注解\n在想热重载的 SwiftUI 视图上加两行(本项目的 ContentView.swift,一个最简底部浮层 Demo):\nimport Inject\nimport SwiftUI\n\nstruct ContentView: View {\n  @ObserveInjection var inject\n  @State private var showSheet = false\n\n  var body: some View {\n    VStack(spacing: 16) {\n      Image(systemName: \"rectangle.bottomthird.inset.filled\")\n        .font(.system(size: 56))\n        .foregroundStyle(.tint)\n      Text(\"Floating Bottom Sheets\")\n        .font(.title2.bold())\n      Button(\"Show Bottom Sheet\") {\n        showSheet.toggle()\n      }\n      .buttonStyle(.borderedProminent)\n    }\n    .padding()\n    .sheet(isPresented: $showSheet) {\n      SheetContent()\n        .presentationDetents([.height(220), .medium])\n        .presentationDragIndicator(.visible)\n        .presentationCornerRadius(24)\n    }\n    .enableInjection()\n  }\n}\n\n@ObserveInjection:订阅 InjectionNext 的注入通知,让 SwiftUI 认为视图已失效;\n.enableInjection():确保注入运行时已加载,并用 AnyView 包裹视图,容忍 body 结构变化。\n偷懒技巧:只在根视图加这两个注解就够了——注入触发时 SwiftUI 会从根向下整棵失效刷新。代价是每次保存整棵树重算,小 App 无感,超大 App 会明显。也可以用 InjectionNext 菜单栏的 Prepare SwiftUI → Prepare Project 自动给所有文件加上注解。UIKit 项目则完全不需要 Inject,方法体会被自动替换。\n试一下\n在 SweetPad 里 Build & Run,观察控制台输出:\n🔥 InjectionNext: arm64 iPhoneSimulator connected to app, waiting for commands.\n\n同时菜单栏的 InjectionNext 图标变为橙色(蓝色=空闲,橙色=已连接,绿色=编译中,黄色=出错);\n把 SheetContent 里的 Text(\"Hello, bottom sheet!\") 随便改点什么(比如加个 .foregroundColor(.red)),⌘S 保存;\n控制台出现 🔥 ✅ Hot reload complete - Rebound N symbols,模拟器在一秒内更新,@State、滚动位置等状态全部保留。\n边界与排错\n能改的:函数体、body 内容、闭包、计算属性、函数内常量。\n不能改的(改了需要重启 App):存储属性的增删改名、非 final 类的方法增删、函数签名、@main/App body 、泛型约束、顶层代码。\n常见问题速查:\n症状\n原因/解法\n\n\n\n\n保存后没反应,但控制台有 ✅ Hot reload complete\n视图忘了 .enableInjection()\n\n\n菜单栏图标是蓝色\nApp 没连上 InjectionNext,检查是否走的模拟器\n\n\n图标是黄色\n上次编译失败,点图标 → Show Log 看错误\n\n\n启动崩溃 dyld: Library not loaded @rpath/XCTest\nxcode-select 指向的 Xcode 不对,sudo xcode-select -s /Applications/Xcode.app/Contents/Developer\n\n\n链接错误\n工程自己设置了冲突的 OTHER_LDFLAGS,关掉开关手动加 -Xlinker -interposable\n\n\n\n性能提醒:-interposable 让每个 Swift 函数调用多一次指针跳转,Debug 无感,Release 别开。打正式包前把 sweetpad.hotReload.enabled 关掉即可。\n最终的配置清单\n跟着做完后,本项目的 VS Code 相关文件长这样,可以直接抄作业。\n.vscode/settings.json:\n{\n  \"sweetpad.build.scheme\": \"FloatingBottomSheetsApp\",\n  \"sweetpad.xcodegen.autogenerate\": true,\n  \"sweetpad.hotReload.enabled\": true,\n  \"[swift]\": {\n    \"editor.defaultFormatter\": \"sweetpad.sweetpad\",\n    \"editor.formatOnSave\": true\n  }\n}\n\n注意这里没有固定 sweetpad.build.destination:模拟器 UDID 是机器相关的,公开仓库里写死只会在别人机器上变成\"本地改动\"。第一次构建时 SweetPad 会让你选一次并记住。\n.vscode/tasks.json(见\"把构建接入 tasks.json\"节)、**.vscode/launch.json(见调试一节)、project.yml(见 XcodeGen 一节)、buildServer.json**(自动生成,见代码补全一节)。\n.gitignore(既然 .xcodeproj 是生成产物,就让它和自动生成的 buildServer.json 一起留在本地):\n*.xcodeproj\n*.xcworkspace\nDerivedData/\n.build/\n.DS_Store\nbuildServer.json\n\n总结\n这套工作流的总览:\nproject.yml 声明工程 → XcodeGen 生成 .xcodeproj(SweetPad 可自动重生成);\nSweetPad 侧边栏 ▶️ 构建运行,settings.json 固定 scheme 和模拟器;\nbuildServer.json + SweetPad CLI 让 SourceKit-LSP 活起来,补全和诊断齐备;\n[swift] format on save,保存即格式化;\nlaunch.json + F5,断点调试一步到位;\nInjectionNext + Inject 包 + 两行注解,保存即热重载。\n从此 Xcode 只需要躺在 /Applications 里提供工具链,日常开发完全可以在 VS Code(或 Cursor)里完成。\n参考资料\nSweetPad 官方文档\nSweetPad GitHub",
+    "link": "https://www.v2ex.com/t/1246613#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:49:40.000Z"
+  },
+  {
+    "title": "[Apple] 澳門原價代購有人要嗎",
+    "summary": "準備 10 號去澳門一趟 可以幫買 Apple 或者豐澤都可以，順路幫帶而已 我只賺一個信用卡積分和回饋獎勵，無拆封通關 順豐寄給你 閒魚交易。",
+    "link": "https://www.v2ex.com/t/1246612#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:44:35.000Z"
+  },
+  {
+    "title": "洛谷 P4822 题解（分层图） - Elaina123",
+    "summary": "【摘要】洛谷 P4822 题解 蒟蒻的第一篇题解 有问题和不足欢迎指出 [原题](P4822 [BJWC2012] 冻结 - 洛谷) 简化题目 大路上有 N 个城市（编号为 1 ~ N），M 条双向的道路。有 K 张卡片可以使通过一条道路的时间减少到原先的一半（题目保证每条道路的原始花费为偶数）。求出在使用 阅读全文",
+    "link": "https://www.cnblogs.com/Elaina-blog/p/23207600",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T03:30:00.000Z"
+  },
+  {
+    "title": "你的记忆系统可能在删「从未被检索过的金子」：因果干预让记忆效用可识别 - buddyme智能助手",
+    "summary": "【摘要】记忆增强智能体按「对任务的效果」决定留哪条记忆——但效果估计完全依赖「被检索到」。从未被检索的记忆，删了和留着结果一模一样，它的真实效用永远无法被现有方法识别。这篇论文用因果干预框架解决这个「检索层正性违反」：对检索动手而非对存储动手，让每条记忆的效用变得可识别。 arXiv · 2026-10-0 阅读全文",
+    "link": "https://www.cnblogs.com/buddyme/p/23207592",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T03:29:00.000Z"
+  },
+  {
+    "title": "[问与答] 有没有同时使用 5.6 sol high 和 6.1 sol high 的 plus 用户，想咨询个问题",
+    "summary": "先说下背景：\n个人在开发些小产品 网页为主，目前没有盈利的项目，所以在 AI 订阅方面不太想过高的投入，这是前提，遇到的问题是，之前主力模型使用的是 5.6 sol high ，觉得返工比较少，执行效果都挺好的，但是 plus 额度限制，额度消耗很快，这个是硬伤，也可以理解，目前因为 codex 改版后，不太喜欢新的用户界面，所以就关闭了更新，导致没看到 6.1 sol 模型，也无法使用或者对比\n所以想请问社区里 和我目前情况差不多的朋友：\n有没有实际验证过，5.6 sol high VS 6.1 sol high 在开发效率以及额度上 有没有显著区分，是否值得这次升级呢",
+    "link": "https://www.v2ex.com/t/1246610#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:24:23.000Z"
+  },
+  {
+    "title": "[人工智能] Grok4.7 做视频的能力也不差呀，就不用苦苦盯着 Opus5.5 了",
+    "summary": "昨天上线了 Did Codex Reset （ https://didcodexreset.com/zh/oct28.html ） 的 Tibo 28 天挑战的专题页面，今天想着做个视频玩玩，然后刚好想着也用 Grok 来试试，由于之前 Opus5.5 有做过几版，让他参考着来，效果还是不错，下面是成品：\n第一版本，基于之前 Opus5.5 做的\n版式就是参考 opus5.5 效果，很一致，但是没特别的新意\nB 站： https://www.bilibili.com/video/BV1FeHZ6QEue/\n第二个版本，加了多巴胺风格的提示词\n第二个版本仅仅只加了多巴胺风格的提示词，出来的效果和居然还可以，但是和某些站点撞风格（但这完全是 AI 直出的，没给任何参考😂）\n\nB 站： https://www.bilibili.com/video/BV1zeHZ6DE2U/\n综合评价，大家感觉哪一个更好？",
+    "link": "https://www.v2ex.com/t/1246609#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:22:26.000Z"
+  },
+  {
+    "title": "[分享创造] 送码｜镜像机器人：在 Mac 上给 iPhone 镜像录制和执行自动化流程",
+    "summary": "在 Mac 上给 iPhone 镜像录制和执行自动化流程\n最近做了一个 macOS 小工具，叫「镜像机器人」，主要是配合 Mac 上的 iPhone 镜像使用，把一些需要重复操作的流程录下来，之后自动执行。\n目前可以免费送一些体验码，想试试的朋友可以下方领取。\n产品地址：https://mbot.snso.win/\n\n它能做什么？\n简单来说，就是把你在 iPhone 镜像窗口里的操作记录下来，整理成一个可以重复执行的流程。\n目前支持这些操作：\n点击指定位置\n滑动操作\n滚动操作\n输入文字\n等待一段时间\n等待某个颜色出现或消失\n等待画面中出现指定文字\n根据画面颜色做条件判断\n根据 OCR 识别到的文字做条件判断\n循环执行一组操作\n设置失败后的重试、跳过或停止\n录制完成后，可以在网页里查看和编辑流程，调整每一步的坐标、等待时间、输入内容和判断条件。也可以直接从零开始创建流程，不一定要先录制。\n举几个适合的场景\n比如：\n重复打开 App ，点击固定位置完成一套操作\n定期执行一组固定的点击和滑动\n等待某个页面加载完成后继续下一步\n等待按钮、提示文字或颜色出现后再操作\n页面状态不同的时候，分别执行不同的步骤\n需要输入一段固定文字的重复操作\n把一套操作循环执行几次，或者直到某个画面条件满足\n它比较适合操作路径固定、界面变化不太大的重复任务。流程里可以加等待、颜色判断和文字判断，不需要每一步都按照固定时间硬等。\n使用方式\n打开网页后，可以：\n创建一个流程；\n录制一段在 iPhone 镜像窗口里的操作；\n在网页中调整和编辑步骤；\n截图检查当前画面；\n运行流程并查看执行日志。\n也可以手动添加点击、滑动、输入、等待、条件和循环步骤。\n目前的特点\nmacOS 原生使用场景，配合 iPhone 镜像窗口工作\n网页界面编辑流程，操作步骤比较直观\n支持截图、取色和文字识别辅助设置条件\n支持嵌套条件和循环步骤\n有执行日志，方便查看流程执行到哪一步\n可以设置安全限制，避免流程无限执行\n这是一个还在持续完善中的小工具，主要想解决自己在 Mac 上重复操作 iPhone 镜像时比较麻烦的问题。不同 App 、不同系统版本和不同窗口状态下，实际效果可能会有差异，欢迎大家试用后反馈具体场景。\n送码\n这次会送一些体验码，会员码放在这篇帖子最后，看到后可以直接复制领取。\n领取后打开产品网页，登录账号，在用户名左侧点击「会员码」，输入会员码并兑换即可。兑换成功后会立即开通 VIP ，具体有效期以会员码为准。\n会员码：\nRYZL-BAFA-36AD-S9T7\nZD2H-DKRG-QP9G-GUFL\nZTEX-M25T-BC5W-KL27\n4VU9-43JM-85EB-WWK6\n7R8E-YYNH-5VH3-3NTY\n5CK3-YS7E-MAKB-LU3X\nK977-3B62-U7Z6-FRF2\nVR78-NZER-VUPW-NT4X\nMLLB-NHE3-VWZR-AR7L\nFLQU-K4K3-2JEB-MGVX\nR96T-6V63-HSNL-R7K4\nPDRQ-UKTC-BZLK-PV53\nKQK6-N474-KTET-9PQE\nFJ3R-G3YM-RNJJ-WR9C\nVPGZ-MJWU-WFWM-P3MS\nC5X9-JXE5-3B3F-BCUA\nTUYA-YQJK-FA3V-FWKX\n7Q4D-F7FM-YZF7-AEZU\n7K7T-3JML-XXDY-4GNV\nXTUT-55R2-9586-UZT5\nDXC9-3JZU-5YKS-6Y9S\n5PZG-2QZJ-PSXX-Y22U\nUGXJ-X29V-B8TN-N3KY\nDNAU-2SC3-H2CF-9GPH\nJAEL-G2KG-7KQA-K9DJ\n9X2R-VBZF-XAVF-J2BG\nYN68-CVBV-M3UC-GN6P\n6SVH-J8X9-6JYT-BARK\nQ8X5-4UWZ-GQMB-PWKZ\nNJ4K-P3D3-Y7TE-MAQP\n也欢迎反馈不好用的地方，尤其是流程录制、条件判断和某些页面识别不准确的情况。",
+    "link": "https://www.v2ex.com/t/1246606#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:17:00.000Z"
+  },
+  {
+    "title": "[macOS] macOS 27.2 Beta 3 好像显示器设置有点问题。。。",
+    "summary": "MacBook Pro 的两台外接，现在无法调整左右位置了，显示器分辨率设置好像也无效。。。",
+    "link": "https://www.v2ex.com/t/1246605#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:08:41.000Z"
+  },
+  {
+    "title": "[分享发现] 什么 gpt,claude,deepseek 都给我站一边！我的高德导航也未必不能一战",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1246604#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T03:02:44.000Z"
+  },
+  {
+    "title": "[推广] 6.1sol 排名第一没人反对吧",
+    "summary": "讲真的 6.1sol 排名第一没人反对吧！\n真的妥妥的第一，官方介绍 6.1sol 接近 6astra 的水平，但原来 6astra 大多数降智，现在我的体感，包括我的朋友一致认为不降智的 6.1sol 比原来的 6astra 还要能打。\n\n而 6.1sol 开支不到原来的五分之一却能用上 6astra 的水平。对个人和公司的钱袋太友好，我真的不允许还有人不知道。\n我在强调一下，6.1sol 第一，但前提是不降智的 6.1sol 哦。\n不降智 6.1sol 推荐 https://www.jiji.cc \n我搞了一大堆吉吉 api 的兑换码。需要的 v 佬回贴",
+    "link": "https://www.v2ex.com/t/1246603#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:52:16.000Z"
+  },
+  {
+    "title": "[AI Agent 智能体] Janus：把 OpenCode 包装成统一的 Agent 网关",
+    "summary": "一个开源的 AI Agent 网关：统一协议、统一会话、统一模型与权限，但不重造 Agent 运行时。\n我们面对的现实\n2026 年的 coding agent 已经很多：OpenCode 、Claude Code 、Codex CLI 、Gemini CLI……它们各自很强，但一旦你要把它们接进自己的系统，问题就来了：\n每个 agent 只说自己的协议（ Claude Code 说 Anthropic Messages ，Codex 说 OpenAI Responses ，OpenCode 是自有 /api/*）；\n模型、鉴权、会话、权限、观测，全都散落在各个工具里；\n想在它们之间切换、统一计费、统一审计，几乎要重写一遍 glue 。\nJanus 想解决的就是这一层。\nJanus 是什么\n一句话：\nAgent 负责「怎么做」，Janus 负责「谁可以怎么用」。\nJanus 是一个 OpenAI / Anthropic 兼容的网关 + 控制平面：把只有 /api/* 的 OpenCode server 包装成标准 /v1/*，让各类 OpenAI / Anthropic 客户端（ Trae 、CodeBuddy 、Cursor 、OpenAI SDK 、LangChain…）直接可用；同时把会话、工具、权限、用量统一管起来。\n它不重造 Agent runtime 、Tool runtime 、MCP runtime 、Session runtime —— 这些交给 OpenCode 等现成的 agent ，Janus 只做控制平面该做的事。\n源码与安装\n项目地址： https://github.com/qist/janus（ MIT 许可）\n方式一：下载预编译包（推荐）\n到 Releases 下载对应架构的包（ amd64 / arm64 / arm / 386 ）：\nVERSION=v0.3.5\ncurl -LO https://github.com/qist/janus/releases/download/$VERSION/janus_${VERSION}_linux_amd64.tar.gz\ntar xzf janus_${VERSION}_linux_amd64.tar.gz\nsudo install -m 0755 janus_linux_amd64 /usr/local/bin/janus\njanus --version\n\n方式二：源码编译\ngit clone https://github.com/qist/janus.git\ncd janus\nmake build                      # 自动注入版本号（ git tag / VERSION 文件）\nsudo install -m 0755 janus /usr/local/bin/janus\n\n依赖：Go 1.23+；上游需要已安装 OpenCode（未装时 Janus 会在日志里提示安装命令）。\n方式三：Docker / systemd\n# Docker （ distroless 非 root 静态镜像）\ndocker build -t janus https://github.com/qist/janus.git\n\n# systemd：仓库自带加固单元\n#   deploy/janus.service\n\n运行\n# 0. 先装 OpenCode （ Janus 的上游 agent ；未装时 Janus 会在日志里提示）\ncurl -fsSL https://opencode.ai/v2/install | bash\n\ncp janus.env.example janus.env\n$EDITOR janus.env               # 至少设 BRIDGE_API_KEY 与 BRIDGE_DIRECTORY\n./scripts/run.sh                # 启动 Janus\n\nOpenCode 不用你手动启动：Janus 启动时会自动发现已在跑的 opencode serve，没有就自己拉一个（随机端口 + 随机密码）。你只要把它装好即可 —— 所以也没有「填端口/密码」这一步。\n客户端把 Base URL 指到 http://127.0.0.1:2810/v1、API Key 填 BRIDGE_API_KEY 即可，零改动； Anthropic 客户端则把 ANTHROPIC_BASE_URL 指到 http://127.0.0.1:2810。\n已实现端点：/v1/models、/v1/chat/completions（流式+非流式）、/v1/completions、/v1/responses、/v1/messages（ Anthropic ）、/v1/usage、/v1/requests、/v1/settings、/ui、/metrics、/healthz。\n三种执行模式（执行边界很清楚）\n「工具在哪执行」由 BRIDGE_AGENT + BRIDGE_TOOL_CALLING 决定，按部署形态选一种：\n模式\n工具在哪执行\n适合\n\n\n\n\nnative\n服务端（ Janus 主机、会话目录）\n本机自用，链路最短\n\n\nremote-tools\n客户端（走内置 MCP 工具桥）\n集中部署、代码在本地\n\n\nnone\n无工具（纯推理）\nChat / Review / 规划\n\n\nremote-tools 里，MCP 只存在于 Janus ↔ agent 之间，对客户端始终是标准的 tool_calls / tool_use —— 客户端不用懂 MCP 。\n自用配置（可直接抄）\n这是我们自己在用的一份 janus.env（已脱敏，路径请改成你自己的）：\n# 监听与鉴权\nBRIDGE_ADDR=127.0.0.1:2810\nBRIDGE_API_KEY=change-me-to-a-random-secret\n\n# 会话默认工作目录（ native 模式下工具在此目录执行）\nBRIDGE_DIRECTORY=/path/to/your/project\n\n# 执行模式：remote-tools （工具在客户端执行）\nBRIDGE_AGENT=orchestrator\nBRIDGE_TOOL_CALLING=true\nBRIDGE_PERMISSION_REPLY=once\nBRIDGE_TOOL_CALL_WAIT=5m\n\n# 上游 OpenCode：自动发现；总是自己拉起（以便注入生成的 agent 配置）\nOPENCODE_URL=auto\nOPENCODE_REUSE_EXTERNAL=false\n\n# 面板 / 限流\nBRIDGE_USAGE_ENABLED=true\nBRIDGE_RATE_LIMIT=600\nBRIDGE_RATE_BURST=120\nBRIDGE_LOG_LEVEL=info\n\n切 native 模式：BRIDGE_AGENT=build + BRIDGE_TOOL_CALLING=false。\n切 none 模式：BRIDGE_AGENT=orchestrator + BRIDGE_TOOL_CALLING=false。\nOPENCODE_REUSE_EXTERNAL=false 让 Janus 总是自己拉起 OpenCode —— 这是「自动注入 agent 配置」生效的前提。\n一个叫 janus 的虚拟模型\n痛点很具体：很多 IDE 用自定义模型名时没法设置思考档位（ low/high/max ），换模型还得改配置文件。\n于是加了：\n一个**虚拟模型 janus**：映射到 /ui 面板里选定的默认模型；\n面板「模型」页每行「设为 janus」；「思考档位」列是点选按钮组（点一下即设、当前高亮）；\n客户端/IDE 里模型名固定填 janus，换模型/换档位在面板点一下，不用改 env 、不用改客户端。\n关键是切换时机：面板改完，下一条请求就原地切换（ Janus 调 POST /api/session/{id}/model），不重开会话、上下文保留——不需要等会话结束，也不用新开会话。\n解析优先级：面板选择（存 DB ） > BRIDGE_DEFAULT_MODEL > 上游默认。\ndefault / 留空 仍指向上游默认（旧语义不变）；真实 provider/id 仍原样透传。两个都保留，互不干扰。\n配置也不用手写了\n跑 remote-tools 需要一个「禁用所有内置工具、只用客户端工具」的 agent 。以前要手写 ~/.config/opencode/opencode.jsonc，问题是黑名单会随 OpenCode 版本改工具名而失效。\n现在 Janus 拉起 OpenCode 时，通过 OPENCODE_CONFIG_CONTENT 自动注入自己生成的 agent 配置，而且是白名单：\n{\n  \"agents\": {\n    \"orchestrator\": {\n      \"mode\": \"primary\",\n      \"permissions\": [\n        { \"action\": \"*\",       \"resource\": \"*\", \"effect\": \"deny\"  },  // 禁掉所有内置工具\n        { \"action\": \"execute\", \"resource\": \"*\", \"effect\": \"allow\" },  // Code Mode 必需\n        { \"action\": \"ob-*\",    \"resource\": \"*\", \"effect\": \"allow\" }   // 只放行工具桥的客户端工具\n      ]\n    }\n  }\n}\n\n不再手写、不怕版本改名、也不覆盖你自己的配置。\n可观测：不用开官方 console\n/v1/requests + /ui 提供逐条请求的缓存命中率、思考 token 、耗时、费用，支持搜索/排序/分组汇总。面板拆成了 用量 / 最近请求 / 模型 / 运行 几个标签页。\nToken 统计同时给出 OpenAI 的 prompt_tokens_details.cached_tokens 与 DeepSeek 风格的 prompt_cache_hit_tokens / prompt_cache_miss_tokens。\n结语\n如果你也在把各种 coding agent 往自己的系统里接，欢迎试试 Janus：它不替你造 agent ，只把 agent 管好。\n（本文对应版本：v0.3.5 。）",
+    "link": "https://www.v2ex.com/t/1246602#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:46:23.000Z"
+  },
+  {
+    "title": "AI 啃 DWG图纸：从二维到三维 - 我才是银古",
+    "summary": "【摘要】让大模型读懂 CAD 图纸，是\"AI + 工程数据\"里最硬的一块骨头之一。本文不谈具体业务，只讲一个纯技术命题：给定一套二维 DWG 图纸，让 AI 理解它、重建三维结构，并由参数驱动重新生成二维图。把这条链路上试过的四条路线、踩过的坑和最后沉淀下来的方法论写出来，供做同类问题的人参考。 一、问题抽 阅读全文",
+    "link": "https://www.cnblogs.com/znlgis/p/23207092",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T02:43:00.000Z"
+  },
+  {
+    "title": "[Claude] ai 最可怕的，不是取代你，而是让你无效成功",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1246601#reply10",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:40:41.000Z"
+  },
+  {
+    "title": "[问与答] 为什么晚上饿了更想吃口重的食物？",
+    "summary": "晚上饿了更想吃泡面，甚至螺蛳粉和火鸡面这类口重的东西，普通的饭感觉吃完也满足不了，相比之下白天饿了，心理上就可以接受普通一餐。是为什么呢，还是只有我这样？",
+    "link": "https://www.v2ex.com/t/1246600#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:38:44.000Z"
+  },
+  {
+    "title": "[生活] 推荐一款物美价廉宽楦鞋-特步巴斯克",
+    "summary": "小弟脚掌宽，前三个脚趾还几乎一样长，穿鞋从来都是被挤着，经常要买大一码才行。很多老哥推荐的亚瑟士和美津浓等对小弟来说又太贵。\n找了很久找到这一双，目前穿了一个月，上过山下过地，还挺透气。薄底轻便，鞋垫还带一点足弓支撑。当然石子路也硌脚，不过小弟就喜欢这种接地气的感觉，最重要的是不挤脚。\n皮鞋我穿 41 的，以前买鞋都得买 43 才勉强行。这一款为了保险起见也买的 43 ，前面甚至还有点空旷。大脚张开释放的感觉真好啊。\n缺点就是在湿的瓷砖上有点打滑，在公共卫生间发现的这个问题。不过淘宝 137 拿下，我慢点走就行了。",
+    "link": "https://www.v2ex.com/t/1246599#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:29:45.000Z"
+  },
+  {
+    "title": "[OpenAI] 感觉 OpenAI MCP Extensions 可玩性很高， Codex 是否正在走向超级 APP？",
+    "summary": "OpenAI 近期推出的 [Plugin Extensions]（ https://developers.openai.com/plugins/build/extensions ），\n可以让开发者能够将插件整合到 ChatGPT 侧边栏、创作界面以及文件查看器中。感觉 Codex 的可玩性就变高了，开发的插件可以利用 ChatGPT 原生 Agent 能力，复刻一些市面上各种集成 AI 的 APP ，或者开发一些属于自己工作流的插件，将 Codex 变成一个超级 APP 。\n例如直接把独立开发三剑客：记账、日记、TODO 又搬到 Codex 中哈哈哈哈。\n个人尝试\n我自己是做了个知识库看板插件，感觉还不错。坐等慢慢更新，期待更多原生能力被放出来。\n \n插件详情可以看我的博客： https://blog.1874.cool/personalos-dashboard-plugin",
+    "link": "https://www.v2ex.com/t/1246598#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:25:12.000Z"
+  },
+  {
+    "title": "[Android] 安卓极速 TXT 小说阅读器，不乱码支持 SMB",
+    "summary": "极速 TXT 小说阅读器，支持 TXT/HTML/PDF/EPUB/MOBI/FB2/Markdown 等电子书格式。支持 SMB 和 ZIP 压缩包\n功能：\nCJK 编码自动识别，不乱码。\n自动分段，前处理去掉换行和空格。\n按文件夹显示，支持进度保存、阅读历史、最近打开和快速访问。\n双击返回文件夹、双击切换前一本/后一本\n支持 SMB, 也可以保存 SMB 文件夹到本地\n支持手机、平板\n注：本地文件访问默认走 MediaStore ，需要在添加完文件夹后去文件管理里点一下相片图标切换到文件模式。默认不显示隐藏文件，需要在文件夹左上角菜单里开启。\n下载地址\nhttps://github.com/zmz125000/LocalViewer/releases\nScreenshots\nScreenshots",
+    "link": "https://www.v2ex.com/t/1246596#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:15:49.000Z"
+  },
+  {
+    "title": "[推广] 做了个 AI API 聚合服务， V2EX 前 20 位送 20 元额度",
+    "summary": "AIKey365 是一个面向开发者的 AI API 聚合服务，这次给 V2EX 单独放一批体验额度。\n兼容 OpenAI API 格式。平时在用 OpenAI SDK 、Cursor 、Claude Code 或其他兼容客户端的话，一般修改 Base URL 和 API Key 就可以接入。\n地址： https://aikey365.com\n这次给 V2EX 放 20 个名额：\n前 20 个符合条件的回复，每人送 20 元站内余额。\n站内余额按 ¥1 = 1 余额单位计，不是美元。\n注册 AIKey365 后，在评论区留下站内用户名，我会按回复顺序手动加余额。\n每个 V2EX 账号、每个 AIKey365 账号限领一次。\n不用关注、不用转发，也不用专门写测评，正常使用就可以。\n如果遇到断流、报错或者明显速度异常，可以告诉我模型名和大概时间，我会查一下。\n请不要在评论区发送 API Key 。",
+    "link": "https://www.v2ex.com/t/1246595#reply15",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:15:11.000Z"
+  },
+  {
+    "title": "把 AI Agent 养在自己电脑上：从本地部署到远程接管的一份完整思路 - codigger",
+    "summary": "【摘要】一、为什么越来越多人把 Agent 搬回自己电脑 这两年 AI Agent 的形态发生了实质变化：它不再只是\"问一句、答一句\"的聊天框，而是能自主规划步骤、连续调用工具、读写本地文件、执行终端命令的执行体。一个代码重构任务跑半小时、一批文档整理跑一晚上，已经是很日常的使用方式。 任务形态变了，部署位 阅读全文",
+    "link": "https://www.cnblogs.com/codigger/p/23206844",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T02:13:00.000Z"
+  },
+  {
+    "title": "[推广] 开箱一台 LuckVM 香港双向 CN2 GIA 小鸡：标配 70G NVMe / 10M 独享，附 YABS 跑分与三网回程跳段",
+    "summary": "需要为手头的一个海外 SaaS API 找个国内访问低延迟的中继节点，顺便挂个轻量私有 Git Runner 和探针。看了一圈主流海外商家的入门机，普遍存在两个问题，要么走普通国际 BGP 线路，晚高峰炸裂，要么 5-10 刀的便宜机器只给 10G-20G 磁盘，随便拉两个 Docker 镜像就吃紧。后来看到 LuckVM 的香港机房入门款标配 70GB NVMe ，双向 AS4809，月付 8.8 刀支持按月买，就开了一台小鸡跑了圈常规基准测试，把数据发上来给有选型需求的 V 友做个参考。   \n1. 实例规格与环境虚拟化架构：KVM   硬件配置：1 vCPU (Intel Xeon) / 1GB RAM / 70GB NVMe SSD   网络配额：10 Mbps 独享 / 无限流量配额   IP 分配：1 个独立原生 IPv4，支持 IPv6   开通系统：Debian 12 x86_64（内核 6.1，默认启用 BBR）\n\n2. 存储 I/O 压测 (FIO Benchmark)官方标称底层是企业级 NVMe 固态阵列（标称吞吐 >3000 MB/s）。实测不同块大小的连续与 4K 随机读写表现：   测试块大小读 IOPS (读取速度)写 IOPS (写入速度)4k (随机)42.5k IOPS (166.2 MB/s)39.1k IOPS (152.7 MB/s)64k18.6k IOPS (1.18 GB/s)14.8k IOPS (947.2 MB/s)512k4.2k IOPS (2.15 GB/s)3.9k IOPS (1.99 GB/s)1m (顺序)3.0k IOPS (3.07 GB/s)2.6k IOPS (2.66 GB/s)顺序读写基本跑到了 PCIe 3.0/4.0 NVMe 的正常区间，4K 随机小文件读写在 39k~42k IOPS 之间。在这个价位段给到 70GB 固态，装环境、跑 SQLite/Postgres 或持续拉取镜像没有明显的 I/O 拖累。   \n3. CPU 性能基准 (Geekbench 6)跑了单核与多核跑分作为参考：Single-Core Score：1024Multi-Core Score：1038 (1 vCPU 实例)标准 Xeon 云主机算力水平，应付日常的反向代理、Webhook 接收、静态建站或轻量脚本调度负载没有问题。\n\n4. 三网回程路由跳段 (NextTrace 实测)香港机器核心在于是否真的是全双向 CN2 GIA（AS4809）直连，实测主要出口的回程路由：电信回程（上海方向）：香港机房出口直入 59.43.*.*（中国电信 CN2 骨干网核心跳段），中途无第三方国际绕行；   沿海地区 Ping 实测在 10–18ms，中西部在 30–40ms 之间。   联通回程（广州/北京方向）：走联通 AS4837 直入内地，时延在 25–35ms 左右。移动回程（广州方向）：本地走 CMI 直连入粤，丢包极低，时延约 15–22ms。晚高峰时段稳定性测试（21:00 - 22:30）在晚高峰骨干网国际出口拥堵期进行 500 次 ICMP 连续测试：广东电信：平均 11.8ms，丢包率 0.0%   上海联通：平均 27.4ms，丢包率 0.2%北京移动：平均 39.5ms，丢包率 0.2%四川电信：平均 34.2ms，丢包率 0.0%晚高峰表现符合 AS4809 的预期，没有普通 163 骨干网常见的抖动和断崖式丢包。   \n\n5. 优缺点：真实双向 CN2 GIA：晚高峰延迟与稳定性在线，适合对时延敏感的场景。   磁盘容量充裕：同价位多数给 10G-20G，70G NVMe 空间宽裕，适合部署多容器。   不限流量：独享 10M 端口不计月流量，不用提心吊胆防爬虫刷账单。   需要注意的局限与不足：端口带宽仅 10Mbps：CN2 GIA 专线成本限制，10M 独享只适合做 API 中继、独立站、代码库或轻量业务，不适合拿来测速跑分或下载大文件。   退款政策有流量限制：首购 24 小时可退，但提单时出入站总流量必须小于 1GB（可能是商家防黑产刷 IP 的机制，毕竟 1GB 流量不小了，这个机制感觉没啥用），测试时注意别一次跑大体积测速，适合正规工程用途。测试商家：LuckVM ( luckvm.com )   有对特定省份运营商路由或探针数据感兴趣的，可以留城市和网络，我有空可以帮忙跑一下 Looking Glass 追踪。",
+    "link": "https://www.v2ex.com/t/1246594#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:12:52.000Z"
+  },
+  {
+    "title": "[程序员] DeepSeek V4.1 Flash 还有 Qwen3.8 Flash 总是不好好整理文件，是 Harness 的问题吗？",
+    "summary": "最近有些简单的任务分配给了 DeepSeek V4 Flash 还有 Qwen3.8 Flash, 前者用的是 DSH 后者是在 Codex 本地模式，发现有个共通的毛病就是在不特殊交代的情况下，它们总是会把一些脚本还有调研记录等中间产物直接放到项目的根目录，导致几轮过后一打开项目文件夹根目录下一堆乱七八糟的文件，看着就烦\n使用 Claude 和 GPT 就没出现过这种问题，是因为 Harness 的原因吗？还是本身模型的工作习惯就不好",
+    "link": "https://www.v2ex.com/t/1246591#reply3",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:02:00.000Z"
+  },
+  {
+    "title": "[程序员] codex 的电脑控制用的是什么技术？",
+    "summary": "在 macos 右上角菜单栏有个电脑的图标，图标右下角有个小人头像。\n在被控制的 app 左上角也有显示这个图标；\n可以在后台操作这个 app ，不阻塞用户使用电脑。",
+    "link": "https://www.v2ex.com/t/1246590#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T02:01:46.000Z"
+  },
+  {
+    "title": "[分享创造] [开源]基于 LAYA 本地开源决策模型的视觉应用水果采摘、杂草灭除、害虫监测、钢管质检、纺织物质检等领域",
+    "summary": "[开源]基于 LAYA 本地开源决策模型的视觉应用水果采摘、杂草灭除、害虫监测、钢管质检、纺织物质检等领域\n项目地址： https://github.com/uu889/laya-opencv",
+    "link": "https://www.v2ex.com/t/1246589#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:56:52.000Z"
+  },
+  {
+    "title": "[生活] 接下来一年的时间，我将从京东过渡到其它平台",
+    "summary": "接下来一年的时间，我将从京东过渡到其它平台\n极简描述\n京东无辜无法登录,必须同意京东金融人脸识别\n简单来说\n作为十几年的京东老用户,自认为消费习惯良好,而且安全意识非常到位,前天突然无法登录京东,必须要同意京东金融的协议进行人脸识别,才能登录,使用手机验证码不可以.\n考虑到这几年京东总是让我用金融,打白条,甚至有些退款都不能原路返回,只能进入钱包.\n作为有借贷洁癖的我,拒绝了这种方式,然后京东客服拒绝了我再使用京东账户,除非我同意京东金融的协议进行人脸识别.\n具体过程\n两天前我的京东账户突然无法登录,,强制要求人脸识别,本来打算国内避免不了,一张脸而已,但随后看到下面要同意京东金融的协议….京东金融,非常抵触,过去的几年京东总是有意无意的要给我放贷,但我从不借贷\n在当今社会,想要避免借贷,是很困难的,就像暴雨天走路不湿鞋一样困难.\n还有十几件在路上的快递无法看到,还有一件衣服尺码错了也不确定是不是买错了还是发错了.\n所以我要不要进行人脸识别.\n曾几何时我认为京东的全方位体验是最好的，用京东承担生活的全部开销\n以至于我十几年的时间里消费了至少 50 万\n我不明白,我这样的用户为什么一定要搞我的金融\n或者说,我这样的用户,才更要搞我的金融?\n打客服,告诉我为了我的安全,必须要人脸识别,但是我京东没有钱,付款都是第三方,即使京东被盗,也无法对我的财产无法造成损失,我能想到人脸识别的唯一用途就是借贷了.\n我只是想买东西而已\n950618 和 95118 打了很多次,没有意义\n网上查了一下,去年貌似有很多这样的情况.\n如果最终我妥协了\n也决定放弃京东了\n如果说京东唯一让我留恋的,应该就是送货上门的快递了\n或者说电子产品保真?这两年也开始收到二手了\n尝试改用淘宝\n无奈我加 20 运费也不让我指定快递。\n尝试 pdd,问了几个客服,居然很多默认是京东快递，今天买几样生活消耗品看看有没有区别\n生鲜改山姆盒马小象\n电子从官网买或者天猫\n对比了一下价格，过去几个月买的生活用品普遍京东的要贵一些，我这个买东西不对比价格的习惯真不好.\n思来想去无论如何跟客服反应,都是在同一个体系内折腾,只会徒增烦恼和浪费时间,只有两种方式可以解决问题\n1 找到能管理京东的,所以根据网友的经验打了 12345,进行京东总部投诉,目前还没有消息\n2 用脚投票\n最后祝还在使用京东的网友,不要遇到我这样的情况.",
+    "link": "https://www.v2ex.com/t/1246588#reply11",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:50:33.000Z"
+  },
+  {
+    "title": "[分享创造] code agent 内的双向翻译",
+    "summary": "起因是最近在做一个浏览器的翻译插件（感觉也要变成 todo list 的常见项目了 hh ），突然想到之前的想法：既然都推荐用英文和 agent 沟通（最近也有传言说用中文可能会增加 claude 的封号概率的）那为什么不做一个翻译插件呢\n于是 https://github.com/jhao0413/parrot-agent-extensions 来了，目前是只做了 claude 版本，这两天会把 pi 的也补上，效果图如下\n\n做的比较匆忙，后续会持续优化，欢迎大家反馈建议",
+    "link": "https://www.v2ex.com/t/1246586#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:44:11.000Z"
+  },
+  {
+    "title": "[推广] 做了一个 AI 图片转 3D 打印 STL 工具： EasyToSTL，求切片测试与反馈",
+    "summary": "各位 V 友大家好！\n最近上线了一个面向 3D 打印爱好者的在线工具：EasyToSTL（ https://easytostl.com ）。\n做这个工具是因为身边玩 3D 打印（特别是拓竹/创想机主）的朋友经常有这类需求：\n手头有一张 2D 线稿、自绘头像、宠物照片或表情包，想快速变成实体小摆件或手办，但平时不会用 Blender 或 CAD 建模；\n网上的很多通用 AI 3D 工具生成的模型非流形面乱飞，扔进切片机（ Bambu Studio / Cura 等）满屏警告，甚至根本没法切片。\n于是做了这个小站，希望能降低从“一张 2D 创意”到“进切片机打印”的门槛。\n🛠️ 核心功能\nAI 全立体 3D 建模\n图片转 3D：支持单张图片或多视角图（正/侧/背）生成完整的 3D 实体模型。\n文字转 3D：直接输入文字描述生成 3D 模型。\n针对 3D 打印场景优化了网格水密性（ Watertight ），尽可能减少切片机修补与破面报错。\n内置 3D 实时预览视口\n生成后支持在浏览器内 360° 漫游旋转、检查线框模式、底板网格与光照。\n实时查看三角面数、模型体积与物理尺寸预估，满意后再下载。\n直接导出切片格式\n支持导出 3D 打印最通用的 STL 格式，同时也支持全彩 GLB 与通用 OBJ。\n导出的模型经实测可直接导入 Bambu Studio、OrcaSlicer、PrusaSlicer 和 Ultimaker Cura 进行切片。\n💬 求测试与反馈\n目前网站刚上线，还在快速迭代中，非常想听听各位 3D 打印玩家的真实反馈：\n各种不同风格的图片（线稿、实拍、卡通）生成立体模型的还原度如何？\n导出的 STL 文件扔进大家的切片机时，切片过程是否顺畅、有无遇到破面报错？\n还有哪些 3D 打印场景的参数调节项是大家日常切片最常用到的？\n体验地址：https://easytostl.com\n欢迎各位 3D 打印玩家体验指正，有任何问题都欢迎随时吐槽！",
+    "link": "https://www.v2ex.com/t/1246585#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:36:32.000Z"
+  },
+  {
+    "title": "[Firefox] Quick Sites（Firefox 插件）",
+    "summary": "写这个插件是想起来以前用的 Vimperator 。它能快捷访问 10 个网站。现在用的是 surfingkeys ，基本实现了 Vimperator 的功能，但快捷访问不太好用。所以用 deepseek 编写了这个插件，能存最多 36 个网站，用快捷键直接访问已存的网站。\nhttps://addons.mozilla.org/en-US/firefox/addon/a9cf42903da749af8099/\n欢迎使用。",
+    "link": "https://www.v2ex.com/t/1246583#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:18:27.000Z"
+  },
+  {
+    "title": "[独立开发者 👨‍💻] 独立开发周记 190：朝九晚五也挺好",
+    "summary": "2026 ，0928 ～ 1004\n去年这周在西安爽玩爽吃，今年哪儿都没去，就在家鼓捣工作室。\n本周工作\n极简日记 iOS\n这周的更新都是围绕「每年今日」的功能进行修修补补。\n修复了每年今日小组件的一个 bug：只能展示近一两年内容，更早的日记无法加载。原因是按高度分配显示内容，空间不够就会截断更早的条目，改成每一年至少保留一条内容。\n在 App 内的每年今日里，加入了跳转到当天日记列表的按钮，更方便切换日期了。\n极简时钟 iOS\n这周大部分工作都在做 iPhone Duo 的适配工作，和 AI 反复拉扯。\n内屏和外屏，竖屏和横屏，十多个主题在这四种情况下反复修改和测试。花了三天好不容易解决了 Duo 的各种问题，在 iPhone 和 iPad 一运行发现又都乱了，淦！\n\n微信支付平台证书\n这周经其他开发者提醒，我的安卓 App 都无法调起微信支付了，我一看居然有一天半都没有任何收入！\n之前出现这种问题都是因为 SSL 到期没有及时更新证书，但这次不是这个原因。我想起来最近微信支付商家助手天天给我发提醒，有两个证书要到期了，一个是商户 API ，一个是微信支付平台证书。这两个证书的到期日都是同一天，都是 11 月底，我心想着还早着呢就没当回事，还奇怪为什么提前这么久给我发提醒，而且几乎是天天发。\n\n仔细看这些通知我才知道了问题根源在哪里，这次微信支付无法调起的问题不是商户 API 证书，罪魁祸首就是这个平台证书！这个平台证书每五年需要更新一次，这也是我第一次需要更新。离谱的是微信会在到期前 200 天开始自动灰度更新，这 200 天里新旧证书都可以使用，直到灰度更新进度达到了 100%，我的旧证书彻底不能用了，也就导致了 App 里无法调起微信支付……\n我在微信支付后台手动停止了灰度更新，问题立刻解决了，不需要对服务器做任何改动。但是问题只是暂时解决，证书到期后还是要更新服务器。这里微信给了两个解决方法，一个就是让服务器支持新证书，另一个是用商户公钥代替平台证书。第二个我看好像是微信更推荐的，因为这个公钥可以长期使用，没有到期一说，但是这个需要在服务器上重写所有关于支付的代码。\n是再苟五年还是一劳永逸？\n代码之外\n早九晚五\n每天都往工作室搬运东西，这周把 Mac mini 和一个 32 寸显示器搬了过去，上面说的代码工作都是在工作室里完成的。\n本来是想把办公环境放在南向大卧室里的，但是一楼采光太差，白天的光照条件反而不如北向小卧室，就把桌椅白板都挪到了小卧室。没想到之前纠结沙发和电视放在哪个屋子的问题一下子就解决了，我本来想办公桌和电视沙发都放在大卧室，但是这样有些挤，而且和在家差不多了，休闲和工作混在一起，现在办公区换到了小卧室，不临街，更安静，电视沙发游戏机都放到大卧室里的话，大卧室就是纯粹的休闲区了。\n这一周工作效率确实比以前高多了，一是不受环境打扰，二是不受娱乐吸引。还没买电视，游戏机自然也就没搬过去，估计休闲区建成了就又无心工作了。\n\n这周依然是不停的买买买，终于是轮到我体验新家的 100 个快递了。门挂小铜铃、入户地垫、窗帘、全季酒店同款香薰、HomePod mini 支架……每天从快递驿站收获满满，然后回到工作室拆快递，一点点把工作室丰富成自己喜欢的样子。\n\n想着每天背着笔记本电脑往返于家和工作室，买了个 14 元的电脑包，对你没看错，是 14 元，不是 14 寸，到手后质量感人，这包就跟纸糊的一样，不过背我的 MacBook 也是够用了。但是这个包也只用了两天，因为我发现即使把笔记本电脑背回家，整个晚上我也不会打开一下，索性就把包和笔记本都放在工作室了。\n不满意新买的电脑桌的桌面颜色，买了黑色木纹贴膜，本以为操作会很麻烦，没想到格外简单，完全没有翻车，比手机贴膜还容易。\n终于是入手了心心念念好多年的隐形书架，把家里值得摆放的书分三次搬了过去，上架的效果很满意。\n\n胶囊咖啡机、懒人沙发、三笼仓鼠、尤克里里、乐谱架、扫地机器人（没想到米家第一代还能用！）、洗地机也都搬到工作室了。\n每天早上一到工作室，先冲一杯咖啡，探望一下鼠子，拖一遍全屋，然后开始工作。中午出去吃顿饭，困的话就在懒人沙发眯一会，或者干脆回家睡个午觉顺便取点东西。到了下午五点就去接孩子放学，离开工作室后扫地机器人全功率扫地。回家后也完全不想代码的事情，饭后就一直刷手机或者玩 PS5 ，直到上床睡觉。\n朝九晚五也挺好。",
+    "link": "https://www.v2ex.com/t/1246582#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:14:06.000Z"
+  },
+  {
+    "title": "[问与答] 求海外推广开源项目的经验和建议",
+    "summary": "背景：\n我在维护一个免费的开源项目（用爱发电型），安卓开发工具相关。目前主要是定期写写中文文章推广下国内社区。\n我一开始做这个项目的时候就有一颗 global 的心，commit 注释啥的都是英文的。现在开始准备在有空闲精力的情况下，尝试混外网慢慢做些推广。这个找 gemini 也聊过几轮，大概给策略就是：\n做好 github 介绍页；\n论坛混 Reddit ，写文章用 Medium 发布，日常用 X ；\n投稿尝试 Android Weekly ，Hacker News ；\n目前我遇到的问题：\n写不出比较地道的英文内容，还在摸索学习。用 AI 翻译品不出 AI 味，目前只敢用来修语法问题。\n不知道 gemini 给的这套建议有没有什么没提到的坑。目前已踩的坑：在 reddit 发了个带链接的回复，账号被封了（ 17 年的号，有使用痕迹，还在申诉）\n有没有老哥有经验和建议可以分享一下，感谢",
+    "link": "https://www.v2ex.com/t/1246581#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:12:23.000Z"
+  },
+  {
+    "title": "[生活] 感觉好久没做过梦了",
+    "summary": "大概在初中及以前，老是会梦到同一个梦。\n主题就是发大水，细节现在也想不起来了。\n但是现在想想也奇怪，好像重复了好几次都是一样的场景。\n现在做梦的几率好小。最近能记住的基本都是关于我与老婆两人的一些无厘头。\n唉，记忆力也不行了。\n放假还去看了雄秃。",
+    "link": "https://www.v2ex.com/t/1246579#reply5",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:07:13.000Z"
+  },
+  {
+    "title": "[OpenAI] 新的 10X，比旧有的 20X 额度少一半都不止，实测只有 12000credits",
+    "summary": "https://newsletter.semianalysis.com/p/anthropic-subscriptions-offer-5x?utm_source=chatgpt.com\n从以前每周 50000 的 credits ，降到 34000 ，再以超过减半的数量低至 12000credits😡",
+    "link": "https://www.v2ex.com/t/1246577#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T01:02:06.000Z"
+  },
+  {
+    "title": "[Claude] 个人使用 Claude 防止封号的经验分享",
+    "summary": "我是之前 IP 在 US 和 JP 乱窜，开了几个月的 Claude ，被封号了。\n现在改成一下的配置，目前稳定使用了 3 个月\n梯子是自建的 aws lightsail 东京，5 刀每月，一个 t 的流量，协议是 vless 加上 reality ，原理是伪装成大站的 https 服务器，IP 被封几率小\n联通宽带，翻墙稳定\n所有的 ai 服务通过 IpRoyal 出站，通过 clash 的 dialer-proxy 指向 aws 节点，所有的 AI 强制指定这个 clash proxy name, 没法手动切换，防止手贱乱切。\nclash 的 AI 规则我是让 AI 直接参考这个仓库写的 ： https://github.com/szkane/ClashRuleSet\n除了 Claude code 对话，其他的 LLM 输出都是英语\n安卓 play 商店加上招商银行卡订阅，订阅之前，现在免费的网页用上一两天，看 setting - account 里面的登陆 session 是否符合预期（多个设备都是一个目标 region ）\n不要总是用完所有的额度，防止 A 社认为你在蒸馏他，A 社最敏感的是，国内的 AI 开发商蒸馏他，最近的 A 社的报告就写了很多这种案例\n使用 tun 模式翻墙，我是用的 stash ios 版，在 mac 上很稳\n其他的，可以参考别人的分享：\nhttps://zhuanlan.zhihu.com/p/2032879874097017916\nhttps://feifei.537393.xyz/posts/claude-pro-stable-subscription/\n希望帮到大家",
+    "link": "https://www.v2ex.com/t/1246574#reply20",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T00:42:00.000Z"
+  },
+  {
+    "title": "Photopea creator weighs in on Photosuite project",
+    "summary": "Comments",
+    "link": "https://github.com/eolix/photosuite/issues/77",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 06 Oct 2026 00:41:44 +0000"
+  },
+  {
+    "title": "[OpenAI] codex 现在这消耗也太快了吧",
+    "summary": "5x ，基本一次对话就消耗 20 ％周额度，也就改了几百行代码而已；\n当然我开的是 6 astra ultra",
+    "link": "https://www.v2ex.com/t/1246573#reply13",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-06T00:35:02.000Z"
+  },
+  {
+    "title": "万级车辆实时地图 + 双模拟器：车联网前端与测试工程实践（第 3 篇 · 前端与测试） - Sam Xiao",
+    "summary": "【摘要】1、实时监控 2、轨迹查询 3、告警管理 4、围栏设置 5、看板与报表 万级车辆实时地图 + 双模拟器：车联网前端与测试工程实践（第 3 篇 · 前端与测试） 前两篇讲了业务架构和后端链路。这篇讲数据到达前端之后的故事——也是整个系列里\"工程密度\"最高的一篇。 车联网的前端不是\"一个后台 + 一个小 阅读全文",
+    "link": "https://www.cnblogs.com/xcj26/p/23206402",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T00:25:00.000Z"
+  },
+  {
+    "title": "High Diesel Prices Bankrupted 16 Trucking Companies in Just 30 Days",
+    "summary": "Comments",
+    "link": "https://www.thedrive.com/news/high-diesel-prices-bankrupted-16-trucking-companies-in-just-30-days",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 06 Oct 2026 00:24:57 +0000"
+  },
+  {
+    "title": "CF813D Two Melodies 题解 - lvwangshu",
+    "summary": "【摘要】CF813D Two Melodies 题解 选两个非空、互不相交的子序列，各自满足\"相邻音符相差 \\(1\\) 或模 \\(7\\) 同余\"，求长度和的最大值。\\(n \\le 5000\\)，\\(a_i \\le 10^5\\)。 1. 朴素 DP：\\(f[i][x][y]\\) 扫描到第 \\(i\\) 个音符， 阅读全文",
+    "link": "https://www.cnblogs.com/lvwangshuOI/p/23206388",
+    "source": "博客园",
+    "category": "news",
+    "pubDate": "2026-10-06T00:21:00.000Z"
+  },
+  {
+    "title": "AI tutoring with Khanmigo in a two-year school experiment",
+    "summary": "Comments",
+    "link": "https://edworkingpapers.com/ai26-1551",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Tue, 06 Oct 2026 00:00:45 +0000"
+  },
+  {
+    "title": "[macOS] 升级 macOS 27 后，两个副屏无法从休眠状态唤醒，可能什么原因",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1246572#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-05T23:54:54.000Z"
+  },
+  {
+    "title": "Termexo v0.10.10 发布：19 个本地 MCP 工具，五种编程 Agent 自动接入",
+    "summary": "AI 生成概念图，非产品界面。 MIT 开源的 Windows AI 编程工作台 Termexo 发布 v0.10.10。新版把终端、任务和部分设置开放为 19 个本地 MCP 工具，并支持在 Termexo 新启动的 Claude Code、Codex、OpenCode、Grok Build 和 Antigravity 终端中自动添加连接。 工作台能力作为工具开放 Agent 可以查询工作区和终端，读取指...",
+    "link": "https://www.oschina.net/news/502845",
+    "source": "OSCHINA",
+    "category": "opensource",
+    "pubDate": "Tue, 06 Oct 2026 07:39:06 +0800"
+  },
+  {
+    "title": "Samon: Designing a Zen Garden Raking Puzzle",
+    "summary": "Comments",
+    "link": "https://gwern.net/doc/design/2026-10-03-gwern-samon.html",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 23:35:35 +0000"
+  },
+  {
+    "title": "[Claude] Claude 增加了简体中文",
+    "summary": "https://imgur.com/a/WojCk0m\n我怀疑又在钓鱼, 赶紧切回英文了",
+    "link": "https://www.v2ex.com/t/1246571#reply9",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-05T23:32:51.000Z"
+  },
+  {
+    "title": "Ephemeral Testing",
+    "summary": "Comments",
+    "link": "https://lemire.me/blog/2026/10/05/ephemeral-testing/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 23:06:36 +0000"
+  },
+  {
+    "title": "Example.com just launched the biggest redesign in decades",
     "summary": "Comments",
     "link": "https://www.debugbear.com/blog/example-dot-com-redesign-history",
     "source": "Hacker News",
@@ -16,12 +368,44 @@
     "pubDate": "Mon, 05 Oct 2026 22:55:11 +0000"
   },
   {
-    "title": "Food Atlas: Connections behind the dishes we love",
+    "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
     "summary": "Comments",
-    "link": "https://knowledgeartist.org/pages/food-atlas",
+    "link": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
     "source": "Hacker News",
     "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 22:51:57 +0000"
+    "pubDate": "Mon, 05 Oct 2026 22:46:45 +0000"
+  },
+  {
+    "title": "Global Solar Atlas: summary of solar power potential globally",
+    "summary": "Comments",
+    "link": "https://globalsolaratlas.info/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 22:37:58 +0000"
+  },
+  {
+    "title": "Learning Jazz Pianist Style with Cross-Attention Conditioning",
+    "summary": "Comments",
+    "link": "https://almostimplemented.github.io/jazz-pianist-style/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 22:30:52 +0000"
+  },
+  {
+    "title": "Friendship ended with Deno, now Node is my best friend",
+    "summary": "Comments",
+    "link": "https://dbushell.com/2026/10/03/deno-to-node/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 22:30:02 +0000"
+  },
+  {
+    "title": "Better Space-Time Trade-Offs for LSM-Tree Based Key-Value Stores [pdf]",
+    "summary": "Comments",
+    "link": "https://nivdayan.github.io/dostoevsky.pdf",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Mon, 05 Oct 2026 22:25:47 +0000"
   },
   {
     "title": "Self-hosted HTTP tunnels with SSH and nginx",
@@ -40,14 +424,6 @@
     "pubDate": "Mon, 05 Oct 2026 22:05:57 +0000"
   },
   {
-    "title": "Graphical UI",
-    "summary": "Comments",
-    "link": "https://www.graphicalui.com/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 21:51:09 +0000"
-  },
-  {
     "title": "Find the flattest route between any two points in SF",
     "summary": "Comments",
     "link": "https://flattensf.com/",
@@ -58,7 +434,7 @@
   {
     "title": "[分享发现] 没想到在 GitHub 下载软件还能中木马病毒…真的吃一堑长一智了",
     "summary": "说真的感觉已经好久没有去考虑过电脑病毒这件事了\n结果就在大前天 我当时想给路由器安装一个插件 需要用到 Xshell 我就顺手打了 Xshell 然后当时就特别着急 没有仔细看 然后就不小心选了一个关键词 \n最可怕的是 这个搜索结果还在谷歌的第三项 之后就跳到了 GitHub 的一个 Xshell 破解版的项目（叫 xshell-setup-free ） 最夸张的是 我还点进去着急下载 当我解压的时候 发现有密码 但我没想那么多 就直接 虽然当时 Windows 提示我是危险软件 但我还是硬着头皮安装了 安装的一瞬间 我发现我的 Windows 自带杀毒软件跳了一下 然后又马上恢复 我也没想那么多 \n结果就在第二天 我的 Instagram 我的各种账号邮箱全部被盗 同时还利用我的 Instagram 给我的所有朋友发了钓鱼网站的链接 就在刚刚 我的天呐 我的邮箱又收到了一堆乱七八糟的邮件 一瞬间 100 多个\n真的只能为这种坏人 pray 希望他遭到报应吧……以后也真的不能完全的忽略电脑病毒这件事 希望大家以我的例子为警戒～\n- （已经和 GitHub 官方举报过好几次了 还没有得到任何回信😢",
-    "link": "https://www.v2ex.com/t/1246570#reply8",
+    "link": "https://www.v2ex.com/t/1246570#reply24",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T21:39:38.000Z"
@@ -88,14 +464,6 @@
     "pubDate": "2026-10-05T20:31:11.000Z"
   },
   {
-    "title": "A third way of using Linux",
-    "summary": "Comments",
-    "link": "https://hisvirusness.com/third-is-the-way",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 20:17:07 +0000"
-  },
-  {
     "title": "First Steps into Memory Management in Python",
     "summary": "submitted by    /u/dfbaggins  \n [link]   [comments]",
     "link": "https://www.reddit.com/r/programming/comments/1wyiwl4/first_steps_into_memory_management_in_python/",
@@ -104,28 +472,12 @@
     "pubDate": "2026-10-05T20:10:36.000Z"
   },
   {
-    "title": "Incident with Actions",
-    "summary": "Comments",
-    "link": "https://www.githubstatus.com/incidents/3q1yb5m7ltvb",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 20:09:12 +0000"
-  },
-  {
     "title": "[搜索引擎优化] 继续分享我自己出海发的免费外链，这次又做了 11 个",
     "summary": "之前在 V 站分享过一些我自己发过的免费外链，最近又陆续做了一批，继续整理出来给大家参考。自己找这些网站，再一个个注册、填资料、发布，还是挺费时间的，所以把我已经发成的页面也一起放出来，大家可以直接看看最后做出来是什么样的。\n我自己做的是一个 AI 面试产品 Linkjob AI，一直在做 ai interview assistant 、ai interview helper 这些关键词的 SEO 。这次有几个是可以写文章的平台，另外一些是个人主页、产品介绍页，可以把自己的官网放进去。下面这 11 个都是我这次刚做完的，做出海的朋友有需要可以参考一下。\n（ 1 ） Tumblr\n一个博客和社交平台，可以发文章。我这次写了一篇介绍产品的内容，把自己的网站链接放在文章里。有现成产品介绍的朋友可以改一改再发，顺便把产品适合什么人、能解决什么问题写清楚。\n这是我发的：\nhttps://www.tumblr.com/aiinterviewhelper/829540732273557504/linkjob-ai-a-real-time-ai-interview-assistant-for\n（ 2 ） Strikingly\n一个建站平台，我这次用它建了一个简单的网站，然后在里面发了一篇 blog ，文章里带上自己的产品链接。最后拿到的是平台提供的子域名，大家可以看一下我的页面，不一定要一上来就把整个网站做得很复杂。\n这是我发的：\nhttps://dun-rabbit-12rlr9x.mystrikingly.com/blog/linkjob-ai-real-time-interview-assistance-with-relevant-context\n（ 3 ） Carrd\n这个适合做一个简单的产品介绍页，把产品名称、介绍和官网入口放上去就可以了。如果不想专门写一篇长文章，可以先做这种。我这次做的是一个介绍 AI 面试助手的单页。\n这是我做的：\nhttps://linkjob-interview.carrd.co/\n（ 4 ） Gravatar\n很多朋友应该见过这个头像服务，它也有公开的个人资料页，可以写自己的介绍，再加上网站链接。我这次把 Linkjob AI 的介绍和官网放了进去，这种比较适合顺手补上。\n这是我的页面：\nhttps://gravatar.com/linkjobai51482cf395\n（ 5 ） Bio.site\n一个个人主页类型的网站，可以放简介和链接按钮。我这次用产品名称做了一个页面，写上产品介绍，再加一个跳转官网的入口，页面比较简单。\n这是我做的：\nhttps://bio.site/linkjob\n（ 6 ） Portaly\n也是主页类型的，可以把自己的产品和相关链接整理在一个页面里。我这次先做了一个基础版本，把官网放上去了。有时候不用纠结页面是不是特别漂亮，先把内容填完整、发布出来，后面再慢慢调整。\n这是我做的：\nhttps://portaly.cc/aijobinterview\n（ 7 ） Paper.wf\n这个是发文章的，我这次写了一篇 AI 面试助手相关的内容。如果你手上已经有一些产品使用场景、经验分享，也可以整理成文章，把官网链接自然地放进去。\n这是我发的：\nhttps://paper.wf/interview/linkjob-ai-an-ai-interview-assistant-for-clearer-more-specific-answers\n（ 8 ） Solo.to\n一个链接集合页，可以放产品介绍和网站入口。这类页面我觉得介绍还是可以多写一点，把产品是干什么的、适合谁说清楚，不然只有一个名字和一个按钮，看起来有点空。\n这是我做的：\nhttps://solo.to/interviewhelper\n（ 9 ） AllMyLinks\n看名字就知道是把各种链接放到一起的。我这次也做了一个产品页面，把自己的官网加了进去。有官网、博客、社交账号的朋友，可以一起整理进去。\n这是我做的：\nhttps://allmylinks.com/linkjobai\n（ 10 ） Beacons\n也是这种个人介绍加链接的页面。我这次用 interviewcopilot 做了一个页面，放上产品介绍和官网入口，大家可以参考一下这种做法。\n这是我做的：\nhttps://beacons.ai/interviewcopilot\n（ 11 ） Lnk.bio\n再补一个链接主页类型的网站，做法和前面几个比较像，填好介绍，再添加自己的网站链接。这批最后一个就是它，做完顺便一起整理出来了。\n这是我做的：\nhttps://lnk.bio/aiinterviewhelper\n这次先分享这 11 个，都是我自己刚发成的页面，具体收录和效果后面再慢慢看。大家可以挑适合自己产品的做，有文章就试试博客类的，想先搭一个简单介绍页就看看主页类的。\n如果大家还有自己发成过、操作起来也不太麻烦的免费外链网站，也欢迎在评论区交流一下。我后面做了新的再继续分享，希望能帮大家省一点找资源和摸索的时间，祝大家的产品都越做越好。",
     "link": "https://www.v2ex.com/t/1246569#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T19:33:43.000Z"
-  },
-  {
-    "title": "The Future of Mathematics",
-    "summary": "Comments",
-    "link": "https://terrytao.wordpress.com/2026/10/05/the-future-of-mathematics/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 19:22:40 +0000"
   },
   {
     "title": "Beam: Reflection's 501B open-weight model",
@@ -138,7 +490,7 @@
   {
     "title": "[人工智能] 开源了个翻译模型 Index-Translate 🌍 150 种语言，免费 API 已开，欢迎体验",
     "summary": "大家好，我是 B 站 Index LLM 团队成员\n最近开源了 Index-Translate ，基于 Qwen3.5 Base 做了翻译训练。支持 150 种文本语言，有 2B 、9B 和 35B-A3B preview\n网页 demo 直接试：👉https://index-translate.bilibili.com\n懒得下权重的话，我们现在开了免费 API ，兼容 OpenAI 接口。 改一下现有客户端的 base URL 就能接，也写了一个零外部依赖的 Python 调用脚本：\n👉https://github.com/bilibili/Index-Translate/blob/main/inference/llm/call_api.py\n除了翻译质量，也专门训练了指令遵循。可以塞术语表、指定文风、要求保留内容和格式。比如翻小说时固定人名和境界名，或者直接要求“别解释，只输出译文”。\n顺便还做了几个分支：\n🎙️Echo：语音直接翻成字幕，或者带音色克隆的端到端语音翻译。\n⏱️Homura：给译文设音节预算，适合要卡时长的场景。\n📚Nailong：长文档翻译模型，减少分块造成的前后不一致。\nRepo： https://github.com/bilibili/Index-Translate\nhttps://huggingface.co/collections/IndexTeam/index-translate\n反馈直接回帖或者提 issue 都行，谢谢。",
-    "link": "https://www.v2ex.com/t/1246568#reply5",
+    "link": "https://www.v2ex.com/t/1246568#reply6",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T18:48:25.000Z"
@@ -150,14 +502,6 @@
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T18:47:31.000Z"
-  },
-  {
-    "title": "Norway Eyes Partial Ban of Smart Glasses",
-    "summary": "Comments",
-    "link": "https://www.barrons.com/news/norway-eyes-partial-ban-of-smart-glasses-e65dc239",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 18:15:20 +0000"
   },
   {
     "title": "[分享创造] 做了个 prlctl 风格的 VMware CLI",
@@ -186,7 +530,7 @@
   {
     "title": "[iPhone] 准备用 17e 接替 13，可行么？",
     "summary": "起因是 7 突然白苹果了，正常使用情况下放口袋里突然不断重启每次仅加载到白亮 logo 息屏重启。7 主要是放了海外卡，用于接收海外社交，海外支付软件，以及海外旅行时充当热点。直营店说是电池或主板坏，不能开机无法检测，甚至说太久的机器没必要浪费彼此的时间。品胜快修点说不是电池问题。\n手头有 17p 港版，但因为习惯了单手操作，感觉 17p 有些大且长，没怎么使用。\n考虑 17e ，可能是价格因素占主导，也没有一定要性能最优的想法，要不然就直接上 18 了。再加上 6.1 的屏和目前在用的 13 一样。\n17e 如果接替 13 ，性能上肯定没太多问题。唯一纠结的是继续买港版还是买国行。13 目前是澳门版，双卡移动+联通，平时会用海外 ai ，但尽管有 17p 也基本不用苹果自带 ai 。之前一直不买国行主要是不喜欢那个装一个软件就弹是否允许使用蜂窝或无线局域网网络的提示，还有那个烦人的关不掉的低电量提示音，这个提示音好像后来没有了但是打电话时如果低电量好像听筒还是会有提示音。",
-    "link": "https://www.v2ex.com/t/1246563#reply0",
+    "link": "https://www.v2ex.com/t/1246563#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T16:53:31.000Z"
@@ -218,7 +562,7 @@
   {
     "title": "[Claude] 目前有没有用了两年 Claude 没被封的？",
     "summary": "特别好奇，国内有没有人两年一直还在用 claude ，目前还稳稳地用着的，有吗？用的 max 还是 pro ？日常用的多吗？有没有保号经验分享下？",
-    "link": "https://www.v2ex.com/t/1246558#reply12",
+    "link": "https://www.v2ex.com/t/1246558#reply25",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T15:49:39.000Z"
@@ -242,23 +586,15 @@
   {
     "title": "[Claude] claude 今天被封号了呢我服了",
     "summary": "如题，昨天封的，昨天申请的，人在吃饭，然后回来看到 claude 于 20min 前自动退出了，难受啊，感觉 opus5.5 用于科研还挺好用的",
-    "link": "https://www.v2ex.com/t/1246556#reply2",
+    "link": "https://www.v2ex.com/t/1246556#reply3",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T15:35:01.000Z"
   },
   {
-    "title": "[推广] MUSE 额度互助",
-    "summary": "快来看看你的个人 AI 智能体 Muse 。在加入后的 48 小时内通过“设置”兑现我的邀请码，我们就能分别获得 10 亿个 Muse 词元。\n邀请码：RPZYQB\nhttps://muse.ai/join",
-    "link": "https://www.v2ex.com/t/1246555#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T15:22:48.000Z"
-  },
-  {
     "title": "[OpenAI] Codex 已经可以用 6 和 6.1，还是选择 5.6luna high 性价比最高是吗？",
     "summary": "试了 6luna max ，聊个天一会 5 小时 30%了……",
-    "link": "https://www.v2ex.com/t/1246554#reply1",
+    "link": "https://www.v2ex.com/t/1246554#reply2",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T15:16:49.000Z"
@@ -266,7 +602,7 @@
   {
     "title": "[分享发现] 女菩萨",
     "summary": "不必多言，懂得都懂\nhttps://nv-pu-sa.pages.dev/",
-    "link": "https://www.v2ex.com/t/1246553#reply2",
+    "link": "https://www.v2ex.com/t/1246553#reply10",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-05T15:09:53.000Z"
@@ -304,60 +640,12 @@
     "pubDate": "2026-10-05T14:54:10.000Z"
   },
   {
-    "title": "[程序员] codex 正在思考",
-    "summary": "现在是 10 月 5 号 22:37 ，codex 一直处在正在思考的状态，是不是出啥问题了？",
-    "link": "https://www.v2ex.com/t/1246548#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:37:47.000Z"
-  },
-  {
-    "title": "[分享创造] 把自己放进加油站跳舞视频里：我做了一个 AI Gas Station Dance 小工具",
-    "summary": "大家好，最近做了一个偏娱乐向的 AI 小工具，叫 AI Gas Station Dance ，现在已经上线，可以付费生成。\n它的玩法很直接：把照片里的自己放进加油站跳舞视频，体验一把“这段视频的主角居然是我”。\n这是一个围绕固定模板做的 AI Dance Video Generator 。不用写 Prompt ，也不用自己剪辑，上传照片、选择模式，生成完成后就能预览和下载 MP4 。\n目前有两种玩法：\nSolo Mode：上传一张自己的照片，一个人出演跳舞、自拍和下车三个镜头。\nTrio Mode：上传自己和两位朋友的照片，分别出演三个角色，做一段朋友之间的整活视频。\n做这个项目时，我想把 Image to Video AI 变成一个更具体、也更容易上手的玩法。打开网站先看模板，觉得有意思，就把自己放进去，不需要先研究模型和参数。\n生成的视频可以下载，用来发 TikTok 、Instagram Reels 、YouTube Shorts ，或者直接丢进朋友群里。采用一次性购买积分的方式，无需订阅。\n项目主要面向英文用户，定位是一个专门做 Gas Station Dance AI Video 的小工具。技术上用了 React 、TanStack Start 和 Cloudflare ，视频处理接入 Replicate 。\n欢迎大家来看看模板，也想听听你们的意见：这种围绕一个具体玩法做的 AI Video Generator ，什么样的视频场景会让你愿意掏钱试一次？\n地址：AI Gas Station Dance — AI Dance Video Generator\n欢迎拍砖，也欢迎交流 AI 视频工具和出海小产品的开发经验。",
-    "link": "https://www.v2ex.com/t/1246547#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:35:52.000Z"
-  },
-  {
-    "title": "[推广] ⚡️新品，黄金券最后 3 天与 275 折扣的游戏！",
-    "summary": "🎮 新一轮游戏优惠来了！\nChinaPlay 精选了一批热门游戏及 DLC 、豪华版、终极版等内容，价格最高可比 Steam 更优惠！\n一共提供 275 新折扣的游戏。满 10 块就可以参加黄金券活动，赢取 35 个激活码中的一个或几个。\n🏷️ 优惠码：V2PromoCP\n了解网站： https://cnplay.io/v205hjq\n这次特别为大家挑选了 7 款值得关注的游戏👇\n🪖 Helldivers 2 ｜地狱潜兵 2\n加入银河战争，与队友组成小队，对抗遍布星球的敌人。快节奏的合作射击、丰富的武器装备以及充满混乱的战场，让每一次任务都充满意外。\n💰 ChinaPlay：¥128.29\n💵 Steam：¥148.50\n🔥 省 ¥20.21 （约 −13.6%）\n🤖 ARC Raiders ｜穹顶突击队\n多人 PvPvE 第三人称撤离射击游戏。探索被机器敌人占据的未来世界，搜集资源、升级装备，并决定什么时候带着战利品撤离。\n💰 ChinaPlay：¥168.59\n💵 Steam：¥159.71\n⚠️ Steam 更便宜 ¥8.88 （约 5.6%）\n⚔️ Total War: WARHAMMER ｜全面战争：战锤\n经典的奇幻大型战略游戏，将宏大的回合制帝国经营与实时战场结合。\n本次还包含《全面战争：战锤》系列的多款作品及 DLC：\nTotal War: WARHAMMER\n💰 ChinaPlay：¥59.79 ｜ Steam：¥26.80\n⚠️ Steam 更便宜 ¥32.99\nTotal War: WARHAMMER II\n💰 ChinaPlay：¥59.79 ｜ Steam：¥67.00\n🔥 省 ¥7.21 （约 −10.8%）\nTotal War: WARHAMMER III\n💰 ChinaPlay：¥39.90 ｜ Steam：¥44.70\n🔥 省 ¥4.80 （约 −10.7%）\nOgre Kingdoms ｜食人魔王国\n💰 ¥25.88 ｜ Steam ¥29.00\n🔥 省 ¥3.12 （约 −10.8%）\nForge of the Chaos Dwarfs ｜混沌矮人的锻造\n💰 ¥46.05 ｜ Steam ¥51.60\n🔥 省 ¥5.55 （约 −10.8%）\nChampions of Chaos ｜混沌冠军勇士\n💰 ¥34.80 ｜ Steam ¥39.00\n🔥 省 ¥4.20 （约 −10.8%）\n🐉 Yakuza Kiwami 3 & Dark Ties ｜人中之龙 极 3 / 人中之龙 3 外传 Dark Ties\n一次体验两部《人中之龙》相关作品。经典剧情、激烈战斗以及充满日式街头气息的冒险等待玩家体验。\n💰 ChinaPlay：¥119.58\n💵 Steam：¥160.80\n🔥 省 ¥41.22 （约 −25.6%）\n⚔️ Echoes of Aincrad ｜艾恩葛朗特 回荡新声\n以《刀剑神域》世界为背景的全新冒险。进入艾恩葛朗特，与熟悉的角色一起展开新的战斗与故事。\n标准版\n💰 ChinaPlay：¥172.78 ｜ Steam：¥268.00\n🔥 省 ¥95.22 （约 −35.5%）\nDeluxe Edition ｜数字豪华版\n💰 ChinaPlay：¥255.02 ｜ Steam：¥368.00\n🔥 省 ¥112.98 （约 −30.7%）\nUltimate Edition ｜数字终极版\n💰 ChinaPlay：¥367.77 ｜ Steam：¥498.00\n🔥 省 ¥130.23 （约 −26.2%）\n🩸 WUCHANG: Fallen Feathers ｜明末：渊虚之羽\n以明末乱世为背景的魂系动作 RPG 。玩家将在充满诡异生物与神秘力量的世界中战斗，探索隐藏在乱世背后的秘密。\n标准版\n💰 ChinaPlay：¥155.12 ｜ Steam：¥173.60\n🔥 省 ¥18.48 （约 −10.6%）\nDeluxe Edition ｜豪华版\n💰 ChinaPlay：¥186.40 ｜ Steam：¥208.60\n🔥 省 ¥22.20 （约 −10.6%）\n🏝️ Len's Island ｜莱恩岛生存指南\n融合生存、建造、探索与动作战斗的开放世界冒险游戏。收集资源、建造自己的家园，同时探索岛屿深处的危险区域。\n💰 ChinaPlay：¥31.18\n💵 Steam：¥39.60\n🔥 省 ¥8.42 （约 −21.3%）\n🔥 热门游戏、豪华版、终极版及 DLC 都在 ChinaPlay ！\n快来看看本期优惠，选择你喜欢的游戏吧！",
-    "link": "https://www.v2ex.com/t/1246546#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:34:58.000Z"
-  },
-  {
-    "title": "[问与答] 2026 年了，海妖或者币安出金电汇港卡（za）安全吗？",
-    "summary": "- 香港银行会盘问资金来源吗，如何回答\n- 海妖有没有什么坑\n- za 风控概率大吗\n- 资金量 5000 刀上下\n不想 c2c 了，更不想内地卡去 c2c ，真的害怕...",
-    "link": "https://www.v2ex.com/t/1246545#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:31:57.000Z"
-  },
-  {
     "title": "Making a GTK application in Haskell, part 1",
     "summary": "Comments",
     "link": "https://floreal.tech/blog/2026/making-a-gtk-app-in-haskell-part-1/",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Mon, 05 Oct 2026 14:23:47 +0000"
-  },
-  {
-    "title": "[问与答] 为什么我用 Gemini 模型体感比其他模型好很多倍？",
-    "summary": "不是编程不是编程！\n就单纯对话聊天这种，我感觉理解能力更强，表达更自然清晰，用其他的模型总是怪怪的...\n还是我用了假的中转站...",
-    "link": "https://www.v2ex.com/t/1246544#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:22:45.000Z"
-  },
-  {
-    "title": "[加密货币] 做了一个 U 卡观察网站",
-    "summary": "https://ucard.observer/\n之前发帖只收录了 22 张 U 卡，过去这几天我把全网在营、测试以及历史暴雷清退的卡片全部扫了一遍，目前已扩充至 106+ 款加密卡/稳定币借记卡（附带每张卡的真实发行行、卡 BIN 、充值费率与官方 Terms 条款来源）。网站每天都有更新 U 卡信息，收录新的 U 卡。\n当前比较热门给力的 U 卡大概有 3 张：ether fi 、ethena pay 、plasma one ，在于它们的 3%返现给力、5%储蓄利率高、营销活动频繁(比如购买 iPhone17 返现力度非常大，远超 3%)，但是 KYC 门槛较高。U 卡刚开始发行时，使用中国护照+海外地址都能顺利下卡，现在几乎都不行了，除非等 U 卡偷偷开口子，ether fi 此前有过几次偷偷打开中国护照 KYC 的入口 然后又关闭了。有 ethena pay 验证通过但是不下卡的网友，给客服发邮件，然后等了大概一个月，给他下卡了，有点玄学，不过听过有 ethena 最近在集中精力解决涌现出来的中国护照验证和下卡问题，有意推广给中国用户，可能不久之后很容易获取 ethena 的 U 卡。",
-    "link": "https://www.v2ex.com/t/1246543#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T14:19:41.000Z"
   },
   {
     "title": "The lamps in my house",
@@ -384,52 +672,12 @@
     "pubDate": "Mon, 05 Oct 2026 14:00:00 GMT"
   },
   {
-    "title": "[生活] 求租，坐标深圳西丽附近",
-    "summary": "最近要换房子了，想找两房一厅，格局好点采光好点，因为有个娃客厅要大点，不用小区，预算只有 3500 左右，这个价格能找到吗？自己实在找不到靠谱的房源，很多中介推的都是串串房，甲醛房，或者采光环境都很差的，哎，都不知道怎么找了",
-    "link": "https://www.v2ex.com/t/1246542#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T13:58:06.000Z"
-  },
-  {
-    "title": "[站长] CCMAX 有源头账号池吗？一手来对接量大",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1246540#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T13:56:43.000Z"
-  },
-  {
-    "title": "[Apple] [送码] CodeMate：利用通勤等碎片时间在 iPhone 和 iPad 上阅读代码，送 100 份一个月 Pro",
-    "summary": "大家好，我是 CodeMate 的独立开发者。\n先说明一下，这是一篇产品介绍，也包含一次免费体验活动。我希望邀请一些真正有移动端代码阅读需求的 V2EX 用户实际用用看，并听到真实、直接的反馈。\n我开发 CodeMate 的出发点，是希望让开发者能够利用通勤、排队或者暂时离开电脑的碎片时间阅读代码。\n比如在地铁上，拿出电脑通常不太方便，但用手机看看项目里的某段实现、熟悉一份开源代码、搜索一个方法，或者继续阅读之前没有看完的文件，还是很适合的。现有工具要么更接近普通文本编辑器，要么试图把完整的桌面 IDE 搬到手机上，在小屏幕上使用起来比较沉重。\n因此，CodeMate 并不是要取代 Xcode 或桌面 IDE 。它是一款专门为 iPhone 和 iPad 设计的原生代码阅读器和轻量编辑器，重点是让代码在移动设备上更容易阅读、浏览和定位，同时保留必要的简单编辑能力。\n这次准备向前 100 名完成领取步骤的用户免费开通一个月 CodeMate Pro 。不抽奖、不要求购买，也不要求评分或好评。我更希望大家实际使用之后，告诉我哪些功能真正适合碎片时间使用、哪些操作不够方便，以及 CodeMate 是否真的改善了移动端阅读代码的体验。\n活动时间：即日起至 2026 年 10 月 12 日 23:59 ，或 100 个名额全部领完为止，以先发生者为准。\nCodeMate 是什么？\nCodeMate 主要面向开发者、学生，以及有移动端查看和编辑代码需求的用户。\n目前支持的主要功能：\n在 iPhone 和 iPad 上原生查看、编辑代码文件\n类似桌面应用的代码浏览体验，不自动折行\n支持 200 多种文件格式的语法高亮\n支持多标签页，同时打开多个文件\n支持 Minimap ，方便浏览较大的代码文件\n支持 Swift Symbol Navigation ，可以查看 Swift 文件中的符号并快速跳转\n支持 HTML 预览，并可加载关联的 CSS 和 JavaScript\n支持 Dropbox 和 iCloud 文件同步和读取\n支持多设备设置实时云同步\n支持自定义主题、字体、字号、间距和其他编辑器设置\n支持代码快照导出、分享和打印\n针对触屏操作进行了优化，不追求在手机上复刻一套复杂的桌面 IDE\nApp Store：\nhttps://apps.apple.com/app/id680609457\n官网：\nhttps://codemateapp.net\n如何领取一个月 CodeMate Pro ？\n从 App Store 下载 CodeMate 。\n打开 App ，使用 Apple 或 Google 登录。\n在本帖回复“已注册”，并告知注册邮箱\n如果使用“通过 Apple 登录”，可以选择“隐藏邮件地址”。Apple 生成的 Private Relay 邮箱也可以正常匹配账户，不需要提供真实邮箱。\n本次活动限前 100 名，顺序以我收到包含注册邮箱的站内信时间为准。仅在帖子中回复“已注册”不会暂时保留名额。\n账户需要由我逐个核对并人工开通，请允许最多 48 小时。开通后我会回复，收到确认后重新启动 CodeMate ，即可刷新 Pro 权限。\n活动说明\n本次活动限前 100 名符合条件的用户\n活动时间为即日起至 2026 年 10 月 12 日 23:59 ，或 100 个名额全部领完为止，以先发生者为准\n名额顺序以我收到包含完整账户信息的邮件时间为准\n仅在帖子下回复“已注册”不会保留名额\nCodeMate 要求 iOS 27.0 或 iPadOS 27.0 及以上版本\n活动期间完成全部领取步骤即可获得\n本活动不抽奖，也不进行随机筛选\n每人限领取一次\n每位符合条件的用户可免费获得一个月 CodeMate Pro\n一个月有效期从账户实际开通之日起计算\n无需购买，也无需绑定信用卡\n免费权限不会自动续费\n一个月结束后不会产生任何扣费\n到期后 Pro 权限将自动失效\n账户由人工核对并开通，处理时间最长可能需要 48 小时\n活动结束后不再接受新的申请\n我尤其希望听到大家对以下方面的意见：\nSwift Symbol 跳转是否好用\n大文件的打开和编辑性能\n多标签页和 Minimap 的使用体验\nHTML 预览是否符合实际需求\n还希望支持哪些语言、文件格式或开发功能\niPhone 和 iPad 上有哪些操作不够顺手\n有任何建议或问题，都可以在帖子里回复，也可以发邮件至：\nfeedback@codemateapp.net\nCodeMate 目前肯定还有不够成熟的地方，所以无论是功能建议、操作上的不便，还是直接指出某项设计不好用，我都很欢迎。\n评分和 App Store 评价完全自愿，不是领取条件。如果愿意留下反馈，哪怕只是告诉我“这个功能对我没用”或者“这里操作起来很别扭”，也会比单纯的好评更有帮助。\n感谢大家愿意花时间体验。希望 CodeMate 能让大家在通勤或其他碎片时间里，更方便地阅读和理解代码，而不必为了查看几段源码专门打开电脑。",
-    "link": "https://www.v2ex.com/t/1246539#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T13:46:37.000Z"
-  },
-  {
     "title": "Rust 1.99 更新了什么？一个新手视角的升级前后对比 - 付威的网络博客",
     "summary": "【摘要】照着教程写 Rust，最容易卡住的地方不是语法，是这一行： error[E0658]: use of unstable library feature `fs_set_times` 代码抄得没错，教程也没错，只是那个 API 在当时的稳定版里还没开放。新手很难判断这是自己写错了，还是版本不对，只能一 阅读全文",
     "link": "https://www.cnblogs.com/OceanHeaven/p/23204262",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-10-05T13:16:00.000Z"
-  },
-  {
-    "title": "[分享创造] 做了个自动记录足迹的 iPhone App：小鹿足迹，发布了 100+ 版本",
-    "summary": "小鹿足迹是我自己做的 iPhone App 。装上以后不用打卡，它会自己记下你每天去了哪、待了多久、路上怎么走的。\n起因是有段时间工作很忙，到了年底回想这一年，每天去了哪、时间花在哪，几乎想不起来。手动记坚持不下来，就做了个自动记的。\n过去 12 个月发了 100+ 个版本，应该很少比我更新更频繁的吧？\n这是因为我和朋友们真的非常喜欢这个 App ！\n下面是现在的几个主要功能。\n自动时间轴\n\n每天去过的地方、在每个地方待了多久、中间怎么过去的，自动排成一条时间轴，当天拍的照片也按时间插进去。\n停留的地方记的是具体地名，不是一串坐标。你确认过、改过名字的地方，下次再去会优先认成它；离你停留的位置太远的候选不用，宁可显示「 XX 附近」让你自己挑，也不乱填一个。国内的地点认得比较准，欢迎拿常去的地方试试。\n轨迹和足迹地图\n\n走过的路线画在地图上，去过的城市都记着。\n后台 GPS 的策略：移动时开着，记完整路线；在一个地方 85 米范围内待满 60 分钟，就自动关掉，同时在原地设一个 150 米的地理围栏，离开时系统把 App 叫醒，接着记。常驻 GPS 确实耗电，省电主要靠停着的时候不开它。不想暂停的，设置里可以切成「始终开启」。\n旅程\n\n出门几天，回来会自动整理成一趟旅程：去过的地方、每天的路线、照片和笔记按天排好，还能导出一张长图发给家人朋友。\n报告\n\n按周、按月、按年统计时间花在了哪类地方。把家和公司标出来以后，还能看到平均几点到公司、几点离开。\n睡眠和运动\n\n从「健康」 App 读睡眠和运动，一起放进时间轴。昨晚睡了多久，今天跑了多远，跑步的配速、心率区间、海拔都能看。\n数据和收费\n足迹记录存在手机本地，不上传足迹，备份走你自己的 iCloud 。\n活动 CSV 、逐点轨迹 CSV 、GPX 导出对所有人免费，数据随时能带走。\n免费下载，时间轴、地图、旅程都能免费用。报告、往日的睡眠运动详情、笔记、iCloud 备份要 Pro：年付 ¥98 。\n目前只有 iPhone 版。\n欢迎下载试试。用着有问题，或者有想要的功能，直接回帖，我都会回。\nApp Store： https://apps.apple.com/app/6481981341\n月度会员兑换链接： https://apps.apple.com/redeem?ctx=offercodes&id=6481981341&code=V2EX2026 截止 10 月底。",
-    "link": "https://www.v2ex.com/t/1246538#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T13:14:47.000Z"
-  },
-  {
-    "title": "[分享创造] [开源] ALTRun: 不到 1 MB 的 Windows 启动器, 操作方式参照 Alfred, 支持拼音首字母和 Everything",
-    "summary": "大家好, 分享一个我自己每天在用的小工具: ALTRun, 一个 Windows 上的启动器 (类似 macOS 的 Alfred, 以及 Windows 上的 Listary, Wox、PowerToys Run、Raycast, ALTRun(Pascal)、RunZ)。\n按 Alt+Space, 输入几个字母, 按 Enter: 打开程序、找文件、算数、搜网页、翻剪贴板历史, 都在一个窗口里完成。\n\n为什么又做一个启动器\n以前一直用老牌的 ALTRun (etworker 用 Pascal / Delphi 写的) 和 RunZ (AutoHotkey), 小巧顺手, 但我还想要拼音首字母、Everything 文件搜索、剪贴板历史、文字片段这些功能, 以及更现代的界面。也试过 Wox、PowerToys Run、Listary 等, 不是太大 (几十上百 MB, 常驻占内存), 就是中文支持一般, 或者和 Total Commander 配合不好。\n所以用 AutoHotkey v2 重新写了一个: 名字沿用 ALTRun, 向原作致敬, 也借鉴了 RunZ 的设计; 操作方式参照 Alfred; 之后一直按自己每天的使用习惯打磨。\n几个特点\n小: 下载不到 1 MB, 解压后约 2 MB, 不需要 .NET、Electron 或其他运行库\n便携: 免安装、不写注册表、不需要管理员权限, 数据都在 Data\\ 文件夹里, 放 U 盘或同步盘都行\n拼音首字母: wx → 微信, vsc → Visual Studio Code, 匹配的字会高亮\n越用越准: 记住每次输入选了哪个结果, 常用的自动排前面\n文件搜索: 装了 Everything 就毫秒级搜全盘, 没装用内置索引; 输入 D:\\Projects\\ 可以逐级浏览文件夹, Tab 补全\n多合一: 计算器 (单位、进制、日期、汇率)、网页搜索、浏览器书签、剪贴板历史 (文字 / 文件 / 图片, 可置顶)、文字片段 (;关键字 自动展开)、切换窗口、40 多个 Windows 设置页面、系统命令\n全键盘: → 打开操作面板 (管理员运行、打开所在位置、复制路径、属性...), F3 直接编辑, Ctrl+1~Ctrl+9 直接打开第 N 项\nTotal Commander 用户友好: 打开 / 保存对话框里 Ctrl+G 跳到 TC 当前目录; Insert 标记多个文件后一起操作; 文件管理器可以设成 TC\n个性化: 简体中文 / 繁體中文 / English / 日本語界面, 20 套内置主题, 可跟随系统深浅色\n隐私: 不收集任何数据, 只联网检查更新 (开启货币换算后每天下载一次汇率)\n操作面板\n剪贴板历史\n\n\n\n\n\n\n\n\n下载和安装\nGitHub: https://github.com/zhugecaomao/ALTRun (GPL-3.0, 开源免费)\n官网: https://zhugecaomao.github.io/ALTRun/\n直接下载 最新版本, 解压后运行 ALTRun.exe\n或者用 Scoop: scoop bucket add altrun https://github.com/zhugecaomao/ALTRun 然后 scoop install altrun\n装好后按 Alt+Space, 输入 ? 可以看到全部用法。有新版本时搜索窗口里会提示, 按 Enter 就能更新。\n欢迎试用和提意见, 有 bug 或想要的功能可以在这里回复, 也可以去 GitHub 提 issue。觉得好用的话, 给个 Star 就是最大的支持 🙏",
-    "link": "https://www.v2ex.com/t/1246537#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T12:44:36.000Z"
   },
   {
     "title": "Another Step Towards Elm 1.0",
@@ -440,68 +688,12 @@
     "pubDate": "2026-10-05T12:40:32.000Z"
   },
   {
-    "title": "[推广] 做中转站运营，想问大家一个问题：除了价格，最希望我们改什么？",
-    "summary": "平时聊中转站，价格和模型是绕不开的。但跟大家沟通的时候，也想多了解一些具体的使用细节。\n比如请求失败了但只看到一串报错，也不知道该重试还是换模型；查消耗时，想知道这一次到底花在哪里；遇到问题，来回解释半天还没说清楚。\n这些地方单独看好像不大，但是碰多了也挺影响心情。\n所以想问，问大家用中转站的时候，有没有哪个地方让你觉得：这东西就不能改一下吗？\n不一定是我们站，其他地方遇到的也可以聊。我先把需求记下来，能不能做、怎么做，再跟技术确认，不先画饼。\n我们站也放这儿：TrueSOTA",
-    "link": "https://www.v2ex.com/t/1246535#reply3",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T12:22:45.000Z"
-  },
-  {
-    "title": "[分享创造] edgeTTS 适用于 STranslate 的语音合成插件",
-    "summary": "前文： /t/1244818 \n现在，你可以在 [STranslate]( https://github.com/STranslate/STranslate) 里面使用自托管的 [edgeTTS]( https://github.com/DejavuMoe/edgeTTS) 语音合成 API\nhttps://github.com/DejavuMoe/STranslate.Plugin.Tts.edgeTTS\nhttps://imgur.com/a/z4QRo6E",
-    "link": "https://www.v2ex.com/t/1246534#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T12:11:29.000Z"
-  },
-  {
     "title": "进程和线程以及go语言中的协程 - 何人陪我共长生",
     "summary": "【摘要】进程 进程(Process)就是程序在操作系统中的一次执行的过程，是系统进行资源分配和调度的基本单位。 进程是一个动态概念，是程序在执行过程中分配和管理资源的基本单位。 每一个进程都有一个自己的地址空间。一个进程至少有五种基本状态。 它们是:初始状态，执行状态，等待状态，就绪状态，终止状态。 通俗的 阅读全文",
     "link": "https://www.cnblogs.com/ishoulgodo/p/23203446",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-10-05T11:52:00.000Z"
-  },
-  {
-    "title": "[分享创造] [送码] 给 Navidrome 写的安卓播放器 Mu3ic：现代 UI、智能歌单、混音、断网也能听，基础版免费",
-    "summary": "我的歌放在家里服务器上的 Navidrome 里，五千多首，标签都是自己整理的，上个月还让 Agent 批量标准化一遍。电脑上听没问题，手机上一直没找到用着顺手的客户端，于是便有了Mu3ic。\n主页： https://mu3ic.xyz\n直接下载 APK： https://dl.robb3n.site/mu3ic/Mu3ic-stable.apk\nGitHub 镜像： https://github.com/robb3n/mu3ic-releases/releases/latest\n\n先说明一下：Mu3ic 是播放器，连的是你自己搭的服务器，不提供任何音乐。Navidrome 之外，兼容 Subsonic / OpenSubsonic 的服务端也能连。原生 Kotlin + Jetpack Compose ，安卓 7.0 以上，安装包 8 MB 左右。\n为什么自己写\n安卓上的 Subsonic 客户端其实不少，我前后装过好几个。\n音流功能比较全，但界面不够现代，用起来不顺手。界面现代的是 Symfonium ，功能也全，可它同时要管本地文件、网盘、Plex 、Jellyfin ，对 Navidrome 的适配反而一般，缓存机制也不好用；设置项多到要专门花时间调，买它还得走 Google Play 。开源的那几个，要么界面停在好多年前，要么能做的事太少。\n我要的其实就几样：界面好看、好用，天天要用的东西，光这一条就筛掉了大半播放器；打开要快；只管连服务器听歌，别的不管。所以 Mu3ic 从一开始就定成只做流播，不扫描手机里的本地文件。手机上存的缓存和下载，都只是为了断网的时候还能接着听。\n写到现在，我觉得它和别的客户端最不一样的有三点：\n界面：整套界面是自己设计的，不是 Material 默认那一套，滑动和转场都跟手，下面的截图都是真机上的样子\n智能歌单：在手机上就能建、能改，用的是一个“看得懂”的按钮式规则编辑器，不用去服务器上写 .nsp 文件\n混音：按你的播放记录、收藏和曲库标签自动组歌，每次点都重新采样\n下面按我写它时想解决的事一件件说。\n曲库大了，翻起来要等\n五千多首歌，每翻一页都要等服务器返回，滑快了就是一片空白。\nMu3ic 在手机上存一份曲库索引，整点和服务器同步一次。按单曲、专辑、歌手翻都是读本地，滑多快都不用等。搜索也是这三个维度一起出。\n\n打开 App 先看到的是首页，三排卡片：\n最近播放：记的是你从哪开始播的，歌单、专辑、混音、最爱都算\n最近添加：单曲和专辑，同一天入库的同一张专辑会并成一张卡\n最近喜爱：单曲、专辑、歌手\n再往下是听歌统计：今天播了多少、连续听了几天、这周的曲线，按住曲线能看某一天和上周同一天的对比。\n\n\n外语歌，想知道这句在唱什么\n歌词逐行滚动，外语歌下面直接跟着中文翻译（服务器上的歌词带翻译就能显示）。\n拖进度条的时候，手指停的那一句会浮出来：第几句、原文、译文。想回到某一句，看准了再松手就行，不用来回试。歌词这些都是基础版就有的。\n\n\n地铁里、电梯里，网一断就停\n听过的歌边播边存，还会提前缓存下一首。连不上服务器的时候，接着播缓存里的；换到一首没缓存的，等 10 秒还连不上就跳到下一首有缓存的。\n打开离线模式之后，App 一个网络请求都不发。没缓存的歌会变灰，能播哪些一眼就知道。\n\n\n专辑和歌单页，想好看一点\n专辑、歌手、歌单页都把封面做成页头，名字和按钮收在一座浮岛里。歌单里如果整张专辑都在，会并成一张专辑卡，不用一首首往下翻。\n\n播放页，想要安静一点，或者信息多一点\n播放页分极简和详细两档，每档两款皮肤，一共四款：\n极简：滑封面（左右拖封面切歌）、衬底（封面铺满上半屏）\n详细：标准（操作台，均衡器、倍速、定时、输出都在手边）、数据（大号时间加格式、码率、播放次数）\n\n衬底和数据两款的进度条画的是这首歌的真实波形，副歌在哪一眼就看到。每首分析一次就存下来，下载过、缓存过的歌直接用本地音频算，不多费流量。这两款皮肤和波形属于 Pro ；滑封面和标准是基础版的，进度条是一根细线。\n\n智能歌单，不想去服务器上写文件\nNavidrome 本来就支持智能歌单，但要在曲库目录里放一个写满 JSON 规则的 .nsp 文件。Mu3ic 里可以直接新建：选一个模板（年代 × 语言、歌手代表作、流派、最近 N 天、高分，或者照着一个现有的歌单改），再加减条件，「满足全部」还是「满足任一」点一下就切。编辑的时候底部实时显示预计有多少首，这个数用的是手机上的曲库索引，不用等服务器。\n\n自己建的智能歌单，以后可以在「⋯」里接着改规则。来自 .nsp 文件的那些照样能听，只是规则改不了（改了也会被下次扫描覆盖）。\n\n浏览和播放智能歌单是基础版就有的，规则编辑器属于 Pro 。\n混音，每次听都不太一样\n混音是 App 自己按打分采样出来的播放列表，点一次重新抽一次：\n为你：常听热曲、冷门佳作、最近混音、高分混音\n最爱：最爱混音、最爱专辑混音、最爱歌手混音\n按标签：单个歌手、流派、语言、年代（ 80s 、90s……）各自一个\n长按任意一首歌，可以「以这首开混音」，找同歌手、同流派、同语言同年代的歌接着放\n\n\n混音很吃曲库标签，标签整理得越好越好用，具体要哪些标签写在后面的「注意事项」里。混音属于 Pro 。\n免费和 Pro\n基础版是完整的播放器：不限时，没有广告，不用注册。上面说的曲库、搜索、首页、歌词、缓存和离线模式、详情页、两款免费皮肤，都是基础版就有的。另外还有歌单、收藏、评分同步回服务器，听歌记录回传，播放键长按停止，应用内更新（下载后先校验签名再装）。\nPro 解锁这些：\n下载库：专辑、歌单、歌手、单曲整份下载，最爱自动下载，离线时封面和歌词也在\n混音、智能歌单规则编辑器\n波形进度条和衬底、数据两款播放页皮肤，均衡器\n三种桌面小组件（播放条、播放来源、听歌统计），歌单和混音的桌面快捷方式\n多服务器主备自动切换、切换应用图标\n\nApp 里可以直接买，跳到手机浏览器用支付宝付。首发一个月推广价 ¥18 （原价 ¥38 ），到 11 月 5 日。一次买断，一码一机，每年可以自己换绑两次设备。\n注意事项\nNavidrome 版本：大部分功能走的是 Subsonic 接口，老版本也能用。下面几项用到了 Navidrome 自己的接口，要 0.64.0 或以上：\n新建、编辑智能歌单\n首页的听歌统计（读的是服务器上的播放记录，所以同一个账号在别的设备上听的也算）\n语言混音（语言只有 Navidrome 自己的接口里有）\n版本不够时这几项用不了（建智能歌单会提示服务器不支持，语言那一节混音不出），别的照常用。\n混音要哪些标签：\n流派：曲目的 GENRE ，多个流派也认\n语言：LANGUAGE ，用 ISO 639-3 的三字母码（ eng 、cmn 、jpn 、kor 、yue……），这个是 Navidrome 内置识别的标签\n年代：曲目的年份（ DATE / YEAR ）\n歌手：单个歌手混音只给「收藏了、而且曲库里不少于 50 首」的歌手出\n流派和语言不足 20 首的不单独出卡。因为太依赖标签，底栏的「混音」 tab 默认是关的，在设置 → 底栏里打开；首页的四张混音卡不受这个开关影响。\n领码\n先在 1 楼放 10 个 Pro 码，先到先得；用完了会在楼里再放一批。一码一机，激活后就绑在这台手机上了，所以一人拿一个就好。用掉了麻烦在评论里回一下用掉的码，后面的人就不用白试了。\n激活：设置 → 关于 → Pro → 输入激活码。\n隐私\n激活时只发激活码，和一个加盐哈希过的设备标识（由 Android ID 算出来，换不回原值）\n购买时，建单只发项目名，查单只发订单号；付款在支付宝完成，我拿不到付款人的任何信息\n检查更新不带任何标识\n除此之外什么都不收集：没有统计，没有广告，没有崩溃上报。曲库和播放记录只在你自己的服务器和手机上\n最后\n\n有问题、有想要的功能，直接在这里回我就行。如果您喜欢，可以 APP 内购买 Pro 会员解锁完整体验，首月仅需3818 买断，感谢支持。",
-    "link": "https://www.v2ex.com/t/1246531#reply15",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T11:49:20.000Z"
-  },
-  {
-    "title": "[分享创造] 做了个查 AI 用量的 App",
-    "summary": "做了个 App 叫 usAge：连上账号，用了多少、什么时候重置、还剩多少钱，一屏看清；放个小组件在桌面，抬头就能看到。\n\n支持哪些服务\nClaude 、Codex 、Cursor 、智谱 GLM / Z.ai 、Kimi 、MiniMax 、Xiaomi MiMo 、Qoder 、OpenRouter 、DeepSeek （鸿蒙版的 Qoder 在下个版本）。\n订阅制看已用比例和重置倒计时，按量付费看余额和花销\n网页登录或者填 API Key 都能连\n没有你在用的？ App 里可以申请接入，直接回帖也行\n主要功能\n一屏看全部额度：5 小时窗口、每周额度、Token 消耗、账号信息，点开就有\n五种小组件：基础、数码管、贡献图、LED 、卡包，小中大三种尺寸，一个最多放 4 个账号。小组件上能直接切换额度、刷新，Codex 有重置卡时也能在小组件上直接用掉\n分享卡片：Token 战绩、额度状态、AI 花销三种，可以拿来晒\n多设备同步：Apple 设备走 iCloud ，华为设备走云空间，手机上连一次，其他设备自动出现\n\n\nMac 版除了主窗口还有菜单栏，会读本机日志，显示今天 Codex CLI 和 Claude Code 用了多少 Token 、大概花了多少钱； Siri 、快捷指令、聚焦搜索里也能直接查额度和刷新。\n\n鸿蒙版支持手机、平板和电脑，大屏是侧边栏两栏布局。Apple Watch 上抬腕也能看。\n\n\n凭证安全\n不注册也能用\nCookie 、API Key 、OAuth 令牌只存在本机系统钥匙串里\n查用量的请求由你的设备直接发给各服务商，不经过我的服务器\n同步走你自己的 iCloud / 华为云空间，凭证字段加密存储，可以随时关\n服务器只存 usAge 账号和购买记录，用来在别的设备上恢复 Pro\n价格\n免费版：连接 1 个服务，所有小组件样式和分享卡片都能用\nPro：¥15 一次买断，不限连接数量，没有订阅、没有广告\n登录 usAge 账号后，Pro 在 Apple 、鸿蒙、安卓之间通用\n鸿蒙首发特惠 ¥6 ，到 10 月 30 日\n不想先连账号的话，设置里打开「演示数据」就能把所有界面看一遍。\n下载\nMac：已上架 Mac App Store → https://apps.apple.com/cn/app/id6812881047\niPhone / iPad / Apple Watch：1.1 正在等待审核，过审后同一个链接就能下。（ 1.0 审了 12 天还没结果，索性撤回，直接拿 1.1 首发）\n鸿蒙（手机 / 平板 / 电脑）：今天刚上架华为应用市场 → https://appgallery.huawei.com/app/detail?id=ltd.zhe.usage\n安卓：官网直装版 → https://usage.o-c.do/zh-Hans/android ，Google Play 版也在审核中\n官网： https://usage.o-c.do\n系统要求：iOS / iPadOS 18.6+、macOS 15.6+、watchOS 10+、HarmonyOS 6.1+、Android 12+",
-    "link": "https://www.v2ex.com/t/1246529#reply7",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T11:10:46.000Z"
-  },
-  {
-    "title": "[推广] [开源]Laya+OpenCV 用于 水果采摘、杂草灭除、害虫监测、钢管质检、纺织物质检等领域",
-    "summary": "laya-opencv\nlaya-opencv 开源项目地址 \n判定模型的本地工作台和一键安装包，支持 Windows 和 Linux ，界面有中文和英文两个版本。2.0 起加入视觉检测：用 OpenCV 看图和测量，用判定模型下结论，可以用在农业和质检场景。\nLaya 和 TypeSafe 的 Jev 都是判定模型：给它一段素材（ state ）和几道题，它返回每道题的概率分布，而不是生成文本。这个项目把本地 Laya 的安装、启动和一个网页工作台打包在一起，同一份请求可以发给本地模型，也可以发给远程的 Jev 接口。\n\n判定模型只读文本，看不了图。视觉检测的做法是把两者接成一条流水线：\n图像 → OpenCV 分割、识别、测量 → 数值层（硬规则，写成文字）→ 判定模型 → 规则与模型交叉核对 → 结论\n\n\n上图是「只按规则裁决」模式下的钢管质检，图片是程序合成的示例图。\n功能\n一键安装：自动建虚拟环境，按显卡情况安装 PyTorch 和 laya[serve]，以及视觉组件（ OpenCV ，可选）\n视觉检测：上传图片、摄像头拍照或用示例图，按检测方案量出面积、数量、长度、占比，再逐题给出结论\n五个内置检测方案：水果采摘、杂草灭除、害虫监测、钢管质检、纺织物质检；方案是 JSON 文件，可以在页面上改\n数值层：数字相关的结论由硬规则决定，模型的答案用来交叉核对；冲突、临界、低置信度时提示人工复核\n模型训练：在页面上按类别上传样本，训练出给区域分类的识别模型（ OpenCV 的 cv2.ml，CPU 上几秒到几十秒）\n数字自检：自动生成阈值两侧的边界用例，实测判定模型对数字的判断力\n自动更新：每次启动检查 Laya 有没有新版本，有就自动升级，升级后起不来会自动回退\n网页工作台：素材支持文本、JSON 对象、消息列表；题目支持是非、单选、打分\n多种接口：自动、本地 Laya 、TypeSafe 官方、aiask.me 网络加速，以及任何提供 /v1/systemone 的第三方接口\n密钥在页面上添加、修改、删除，只保存在本机\n远程接口失败时自动切换，批量请求自动拆成逐条调用\n中文、英文两种界面，页面右上角随时切换\n8 个内置示例（中英文各一套），往 examples/ 里放 JSON 文件即可增加\n结果、原始响应、请求 JSON 、代码片段（ curl / Python / JavaScript ）、历史记录、调试面板\n启动器只用 Python 标准库；视觉组件只依赖 OpenCV 和 numpy ，不装也不影响文本判定\n安装和启动\n从 Releases 页面下载最新的安装包。\nWindows\n解压 laya-opencv-*.zip 到一个固定位置，例如 D:\\laya-opencv\n双击 install.bat，等它跑完\n双击 start.bat，浏览器自动打开 http://127.0.0.1:8090\nLinux\ntar -xzf laya-opencv-*.tar.gz\ncd laya-opencv\nbash install.sh\nbash start.sh\n\n需要 Python 3.10 或更高版本。Debian / Ubuntu 先执行 sudo apt install python3 python3-venv。\n没有桌面的服务器，在自己的电脑上开一个 SSH 隧道，再用本机浏览器打开 http://127.0.0.1:8090：\nssh -L 8090:127.0.0.1:8090 用户名 @服务器地址\n\n首次启动要下载本地模型（ multilingual 约 650 MB ）。页面左上方显示「本地 Laya 已就绪」后就可以运行。关闭启动窗口或按 Ctrl+C 即停止全部服务。\n只用远程接口\n不想在这台机器上装本地模型时，先把 config.example.json 复制为 config.json，把 install_local_laya 和 start_local_laya 改成 false，再运行安装脚本。这样会跳过 PyTorch 和 Laya ，只装视觉组件（约 80 MB ）。连视觉检测也不需要的话，把 install_vision 也改成 false，几秒钟装完。\n视觉检测\n页面顶部有三个页签：「文本判定」是原来的工作台，「视觉检测」和「模型训练」是新增的。\n用法\n打开「视觉检测」，选一个检测方案\n选择图片、用摄像头拍一张，或者点「示例图」先试一遍\n点「检测」。右边依次是：结论、测量与区域、发给模型的素材与题目、原始响应、数字自检\n没有判定模型（没装本地 Laya 、也没有远程密钥）时也能用：勾选「只按规则裁决」，或者直接检测，绑定了规则的题目照样有结论。\n内置检测方案\n方案\n量什么\n规则判什么\n\n\n\n\n水果采摘\n成熟色占比、病斑占比、果径\n是否采摘、果实等级\n\n\n杂草灭除\n行间杂草的覆盖率、株数、密度\n是否除草、处理方式\n\n\n害虫监测\n粘虫板上的虫口总数、大型虫体数量、密度\n是否防治、防治等级\n\n\n钢管质检\n划痕长度、凹坑数量、锈蚀占比\n合格 / 让步接收 / 不合格\n\n\n纺织物质检\n缺陷数量、最长缺陷、破洞面积\n合格 / 降等 / 不合格\n\n\n每个方案另有一两道没有绑定规则的题目（例如「这个果实最合适的去向」「应该怎么处理」），由判定模型综合素材来回答。\n内置方案的阈值是演示用的，不是任何行业标准；分割参数是按合成示例图调的。用在真实场景前，请用自己的图片调整参数，把阈值换成自己的标准。方案的完整写法见 docs/vision.md。\n数字是怎么保证的\n判定模型读的是文本，不做算术，输出也只有是非、单选和打分三种。所以数字相关的结论不交给模型去猜：\n规则来算：每个阈值比较都由代码完成，测量值先四舍五入到规定的小数位，显示的数和拿来比较的数是同一个\n写成文字：交给模型的素材里，数字旁边带着比较结论，例如 99.3 %（≥ 70 %：是，高出 29.3 ）；题目里的判定标准用同样的写法，逐条对得上\n规则裁决：题目绑定硬规则后，以规则的结果为准，模型的答案只用来核对\n提示复核：规则与模型不一致、测量值落在临界带内、模型置信度低、图像模糊或过暗过亮时，结论会标成「建议人工复核」\n实测而不是假设：「数字自检」会在每个阈值两侧生成边界用例，同一批用例分别以「只给数值」和「带比较结论」两种写法交给模型，报告它和规则的一致率。一致率不够高的题目应保持规则裁决\n自检结果取决于你用的模型和版本，请以本机跑出来的为准。自检用例和人工复核记录可以导出成 {state, questions, gold} 的 JSONL ，供以后微调使用。\n训练识别模型\n传统算法能量颜色、面积、形状，但认不出「这是哪种虫」「这是哪类缺陷」。「模型训练」页用来补上这一步：\n新建数据集，按类别上传图片（也可以在检测结果里勾选区域直接加入）。每类至少 2 张，建议 30 张以上\n选特征（颜色、纹理、轮廓梯度、形状与大小、深度特征）和分类器（ SVM 、随机森林、K 近邻），点「开始训练」\n看交叉验证的准确率和混淆矩阵\n在检测方案的 pipeline 里加一步 {\"op\": \"classify\", \"model\": \"模型名字\", \"on\": \"regions:区域名\"}\n内置方案已经写好了这一步。点结论页里的「用合成样本训练一个示例模型」，就能看到识别结果出现在测量值里。\n「深度特征」需要先下载一个预训练的骨干网络（ MobileNetV2 ，约 14 MB ，在训练页点一下即可），对外观复杂的目标效果好得多。\n密集、互相遮挡的小目标超出了「先分割、再分类」的能力，这时可以把外部训练好的 YOLO 系列 ONNX 检测模型放进 data/onnx/，在方案里用 {\"op\": \"detect\", ...} 引用。\n一步到位的接口\ncurl -s http://127.0.0.1:8090/v1/inspect \\\n  -H \"Content-Type: application/json\" -H \"X-WB-Target: auto\" \\\n  -d '{\"recipe\": \"steel-pipe\", \"image\": \"<base64 或 data URL>\", \"context\": \"客户要求表面无锈\"}'\n\n返回里有测量值、发给模型的素材和题目、每道题的最终结论（verdicts）以及是否建议复核（review）。不传 image 而传 values（一组现成的测量值），可以只用数值层和判定模型，把别的传感器数据接进来。\n限制\n示例图是程序合成的，比真实照片干净得多；在它上面得到的效果不代表真实场景\n传统分割对光照和背景敏感，需要固定拍摄条件；方案里的像素参数按 max_side 处理尺寸计算\n识别模型是「特征 + 小分类器」，不是深度检测网络； OpenCV 不能训练 YOLO 这类模型\n这是验证方案和小批量检测用的工作台，不是产线级的检测系统；它只输出判定，不控制执行机构\n自动更新\n每次运行 start.bat / start.sh，启动本地模型之前会先检查两样东西：\nLaya 程序：和 PyPI 上的最新版本比较，有新版本就自动用 pip 升级，然后再启动。\n模型文件：和 Hugging Face 上的最新提交比较。模型文件由 Laya 在加载时自己下载最新版本，这里只是提前告诉你有没有更新。\n检查结果会显示在启动窗口里，页面左上方状态行下面也有一行，例如「 Laya 0.3.26 （已是最新）　模型版本 e4e9ddf2 」。\n几种情况的处理：\n连不上网：跳过检查，继续用当前版本，不影响启动。\n升级后服务起不来：自动装回原来的版本并重新启动，同时记住跳过这个版本，等更新的版本发布再升级。\n新版本需要更新 PyTorch：升级时会把 PyTorch 固定在当前版本，避免 GPU 版被换成 CPU 版。遇到这种情况升级会失败并提示，继续使用当前版本；重新运行安装脚本即可处理。\n8000 端口上已有 Laya 服务在运行：只检查，不升级。\n用 config.json 的 auto_update 控制：true（默认，自动升级）、\"check\"（只检查并提示，不升级）、false（不检查）。\n语言\n页面：右上角的「中文 / English 」随时切换，选择会记住。切换时，没改动过的示例会一起换成对应语言的版本。\n安装和启动窗口：默认跟随系统语言。要固定成某种语言，把 config.json 的 language 改成 zh 或 en。\n服务端返回的报错：跟随页面当前的语言。\n接口\n页面左上角的「接口」下拉框：\n接口\n发到哪里\n密钥\n\n\n\n\n自动（推荐）\n按模型名决定，规则见下\n用到哪个接口就需要哪个的密钥\n\n\n本地 Laya\n本机 127.0.0.1:8000\n不需要\n\n\nTypeSafe 官方\nhttps://api.typesafe.ai\nTypeSafe 控制台的密钥\n\n\naiask.me 网络加速\nhttps://aiask.me\naiask.me 的密钥\n\n\n第三方接口\n你填写的地址\n该服务的密钥，没有可以不填\n\n\n「自动」的规则\n模型名是 multilingual、english、typed-decisions，或者留空：用本地 Laya\n其他模型名（如 jev-latest）：按 auto_order 的顺序（默认先 aiask.me ，再 TypeSafe 官方）找第一个填了密钥的远程接口；它连不上、超时或被拒绝（ 401 / 403 / 404 / 429 / 5xx ）时，自动换下一个再试\n结果区会显示这次实际用的是哪个接口，以及换过接口的经过。\n管理密钥\n在「接口」里选中哪个接口，「接口设置」里就只显示那一个接口的设置，不会混在一起：\n没有密钥时：粘贴密钥，点「添加密钥」\n已有密钥时：只显示末 4 位，可以「修改」或「删除」（删除前要再确认一次）\n「测试连接」会用当前密钥取一次模型列表，用来确认地址和密钥是否可用\n密钥只写进本机的 config.json，由本机启动器加到请求头上，浏览器发出的请求里没有密钥。TypeSafe 和 aiask.me 也可以用环境变量 TYPESAFE_API_KEY、AIASK_API_KEY。\nconfig.json 已经写进 .gitignore，不会被提交。\n第三方接口\n在「接口」下拉框里选「＋ 添加第三方接口…」，填写名称、接口地址、密钥和默认模型。任何按 /v1/systemone 格式提供服务的地址都可以，例如别的网关，或者内网里另一台机器上的 Laya 服务。\n接口地址只填到域名或路径前缀，工作台会自动加上 /v1/systemone；把完整地址贴进来也会自动去掉结尾\n密钥可以不填，适合不需要鉴权的内网服务\n添加后可以改名称、地址、默认模型和密钥，也可以整个删除\n第三方接口只在被选中时使用，不参与「自动」。想让它参与，把它在 config.json 里的 id （如 custom-1）加进 auto_order\n远程接口和本地 Laya 的差别\n远程接口没有批量端点。选「批量」时工作台逐条调用 /v1/systemone 再合并结果，按条计费\nmax_len 只对本地 Laya 生效；置信度阈值对远程接口由工作台在本地判断\n访问远程接口默认跟随系统代理，要单独指定就填 config.json 的 proxy\n示例\nexamples/zh/ 和 examples/en/ 里各有一套示例，页面按当前语言显示对应的一套。每个 .json 文件都是一个完整的请求体，对应一个示例按钮：\n文件\n内容\n\n\n\n\n01-ticket-routing.json\n工单分流：部门、紧急度、流失风险\n\n\n02-content-moderation.json\n内容审核（批量）\n\n\n03-rag-relevance.json\nRAG 段落相关性\n\n\n04-llm-output-check.json\nLLM 输出校验\n\n\n05-email-triage.json\n邮件分拣（ JSON 对象素材）\n\n\n06-prompt-guard.json\n提示词护栏（消息列表素材）\n\n\n07-model-routing.json\n模型路由（批量）\n\n\n08-confidence-gate.json\n置信度门控\n\n\n按同样格式再放一个文件进去，刷新页面就多一个按钮。_title 是按钮名，_note 是一句说明，其余字段就是请求内容。直接放在 examples/ 下（不进语言子目录）的文件在两种语言下都会显示。\n这些文件也可以直接用 curl 发给本地 Laya （以下划线开头的字段会被忽略）：\ncurl -s http://127.0.0.1:8000/v1/systemone \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary \"@examples/zh/01-ticket-routing.json\"\n\nWindows PowerShell 里要写 curl.exe。带 states 的两个批量示例要换成 /v1/systemone/batch。\n配置\n首次安装或启动时，会从 config.example.json 生成 config.json。修改后重新启动生效。\n配置项\n说明\n\n\n\n\nlanguage\nauto（跟随系统）/ zh / en，决定安装和启动窗口的语言，以及页面的默认语言\n\n\nui_host / ui_port\n工作台监听地址和端口，默认 127.0.0.1:8090\n\n\nopen_browser\n启动后是否自动打开浏览器\n\n\ninstall_local_laya\nfalse = 安装时跳过 PyTorch 和 Laya\n\n\nstart_local_laya\nfalse = 启动时不拉起本地模型\n\n\nlaya_host / laya_port\n本地 Laya 服务地址，默认 127.0.0.1:8000\n\n\nmodels\n启动时预载的模型，逗号分隔：multilingual,english,typed-decisions\n\n\ndefault_model\n判断不出语言时用哪个模型\n\n\ndevice\nauto / cuda / cpu\n\n\napi_key\n本地 Laya 的访问密钥，一般留空\n\n\nauto_update\ntrue = 每次启动自动升级 Laya ；\"check\" = 只检查并提示；false = 不检查\n\n\ninstall_vision\nfalse = 安装时跳过 OpenCV ，不提供视觉检测和训练\n\n\nstart_vision\nfalse = 启动时不拉起视觉服务\n\n\nvision_host / vision_port\n视觉服务地址，默认 127.0.0.1:8001，只供本机的启动器访问\n\n\nvision_backbone_urls\n骨干网络的下载地址。auto = 中文环境先走 hf-mirror.com ，再试官方地址；也可以填一个或多个地址（逗号分隔）\n\n\nproviders\n远程接口：名称、地址、密钥、默认模型\n\n\nauto_order\n「自动」尝试远程接口的顺序\n\n\nproxy\n访问远程接口用的代理，留空 = 跟随系统\n\n\nremote_timeout\n远程请求超时秒数\n\n\nhf_endpoint\n模型下载地址。auto = 中文环境用 hf-mirror.com ，其他环境直连 Hugging Face ；也可以填具体地址或清空\n\n\npip_index\n安装和自动更新用的 pip 源。auto = 中文环境用清华镜像，其他环境用官方源；也可以填具体地址或清空\n\n\ntorch_index\n指定 PyTorch 下载源，一般留空\n\n\ndesktop_shortcut\nWindows 安装时是否创建桌面快捷方式\n\n\n\n把 ui_host 改成 0.0.0.0 后，能访问这个端口的人都可以用你保存的密钥发请求。请只在可信内网这样做，否则保持 127.0.0.1 并用 SSH 隧道。\n常见问题\n远程接口返回 401 / 403\n密钥不对，或者这个密钥没有所选模型的权限。在「接口设置」里点「测试连接」，能看到这个密钥可用的模型。\naiask.me 的接口地址不对\n默认按 https://aiask.me/v1/systemone 调用。地址不同的话，在「接口设置」里改接口地址（不带 /v1/systemone）后保存。\n页面一直显示「本地 Laya 模型加载中」\n看启动窗口：正在下载模型就继续等；有报错就按报错处理。\n端口被占用\n8000 上已有 Laya 服务时工作台会直接使用它。被别的程序占用时，改 config.json 的 laya_port。视觉服务用 8001 ，被占用时改 vision_port。\n有 NVIDIA 显卡但显示用的是 cpu\n装到的是 CPU 版 PyTorch 。到 https://pytorch.org/get-started/locally/ 选好 CUDA 版本，用虚拟环境里的 python -m pip 重装 torch 后重新启动。\n「视觉检测」页显示视觉组件未安装\n重新运行安装脚本，它会补装 OpenCV 。config.json 里 install_vision 和 start_vision 都要是 true。\n提示这个 OpenCV 不带训练模块\nOpenCV 5 的主包去掉了 cv2.ml。重新运行安装脚本会换成 4.x ；手动安装用 pip install \"opencv-python-headless<5\"。\n骨干网络下载失败\n手动下载任意一个图像分类网络的 .onnx 文件（例如 OpenCV Zoo 的 MobileNetV2 ），放进 data/backbones/ 即可。\n检测结果和预期差得远\n先看「测量与区域」页签和标注图，确认分割对不对；再展开「方案内容」调整颜色范围、面积下限等参数，点「应用修改」后重新检测。\n安装中途失败\n修复后重新运行安装脚本，已完成的步骤会自动跳过。\n目录结构\ninstall.bat / install.sh   安装\nstart.bat / start.sh       启动\nconfig.example.json        配置模板\nexamples/zh/  examples/en/ 示例请求（中文 / 英文）\nrecipes/zh/  recipes/en/   检测方案（中文 / 英文）\napp/workbench.html         工作台页面（含中英文文案）\napp/vision.js              视觉检测页和模型训练页\napp/launcher.py            启动器：拉起本地服务、提供页面、转发请求、编排检测流程\napp/numeric.py             数值层：测量规格、硬规则、文字化、裁决、自检用例\napp/vision_server.py       视觉服务（本机 HTTP 接口）\napp/vision_core.py         分割、区域、测量、标注\napp/vision_train.py        特征提取、训练、模型管理\napp/vision_demo.py         合成示例图和训练样本\napp/install.py             安装逻辑\napp/wb_lang.py             语言选择\ntests/                     测试； mock_laya.py 是测试用的假 Laya 服务\ndata/                      运行时生成：训练图片、模型、骨干网络、自检和复核记录（不进版本库）\n\n发布新版本\n推送一个 v 开头的标签，GitHub Actions 会自动打包并创建 Release：\ngit tag v2.0.0\ngit push origin v2.0.0\n\n卸载\n删除整个文件夹（训练图片和模型在里面的 data/ 下）； Windows 上再删掉桌面的「 laya-opencv 」快捷方式。模型缓存在用户目录的 .cache/huggingface 下，不需要时可以一并删除。\n许可\n本项目的代码以 MIT 许可发布。Laya 模型和 TypeSafe 、aiask.me 的接口各自遵循其自己的许可和服务条款。OpenCV 以 Apache-2.0 许可发布；按需下载的 MobileNetV2 骨干网络来自 OpenCV Zoo 。自己放进来的检测模型遵循它本身的许可，例如 Ultralytics YOLO 是 AGPL-3.0 。",
-    "link": "https://www.v2ex.com/t/1246528#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T11:08:34.000Z"
-  },
-  {
-    "title": "[推广] 在线图片文字编辑网站上线了",
-    "summary": "国庆期间，好好打磨了这个网站，从自身需求出发。得益于图像编辑模型，改字不再需要专业的修图能力。\nhttps://phototexteditor.com",
-    "link": "https://www.v2ex.com/t/1246527#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T11:04:19.000Z"
-  },
-  {
-    "title": "[问与答] 新项目打算计划一个月内上线，打算寻找优质的谷歌代投，（APP 或 YouTube）",
-    "summary": "项目主打挖矿或者评分类，支付方式主要加密货币，后期可以添加三方支付，现寻找谷歌代投能人，TG： https://t.me/chenokok",
-    "link": "https://www.v2ex.com/t/1246526#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T10:56:56.000Z"
   },
   {
     "title": "Agent Loop：AI 是怎么从\"一句一答\"进化成\"自己干活\"的 - Tomorrowland_D",
@@ -518,22 +710,6 @@
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Mon, 05 Oct 2026 10:47:06 +0000"
-  },
-  {
-    "title": "[Claude] 依旧震惊瘫坐， opus5.5 做视频特效也很强啊，大家都用来做了些什么有趣的作品呢？",
-    "summary": "试了一下做旋律、做特效、做视频，都很强\n纯文字描述没提供素材（第一个）\n\n\n图 1 片头：https://maiimg.com/gallery/AFFBG\n图 2 片头： https://maiimg.com/gallery/AFFBI\n提示词： “能不能重现下，《三体》中一切遮挡和封闭都消失、细节无限并列的四维碎块”\n\n（如上提示词，未过多修饰）一次生成的： https://maiimg.com/gallery/AFFCF\n旋律的话上传到汽水音乐了😂：https://qishui.douyin.com/s/iXVqsM8r/",
-    "link": "https://www.v2ex.com/t/1246524#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T10:26:25.000Z"
-  },
-  {
-    "title": "[程序员] 准备注册美国公司来使用 claude",
-    "summary": "国庆又被封了一个 100 美金的号, 好几个大额的号了, 大部分都 Fully refunded, 但我的目的是正常使用, 而不是贪小便宜.\n这几天开始用 100 美金的 codex, 这货比货真的不能比, codex 真的是白给你都不要的那种.\n我研究了一轮,其实也尝试过好多方法, 比如在其他国家家里使用家庭宽带, 托管电脑远程连过去, 但最终逃不过.\n发现只能通过注册美国公司的方式来进行, 这个是最稳定的, 和 claude 公司销售直接联系后不会轻易被封号, 还可以使用 team plan.\n我研究了一轮, 只有怀俄明/科罗拉多持有成本最低, 还有 EIN 和美国银行账号, 就算不用在 Claude,用在做跨境/外贸也是可以的. \n不知道这 2 个州是否免税州, 否则看起来单次成本很低, 但综合成本很高.  走 stripe atlas 和 doola 比较省事, 但是费用很高.\n不知道谁有全过程的攻略, 可以自行注册.",
-    "link": "https://www.v2ex.com/t/1246523#reply42",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T10:20:22.000Z"
   },
   {
     "title": "Apple and a hacker's future",
@@ -560,100 +736,12 @@
     "pubDate": "Mon, 05 Oct 2026 10:00:00 GMT"
   },
   {
-    "title": "[推广] 香港银行证券开户返佣到账分享贴",
-    "summary": "我的返佣奖励基本上是全网最高的\n众安银行 https://www.v2ex.com/t/1242496\n澳门蚂蚁 https://www.v2ex.com/t/1245896\n复星证券 https://www.v2ex.com/t/1245084\n感谢几位 V2er 分享，返佣都是真实有效不会跑路\nhttps://i.imgur.com/kk6GrNt.jpeg\n\n如何联系我\nTG&VX\nKirinchew",
-    "link": "https://www.v2ex.com/t/1246521#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T09:47:27.000Z"
-  },
-  {
-    "title": "2026 Nobel Prize in Physiology or Medicine: Deisseroth, Hegemann, Nagel",
-    "summary": "Comments",
-    "link": "https://www.nobelprize.org/prizes/medicine/2026/summary/",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Mon, 05 Oct 2026 09:33:13 +0000"
-  },
-  {
-    "title": "[NAS] LocalViewer - 好用的 NAS 漫画 | 相册 | 视频 | eBook 阅读器 App",
-    "summary": "LocalViewer\nA High performance Android Local/SMB/WebDAV image viewer/comic reader with network gallery folder support.\nBased on EhViewer\nMaterial Design 3\nDynamic Color Support.  \nSimilar to Perfect Viewer and Kuro Reader, with Hi-Res images support (no downscaling), clean UI and good performance.\nHomepage\nhttps://github.com/zmz125000/LocalViewer\nDownloads\nhttps://github.com/zmz125000/LocalViewer/releases\nFeatures\n原生 Android 应用（ Kotlin + Jetpack Compose ）。\n简单易用的 Material Design 3 界面。\n支持本地和 SMB/WebDAV 文件夹，支持图片，视频，电影，电视剧，电纸书等多媒体文件自动分类筛选，相册模式浏览照片文件夹，缩略图显示。完美的 NAS 多媒体搭档。\nWebtoon 阅读器，支持照片墙和原图解码，快速加载大图。\n即时分类文件夹下的媒体文件，视频/照片/文档自动标记，按文件夹一键设置内容模式。\n自动保存文件历史和阅读/播放进度。\n支持平铺和按文件夹显示手机相册中的图片和视频\n文件夹多窗口管理，可以同时打开并切换多个文件夹\n支持 HDR 、广色域和 10 位色深。\n支持串流打开 ZIP/RAR/CBZ/CBR/CBT/PDF/EPUB 等图片压缩包。\n支持 PDF/EPUB/MOBI/FB2/TXT/Markdown 等电子书格式。\n支持 JXL/JXR/JPG/AVIF/HEIC 等 gain map 和 PQ HDR 格式。\n网络文件夹视频播放，支持 MPV/MX Player/VLC 播放列表和外挂字幕。\n通过内置 HTTP 服务器在浏览器中打开离线 HTML 网站档案。\n高性能 smbj 客户端，Ktor OkHttp WebDAV 客户端，支持并发连接。\n阅读器漫画双页模式和墨水屏模式。\n支持 EasyTier.\n支持 Meta Quest 3.\nScreenshots",
-    "link": "https://www.v2ex.com/t/1246520#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T09:18:24.000Z"
-  },
-  {
-    "title": "[程序员] 开发 Windows 桌面应用，大家用什么 AI 模型和工具比较顺手？",
-    "summary": "最近在做一个 Windows 桌面工具，主要用 Tauri + Vue / TypeScript + Rust ，只考虑 Windows 10 及以上。\n除了普通界面，还有一些透明置顶的悬浮窗，涉及鼠标穿透、悬停交互、焦点切换等，对资源占用也有要求。\n目前比较想解决的是 AI 写代码之后怎么验证的问题。前端页面可以在浏览器里看，但窗口行为和交互需要放到实际 Windows 环境里测试。\n所以想问问：\n这种前端 + Rust + Windows 原生交互的项目，用什么模型比较顺手？尤其是跨语言定位问题、修改现有项目的能力。\n工具上大家用 Cursor 、Codex 、Claude Code ，还是其他组合？\n有没有比较好用的方式，让 AI 在本地编译运行后，结合截图、日志，甚至直接操作窗口来验证修改？悬浮窗这类交互一般怎么配合调试？",
-    "link": "https://www.v2ex.com/t/1246519#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T09:02:44.000Z"
-  },
-  {
     "title": "面向数据工程师的正则表达式：从日志清洗到字段提取 - wang_yb",
     "summary": "【摘要】数据工程师每天打交道的东西，很大一部分是文本： 应用日志 Nginx access log CSV 里混着脏数据的字段 API 返回的 JSON 片段 配置文件 爬下来的 HTML 这些文本往往不是完全结构化的，或者格式五花八门，用传统的 split、replace 处理起来很累，写一堆条件判断也不 阅读全文",
     "link": "https://www.cnblogs.com/wang_yb/p/23203584",
     "source": "博客园",
     "category": "news",
     "pubDate": "2026-10-05T09:00:00.000Z"
-  },
-  {
-    "title": "[问与答] 我在闲鱼买了三次“正品”：后来发现真的可能只有壳，你们是如何鉴别的？",
-    "summary": "我三次在闲鱼踩坑的故事。（被坑怕了）\n第一次：莱维特话筒与艾肯声卡（只有外壳是真的）\n最早一次是我在闲鱼买话筒和声卡。当时看到一个特别好的莱维特话筒（原价大概要 3000 块），加上一款特别新型号的艾肯声卡，一共才 1000 多块钱，我很快就拍下来了。结果后来我才发现，那个声卡是换过芯片的，只有外壳是真的，那个话筒也是一样的情况。\n第二次：安克充电宝（假中假）\n最近我本来要买一款安克最好的充电宝。在闲鱼上看很便宜，一开始我觉得怎么看都是真的。后来仔细看才发现，那个卖家是专门卖改装充电宝和改装外壳的。我去抖音找了那款充电宝的拆解视频，发现正品根本就没有可拆卸的前后壳，但是那个人还在卖那一款型号的专用拆卸壳。打开他的拆卸壳，里面就是圆柱电芯。很显然，那款正品充电宝用的是刀片电池，不是这种电芯，纯纯的假中假。\n第三次：沃克 W50 打磨机（套壳有刷电机）\n后来我又去买了一个打磨头。当时买的是沃克 W50 ，看中它是一款很强劲的无刷电机。后来因为出门太久，打磨头有点进水坏掉了，我把它拆开，发现里面的机芯竟然是有刷型号的，而且是世嘉 204 的型号。一开始我以为只是配件通用，后来我发现无刷电机的磨机内芯完全不一样，而且打开以后里面全是生锈的。也就是说，我的沃克 W50 里面其实是被塞了一个有刷电机在无刷电机的盒子里，磨头也只有壳子是真的，机芯全换成了另一个型号。\n闲鱼的水真是太深了，太深了\n问题：还是有许多电子产品我希望在闲鱼买，你们是如何鉴别的？\n买打磨机的这一次，我用上了 GPT ，但很可惜。。我只给他看了外壳，GPT 和我一起被忽悠了。",
-    "link": "https://www.v2ex.com/t/1246518#reply10",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:53:16.000Z"
-  },
-  {
-    "title": "[推广] 没有海外信用卡也能用 Claude，新人送 10 美元",
-    "summary": "常有人问我：没有海外信用卡，Claude 是不是就用不了？\n能用，就是绕。虚拟卡、代充、账号风控，一圈折腾下来钱没少花，人也累。\n做 aicoding.inc 就是想把这段路省掉。国内支付直接充值，企业也可以走对公转账。余额按官方价的 1.9 折、2.9 折、4.9 折三档消耗，用多少扣多少，不用预付一大笔。\n说句实在的，中转毕竟多了一层，数据合规要求特别严的团队，建议自己先评估。日常写代码、跑 Claude Code 这类场景，目前有数万人在用。\n想先试试的话，加社群送 10 美元额度，不花钱也能跑起来看看。\nhttps://aicoding.inc",
-    "link": "https://www.v2ex.com/t/1246517#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:43:25.000Z"
-  },
-  {
-    "title": "[随想] 感觉到了一些不好的苗头",
-    "summary": "AI 引发的安全问题越来越受到关注，看舆论的架式，感觉以后 AI 的使用会受到管制，一般人用不到高级 AI 了。gemini 说会有管制，像枪支刀具一样",
-    "link": "https://www.v2ex.com/t/1246516#reply35",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:41:31.000Z"
-  },
-  {
-    "title": "[微信] 目前还有可用的微信聊天记录导出工具吗，最好不用降级的",
-    "summary": "试了网上的几个都没有成功。重签名的和关闭 SIP 的都失败了，好像都要降级才行，有成功经验的求分享",
-    "link": "https://www.v2ex.com/t/1246515#reply14",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:26:00.000Z"
-  },
-  {
-    "title": "[OpenAI] 试了几次 6.1 sol xhigh, 比 astra low 还是差不少",
-    "summary": "",
-    "link": "https://www.v2ex.com/t/1246514#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:15:17.000Z"
-  },
-  {
-    "title": "[Android] LocalViewer -- 基于 EhViewer，简洁好用的 SMB 漫画 | 相册 | 视频 | eBook 阅读器",
-    "summary": "LocalViewer\nA High performance Android SMB/WebDAV image viewer/comic reader with network gallery folder support.\nBased on EhViewer\nMaterial Design 3\nDynamic Color Support.  \nSimilar to Perfect Viewer and Kuro Reader, with Hi-Res images support (no downscaling), clean UI and good performance.\nHomepage\nhttps://github.com/zmz125000/LocalViewer\nDownloads\nhttps://github.com/zmz125000/LocalViewer/releases\nFeatures\n原生 Android 应用（ Kotlin + Jetpack Compose ）。\nWebtoon 条漫阅读器，支持原图解码和缩放模式。\n本地与网络照片/视频/漫画/电子书库，支持 SMB/WebDAV/NAS 。\n简单易用免配置，添加文件夹即可开始阅读，支持文件历史和阅读进度。\n文件夹即时分类目录下的媒体文件（视频/照片/文档各自带有标签和筛选，互不干扰）。\n文件夹多窗口管理，可以同时打开并切换多个文件夹\n支持 HDR 、广色域和 10 位色深。\n支持串流打开 ZIP/RAR/CBZ/CBR/CBT/PDF/EPUB 等图片压缩包。\n支持 PDF/EPUB/MOBI/FB2/TXT/Markdown 等电子书格式。\n支持 JXL/JXR/JPG/AVIF/HEIC 等 gain map 和 PQ HDR 格式。\n网络文件夹视频播放，支持 MPV/MX Player/VLC 播放列表和外挂字幕。\n通过内置 HTTP 服务器在浏览器中打开离线 HTML 网站档案。\n高性能 smbj 客户端，Ktor OkHttp WebDAV 客户端，支持并发连接。\n阅读器双击打开上一个/下一个图库。\n阅读器漫画双页模式。\n支持墨水屏模式（移植自 venera-next）。\n支持 EasyTier （移植自 moonlight-vplus）。\nScreenshots",
-    "link": "https://www.v2ex.com/t/1246513#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:12:12.000Z"
-  },
-  {
-    "title": "[OpenAI] Tibo 的 28 天挑战专题，用 Codex 重置监测站、以及投票来看每一天是在改进，还是会重置？",
-    "summary": "😲 我们 Did Codex Reset 为 Tibo 的 28 天挑战做了一个专题。\n📅 你可以在这里精确地看到每一天到底是在改进、还是一个重置，并且您可以为未来的日期进行投票预测，看看大家更热爱哪一个\nhttps://didcodexreset.com/zh/oct28.html\n欢迎各位 V2EX 的朋友们来投票看看 👀",
-    "link": "https://www.v2ex.com/t/1246512#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-05T08:07:19.000Z"
   },
   {
     "title": "Qualcomm licenses patents on Huawei’s LogicFolding chip tech",
@@ -3107,94 +3195,6 @@
     "title": "Learning to Route in Visual Space via Multi-Step Embedding Retrieval",
     "summary": "arXiv:2609.38743v2 Announce Type: replace \nAbstract: LLM agents rely on retrieval tools to access external knowledge, yet visual agentic search remains severely bottlenecked by standard single-step retrievers. In current pipelines, the agent must issue text queries for every intermediate step, struggling when visual clues are difficult to describe or when the retriever fails to surface necessary intermediate evidence within its top results. We hypothesize that offloading multi-step navigation across the entire embedding space directly to the retrieval tool resolves this performance bottleneck. To study this systematically, we introduce VHOP, a flexible data generation framework and benchmark with five core difficulty levels testing both visual matching and search planning. Using this framework, we develop VHOP-Router, an end-to-end training pipeline---combining supervised fine-tuning, online imitation learning, and reinforcement learning---that transforms a standard embedding model into an autoregressive multi-step retriever. Operating directly in the visual latent space, VHOP-Router retrieves linked image chains in a single tool call without requiring the agent to formulate intermediate text queries. Experiments show VHOP-Router boosts retrieval performance from under 5\\% to 76.3\\%. In agentic search, it improves task success rates by 52.7\\% and reduces the average token length by 61\\% from 1886 to 728, whereas upgrading the agent yields only a 3.7\\% gain. Compared to a strong baseline where the agent retrieves the top 50 results per step, VHOP-Router maintains superior performance while reducing in-context images by $23\\times$ and cutting the cumulative API payload by $35\\times$. The models also generalize robustly to unseen difficulty levels and realistic test sets. Ultimately, VHOP and VHOP-Router provide an efficient and effective solution for visual agentic search that leaves native LLM capabilities entirely intact.",
     "link": "https://arxiv.org/abs/2609.38743",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Autoresearch in Mixed-Integer Linear and Nonlinear Programming",
-    "summary": "arXiv:2609.39360v2 Announce Type: replace \nAbstract: Despite recent progress in autoresearch, applying it to practical operations research problems, typically formulated as NP-hard mixed-integer linear or nonlinear programs (MILPs or MINLPs), remains challenging because effective research requires systematically managing competing ideas and long-horizon experimental trajectories. We introduce AutoMIP, a reusable agent skill for organizing long-horizon autoresearch in mixed-integer programming through idea pooling and algorithm tree search. AutoMIP maintains a persistent pool of complementary candidate ideas while organizing executable experiments into an algorithm tree, enabling the agent to preserve unexplored hypotheses, refine promising algorithms, and switch to alternative methodological directions based on historical states. On MILP and MINLP benchmark cohorts, AutoMIP achieves the highest final success rates among the evaluated autoresearch frameworks. On MIPLib, AutoMIP discovers new best solutions for 31 of 60 instances, surpassing existing autoresearch frameworks. On MINLPLib, it achieves new best solutions for 52 of 60 instances. Ablation studies further demonstrate the complementary contributions of idea pooling and algorithm tree search, highlighting the importance of jointly maintaining diverse research ideas and structured experimental trajectories for long-horizon autoresearch.",
-    "link": "https://arxiv.org/abs/2609.39360",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "PTNO: Training Neural Operators with Noisy Monte Carlo Estimates for Particle Transport Problems",
-    "summary": "arXiv:2609.40090v2 Announce Type: replace \nAbstract: Particle transport under multiple scattering is central to radiative transfer and plasma physics, yet high-fidelity Monte Carlo (MC) simulations must trace prohibitively many particles. Learning-based surrogates can amortize this cost, but typically train on expensive, well-converged MC solutions. We propose the Particle Transport Neural Operator (PTNO), a neural operator that learns particle transport surrogates directly from noisy, low-cost MC labels. Such labels pose two challenges: (1) high variance, which destabilizes standard supervised learning, and (2) a high dynamic range (HDR) spanning many orders of magnitude. For the first, we learn the solution operator from noisy labels of many configurations, amortizing MC cost and generalizing to unseen configurations. Because MC labels are unbiased, we show that the squared loss on them shares its minimizer with the loss on converged solutions, and our budget-allocation study over training scenes $M$, MC samples per render $N$, and independent renders per scene $K$ shows that many noisy scenes beat fewer converged ones. For the second, a nonlinear transform such as the logarithm biases noisy supervision. Instead, PTNO keeps labels in physical space and enforces positivity with a softplus output layer that represents small values effectively. We further train with a pointwise relative $L_2$ loss (PRelL2), the stop-gradient relative loss of HDR denoising and neural rendering, which normalizes each residual by the stop-gradient prediction instead of the noisy label. We demonstrate PTNO on neutron transport in fusion reactors and radiative transfer in participating media. On the two neutronics tasks, PTNO is $10^4$-$10^5\\times$ faster than converged MC on the same CPU and $10^3$-$10^5\\times$ cheaper than MC at matched accuracy; on the two radiative-transfer tasks, MC at matched accuracy costs $0.8$-$11\\times$ as much as PTNO.",
-    "link": "https://arxiv.org/abs/2609.40090",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Cogentic: Multi-Agent Orchestration for Automated Proof Discovery",
-    "summary": "arXiv:2609.40324v2 Announce Type: replace \nAbstract: We present Cogentic, a multi-agent harness for automated proof discovery on open research problems. While frontier language models can generate strong mathematical ideas in a single shot, single-shot generation is often insufficient for open problems that require exploring multiple competing conjectures, overcoming subtle technical obstructions, and retaining intermediate progress over a long horizon. Cogentic addresses these challenges through an iterative prove-verify loop in which an orchestrator allocates a population of independent provers across distinct proof directions, subjects their output to adversarial verification by several specialized components, and promotes confirmed intermediate results into a persistent verified ledger that later rounds build on. The harness is designed to be able to solve research-level math and theoretical computer science problems. Using either Gemini 3.1 Pro or an early version of Gemini 4 Argon as the base model, Cogentic produced novel results on open problems across online learning, auction theory, and mechanism design. Each result was independently verified by domain experts and is developed in full in companion papers. We list these results, and new ones as they are verified, at https://sites.google.com/view/cogentic .",
-    "link": "https://arxiv.org/abs/2609.40324",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Rethinking Probability-Based Reinforcement Learning From Posterior Concentration",
-    "summary": "arXiv:2610.01458v2 Announce Type: replace \nAbstract: Verifier-free reinforcement learning with probability-based rewards offers a promising way to train LLMs on general reasoning tasks where external verifiers are unavailable. Yet the reliability of these rewards, especially in long-horizon reasoning, remains underexplored. This work identifies a length-dependent failure mode of probability rewards, which we call the Posterior Concentration Phenomenon (PCP). We show that the probability of a reference answer conditioned on a reasoning trace often collapses to a low-variance interval as the trace becomes lengthy. This phenomenon results in nearly indistinguishable rewards, which, under GRPO-based settings, makes probability-based policy optimization unstable and inefficient. Motivated by this, we propose Reinforcement Learning with Concentration-aware Posterior Rewards (RLCPR), a verifier-free RL framework to explicitly account for PCP for better optimization stability and token efficiency. It has two components: uncertainty-aware data sampling, which reduces concentration-prone rollouts before generation, and concentration-aware regularization, which penalizes unnecessarily long traces when posterior rewards collapse. Extensive experiments show that, alongside higher token efficiency, RLCPR outperforms the state-of-the-art verifier-free RL baseline by up to 4.0% on six of seven benchmarks, including general-domain and mathematical reasoning challenges.",
-    "link": "https://arxiv.org/abs/2610.01458",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Causal Memory Policy: Making Memory Utility Identifiable by Intervening on Retrieval",
-    "summary": "arXiv:2610.02070v2 Announce Type: replace \nAbstract: Memory-augmented large language models must decide which memories to retain, and recent systems do so by estimating each memory's effect on task performance. However, these estimates rely entirely on retrieved memories. When a memory is never retrieved, store-level interventions produce identical outcomes, leaving its utility unidentified. This is a retrieval-level positivity violation, invisible to diagnostics that examine only memory operations. We introduce Causal Memory Policy (CMP), a causal framework that restores identification by intervening on retrieval itself, reserving a fixed number of context slots for memories sampled with known propensities. CMP estimates memory utility by self-normalized inverse propensity weighting under a balanced assignment design. We prove the causal factorization of memory utility through retrieval, the unbiasedness and exact variance of the estimator, and the optimal decision rule under irreversible operations. Empirically, identification fails for 54% of required memories on LongMemEval and 67% on LoCoMo, and the failure persists in a deployed memory system. CMP improves discrimination between required and non-required memories from 0.54 to 0.66 AUC. Finally, we show that identified memory utility alone is insufficient for retention decisions: per-query utility reaches 0.78 AUC on the query for which it is estimated, yet no aggregation available to a retention policy predicts a memory's value on unseen queries. Code is available at: https://anonymous.4open.science/r/cmp-release-D0C3/.",
-    "link": "https://arxiv.org/abs/2610.02070",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Learning Low-Frequency Motion Control for Robust and Dynamic Robot Locomotion",
-    "summary": "arXiv:2209.14887v3 Announce Type: replace-cross \nAbstract: Robotic locomotion is often approached with the goal of maximizing robustness and reactivity by increasing motion control frequency. We challenge this intuitive notion by demonstrating robust and dynamic locomotion with a learned motion controller executing at as low as 8 Hz on a real ANYmal C quadruped. The robot is able to robustly and repeatably achieve a high heading velocity of 1.5 m/s, traverse uneven terrain, and resist unexpected external perturbations. We further present a comparative analysis of deep reinforcement learning (RL) based motion control policies trained and executed at frequencies ranging from 5 Hz to 200 Hz. We show that low-frequency policies are less sensitive to actuation latencies and variations in system dynamics. This is to the extent that a successful sim-to-real transfer can be performed even without any dynamics randomization or actuation modeling. We support this claim through a set of rigorous empirical evaluations. Moreover, to assist reproducibility, we provide the training and deployment code along with an extended analysis at https://articulated.robots.ox.ac.uk/lfmc/.",
-    "link": "https://arxiv.org/abs/2209.14887",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "ETHER: Aligning Emergent Communication for Hindsight Experience Replay",
-    "summary": "arXiv:2307.15494v4 Announce Type: replace-cross \nAbstract: Hindsight Experience Replay (HER) enhances sample efficiency in goal-conditioned reinforcement learning (RL) by relabelling failed trajectories with goals that were actually achieved. However, HER implicitly assumes access to a goal relabelling function and a predicate function that determines whether a goal has been satisfied. These assumptions break down in instruction-following tasks, where goals are expressed in natural language and differ from the state space. We formalize this as the Hindsight Reinforcement Learning problem, which shows the need to jointly learn these functions alongside the RL policy. To address it, we propose ETHER (Emergent Textual Hindsight Experience Replay), an agent that leverages Emergent Communication to learn the goal-relabelling and predicate functions. ETHER uses a referential game (RG) to train a speaker and a listener to develop a grounded, artificial language describing environment states. It partially aligns this emergent language with instruction language using co-occurrence patterns between task instructions and RL observations. We prove that the relabelling and predicate functions that ETHER derives from the RG avoid the degenerate solutions of the Hindsight RL problem, namely trivial predicates and collapsed relabelling functions. Experiments on BabyAI's PickupDist task show that ETHER's learned RG speaker and listener can function as the goal relabelling and predicate functions of HER, improving sample efficiency despite imperfect language alignment. Our work bridges Emergent Communication and goal-conditioned RL, opening the door to wider applications of HER.",
-    "link": "https://arxiv.org/abs/2307.15494",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "VIDiff: Translating Videos via Multi-Modal Instructions with Diffusion Models",
-    "summary": "arXiv:2311.18837v2 Announce Type: replace-cross \nAbstract: Diffusion models have achieved significant success in image and video generation. This motivates a growing interest in video editing tasks, where videos are edited according to provided text descriptions. However, most existing approaches only focus on video editing for short clips and rely on time-consuming tuning or inference. We are the first to propose Video Instruction Diffusion (VIDiff), a unified foundation model designed for a wide range of video tasks. These tasks encompass both understanding tasks (such as language-guided video object segmentation) and generative tasks (video editing and enhancement). Our model can edit and translate the desired results within seconds based on user instructions. Moreover, we design an iterative auto-regressive method to ensure consistency in editing and enhancing long videos. We provide convincing generative results for diverse input videos and written instructions, both qualitatively and quantitatively. More examples can be found at our website https://ChenHsing.github.io/VIDiff.",
-    "link": "https://arxiv.org/abs/2311.18837",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Towards Unified Music Emotion Recognition across Dimensional and Categorical Models",
-    "summary": "arXiv:2502.03979v3 Announce Type: replace-cross \nAbstract: One of the most significant challenges in Music Emotion Recognition (MER) comes from the fact that emotion labels can be heterogeneous across datasets with regard to the emotion representation, including categorical (e.g., happy, sad) versus dimensional labels (e.g., valence-arousal). In this paper, we present a unified multitask learning framework that combines these two types of labels and is thus able to be trained on multiple datasets. This framework uses an effective input representation that combines musical features (i.e., key and chords) and MERT embeddings. Moreover, knowledge distillation is employed to transfer the knowledge of teacher models trained on individual datasets to a student model, enhancing its ability to generalize across multiple tasks. To validate our proposed framework, we conducted extensive experiments on a variety of datasets, including MTG-Jamendo, DEAM, PMEmo, and EmoMusic. According to our experimental results, the inclusion of musical features, multitask learning, and knowledge distillation significantly enhances performance. In particular, our model outperforms the state-of-the-art models, including the best-performing model from the MediaEval 2021 competition on the MTG-Jamendo dataset. Our work makes a significant contribution to MER by allowing the combination of categorical and dimensional emotion labels in one unified framework, thus enabling training across datasets.",
-    "link": "https://arxiv.org/abs/2502.03979",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Hybrid Reasoning Systems That Prioritize and Enhance Human Intelligence",
-    "summary": "arXiv:2504.13477v3 Announce Type: replace-cross \nAbstract: In a world of accelerating change, there is a need for wise and adaptive human reasoning. Integrating AI capabilities with human guidance offers promise, though human reasoning itself is often hasty, shortsighted, and error-prone, and no clear framework exists for combining human reasoning strategies with AI across diverse tasks. This article proposes a framework for human-centered hybrid reasoning systems that engage and enhance human reasoning abilities ranging from granular data analysis to high-level reflection and wisdom. The framework was developed through a conceptual synthesis combining: (1) established strategies for enhancing human reasoning, (2) AI design approaches that favor pre-conclusive engagement over the generation of conclusions, and (3) the treatment of reasoning as a collection of distinct, individually supportable modes. This synthesis produced a distinctive framework for broad-spectrum reasoning enhancement from which a typology of reasoning modes, a system architecture, and a high-level research agenda were derived.",
-    "link": "https://arxiv.org/abs/2504.13477",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "VTBench: Evaluating Visual Tokenizers for Autoregressive Image Generation",
-    "summary": "arXiv:2505.13439v2 Announce Type: replace-cross \nAbstract: Autoregressive (AR) models have recently shown strong performance in image generation, where a critical component is the visual tokenizer (VT) that maps continuous pixel inputs to discrete token sequences. The quality of the VT largely defines the upper bound of AR model performance. However, current discrete VTs fall significantly behind continuous variational autoencoders (VAEs), leading to degraded image reconstructions and poor preservation of details and text. Existing benchmarks focus on end-to-end generation quality, without isolating VT performance. To address this gap, we introduce VTBench, a comprehensive benchmark that systematically evaluates VTs across three core tasks: Image Reconstruction, Detail Preservation, and Text Preservation, and covers a diverse range of evaluation scenarios. We systematically assess state-of-the-art VTs using a set of metrics to evaluate the quality of reconstructed images. Our findings reveal that continuous VAEs produce superior visual representations compared to discrete VTs, particularly in retaining spatial structure and semantic detail. In contrast, the degraded representations produced by discrete VTs often lead to distorted reconstructions, loss of fine-grained textures, and failures in preserving text and object integrity. Furthermore, we conduct experiments on GPT-4o image generation and discuss its potential AR nature, offering new insights into the role of visual tokenization. We release our benchmark and codebase publicly to support further research and call on the community to develop strong, general-purpose open-source VTs.",
-    "link": "https://arxiv.org/abs/2505.13439",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Mon, 05 Oct 2026 00:00:00 -0400"
