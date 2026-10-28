@@ -16,12 +16,60 @@
     "pubDate": "Wed, 28 Oct 2026 22:05:40 GMT"
   },
   {
+    "title": "[分享创造] 一个 Alma 的 Android 客户端",
+    "summary": "前阵子 @yetone 发布了 alma 的 iOS 客户端然后表示 android 并无排期\n郁闷之余突发奇想让 alma 自己分析了一下自制 android 客户端的可能性，发现可行于是做了一个，主要是可以 remote access 自己电脑上的 alma 这样出门在外也能正常接续工作，比通过 tg 和 discord 要更容易继续某些内容\n然后看到昨晚叶天帝转发了另一位实现的 Android 版想来不会介意这种社区版本，于是把我的也开源出来有在用 alma 的朋友可以看一看\nGitHub: https://github.com/lazyeo/alma-android\n基本上是对着桌面版 relay 的接口重新实现了一遍，交互和配色上参考了桌面版，完全依赖 remote 桌面版的能力，本身并不能独立接入 API 使用，主要是个人觉得意义不大，手机版对我而言最大的价值就是接入桌面版\n适配了折叠屏可以有更大的操作空间，本来还模拟了一把 Duo 的模糊特效，但是三星的铰链并不提供实时的角度接口于是只能很粗糙的模拟，如果安装 shizuku 并给予权限的话可以更好的模拟，有需要的可以试试\n当然还有很多没完善的部分会在使用过程中持续精进，大家有想法和发现 bug 也欢迎指出\n感恩 AI ，让我这种水货也有机会来分享开源项目了🥹",
+    "link": "https://www.v2ex.com/t/1252709#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T22:00:33.000Z"
+  },
+  {
     "title": "当 AI 智能体代表用户行动时，企业治理将面临哪些新问题？ ｜ 技术趋势",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/CxWoiprQltg8YXmwmghd?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 21:39:45 GMT"
+  },
+  {
+    "title": "If-statement that caused HTTP2Shell was itself undisclosed patch of vulnerability",
+    "summary": "submitted by    /u/klaasvanschelven  \n [link]   [comments]",
+    "link": "https://www.reddit.com/r/programming/comments/1xi16s3/ifstatement_that_caused_http2shell_was_itself/",
+    "source": "Reddit/programming",
+    "category": "news",
+    "pubDate": "2026-10-28T21:30:26.000Z"
+  },
+  {
+    "title": "Formlabs Studio 1 $699 Resin Printer",
+    "summary": "Comments",
+    "link": "https://formlabs.com/products/form-studio-1-basic-founders-edition/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 21:19:30 +0000"
+  },
+  {
+    "title": "[Claude] claude 又送重置了， 12 月 1 号前到期",
+    "summary": "",
+    "link": "https://www.v2ex.com/t/1252708#reply1",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T21:05:09.000Z"
+  },
+  {
+    "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+    "summary": "Comments",
+    "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 21:03:24 +0000"
+  },
+  {
+    "title": "Nango (YC W23) Is Hiring Across Eng, FDE, Marketing, DevRel",
+    "summary": "Comments",
+    "link": "https://nango.dev/careers",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 21:00:06 +0000"
   },
   {
     "title": "Instagram 采用原生 AI 架构对用户界面进行了现代化改造，将 token 成本降低了 33%",
@@ -32,6 +80,30 @@
     "pubDate": "Wed, 28 Oct 2026 21:00:00 GMT"
   },
   {
+    "title": "[分享创造] 因为受够了手动更新 IIS 证书，我花了半年时间做了一个自动托管平台，想听听大家的意见",
+    "summary": "作为一个独立开发者，我平时会做一些小项目，其中主要是 Web 项目，也有时候会接点小活，帮客户做一些小网站。这些网站基本上都是使用阿里云或腾讯云的云服务器进行部署，因为现在的浏览器对于 SSL 证书的要求越来越严格，所以基本每个站点都要部署 SSL 证书，这在前几年也不是个事，因为阿里云和腾讯云都提供免费的一年期证书，每隔一年部署一次，也还能承受。\n但是最近几年越来越吃力，阿里云和腾讯云的免费证书，都开始减少有效期，一开始从一年减到 6 个月，还勉强凑合用，后来减到 3 个月，就感觉有点顾不过来了，因为虽然免费，但每个证书都要申请、下载、导入到证书管理、绑定到 IIS……站点多了，操作还是挺繁琐的。三个月就到期，经常会忘记更新证书，导致网站打开就是大大的风险提示，有时候还是客户发现了告诉我，我才知道。\n虽然这两家都还提供一年期的证书，但是那价格，我确实有点难以承受。\n后来我就开始研究证书这个事，才发现其实可以从第三方申请免费的证书，比如 Let's Encrypt ，我也了解到 win-acme 这类成熟的开源工具，它本身就能够实现 IIS 证书自动申请和续期。不过我个人更习惯图形化管理，而且有时候需要维护多台服务器上的多个网站，希望能通过一个 Web 工作台统一查看证书状态、集中管理部署目标，而不是分别登录每台服务器进行配置和维护。所以现有工具虽然不错，但还是没能完全满足我自己的使用习惯。\n国内也找到了一些提供证书自动化服务的平台，不过我试用之后感觉，大部分还是更偏向 Linux 、Nginx 等环境，或者需要通过脚本进行部署，与我平时使用 Windows Server + IIS 的习惯不太一致。\n就有了自己开发一个工具的想法，并且我研究了一下发现，这个技术条件还很现成，Let's Encrypt 提供了一个叫做 ACME 的协议，可以通过编程的方式自动申请证书，这不就正好可以发挥咱程序员的特长嘛，于是开始着手鼓捣这个东西。做的过程中，我又觉得这个东西可以搞成一个平台，比搞个单机版工具更有价值，因为单机版工具，还是需要远程到服务器上维护，搞一个平台，可以在浏览器上操作，并且把多台服务器集中到统一界面来管理。不但可以解决我的问题，我还可以把这个做成一个 Saas ，帮别人解决问题，同时自己也能有点小收益。\n经过了小半年的产品设计以及开发，各种反复尝试与推倒重来，我终于把这个产品做出来了，这就是现在我要隆重推介给大家的：SSLThink - IIS 网站证书托管与自动化部署平台，鼓掌！！！\n网址： https://www.sslthink.com\n平台的主要功能，就是帮你申请 Let's Encrypt 证书，以及把证书部署到 IIS 网站。当然，平台干了这个活，也适当收点辛苦费。目前是公测期，每张证书的价格是 10 元/年，当然说「每张证书」不够严谨，这个价格其实是一年的证书订阅费用，在订阅期内，证书会自动更新。目前 Let's Encrypt 的证书有效期是 90 天，而且未来还会进一步缩短到 64 天、45 天。也就是说，证书更新会越来越频繁。不过对于 SSLThink 用户来说，这些更新由平台按照证书实际有效期自动处理，不需要手动重新申请和部署。\n有同学就问了，Let's Encrypt 证书不是免费的嘛，你怎么还收费呢？其实收费的不是证书本身，而是 SSLThink 围绕证书搭建了一整套自动签发、自动更新、自动部署的全流程体系，如果你的网站用的是 IIS ，那么购买了这一年的证书订阅服务，进行初始的配置之后，往后你就不用操心证书这回事了，然后一年到期之后你再续订，那就继续不用操心，也不用重新配置。\n具体怎么实现的呢？证书的签发与更新，是在 SSLThink 的服务端进行的，这个自然不在话下。在域名验证方面，SSLThink 采用的是 ACME 协议中的 DNS-01 验证方式。我把这部分也自动化了，用户只需要按照平台提供的记录，初始配置一次 CNAME 委托，之后证书签发和更新所需的 DNS 验证就由 SSLThink 自动处理，不需要每次更新时再去修改 DNS 记录。\n关键是证书的部署，我开发了一个「托管节点程序」，把这个托管节点程序安装到 Windows 服务器，它会自动同步你的 IIS 站点和 https 绑定信息到 Web 工作台，然后在工作台对相应站点的 https 绑定与你购买的证书进行关联绑定，这个托管节点程序就会自动帮你把证书部署好，并且之后服务端的证书更新了，它也会自动更新 IIS 上对应的证书。\n考虑到很多使用 IIS 部署网站的同学，除了网站，还有可能会使用一些云服务产品，比如 CDN 、阿里云的 OSS 等，这些云产品往往也有部署证书的需求，既然网站的证书都自动化了，没道理还要手动再搞这些云产品的部署，好在阿里云和腾讯云都提供了给云产品部署证书的接口，所以 SSLThink 的证书还可以自动部署到阿里云和腾讯云的一些云产品上，当然这个还是需要一些初始配置以及授权，具体的操作我都整理了详细的帮助文档，根据文档一步一步来就行，并不复杂。并且，如果你没有使用 IIS ，只是需要用 SSLThink 进行阿里云和腾讯云的云产品自动部署，那就无需安装 Windows 托管节点程序。\n如果对于同时管理多台服务器，以及多个网站的同学，SSLThink 的价值体现就更大了，因为可以直接从 Web 工作台，就可以全局随时查看证书的更新和部署情况，如果哪个证书有问题，平台还会及时发送消息提醒。\n当然，目前这个平台的自动部署功能主要围绕 Windows Server + IIS 环境设计，暂时不支持 Linux 、Nginx 或宝塔面板等环境的自动部署。不过通过平台签发的证书仍然可以下载，手动部署到其他支持的服务器环境。\n另外提前说明一下：SSLThink 的托管节点是需要安装在 Windows Server 上的程序，目前安装包已经使用 Certum 企业代码签名证书完成数字签名，并且带有可信时间戳，签名发布者为济南善思信息科技有限公司。由于软件刚刚发布、下载量较少，如果使用微软的 Edge 浏览器下载，可能仍会遇到 SmartScreen 信誉提示。官网下载页面提供了 SHA-256 校验值，大家可以自行核对安装包的来源和数字签名。\n由于程序需要操作 IIS 证书和 HTTPS Binding ，我知道大家可能会对安装第三方程序有顾虑。如果有关于权限、安全边界或运行机制的问题，也欢迎直接提出，我会尽量解释清楚。\n最后也想听听各位同学们的真实意见：现在还有多少人在用 Windows Server + IIS 部署网站？大家平时是怎么解决 SSL 证书自动续期和部署问题的？\n我知道 win-acme 等免费工具已经可以很好地解决不少场景，所以也挺想了解，对于需要管理多台服务器、多个网站的用户，像 SSLThink 这种集中托管的平台到底有没有价值。\n这是我第一次认真把一个自用工具做成 SaaS ，目前才刚上线，还没有经过多少真实用户的检验。欢迎大家拍砖，尤其是对功能、安全性和收费模式有什么建议，我都很愿意听听。",
+    "link": "https://www.v2ex.com/t/1252707#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T20:55:37.000Z"
+  },
+  {
+    "title": "The case of the 9 bit AES key",
+    "summary": "Comments",
+    "link": "https://v12.sh/blog/the-case-of-the-9bit-aes-key",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 20:51:44 +0000"
+  },
+  {
+    "title": "Google AI gets cagey when asked who won the 2020 elections",
+    "summary": "Comments",
+    "link": "https://arstechnica.com/ai/2026/10/google-ai-gets-cagey-when-asked-who-won-the-2020-elections/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 20:10:16 +0000"
+  },
+  {
     "title": "谷歌 Antigravity SDK 新增本地模型支持，提升 Token 效率和代码隐私性",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/TusFJkx6F151otgzliu2?utm_source=rss&utm_medium=article",
@@ -40,12 +112,52 @@
     "pubDate": "Wed, 28 Oct 2026 20:00:00 GMT"
   },
   {
+    "title": "[分享创造] 给 Codex 做了块画布，随手试了下，它一笔画完了一只猫",
+    "summary": "最近在做 Galta ，一块开在网页旁边、可以和 agent 一起用的画布。\n一直觉得，这些模型不该只待在聊天框里。把参考、草图和结果放在同一个地方，让它能看到，也能直接动手改，应该会有些不一样的事情发生。\n于是随手试了下：把 Pinterest 上一张西装猫的梗图拖进画布，让 GPT-6-Astra 用画笔换个风格画一遍。它画了 620 笔，都是可以继续编辑的矢量笔画。\n然后又加了个要求：“再来一次，一笔画完，中途不要抬笔。”\n最后是一条包含 70,722 个点的连续笔画。最意外的是，加了这个限制，画出来的猫依然挺像样，效果超过了我的预期。\n演示： https://x.com/Koho_Z/status/2115504320712171614\n视频由实际笔画数据回放制作，做了剪辑和加速。\n画完以后，结果仍然留在画布上，可以自己接着改，也可以指着某个地方让 agent 继续。画猫只是随手一试，我更好奇的是：当人和 agent 能在同一块画布上轮流动手，还能做出什么？\n我是 Galta 的开发者。它通过 MCP 连接 Codex 、Claude Code 等 agent ；画布可在 Chrome / Dia 中使用，目前连接 AI 需要 Apple silicon Mac 。\n产品： https://galta.art/\n想找已经在用 Codex 或 Claude Code 的朋友试试。你会拿这样的画布做什么？",
+    "link": "https://www.v2ex.com/t/1252706#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T19:57:20.000Z"
+  },
+  {
+    "title": "[OpenAI] Codex 额度消费偷偷长了点？",
+    "summary": "20x ，开的的 6.1sol 高倍率，12 个小时没停用了 9%",
+    "link": "https://www.v2ex.com/t/1252705#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T19:28:01.000Z"
+  },
+  {
     "title": "Meta 利用私有处理技术将机密计算扩展至 AI 眼镜",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/r1ibrq9kmZ1qFAWAtzJf?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 19:00:00 GMT"
+  },
+  {
+    "title": "[云计算] 我做了一个 400+节点的网站测速平台，来提提意见",
+    "summary": "KKCE(快快测)是网站测速平台，\n400+节点的网站测速平台\n提供网站测速工具、域名测速工具、在线 Ping 测试、Ping 检测、TCPing 、MTR 路由跟踪、DNS 查询与 DNS 污染查询，支持域名被墙检测及 Whois 查询，并提供 IPv4/IPv6 多节点拨测和云拨测监控入口，帮助排查网站访问慢、网络延迟、丢包与解析异常。\n来提提意见\nQQ 群：591111150\n飞机群： https://t.me/china_kkce",
+    "link": "https://www.v2ex.com/t/1252704#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T18:41:02.000Z"
+  },
+  {
+    "title": "[推广] AI GIF Face Swap：上传照片和 GIF，按次付费生成换脸动图",
+    "summary": "## 项目概述\nAI GIF Face Swap 是一个在线 GIF 换脸工具：上传一张人脸照片和一个动态 GIF ，逐帧把脸换进去，输出仍然是有动画的 GIF 。\n地址： https://aigiffaceswap.com/\n## 核心功能\n- 逐帧换脸，保留原 GIF 的动作、节奏和表情\n- 不用注册登录，Stripe 按次付费：$1.99 / 次\n- 每个浏览器可以先免费试一次 3 秒换脸\n- 导出的 GIF 没有本站水印（结果页会标注 AI 生成）\n## 限制\n- 单张主脸，多人 GIF 不支持\n- GIF 最大 720×720 、10 秒、150 帧\n- 只做 GIF ，不做视频和照片\n## 技术栈\nTanStack Start + Cloudflare Workers + Replicate ，页面 SSR ，Stripe 收款。\n欢迎试用后反馈问题。",
+    "link": "https://www.v2ex.com/t/1252702#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T18:15:58.000Z"
+  },
+  {
+    "title": "[分享创造] 做了个 MiniCPM OCR 在线工具：把图片和 PDF 转成可编辑的文字、表格和公式",
+    "summary": "大家好，分享一个最近做的文档识别网站：MiniCPM OCR 。\n地址： https://minicpmocr.com/\n想解决的事情很具体：拿到一份扫描版 PDF 、论文截图或带表格的图片后，能把里面的内容提取出来，少一些手动抄写和重新排版。\n目前支持：\n上传图片或 PDF ，识别中英文文字、段落和页面布局。\n提取表格结构，将数学公式转成 LaTeX 。\n原文和识别结果对照查看，点击原文区域或结果块可以互相定位，也能直接修改识别出的文字。\n导出可编辑的 Word 、Markdown ，或带区域坐标的 JSON ，方便继续整理文档、做笔记或接入后续流程。\n我比较在意的是识别后的校对和使用体验：得到结果后，可以对照原图改一改，再带到自己的工作流里。复杂表格、模糊扫描件和公式仍然建议人工检查，不保证每份文档都能完整还原。\n底层基于 OpenBMB 的 MiniCPM-OCR-1.0 ；这个网站是我们做的独立服务，并非 ModelBest 官方网站。\n欢迎大家试试，也想听听大家平时最难处理的是哪类文档，以及对结果编辑、导出格式有什么建议。",
+    "link": "https://www.v2ex.com/t/1252701#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T18:15:39.000Z"
   },
   {
     "title": "大客户直接打1折、模型四个月降价80%：大模型价格战没有退路",
@@ -72,12 +184,60 @@
     "pubDate": "Wed, 28 Oct 2026 18:00:00 GMT"
   },
   {
+    "title": "[硬件] 存储掉电时写缓存去哪了？以戴尔 Unity XT 为例，聊聊 BBU 和 M.2 为什么是关键件",
+    "summary": "最近在看戴尔 Unity XT （ 480 这一档）的官方资料，有几处对日常运维挺有用，整理一下。资料来自戴尔的规格表、白皮书《 Dell Unity XT: Introduction to the Platform 》和硬件信息指南。\n写缓存掉电时怎么保住\n双控存储的写缓存在控制器（ SP ）内存里，掉电如果没处理好，就是数据丢失。按戴尔白皮书：\n机柜掉电时，电池（ BBU ）给 SP 供电，时间够把写缓存存到 SP 内部的 M.2 固态盘，然后再关机\nSP 自己故障时，缓存也会写到 M.2 ，SP 恢复后再找回来\n所以 BBU 和 M.2 是这类设备的关键件。它们平时坏了不太显眼，真到停电那一刻才见分晓。BBU 告警最好别拖。\n两个换件前要知道的点\nDPE （主控柜） 0–3 号盘位是系统盘，不能挪位置，也不能拿去别处用\nI/O 模块在两个 SP 之间是镜像配置，换备件时要和另一侧保持一致\n我的理解\n存储的「平时没事」往往靠的是这些不起眼的部件。停电演练、BBU 告警、系统盘位置这几件事，交接文档里值得写清楚。\n大家维护的存储，BBU 一般多久换一次？有没有遇到过停电后缓存没保住的情况？",
+    "link": "https://www.v2ex.com/t/1252700#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T17:57:45.000Z"
+  },
+  {
     "title": "Anthropic 内部系统被 AI Agent 12 小时攻破！会议记录、员工薪酬、内部模型讨论遭访问",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/mFXr0u4z0XftUGUg5Wm7?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 17:54:54 GMT"
+  },
+  {
+    "title": "[分享发现] 谷歌又发布了 gemini 4 carbon",
+    "summary": "说超过了 claude\n这个是排名",
+    "link": "https://www.v2ex.com/t/1252699#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T17:53:59.000Z"
+  },
+  {
+    "title": "[MacBook Pro] MBP 新设计来了， oled+灵动岛+触摸屏，你会买吗",
+    "summary": "丑刘海终于终于终于没了，取而代之的是灵动岛，虽然也是屎上雕花。\n双层串联 oled ，还添加了触摸屏（非常讨厌屏幕被摸），尺寸与前代相当，长宽高各缩小了几毫米(可忽略)，16 寸重量从 2.14 千克减少到 1.82 千克，看来内部是做了重新设计，另外，LOGO 会发光光光光！\n其他和前代几乎相同，芯片内存配置以及续航，我看的配置涨了 3k\n你会买吗，还是等明年的 M7 系列？\n我应该是要买了，还在用 intel （主要是讨厌丑刘海），实在等不下去了，M5 已经很强，AI 用云端，内存 64G 用 7 ～ 8 年应该没问题",
+    "link": "https://www.v2ex.com/t/1252698#reply0",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T17:47:25.000Z"
+  },
+  {
+    "title": "[MacBook Pro] Apple 正式发布触控屏的 MBP",
+    "summary": "1.起售价为 22,999 元，同配置下，比不带触控屏的 MBP 贵 3000 元\n \n2.此 MBP 带有发光后背的 logo （太喜欢这个灯了）\n \n3.此 MBP 带有灵动岛",
+    "link": "https://www.v2ex.com/t/1252697#reply2",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T17:47:06.000Z"
+  },
+  {
+    "title": "[Apple] OLED MacBook Pro 发布，多点触控，灵动岛，背灯回归，重量变轻，全屏亮 1000 nits",
+    "summary": "比 LCD 版贵 3000 元，最低配 24G + 1T M5 Pro 15C+16G 核 ¥22999 （ LCD 版则是¥19999 ）\n全称叫做 MacBook Pro (PROLED XDR 显示屏) 而不是之前传闻的 Ultra\n最大的「亮」点还是这块屏幕了：\n多点触控、灵动岛\n跟 iPad 一样是双层串联 OLED 屏，持续全屏 1000 尼特、峰值 2000 尼特，太夸张了\n重量轻了不少：\n14 寸 M5 Pro 1.38 kg （原 LCD 版本 1.60 kg ）\n16 寸 M5 Pro 1.82 kg （原 LCD 版本 2.14 kg ）\n背面 LOGO 又可以亮了\n重新设计了散热架构\n重新设计了扬声器，低音下潜增强 50 %\n前置摄像头加了防抖（说是为了消除点击屏幕的抖动）",
+    "link": "https://www.v2ex.com/t/1252696#reply4",
+    "source": "V2EX",
+    "category": "news",
+    "pubDate": "2026-10-28T17:46:01.000Z"
+  },
+  {
+    "title": "Spiders Spin 'Silk Dope' into Nature's Toughest Material",
+    "summary": "Comments",
+    "link": "https://www.quantamagazine.org/how-spiders-spin-silk-dope-into-natures-toughest-material-20261028/",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 17:45:24 +0000"
   },
   {
     "title": "Claude Code 撑起史上最大 IPO，被封号不退费的中国开发者撑起那 5%“脏收入”",
@@ -122,10 +282,18 @@
   {
     "title": "[MacBook Pro] 灵动岛 mac，感觉更丑了",
     "summary": "新的 oled mac 把灵动岛加上了，不理解。已经有屏下摄像头技术，为什么还留一块黑色。",
-    "link": "https://www.v2ex.com/t/1252693#reply0",
+    "link": "https://www.v2ex.com/t/1252693#reply1",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-28T17:18:19.000Z"
+  },
+  {
+    "title": "Why is this fingerprinting script creating bioweapons?",
+    "summary": "Comments",
+    "link": "https://nullpt.rs/fingerprinting-bioweapons",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 17:13:29 +0000"
   },
   {
     "title": "MacBook Pro with PROLED XDR Display and Touch",
@@ -138,7 +306,7 @@
   {
     "title": "[程序员] 开源一个 Claude 桌面端，防止被 Claude 封号",
     "summary": "由于自己已经连续使用 Claude 一个月了，主要是怕 Claude 桌面端有钓鱼行为，因此，一直也是使用 Claude 终端。 \n但是，由于不太喜欢黑乎乎的终端，就自己 vibe 了一个 Claude 桌面端，本质上就是开发一个客户端，里面其实就是直接运行 Claude 的终端，因此，安全性与 Claude 终端一致。 \nhttps://github.com/elioinvest/Crew\n目前支持的特性：\n1 、支持 Claude 以及 ChatGPT ，同时，可以自由切换其对应的模型，也可以切换模型的推理强度\n2 、支持单个窗口的网格化，也就是一个窗口切成不同网格，每个放不同的 session 会话，同一个窗口就直接多个项目同时跑。 \n3 、也支持图片上传",
-    "link": "https://www.v2ex.com/t/1252691#reply0",
+    "link": "https://www.v2ex.com/t/1252691#reply4",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-28T17:08:27.000Z"
@@ -158,14 +326,6 @@
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 17:01:23 +0000"
-  },
-  {
-    "title": "Converge (YC S23) Is Hiring a Founding Platform Engineer",
-    "summary": "Comments",
-    "link": "https://www.runconverge.com/careers/founding-platform-engineer",
-    "source": "Hacker News",
-    "category": "news",
-    "pubDate": "Wed, 28 Oct 2026 17:00:24 +0000"
   },
   {
     "title": "通过 SNMP 处理程序进行 ZCS 命令注入，实现未经身份验证的远程代码执行",
@@ -218,7 +378,7 @@
   {
     "title": "[程序员] 全程家宽+软路由+全局，还是被 Claude 发现来自大陆",
     "summary": "23 年 11 月注册了第一个号，但是当时 Claude 没 GPT 好用，所以一直轻度使用\n直到出了 Claude Design 和 opus5.5 之后开始高强度使用\nopus5.5 出的第二天开始上了 20×，不过由于我自己粗心大意，直连了一次，跳了 region unavailable ，第二天就被封了，享年 2 周岁\n上上个月新号（不是新注册，只是开始用，一年前注册的），先养了半个月 Pro ，再上的 5×，全程软路由+家庭 ip+全局规则，在 ROG 上用到今天\n我今天同一网络环境下，在我的 mac 上登了一下，20 分钟之后就报 region unavailable 了\n第一个号和目前这个号都没有跳 kyc ，第二个号跳了 kyc ，我用我自己的 第三国居留卡 过的\n付款都是我本人名下的外国卡付的，大概率不是卡的问题，而且 3 个号是不同的卡付的\n今天我启用了我养的第三个号，全程浏览器，不装客户端，全程英语对话；看一下能活到什么时候；目前它还没有发现我是中国人\nA\\ 肯定是在客户端埋了什么阴湿代码，我都把  mac 的定位功能 整个关闭了",
-    "link": "https://www.v2ex.com/t/1252688#reply5",
+    "link": "https://www.v2ex.com/t/1252688#reply7",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-28T16:30:34.000Z"
@@ -232,20 +392,20 @@
     "pubDate": "Wed, 28 Oct 2026 16:26:22 GMT"
   },
   {
-    "title": "If you could only use one language to make projects for rest of your life which language will use choose ?",
-    "summary": "I will choose Laravel \n    submitted by    /u/AbdulQadir3  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1xhsq58/if_you_could_only_use_one_language_to_make/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-10-28T16:22:22.000Z"
-  },
-  {
     "title": "[问与答] PayPal 用的一次性接码注册的，绑定了邮箱，绑定了通行密钥，被封的概率有多大",
     "summary": "我傻逼了，我的邮箱实际上注册过 PayPal ，而且用了 2 年没有被封控过，因为信用卡到期了，刚好也没有使用 PayPal 的需求，直接把账户删除了，之前账户还绑定了 gv 号和护照，安全性其实挺高的",
     "link": "https://www.v2ex.com/t/1252687#reply0",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-28T16:19:12.000Z"
+  },
+  {
+    "title": "Meta censored the No Kings Instagram account during a nationwide campaign",
+    "summary": "Comments",
+    "link": "https://paulfwalsh.substack.com/p/meta-censored-the-no-kings-instagram",
+    "source": "Hacker News",
+    "category": "news",
+    "pubDate": "Wed, 28 Oct 2026 16:01:53 +0000"
   },
   {
     "title": "[分享创造] 做了个招聘网站",
@@ -434,7 +594,7 @@
   {
     "title": "[Apple] HomePod mini2 上市了，我如果要开启 Siri AI 的话，需要购买外版设备吗？",
     "summary": "如题，\n我有开启了 Siri AI 的港版 iPhone 17 Pro\n我已经购买了美版的新款 Apple TV\n那么问题来了，如果我希望我的 HomePod mini2 也能支持 Siri AI ，需要买外版吗？也就是说 HomePod mini 这些产品会有地区购买锁吗？\n感谢。",
-    "link": "https://www.v2ex.com/t/1252669#reply4",
+    "link": "https://www.v2ex.com/t/1252669#reply5",
     "source": "V2EX",
     "category": "news",
     "pubDate": "2026-10-28T14:19:04.000Z"
@@ -616,36 +776,12 @@
     "pubDate": "2026-10-28T12:34:00.000Z"
   },
   {
-    "title": "[推广] 基于写简历需求开发的 Markdown 本地存储方案编辑器，轻度 Markdown 用户可以试下",
-    "summary": "Markdown Studio 特点\n支持 Echart\n支持 Mermaid\n支持公式\n支持媒体元素\n支持下载：PDF,Image,md\n存储 IndexDB\n多主题切换\n\n官网\nMarkStudio",
-    "link": "https://www.v2ex.com/t/1252645#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T12:30:14.000Z"
-  },
-  {
-    "title": "[Mac Studio] 大家 mac studio 都是咋散热和防尘的？",
-    "summary": "我看有的人他放在小米的空气净化器上面…这真的行得通么",
-    "link": "https://www.v2ex.com/t/1252644#reply12",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T12:28:03.000Z"
-  },
-  {
     "title": "智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019：让Personal Agent走向真实业务",
     "summary": "点击查看原文>",
     "link": "https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 12:13:00 GMT"
-  },
-  {
-    "title": "I built a peer-to-peer blockchain that runs 100% inside browser tabs – no backend, no database, no server",
-    "summary": "Hey r/programming,\n Weekend-project-turned-obsession here. I wanted to see how far you\n could push \"serverless\" – so I made a cryptocurrency where the entire\n network is just open browser tabs.\n Stack:\n - WebRTC data channels for peer mesh (with deterministic mutual-dial\n resolution so two nodes never keep duplicate connections)\n - MQTT-over-WebSocket as a zero-config gossip fallback (every node\n subscribes to the same public broker topics)\n - IndexedDB for chain storage, snapshots every 1,000 blocks\n - A Web Worker miner hard-capped at 70k H/s regardless of hardware\n - secp256k1 signatures, v2 scheme binds chain-id to prevent replay\n across networks\n The interesting problem was sybil resistance without a central\n authority. Solution: a ~65k-hash PoW challenge after every handshake.\n Flooding the network with fake peers costs real CPU per connection.\n Another fun constraint: one miner per browser (Web Locks API) and a\n consensus-enforced cooldown so the same address can't mine two\n consecutive blocks.\n It's an experiment, MIT-licensed, no token sale, no investors. I'd\n love to hear how you'd break it or what architectural choices you'd\n question.\n Repo: https://github.com/tylerdurdensworld/Webquid\n README has the full threat model if you want to dig in.\n    submitted by    /u/socialexperimental  \n [link]   [comments]",
-    "link": "https://www.reddit.com/r/programming/comments/1xhm9lb/i_built_a_peertopeer_blockchain_that_runs_100/",
-    "source": "Reddit/programming",
-    "category": "news",
-    "pubDate": "2026-10-28T12:07:23.000Z"
   },
   {
     "title": "spec-superflow 2.0：小任务快跑，复杂任务不漂移 - 码哥字节",
@@ -672,36 +808,12 @@
     "pubDate": "2026-10-28T12:00:00.000Z"
   },
   {
-    "title": "[分享创造] 我也做了个真匿名的树洞",
-    "summary": "受这篇帖子 https://fast.v2ex.com/t/1246158 启发，我也弄了个纯匿名的树洞：\nhttps://www.shudong.fyi/\n失业在家，正好借此机会学一学 React ，一边查文档一边干中学学中干，实在搞不明白就开 ask 模式让 AI 教我（是的，我特意不用 agent 模式，逼自己去看 AI 给的示例然后自己套在项目里\n虽然现在已经是 AI 编码的时代，但用来玩的东西交给 AI 代劳未免也太无聊了\n与那篇帖子的私语者不同，我的树洞只能看见自己发的帖子，而且最多只保留 30 天\n这样决定的主要原因是，万一引来键政的会很麻烦，我又不想为这个做着玩玩的项目接付费的审核 API ，更不提运营一个公共论坛所需的各种我根本不可能搞定的合规手续了，A 岛匿名版的沉沉浮浮，还有五位数，都历历在目，我可不想这些事发生在我身上\n而且吐槽这种东西，好像也没有什么长期保存的必要，一个月之后你自己都不一定记得当时说过什么了，不如让它随着时间消散于虚空，顺便为我减轻存储压力\n我也接入了 Turnstile 人机验证，因为我希望来这里发帖的都是真人，而且，让 agent 来这里发只有自己能看到的东西，除了浪费 token 和电力之外，好像也没有什么意义\n但是不要发任何个人隐私哦，现在写到数据库里的东西，都是明文（虽然我也没有偷窥别人的雅兴\n写到这我才想起来，应该对内容做个加密的，我的身份系统与私语者一样是助记词和公私钥，理论上是可以做成非对称加密的，这样就真的只有你自己才看得到了，改天有兴致了再改吧\n总之，欢迎各位来玩",
-    "link": "https://www.v2ex.com/t/1252641#reply4",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:59:13.000Z"
-  },
-  {
-    "title": "[问与答] 语音输入小工具的技术现状?",
-    "summary": "目前感觉，应该是不需要一个专门的语音输入法，只需要一个快捷键能调起它，或者有其他方式能调起它就行了，对不对？\n我搜了一下，发现开源界目前比较主流的就是千问的那种语音模型，对不对？那这样的一个语音模型在本地运行，外加 AI 润色，这样就成了，是不是？它的优点就是 ASR 的流式输出？\nTypeless 看起来很好，是收费的。我习惯于长按快捷键输出，它只有按一下快捷键进行转换的方式，也不太合适。\n我搜了一下，有一个叫 FluidVoice 的，还有一个叫 Handy 的，好像都不错。FluidVoice 据说是针对性优化做得最好，咱也不懂。FluidVoice 不支持更多的中文模型，主要还是面向西方社区。Handy 据说是用 Rust 写的，但还有 WebView 套壳。好家伙，这一下子感觉 Rust 就白用了。\n微信自带语音输入。那个好像是云端模型，你发完消息之后，它再从云端给你匹配文本，准确率有时候特别差。但是，你还得让微信一直在线。\n千问 App ，我下载到电脑上了，也可以实现语音输入。我问了一下 AI ，它说千问是本地模型加 AI 润色，所以准确度和速度都比较不错。这还不秒杀 Typeless 那种？大厂随随便便做一个，基本上就能平替 Typeless 的很多功能。但很可惜，你想用这个的话，就得把千问客户端一直打开。\n所以，我想问一下，目前开源的语音输入工具哪个好？不是输入法！！！有没有性能高、适配中文的？\n哦，对了，FluidVoice 还有一个额外的功能，就是可以触发那种命令模式。也就是说，它不单单是一个纯输入工具，还可以遵循你的语音指令做事情。不过这个我还没有细研究。\n你看，这就是一个很好的入口。苹果的 Siri 本来可以做这个的，但你也知道，Siri 各方面都不行，体验也不太好。",
-    "link": "https://www.v2ex.com/t/1252640#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:56:36.000Z"
-  },
-  {
     "title": "US agency approves Amazon Leo’s $11.5B acquisition of Globalstar",
     "summary": "Comments",
     "link": "https://www.reuters.com/business/media-telecom/us-agency-approves-amazon-leos-115-billion-acquisition-globalstar-2026-10-27/",
     "source": "Hacker News",
     "category": "news",
     "pubDate": "Wed, 28 Oct 2026 11:54:23 +0000"
-  },
-  {
-    "title": "[程序员] 今天才发现 todesk 吃我 188g 硬盘",
-    "summary": "谁写的软件，我说 1tb 硬盘怎么这么快满了😠",
-    "link": "https://www.v2ex.com/t/1252639#reply9",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:54:15.000Z"
   },
   {
     "title": "I love Power BI 2 - 哥本哈士奇(aspnetx)",
@@ -712,76 +824,12 @@
     "pubDate": "2026-10-28T11:44:00.000Z"
   },
   {
-    "title": "[分享创造] [开源] ip2geo：零依赖的 Go IP 归属地查询库， IPv4 查询比 geoip2-golang 快 14～ 58 倍",
-    "summary": "GitHub： https://github.com/haxqer/ip2geo\n写这个库的起因很简单：服务里用 geoip2-golang 查 IP 归属地，profile 一看，单次 City() 要 1.7µs 左右，大部分时间花在解码 mmdb 的数据结构上。而我其实只需要国家 / 省份 / 城市 / 经纬度 / 时区这几个字段。\n于是做了 ip2geo：把 MaxMind GeoIP2 / GeoLite2 City （或 DB-IP ）的 .mmdb 一次性转成紧凑的 .geoc 文件，之后直接在它上面查 IPv4 / IPv6 。\n性能\nApple M3 单核，500 万个随机 IPv4 ，5 次取中位数：\nreader\nns / 次\n吞吐\n相对 City()\n\n\n\n\ngeoip2-golang City()\n1768\n0.6 M/s\n1×\n\n\ngeoip2-golang Country()\n1121\n0.9 M/s\n1.6×\n\n\nip2geo city profile\n119\n8.4 M/s\n14.5×\n\n\nip2geo country profile\n30.5\n32.8 M/s\n58×\n\n\nIPv6 在 country profile 下约 42ns ，city profile 约 260ns 。基准代码在仓库 bench/ 目录，可以自己复现。\n特点\n读取端只依赖标准库，零第三方依赖\nLookup 零内存分配，*Reader 并发安全\n三档 profile 按需取舍：country （ 3.5 MiB ）/ region （ 26 MiB ）/ city （ 116 MiB ），以 123 MiB 的 GeoIP2-City 为源\n也可以不转换，mmdb.Open 直接读 .mmdb 在内存里建索引（启动约 2 秒），API 风格接近 geoip2-golang\n附带 CLI：ip2geo build / ip2geo lookup\n不用注册 MaxMind 也能试\nRelease 里有基于 DB-IP Lite （ CC BY 4.0 ）构建好的 .geoc：\ncurl -LO https://github.com/haxqer/ip2geo/releases/download/data-2026-10/dbip-city-lite.geoc.gz\ngunzip dbip-city-lite.geoc.gz\ngo run github.com/haxqer/ip2geo/cmd/ip2geo@latest lookup -db dbip-city-lite.geoc 8.8.8.8\n# 8.8.8.8: US / California / Mountain View  (37.4220, -122.0850)\n\n刚发布 v0.1.0 ，MIT 协议。欢迎试用、提 issue ，觉得有用的话给个 star 🙏",
-    "link": "https://www.v2ex.com/t/1252638#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:34:53.000Z"
-  },
-  {
     "title": "EVEngine - 面向 AI Agent 的轻量游戏引擎",
     "summary": "EVEngine 是一款非常适合 Agent 自己迭代造游戏的引擎 EVEngine ，核心优势有 3 个： 1. 随时热重载 - 脚本更新、资源更新不用等，立马就刷新，修改迭代时间短 2. 自带 MCP 和 debug 服务器，可以截图、控制运行、控制 debug - Agent 可以完全像人一样调试脚本 3. 可以创建编辑器给 Agent - 你写个 editor ，人能用，Age...",
     "link": "https://www.oschina.net/p/EVEngine",
     "source": "OSCHINA",
     "category": "opensource",
     "pubDate": "Wed, 28 Oct 2026 19:32:14 +0800"
-  },
-  {
-    "title": "[分享创造] 做了一个 DeepSeek DSec sandbox platform 的开源实现： OpenDsec",
-    "summary": "这段时间按照 DeepSeek 的 DSec 论文，做了一个 sandbox platform 的开源、自托管实现：OpenDsec。\n项目地址： https://github.com/Kernflux/opendsec\n先说明一下：这是独立项目，不包含 DeepSeek 代码，也不是 DeepSeek 官方发布或维护的项目。架构和主要设计来自论文；论文没有明确说明、或者我们采用不同方案的地方，都在 SPEC 里单独标注了。\n整体架构分为控制面和节点运行时。\n控制面里，stateless apiserver 负责认证、配额、调度和请求转发；IAM 用 Raft 保存身份、项目和配额状态；watcher 汇总各节点的健康与负载；每台计算节点运行一个 edge，负责最终准入和 sandbox 生命周期。组件之间走 gRPC + mTLS，sandbox id 里编码所在 edge，因此 apiserver 不需要维护 per-sandbox 路由表。\n节点侧目前支持三种后端：\nFirecracker microVM\nLinux container\n完整 QEMU VM\nsandbox 内运行 Aether，负责和 edge 通信；Chronus 维护持久 shell session。exec、文件、HTTP、process、PTY 使用同一套 runtime API。\n目前实现的一些能力：\nmicroVM 冷启动约 0.1 秒，内存快照恢复约 55 ms\n可以 pause 成内存快照，也可以 fork 正在运行的 VM，并保留内存状态\n同节点 fork 共享内存页；跨节点时从源节点拉取快照\n从 OCI registry 导入镜像，不复制数据即可组合 image layers，并支持把 sandbox 修改 pack 成新镜像\n网络默认拒绝，可按 domain、CIDR、port 放行\n多级 project、quota、审计日志和短期可撤销 token\n批量 pause/resume、节点重启后重新接管运行中的 sandbox\n提供 E2B-compatible gateway，已有 E2B SDK 客户端可以直接接入\n支持离线安装，适合内网或 air-gapped 环境\n在我们的硬件上，一台 384 线程节点做过单批 5,120 个 microVM；两节点集群做过单批 8,192 个 container，未出现创建失败。这些都是 OpenDsec 在自有硬件上的实测，不是论文中的数字。\n项目目前在一个小型生产集群上运行。代码、quickstart、架构文档和各项测量都放在仓库里。欢迎对 sandbox、Firecracker、agentic RL 基础设施感兴趣的朋友试用，也很想听听大家对架构和实现取舍的意见。",
-    "link": "https://www.v2ex.com/t/1252637#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:23:40.000Z"
-  },
-  {
-    "title": "[分享创造] 做了个 mac 小工具 reawm，把所有窗口变成浏览器那样的标签页",
-    "summary": "我电脑上窗口一直开得特别多，找个窗口要翻半天，所以写了个叫 reawm 的小工具。\n同一块屏幕上的窗口会放进同一条标签栏，就在菜单栏下面，一次只显示一个，跟浏览器标签页一样。点标签或者按 ⌥1 到 ⌥9 切换，中键点标签关掉，按住 ⌥⌘ 拖窗口就能把它拿出来。\nmacOS 没法只隐藏某个 app 的一个窗口，所以藏起来的标签页其实是被挪到屏幕角落外面了，退出的时候所有窗口都会放回原位。\n免费开源，MIT 协议，目前只支持 Apple 芯片。还没公证，第一次打开要去隐私与安全性里点“仍要打开”，readme 里写了，中文 readme 也有。有 bug 欢迎告诉我。\nhttps://github.com/jxherc/reawm",
-    "link": "https://www.v2ex.com/t/1252636#reply11",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:21:08.000Z"
-  },
-  {
-    "title": "[人工智能] AnySearch Pro：限时 $3 / 1,000 次搜索调用，额度不过期！",
-    "summary": "用 AI Agent 的开发者应该都有类似的痛点：\n把搜索能力接进真实工作流时，真正在意的是专业数据覆盖、并发能力和调用成本。\n为此，我们在 Free 版的基础上推出了 AnySearch Pro，面向有高频调用、专业领域检索及复杂搜索任务需求的开发者与团队，为 AI Agent 提供准确、及时、来源可追溯的信息获取能力。\nPro 版有哪些变化？\n灵活按量付费：上线限时优惠价 $3 / 1,000 次搜索调用，购买额度不过期、可叠加，支持按需购买。\n更全面的专业数据：支持通用网页与 20+ 垂直领域搜索，接入更丰富、更优质的专业数据源。\n更高性能与并发：采用高性能搜索架构，支持最高 20 QPS，降低搜索响应延迟，满足高频调用需求。\n适配复杂搜索任务：适用专业研究、跨领域信息检索及复杂 Agent 工作流，为 AI 应用提供稳定、高质量的搜索能力。\n价格与计费？\nAnySearch Pro 采用预付费购买搜索调用额度的模式，购买额度长期有效、可叠加使用。\n优惠价\n标准价\n\n\n\n\n$3 / 1,000 次搜索调用\n$5 / 1,000 次搜索调用\n\n\n\n示例：购买 10,000 次调用额度，当前优惠价 $30 。\n目前采用美元计费，支持 Stripe 支付渠道；人民币定价与国内本地化支付方案将在后续推出。\n如何购买与使用？\n可到官网价格页查看 Pro 版具体的购买与使用方法：\n🔗 https://www.anysearch.com/pricing\n如果你已经在使用 AnySearch ，充值成功后，搜索额度将自动更新到账户。无需修改现有配置，即可轻松享受更高质量的 Pro 版搜索服务。\n如果你还没用过，欢迎先体验 Free 版，再根据实际需求决定是否升级到 Pro 版。\n也欢迎大家在评论区交流使用场景和产品建议～",
-    "link": "https://www.v2ex.com/t/1252634#reply1",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:16:21.000Z"
-  },
-  {
-    "title": "[分享创造] 自己做了个 Mac App 网连（Netlink）：出口 IP 一变就提醒，顺手给网络做个体检",
-    "summary": "大家好，分享一个我自己做的 Mac App：网连（ Netlink ）。\n起因\n用 Claude Code 被封过好几次号，事后回头查，往往是出口出了问题：IP 悄悄跳到了别的地区，被标成了机房或代理，或者 IPv6 绕过了隧道，而我当时完全没察觉。网页查 IP 只能看到「此刻」，所以干脆自己做了一个。\n出口一变就提醒\n后台定时检查出口 IP ，一变就通知，每次变化都记在时间线上。桌面小组件和悬浮挂件随时能看到网络状态。\n\n一键体检，给网络打个分\n从本机、DNS 、出口、IP 信誉一路查到目标网站，能发现 IPv6 绕过、DNS 泄露、分流不一致、时区和出口对不上等问题，汇总成一个分数，每项扣分都附修复建议。\n\n用 Claude Code 、Codex 前，先测一下网络\n「 AI 服务检测」从当前出口直接测 OpenAI 、Anthropic 、Gemini 、xAI 能不能连通，不用 API Key 。再结合出口位置和 IP 信誉，就知道这条网络是不是真的干净、能用。\n\n测速和排查工具\n测速会和这条线路平时的水平对比；域名诊断一次看完 DNS 、端口和证书；工具页还有 DNS 查询、端口检测、路径追踪、证书监控等常用工具。\n\n\n隐私\n查询都用 App 内置的数据库，联网前先征得同意，不读定位，不用注册。它不是 VPN ，不转发流量。\n需要 macOS 14 及以上：\nMac App Store： https://apps.apple.com/app/id6770569501\n官网： https://jeman.net/zh-hans/netlink/\n第一次在 V2EX 发自己的东西，误报、难用的地方、想加的功能，都欢迎直说，评论我都会回。",
-    "link": "https://www.v2ex.com/t/1252633#reply2",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:14:39.000Z"
-  },
-  {
-    "title": "[推广] A6API：把 API 中转做成交易市场， 1 万多个渠道自己比价、自己选",
-    "summary": "用过中转站的都懂，最怕的不是贵，是这三件事：模型被掺水降智、半夜突然挂掉、账单根本看不懂。\n所以我没按传统中转站做 A6API ，a6api.com ，而是做成了一个 Token 交易市场：\n渠道不是我一个人定价，是商家挂出来竞价。你能直接看到每个渠道的实时倍率、成功率、延迟，不满意就换，喜欢哪个商家就固定哪个。\n现在站内市场显示的数据是：在售渠道 10,834+ 个，品牌供货 3,103 家，平均渠道成功率 97.63%。\n路由也是按这个逻辑做的：1ms 内按任务特征评分，自动选便宜又快的通道；上游出 429 / 500 / 503 时，25ms 内自动换线重试，不用你半夜起来改配置。\n保真方面，站里宣称原厂透传、假一赔十，还有模型举报入口，掺水、虚假用量可以举报。\n接入很简单：统一用 api.a6api.com/v1 ，100% OpenAI 规范，也兼容 Claude / Gemini 原生协议，Cursor 、Cline 、Cherry Studio 、Dify 改一行就能用。20+ 供应商、146+ 模型系列，文本、图片、视频都有。\n充值支持支付宝、微信、USDT 。先说清楚：目前没有新人注册赠金，我也不想靠送额度拉人。建议先去市场页看一眼实时价格和渠道，再小额试用，价格以站内实时显示为准。\n欢迎来挑刺，技术问题直接在帖子里回，我在。",
-    "link": "https://www.v2ex.com/t/1252632#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:12:29.000Z"
-  },
-  {
-    "title": "[分享创造] 自建网关：聚合免费 Token 资源",
-    "summary": "基于 Cloudflare Workers 搭建的 AI Gateway 连续实测 62 天，累计消耗 80 亿 Token ，单日峰值达 5.9 亿。由于使用的都是免费 Token ，并发能力有限，不适合同时开启 5 个以上的智能体。\n项目地址： https://github.com/fongap-labs/ai-gateway",
-    "link": "https://www.v2ex.com/t/1252631#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:11:06.000Z"
-  },
-  {
-    "title": "[分享创造] 做了一个 Hacker News 双语浏览 iOS 客户端,免费",
-    "summary": "1,多数据源:Firebase,官方网站 xpath,hnrss,algolia\n2,google ML kit 本地翻译,速度快,准确度不是太高可用来辅助浏览\n3,国区未上架,但是可以下载后正常使用,因为 hackerNews 官网的 IP 是没有被封的\n4,目前没有广告\n5,免费\n下载地址: https://apps.apple.com/app/id6825707677",
-    "link": "https://www.v2ex.com/t/1252630#reply0",
-    "source": "V2EX",
-    "category": "news",
-    "pubDate": "2026-10-28T11:08:17.000Z"
   },
   {
     "title": "A faster way to compute signed 64-bit floor division by constants",
@@ -3147,54 +3195,6 @@
     "title": "Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark",
     "summary": "arXiv:2609.30027v2 Announce Type: replace \nAbstract: Frontier language models are rarely used in clinical workflows because the realistic, longitudinal benchmarks needed to develop them are scarce. Real electronic health record (EHR) data cannot be openly shared due to privacy, ethics or data use issues and it does not contain verifiable ground truth since the chart records only reflect what clinicians documented. We introduce Synthetic Hospital, an open, fully synthetic, fact-grounded longitudinal EHR benchmark that resolves the open sharing and verifiable ground truth barriers. Built entirely from public medical-education material with no protected health information, it comprises 1,268 longitudinal patients and 5,602 encounters, where every diagnosis, finding, and temporal relation is grounded in standard ontologies (ICD-10-CM, SNOMED CT, LOINC) and with a complete provenance chain back to its source medical education material. Synthetic Hospital is served through a simulated hospital record system that mirrors real EHR infrastructure (standard interoperability APIs, role-based access and function-calling interface). In a blinded review, physicians distinguished its records from real patient charts at near-chance rates (53%). Across 10 frontier and open models, none approaches ceiling: the best model reconstructs a patient's longitudinal problem list with a severity-weighted F1 of 0.73, level with the mean of seven physicians on a matched subset but well below the best of them (0.89), and misses roughly half of clinically relevant findings when summarizing a chart. Overall, these results highlight that Synthetic Hospital is a difficult and realistic test of clinical AI performance.",
     "link": "https://arxiv.org/abs/2609.30027",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Learning response-aware patient dynamics for respiratory support",
-    "summary": "arXiv:2609.32782v2 Announce Type: replace \nAbstract: Respiratory support can shape the short-term physiological trajectory of critically ill patients, but patients receiving the same intervention may follow different physiological trajectories. Clinical patient dynamics models typically predict future states from recent physiology and recorded interventions, while physiological change is mainly represented through the predicted future state. We propose a response-aware patient dynamics model that explicitly represents physiological change during autoregressive state updating. The model decomposes predicted physiological change into state-dependent baseline dynamics and respiratory-support-associated deviations, with room air providing a reference for the decomposition. We provide a formal analysis of this reference-anchored formulation. A response pathway encodes the predicted physiological change and uses it to update the latent patient state across the forecast horizon. Across ICU cohorts from two independent institutions, the proposed model achieves comparable overall trajectory prediction to patient dynamics baselines, with more consistent improvements when physiological states are changing.",
-    "link": "https://arxiv.org/abs/2609.32782",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "EvoIn: Bridging Evolution and Internalization for Agent Fine-Tuning",
-    "summary": "arXiv:2609.35290v2 Announce Type: replace \nAbstract: Recent work has explored improving agents by jointly evolving their harnesses and models, but often takes a ''potpourri'' approach that bundles together new tools, new decision-making procedures, and model adaptation to the evolved harness under a single notion of agent improvement. In this paper, we instead investigate how agents can improve their decision-making procedures. In particular, we propose EvoIn, an agent fine-tuning framework that bridges evolution and internalization. EvoIn first analyzes agent execution traces to evolve and validate new decision-making procedures by temporarily instantiating them in the harness. The validated procedures guide the agent to generate improved reasoning traces. These traces are then rewritten into self-contained reasoning traces, removing explicit references to harness instructions while expressing the induced decision logic as the model's own reasoning. Finally, EvoIn fine-tunes the model on the rewritten traces, internalizing these procedures so that the improved decision-making persists without the evolved harness at inference time. We evaluate EvoIn on diverse benchmarks and find that it consistently enables agents to learn stronger decision-making procedures, raising the pass rate by 10.9 points in-domain and by 9.2 points out-of-domain. Results further show that the internalized decision procedures generalize to unseen tasks. Case studies show that agents can learn to decide how to solve a task before solving it, for example by checking a document's length to choose between reading it in full and searching it. EvoIn is also broadly applicable, showing consistent improvements on another model family.",
-    "link": "https://arxiv.org/abs/2609.35290",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Learn from the Gap: Differential-Aware Advantage Pruning with Adaptive Rollout Sampling for GRPO",
-    "summary": "arXiv:2609.36932v3 Announce Type: replace \nAbstract: Recently, Group Relative Policy Optimization (GRPO) and its variants have been developed for policy optimization and demonstrated notable performance gains. However, these methods usually incur substantial computational overhead due to per-question multi-rollout sampling and repeated per-token probability evaluation across rollouts. Furthermore, low-information or highly homogeneous trajectories can degrade downstream learning signal efficiency, hindering model optimization and limiting final performance. To address these issues, we propose FastRL, a novel plug-and-play reinforcement learning framework that simultaneously improves training efficiency and the effectiveness of policy learning. Specifically, 1) We introduce an advantage-aware pruning strategy to selectively preserve high-advantage trajectories while maximizing inter-trajectory gradient diversity. 2) Then, we design an adaptive rollout sampling mechanism to dynamically adjust the sampling scale across different training stages based on historical pruning distributions, balancing exploration adequacy and computational efficiency. Experiments demonstrate that FastRL can be seamlessly integrated into GRPO, DAPO, and GSPO variants, achieving an average 2.07$\\times$ training speedup on Geometry3K and GeoQA8K-R1V, along with an approximately 1.64\\% improvement in average accuracy on visual reasoning benchmarks. Source codes will be available at https://github.com/Nicozwy/FastRL.",
-    "link": "https://arxiv.org/abs/2609.36932",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Diversity Combining for Multi-Path LLM Reasoning",
-    "summary": "arXiv:2609.38829v2 Announce Type: replace \nAbstract: Multi-path reasoning methods such as self-consistency (SC) sample $K$ reasoning paths and choose the most frequent answer. However, their gains quickly plateau as $K$ increases, and locating this saturation point currently requires fitting a scaling model to accuracies measured at several values of $K$ or stopping online per query. We formalize multi-path LLM reasoning as a diversity combining problem from wireless communications: each path is a noisy channel observation, and the pairwise correlation of path correctness caps the design-effect effective sample size of the vote at a finite ceiling. Generalized least squares (GLS) analysis shows that, for paths with equal gains, the optimal linear combiner of latent embeddings is uniform exactly when every row of the path covariance has the same sum, as under exchangeability, supporting majority vote as the natural default in standard SC while leaving room for weighting or pruning under heterogeneous prompt-template branches. Across 5 models and 12 benchmarks, prompt-template diversity reduces path correlation in $55$ of $60$ model-benchmark cells, with a mean relative reduction of $16\\%$ and reductions in every task domain. We derive an Adaptive-K rule that uses a four-path pilot to select $K^*$, retaining $96$--$103\\%$ of MV@$K{=}32$ accuracy across Math, QA, and NLU.",
-    "link": "https://arxiv.org/abs/2609.38829",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Provenance-Aware Belief Updating in Human-AI Feedback Loops",
-    "summary": "arXiv:2610.13008v2 Announce Type: replace \nAbstract: In repeated human-AI interaction, a single observation can be quoted, summarized, and returned to a model as multiple reports, making repetition look like independent corroboration. We study whether language models can use supplied report lineage to update according to evidence provenance rather than report count. We introduce Latent Quotient Evidence Training (LQET), a relational objective that combines sparse Bayesian supervision with constraints that encourage stable predictions when reports add no new evidence and consistent updates to the same new evidence across relay histories. On a controlled binary benchmark, LQET reduces new-evidence update RMSE by 41-44\\% and log-odds drift after eight relay steps by 89-91\\% relative to task-only training across Qwen3-4B and Phi-4-mini, with three paired training seeds per backbone. The gains extend to a closed-loop simulation in which model confidence controls how many relayed reports re-enter the model's context in later rounds. By grounding belief updates in supplied provenance, LQET offers a route toward dynamic human-AI systems in which influence follows new evidence, not the number of times the same evidence returns.",
-    "link": "https://arxiv.org/abs/2610.13008",
-    "source": "arXiv AI",
-    "category": "ai",
-    "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
-  },
-  {
-    "title": "Annotrace: A Workbench for Step-Level Annotation of Agent Traces",
-    "summary": "arXiv:2610.23284v3 Announce Type: replace \nAbstract: Every study of why LLM agents fail begins by labelling traces by hand, and every such study builds its own throwaway tool. Observability platforms record agent traces but offer no structured labelling; annotation tools label text but have no notion of a step, a delegation or a tool call, leaving it unclear what the smallest unit of execution to label should be. Annotrace reads six trace formats, including OpenTelemetry GenAI, LangSmith and Langfuse, and turns each run into an ordered, nested list of steps. The annotator writes their own labelling codebook; a frontier model proposes a starting set from a sample of their own traces, answers first, and is asked exactly the questions the human is asked, making annotation a joint human-AI process. Annotrace measures agreement between any two annotators, human or AI. On a multi-agent question-answering corpus it reproduces a previous manual effort's 235 annotation units exactly, and two models labelling the same traces agree 91% of the time at $\\kappa = 0.82$.",
-    "link": "https://arxiv.org/abs/2610.23284",
     "source": "arXiv AI",
     "category": "ai",
     "pubDate": "Wed, 28 Oct 2026 00:00:00 -0400"
