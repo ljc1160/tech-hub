@@ -4,27 +4,11 @@
 
 ## 🌿 分支规范
 
-| 分支 | 用途 |
-|------|------|
-| `main` | 生产分支，只接受来自 `develop` 的合并 |
-| `develop` | 开发主干，所有 feature 分支的合并目标 |
-| `feature/YYYYMMDD-xxx` | 功能开发分支，从 `develop` 拉出 |
+只保留 `main` 单分支（2026-11-17 起）：开发、提交、推送都直接在 main 上进行，不再使用 develop / feature 分支与 worktree 流程。
 
-### 标准工作流
-
-```bash
-# 1. 新功能：基于 develop 创建 worktree 分支
-git checkout develop
-git worktree add .worktrees/feature/20260314-xxx -b feature/20260314-xxx
-
-# 2. 开发完成后合并到 develop
-git checkout develop
-git merge feature/20260314-xxx --no-ff
-
-# 3. 测试稳定后，develop → main
-git checkout main
-git merge develop --no-ff
-```
+- 提交前本地 `npm run build` 验证静态导出通过。
+- GitHub Actions 每小时自动向 main 提交数据更新；本地推送前先 `git pull --ff-only`。
+- 服务器部署：`bash /home/ins.itcsdn.com/deploy/deploy.sh`（拉取 + 构建，out/ 即 Nginx 站点目录）。
 
 ## 🏗 技术栈
 
