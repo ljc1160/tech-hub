@@ -1,80 +1,77 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
-
-export const metadata: Metadata = { title: '关于 — itcsdn.com' }
-
-const sources = [
-  { name: 'GitHub Trending', desc: '每日热门开源项目' },
-  { name: 'Hacker News', desc: '技术社区精华讨论' },
-  { name: 'Reddit', desc: 'r/programming 等开发者社区' },
-  { name: 'arXiv', desc: 'AI / ML 最新研究论文' },
-]
-
+import Link from 'next/link'
+import { pageMetadata } from '@/lib/site'
+import { getArticles } from '@/lib/articles'
+export const metadata = pageMetadata(
+  '关于 INS · 收录方式与内容来源',
+  '了解 INS 技术雷达的公开 RSS 聚合方式、内容来源、更新机制与版权说明，以及 ITCSDN 独立作品空间。',
+  '/about'
+)
 export default function AboutPage() {
+  const articles = getArticles(),
+    sources = Array.from(new Set(articles.map((a) => a.source)))
   return (
-    <div className="max-w-2xl">
-      {/* 页面头部 */}
-      <div className="mb-10 pb-8 border-b border-slate-100">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium mb-4">
-          关于
-        </div>
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">关于 itcsdn.com</h1>
-        <p className="text-slate-500 leading-relaxed">
-          一个面向开发者的技术内容聚合平台，帮你在信息洪流中筛出真正有价值的技术动态。
+    <div className="about-page">
+      <nav className="breadcrumb" aria-label="面包屑">
+        <Link href="/">发现</Link>
+        <span>/</span>
+        <span aria-current="page">关于</span>
+      </nav>
+      <header className="category-header">
+        <p className="hero-eyebrow">Insights, with curiosity.</p>
+        <h1>为好奇心，留一扇窗。</h1>
+        <p>
+          INS 是 ITCSDN 的独立技术雷达。我们连接分散的技术内容，
+          <br className="desktop-break" />
+          让发现新知成为一件简单、轻松的事。
         </p>
-      </div>
-
-      <div className="space-y-8">
-        {/* 数据来源 */}
-        <div>
-          <h2 className="text-base font-semibold text-slate-900 mb-3">数据来源</h2>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {sources.map(s => (
-              <div
-                key={s.name}
-                className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-slate-100"
-              >
-                <div className="w-2 h-2 rounded-full bg-accent mt-1.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-slate-900">{s.name}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{s.desc}</p>
-                </div>
-              </div>
+      </header>
+      <div className="about-grid">
+        <section>
+          <h2>来自真实的技术世界</h2>
+          <p>
+            内容通过公开 RSS
+            信源自动收录，覆盖人工智能、开源项目、开发工具与社区资讯。每条内容保留原始来源与访问链接，不把聚合内容包装成本站原创。
+          </p>
+          <div className="about-sources">
+            {sources.map((s) => (
+              <span key={s}>{s}</span>
             ))}
           </div>
-        </div>
-
-        {/* 站长推荐 */}
-        <div>
-          <h2 className="text-base font-semibold text-slate-900 mb-3">站长推荐</h2>
-          <div className="relative bg-white rounded-2xl p-5 border border-slate-100 shadow-card overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-400 rounded-l-2xl" />
-            <div className="pl-3 flex items-start justify-between gap-4">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-amber-50 text-amber-700">
-                    工具推荐
-                  </span>
-                  <span className="text-xs text-slate-400">微信小程序</span>
-                </div>
-                <p className="text-sm font-semibold text-slate-900 mb-1">免费证件照制作</p>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  一键制作高清证件照，支持一寸、二寸等多种尺寸，自由更换底色，免费使用。
-                </p>
-              </div>
-              <div className="flex-shrink-0 flex flex-col items-center gap-1">
-                <Image
-                  src="/sponsors/gh_2bf4a7d2a911_344.jpg"
-                  alt="免费证件照制作小程序二维码"
-                  width={80}
-                  height={80}
-                  className="rounded-lg"
-                />
-                <span className="text-xs text-slate-400">扫码体验</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          <h2>更新与筛选</h2>
+          <p>
+            采集工作流配置为每 6
+            小时运行一次；实际更新取决于采集执行和站点发布。页面显示内容自身的发布日期，首页注明最近内容日期，不以“实时”标签替代真实状态。
+          </p>
+          <p>
+            站内关键词搜索与信源筛选在浏览器中完成。排序依据原始发布日期；编辑收藏单独展示，未经核实的热度和排名不作呈现。
+          </p>
+          <h2>尊重原作，回到原文</h2>
+          <p>
+            文章观点、内容与版权归原作者及其发布平台所有。本站用于内容发现和索引，完整内容请通过“阅读原文”前往原始页面阅读。
+          </p>
+          <a
+            className="text-link"
+            href="https://itcsdn.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            走进 ITCSDN · 华夏长歌 ↗
+          </a>
+        </section>
+        <aside className="recommendation">
+          <span className="aside-eyebrow">创作者的另一件小作品</span>
+          <h2>免费证件照制作</h2>
+          <p>支持一寸、二寸等多种尺寸，自由更换底色。</p>
+          <Image
+            src="/sponsors/gh_2bf4a7d2a911_344.jpg"
+            width={160}
+            height={160}
+            alt="免费证件照制作微信小程序二维码"
+          />
+          <span>微信扫码体验</span>
+          <p className="recommendation-note">独立工具推荐，与资讯收录分开呈现。</p>
+        </aside>
       </div>
     </div>
   )
