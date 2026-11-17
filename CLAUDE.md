@@ -35,6 +35,8 @@ git merge develop --no-ff
 
 ## 🎨 设计系统
 
+生成或修改任何 UI / 样式代码前，先读根目录 `DESIGN.md`，颜色、字体、圆角、间距一律引用其 tokens，不得使用清单外色值。
+
 - **强调色**：Indigo `#4F46E5`（极客紫）
 - **背景层级**：白色 `#fff` / 浅灰 `#f8fafc`
 - **卡片阴影**：`shadow-card` / `shadow-card-hover`（定义在 globals.css）
